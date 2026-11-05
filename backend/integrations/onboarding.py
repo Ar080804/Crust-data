@@ -206,30 +206,124 @@ def finish(token: str, linkedin_url: str) -> dict:
 
 
 # ---- web --------------------------------------------------------------------------------------------------
+# Look and feel: reuses Deepak's design system (frontend/src/index.css) so onboarding feels like the same app.
 
 app = FastAPI(title="Sutradhar expert onboarding")
 
-CSS = """body{font-family:system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 16px;color:#1d1d1f}
-h1{font-size:26px}.step{border:1px solid #ddd;border-radius:12px;padding:16px 18px;margin:14px 0}
-.done{border-color:#2e9e5b;background:#f2fbf5}.btn{display:inline-block;padding:10px 16px;border-radius:8px;
-background:#0a66c2;color:#fff;text-decoration:none;border:0;font-size:15px;cursor:pointer}
-.tg{background:#229ed9}input{width:100%;padding:9px;font-size:15px;margin:8px 0;box-sizing:border-box}
-.muted{color:#666;font-size:14px}.err{color:#c0392b}.claim{margin:6px 0}img{border-radius:50%;vertical-align:middle}"""
+FRONTEND_CSS = ROOT / "frontend" / "src" / "index.css"
+APP_URL = os.getenv("APP_URL", "http://localhost:5173").rstrip("/")
+
+EXTRA_CSS = """
+.ob-steps{display:grid;gap:12px;margin-top:22px}
+.ob-step{border:1px solid var(--line-2);border-radius:var(--r);background:var(--surface);padding:16px 18px;
+  box-shadow:var(--shadow-s);animation:rise .25s ease both}
+.ob-step.is-done{border-color:color-mix(in srgb,var(--ok) 45%,transparent);background:color-mix(in srgb,var(--ok-soft) 60%,var(--surface))}
+.ob-step.is-now{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.ob-step.is-next{opacity:.55}
+.ob-head{display:flex;align-items:center;gap:10px}
+.ob-num{width:24px;height:24px;border-radius:999px;display:grid;place-items:center;font-family:var(--mono);font-size:12px;
+  background:var(--surface-2);color:var(--muted);flex-shrink:0}
+.is-done .ob-num{background:var(--ok);color:#fff}.is-now .ob-num{background:var(--accent);color:#fff}
+.ob-title{font-weight:600;font-size:15px}
+.ob-body{margin:10px 0 0 34px;display:grid;gap:10px}
+.ob-body .muted{font-size:13.5px}
+.ob-who{display:flex;align-items:center;gap:10px}
+.ob-who img{width:34px;height:34px;border-radius:999px;object-fit:cover}
+.ob-claim{display:grid;gap:4px;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.ob-claim .ev{font-size:12.5px;color:var(--muted)}
+.ob-claim .src{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.ob-wait{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.ob-dot{width:8px;height:8px;border-radius:999px;background:var(--accent);animation:obpulse 1.2s ease-in-out infinite}
+@keyframes obpulse{50%{opacity:.25}}
+.ob-hero{display:grid;place-items:center;text-align:center;gap:10px;padding:8px 0 4px}
+.ob-check{width:56px;height:56px;border-radius:999px;display:grid;place-items:center;background:var(--ok-soft);color:var(--ok);font-size:28px}
+.btn-tg{background:#229ed9;color:#fff;text-decoration:none;justify-content:center}
+.btn-tg:hover{background:#1c8cc2}
+a.btn-oauth{text-decoration:none}
+.ob-back{display:block;text-align:center;margin-top:18px;color:var(--muted);font-size:13px;text-decoration:none}
+.ob-back:hover{color:var(--ink)}
+.ob-err{border:1px solid color-mix(in srgb,var(--bad) 45%,transparent);background:var(--bad-soft);color:var(--ink);
+  border-radius:12px;padding:12px 14px;font-size:14px;margin-top:18px}
+"""
+
+LOGO = ("<svg width=30 height=30 viewBox='0 0 32 32' aria-hidden class=logo><defs><linearGradient id=lg x1=0 y1=0 x2=1 y2=1>"
+        "<stop offset=0 stop-color='#8b8dff'/><stop offset=1 stop-color='#5e6ad2'/></linearGradient></defs>"
+        "<rect width=32 height=32 rx=9 fill='url(#lg)'/><path d='M5 21c4-9 7-9 11 0s7 9 11 0' fill=none stroke='#fff' "
+        "stroke-opacity=.55 stroke-width=2.2 stroke-linecap=round /><circle cx=9 cy=15.5 r=2.3 fill='#fff'/>"
+        "<circle cx=16 cy=21 r=2.3 fill='#fff'/><circle cx=23 cy=15.5 r=2.3 fill='#fff'/></svg>")
+LI_ICON = ("<svg width=18 height=18 viewBox='0 0 24 24' aria-hidden class=icon><rect width=24 height=24 rx=4 fill='#0A66C2'/>"
+           "<path fill='#fff' d='M7.1 9.5H4.6V19h2.5V9.5zM5.9 5.2a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9zM19.4 13.6"
+           "c0-2.6-1.4-4.3-3.6-4.3-1.3 0-2.1.7-2.5 1.3V9.5h-2.4V19h2.5v-4.9c0-1.3.4-2.4 1.8-2.4 1.3 0 1.7 1.1 1.7 2.5V19h2.5v-5.4z'/></svg>")
+TG_ICON = ("<svg width=18 height=18 viewBox='0 0 24 24' aria-hidden class=icon><path fill='currentColor' d='M21.9 4.3 18.7 19.4c-.2 1"
+           "-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.2-8.3c.4-.4-.1-.6-.6-.2L6.2 13.1 1.3 11.6c-1-.3-1-1 .2-1.5"
+           "L20.6 2.8c.9-.3 1.6.2 1.3 1.5z'/></svg>")
+SHIELD = ("<svg width=16 height=16 viewBox='0 0 24 24' class=icon fill=none stroke='currentColor' stroke-width=2 "
+          "stroke-linecap=round stroke-linejoin=round><path d='M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z'/><path d='M9 12l2 2 4-4'/></svg>")
+MSG = ("<svg width=16 height=16 viewBox='0 0 24 24' class=icon fill=none stroke='currentColor' stroke-width=2 "
+       "stroke-linecap=round stroke-linejoin=round><path d='M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z'/></svg>")
+CHECK = ("<svg width=16 height=16 viewBox='0 0 24 24' class=icon fill=none stroke='currentColor' stroke-width=2 "
+         "stroke-linecap=round stroke-linejoin=round><circle cx=12 cy=12 r=9 /><path d='M8 12l3 3 5-6'/></svg>")
 
 
-def page(body):
-    return HTMLResponse(f"<!doctype html><meta charset=utf-8><title>Sutradhar onboarding</title>"
-                        f"<style>{CSS}</style><h1>Join Sutradhar as an expert</h1>{body}")
+def _css() -> str:
+    try:
+        return FRONTEND_CSS.read_text(encoding="utf-8") + EXTRA_CSS
+    except OSError:  # frontend folder missing: keep a usable dark theme
+        return (":root{--paper:#08090a;--surface:#0f1012;--surface-2:#17181b;--ink:#f7f8f8;--ink-2:#d0d6e0;--muted:#8a8f98;"
+                "--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--accent:#8183ff;--accent-soft:rgba(129,131,255,.14);"
+                "--ok:#4cb782;--ok-soft:rgba(76,183,130,.13);--bad:#eb5757;--bad-soft:rgba(235,87,87,.13);--r:14px;"
+                "--sans:Inter,system-ui,sans-serif;--mono:ui-monospace,monospace}body{background:var(--paper);color:var(--ink);"
+                "font-family:var(--sans);margin:0}" + EXTRA_CSS)
+
+
+def page(card: str, title: str = "Join as an expert", sub: str = "") -> HTMLResponse:
+    sub_html = f"<p class='muted small'>{sub}</p>" if sub else ""
+    return HTMLResponse(f"""<!doctype html><html lang=en data-theme=dark><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>Sutradhar · Expert onboarding</title>
+<link rel=preconnect href="https://fonts.googleapis.com"><link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel=stylesheet>
+<style>{_css()}</style></head><body><div class=auth>
+<section class=auth-art><div class=auth-art-in>
+  <div class=row>{LOGO}<span class=brand-word>Sutradhar</span></div>
+  <h1 class=auth-line>Get paid for<br>short expert calls.<br><span class=muted-line>We just make sure</span> you're real.</h1>
+  <ul class=auth-points>
+    <li>{SHIELD} Sign in with LinkedIn: proves the account is yours</li>
+    <li>{MSG} One-tap Telegram link: requests reach the right phone</li>
+    <li>{CHECK} Work history checked against Crustdata</li>
+  </ul>
+  <p class=auth-hint>Clients only ever see verified experts.</p>
+</div></section>
+<section class=auth-panel><div class=auth-card>
+  <h2 class=auth-title>{title}</h2>{sub_html}
+  {card}
+  <a class=ob-back href="{APP_URL}/login">← Back to Sutradhar</a>
+</div></section></div></body></html>""")
+
+
+def page_error(msg: str, back: str = "/") -> HTMLResponse:
+    return page(f"<div class=ob-err>{html.escape(msg)}</div>"
+                f"<p style='margin-top:14px'><a class='btn btn-ghost btn-block' href='{back}'>Try again</a></p>",
+                title="Something went wrong")
+
+
+def step(n: int, state: str, title: str, body: str = "") -> str:
+    tag = {"done": "<span class='tag tag-ok push'>Done</span>", "now": "<span class='tag tag-live push'>Now</span>",
+           "next": "<span class='tag push'>Next</span>"}[state]
+    num = "✓" if state == "done" else str(n)
+    inner = f"<div class=ob-body>{body}</div>" if body else ""
+    return (f"<div class='ob-step is-{state}'><div class=ob-head><span class=ob-num>{num}</span>"
+            f"<span class=ob-title>{title}</span>{tag}</div>{inner}</div>")
 
 
 @app.get("/")
 def home():
-    warn = "" if CLIENT_ID else "<p class=err>LINKEDIN_CLIENT_ID is not set in .env</p>"
-    return page(f"""<p class=muted>We verify three things: you own your LinkedIn account, your Telegram account is yours,
-and your work history (via Crustdata). Then clients can book short paid calls with you.</p>{warn}
-<div class=step><b>1. Sign in with LinkedIn</b><p><a class=btn href="/auth/linkedin/login">Sign in with LinkedIn</a></p></div>
-<div class=step><b>2. Connect Telegram</b><p class=muted>after step 1</p></div>
-<div class=step><b>3. Verify your profile</b><p class=muted>after step 2</p></div>""")
+    warn = "" if CLIENT_ID else "<div class=ob-err>LINKEDIN_CLIENT_ID is not set in .env</div>"
+    s1 = step(1, "now", "Sign in with LinkedIn",
+              f"<a class=btn-oauth href='/auth/linkedin/login'>{LI_ICON} Continue with LinkedIn</a>"
+              "<span class=muted>We only read your name, email and photo.</span>")
+    return page(warn + "<div class=ob-steps>" + s1 + step(2, "next", "Connect Telegram")
+                + step(3, "next", "Verify your work history") + "</div>",
+                sub="Three quick checks, about a minute. Then clients can book short paid calls with you.")
 
 
 @app.get("/auth/linkedin/login")
@@ -247,16 +341,16 @@ def li_login():
 @app.get("/auth/linkedin/callback")
 def li_callback(code: str = "", state: str = "", error: str = "", error_description: str = ""):
     if error:
-        return page(f"<p class=err>LinkedIn error: {html.escape(error_description or error)}</p><a href=/>Try again</a>")
+        return page_error(f"LinkedIn: {error_description or error}")
     st, _, token = state.partition(".")
     row = _get(token=token)
     if not row or row["state"] != f"oauth:{st}":
-        return page("<p class=err>Invalid or expired login state.</p><a href=/>Try again</a>")
+        return page_error("This login link expired. Please start again.")
     tok = httpx.post("https://www.linkedin.com/oauth/v2/accessToken", timeout=30, data={
         "grant_type": "authorization_code", "code": code, "redirect_uri": REDIRECT,
         "client_id": CLIENT_ID, "client_secret": CLIENT_SECRET})
     if tok.status_code != 200:
-        return page(f"<p class=err>Token exchange failed: {html.escape(tok.text[:300])}</p>")
+        return page_error(f"LinkedIn sign-in failed: {tok.text[:200]}")
     info = httpx.get("https://api.linkedin.com/v2/userinfo", timeout=30,
                      headers={"Authorization": f"Bearer {tok.json()['access_token']}"}).json()
     _set(token, state="linkedin_ok", li_sub=info.get("sub"), li_name=info.get("name"), li_email=info.get("email"),
@@ -269,37 +363,52 @@ def onboard(token: str):
     row = _get(token=token)
     if not row or not row["li_sub"]:
         return RedirectResponse("/")
-    pic = f"<img src='{html.escape(row['li_picture'])}' width=40> " if row["li_picture"] else ""
-    s1 = (f"<div class='step done'><b>1. LinkedIn ✅</b><p>{pic}{html.escape(row['li_name'] or '')} "
-          f"<span class=muted>{html.escape(row['li_email'] or '')}"
-          f"{' (verified email)' if row['li_email_verified'] else ''}</span></p></div>")
-    link = f"https://t.me/{BOT_USERNAME}?start={token}"
+    esc = html.escape
+    pic = f"<img src='{esc(row['li_picture'])}' alt=''>" if row["li_picture"] else ""
+    ver = " <span class='tag tag-ok'>verified email</span>" if row["li_email_verified"] else ""
+    s1 = step(1, "done", "LinkedIn",
+              f"<div class=ob-who>{pic}<div><div class=strong>{esc(row['li_name'] or '')}</div>"
+              f"<div class='muted small'>{esc(row['li_email'] or '')}{ver}</div></div></div>")
+    poll = ""
     if row["chat_id"]:
-        s2 = f"<div class='step done'><b>2. Telegram ✅</b><p>Linked: {html.escape(row['tg_name'] or row['chat_id'])}</p></div>"
+        s2 = step(2, "done", "Telegram", f"<span class=muted>Linked to {esc(row['tg_name'] or 'your account')}</span>")
     else:
-        s2 = (f"<div class=step><b>2. Connect Telegram</b><p class=muted>Opens @{BOT_USERNAME}. Press START there. "
-              f"This link works once and only for you.</p><a class='btn tg' href='{link}' target=_blank>Connect Telegram</a>"
-              f"<p class=muted id=wait>Waiting for START…</p></div>")
+        link = f"https://t.me/{BOT_USERNAME}?start={token}"
+        s2 = step(2, "now", "Connect Telegram",
+                  f"<a class='btn btn-tg btn-block' href='{link}' target=_blank rel=noreferrer>{TG_ICON} Open @{esc(BOT_USERNAME)} and press START</a>"
+                  "<span class=muted>This link works once and only for you.</span>"
+                  "<div class=ob-wait><span class=ob-dot></span> Waiting for START…</div>")
+        poll = (f"<script>setInterval(async()=>{{try{{const r=await fetch('/api/onboard/{token}');"
+                f"const j=await r.json();if(j.telegram_linked)location.reload()}}catch(e){{}}}},2000)</script>")
     if row["state"] == "done":
         claims = json.loads(row["claims"] or "[]")
-        icon = {"verified": "🟢", "contradicted": "🔴", "unverifiable": "🟡"}
-        items = "".join(f"<div class=claim>{icon.get(c['status'], '')} {html.escape(c['text'])}<br>"
-                        f"<span class=muted>{html.escape(c.get('evidence') or '')} · {html.escape(c['source'])}</span></div>"
-                        for c in claims)
-        s3 = (f"<div class='step done'><b>3. Profile verified ✅</b><p>Crustdata name: {html.escape(row['crust_name'] or '')} "
-              f"(matches LinkedIn login)</p>{items}<p><b>Onboarded as {row['expert_id']}</b> (saved to data/onboarded.json) "
-              f"with identity status 🟢 verified.</p><p><b>Last step:</b> booking requests are sent by @{BOOKING_BOT}. Telegram only lets a bot message "
-              f"people who started it, so press START there too: <a class='btn tg' href='https://t.me/{BOOKING_BOT}' "
-              f"target=_blank>Open @{BOOKING_BOT}</a></p></div>")
-    elif row["chat_id"]:
-        s3 = (f"<div class=step><b>3. Verify your profile</b><form method=post action='/onboard/{token}/profile'>"
-              f"<input name=linkedin_url placeholder='https://www.linkedin.com/in/your-profile' required "
-              f"value='{html.escape(row['linkedin_url'] or '')}'><button class=btn>Verify with Crustdata</button></form></div>")
+        tagc = {"verified": "tag-ok", "contradicted": "tag-bad", "unverifiable": "tag-warn"}
+        items = "".join(f"<div class=ob-claim><div class=row><span class='tag {tagc.get(c['status'], '')}'>{esc(c['status'])}</span>"
+                        f"<span class=strong>{esc(c['text'])}</span></div><div class=ev>{esc(c.get('evidence') or '')}</div>"
+                        f"<div class=src>{esc(c['source'])}</div></div>" for c in claims)
+        s3 = step(3, "done", "Work history", items)
+        hero = (f"<div class=ob-hero><div class=ob-check>✓</div><div class=h2>You're verified</div>"
+                f"<p class='muted small'>Crustdata profile <b>{esc(row['crust_name'] or '')}</b> matches your LinkedIn login. "
+                f"Saved as {esc(row['expert_id'] or '')}.</p></div>")
+        last = (f"<div class='ob-step is-now'><div class=ob-head><span class=ob-num>→</span>"
+                f"<span class=ob-title>Last step: get booking requests</span></div><div class=ob-body>"
+                f"<span class=muted>Requests are sent by @{esc(BOOKING_BOT)}. Telegram only lets a bot message people who "
+                f"started it, so press START there too.</span>"
+                f"<a class='btn btn-tg btn-block' href='https://t.me/{esc(BOOKING_BOT)}' target=_blank rel=noreferrer>"
+                f"{TG_ICON} Open @{esc(BOOKING_BOT)}</a></div></div>")
+        return page(hero + "<div class=ob-steps>" + last + s1 + s2 + s3 + "</div>", title="All set")
+    if row["chat_id"]:
+        s3 = step(3, "now", "Verify your work history",
+                  f"<form method=post action='/onboard/{token}/profile' class=auth-form>"
+                  f"<label class=field><span>Your LinkedIn profile URL</span>"
+                  f"<input name=linkedin_url placeholder='https://www.linkedin.com/in/your-name' required "
+                  f"value='{esc(row['linkedin_url'] or '')}'></label>"
+                  f"<button class='btn btn-primary btn-block'>Verify with Crustdata</button></form>"
+                  "<span class=muted>The profile name must match your LinkedIn login.</span>")
     else:
-        s3 = "<div class=step><b>3. Verify your profile</b><p class=muted>after step 2</p></div>"
-    poll = "" if row["chat_id"] else (f"<script>setInterval(async()=>{{const r=await fetch('/api/onboard/{token}');"
-                                      f"const j=await r.json();if(j.telegram_linked)location.reload()}},2000)</script>")
-    return page(s1 + s2 + s3 + poll)
+        s3 = step(3, "next", "Verify your work history")
+    return page("<div class=ob-steps>" + s1 + s2 + s3 + "</div>" + poll,
+                sub="Three quick checks, about a minute.")
 
 
 @app.post("/onboard/{token}/profile")
@@ -309,7 +418,7 @@ async def profile(token: str, request: Request):
         return RedirectResponse("/", status_code=303)
     res = finish(token, linkedin_url.strip())
     if not res["ok"]:
-        return page(f"<p class=err>{html.escape(res['error'])}</p><a href='/onboard/{token}'>Back</a>")
+        return page_error(res["error"], back=f"/onboard/{token}")
     return RedirectResponse(f"/onboard/{token}", status_code=303)
 
 
