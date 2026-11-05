@@ -1,0 +1,16 @@
+[
+  {
+    "expert_id": "e3",
+    "name": "Sunil Kumar",
+    "headline": "Logistics Manager, Blinkit",
+    "linkedin_url": "https://www.linkedin.com/in/REAL-PROFILE",
+    "rate_inr": 1800,
+    "availability": [
+      {"start": "2026-11-06T18:00:00+05:30", "end": "2026-11-06T21:00:00+05:30"}
+    ],
+    "telegram_chat_id": "123456789",
+    "email": "sunil@example.com",
+    "claims": ["Logistics Manager at Blinkit, 2021-2024"],
+    "simulated": false
+  }
+]

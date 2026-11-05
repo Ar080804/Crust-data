@@ -111,3 +111,8 @@ Lives in `backend/integrations/`. Aditya imports these and calls them. Sunil nev
 - `telegram.send_message(chat_id: str, text: str) -> str`
 - `telegram.get_replies(since_update_id: int) -> list[dict]`, where each dict is `{update_id, chat_id, text, t}`
 - `pool.load_experts() -> list[dict]`
+
+## Pool format and the integration check
+- `data/experts.json` must match `contract/fixtures/pool_example.json` (a list of experts).
+- Before every push, Sunil runs `python contract/check_integrations.py`, and it must print `ALL GOOD`.
+- Deepak imports types from `contract/types.ts`.

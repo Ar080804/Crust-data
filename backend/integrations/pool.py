@@ -6,5 +6,5 @@ POOL = Path(__file__).resolve().parents[2] / "data" / "experts.json"
 
 
 def load_experts() -> list[dict]:
-    """Each expert: {expert_id, name, headline, linkedin_url, rate_inr, availability, telegram_chat_id, simulated}"""
+    """Format: contract/fixtures/pool_example.json. Checked by: python contract/check_integrations.py"""
     return json.loads(POOL.read_text())
