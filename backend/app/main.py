@@ -4,7 +4,10 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from pydantic import BaseModel
 
 from . import adapters, db, engine, gcal
@@ -21,6 +24,26 @@ async def lifespan(_app):
 
 
 app = FastAPI(title="Sutradhar", lifespan=lifespan)
+
+
+# Contract: every error body is {"error": str}
+@app.exception_handler(StarletteHTTPException)
+async def http_error(_req, exc: StarletteHTTPException):
+    return JSONResponse({"error": str(exc.detail)}, status_code=exc.status_code)
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error(_req, exc: RequestValidationError):
+    first = exc.errors()[0] if exc.errors() else {}
+    where = ".".join(str(x) for x in first.get("loc", []) if x != "body")
+    return JSONResponse({"error": f"invalid input: {where} {first.get('msg', '')}".strip()}, status_code=400)
+
+
+@app.exception_handler(Exception)
+async def server_error(_req, exc: Exception):
+    return JSONResponse({"error": f"server error: {type(exc).__name__}"}, status_code=500)
+
+
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
                    allow_methods=["*"], allow_headers=["*"])
 

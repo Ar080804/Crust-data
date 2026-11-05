@@ -19,6 +19,9 @@ SYNONYMS = {
     "hiring": ["recruit", "talent", "hr", "people"],
     "fundraising": ["founder", "venture", "investor", "vc", "cfo"],
     "marketing": ["marketing", "growth", "brand", "performance"],
+    "sponsor": ["sponsor", "sponsorship", "fest", "event", "brand", "partnership"],
+    "event": ["event", "fest", "organizer", "organiser", "sponsor", "management"],
+    "fest": ["fest", "event", "organizer", "organiser", "sponsor", "sports"],
 }
 
 
@@ -27,7 +30,7 @@ def rupees(n: int) -> str:
 
 
 def fmt_time(iso: str) -> str:
-    return datetime.fromisoformat(iso).strftime("%-I:%M %p")
+    return datetime.fromisoformat(iso).strftime("%I:%M %p").lstrip("0")  # portable (no %-I on Windows)
 
 
 # ---- intake ----------------------------------------------------------------
@@ -123,7 +126,8 @@ def _keywords(c) -> list[str]:
         for root, syns in SYNONYMS.items():
             if w.startswith(root[:5]):
                 kws.update(syns)
-    kws -= {"management", "manage", "managed", "expert", "someone", "call", "with"}
+    kws -= {"management", "manage", "managed", "expert", "someone", "call", "with", "and", "the", "for",
+            "wale", "wala", "kisi", "baat", "person"}
     return sorted(kws)
 
 
@@ -163,7 +167,7 @@ def step_find(r):
             continue
         cands.append((min(1.0, 0.5 + 0.25 * len(hits)), e))
     cands.sort(key=lambda x: (-x[0], x[1]["expert_id"]))
-    cands = cands[:6]
+    cands = cands[:10]  # wide enough that planted fakes get verified (and caught), not silently cut
     with db.tx() as con:
         con.execute("DELETE FROM shortlist WHERE request_id=?", (rid,))
         for i, (score, e) in enumerate(cands):

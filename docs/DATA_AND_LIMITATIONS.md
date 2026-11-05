@@ -11,8 +11,9 @@ So the data is split in two:
 | Data | Source |
 |---|---|
 | Who is in the pool, their rate, availability and Telegram contact | Opt-in onboarding form (teammates and friends with real LinkedIn profiles) |
-| Whether their claimed work history is true | Crustdata Person Enrich, cached in `data/crustdata_cache/` |
+| Whether their claimed work history is true | Crustdata career history (Person Search, cached in `data/crustdata_cache/`, so re-verifying costs no credits) |
 | A few extra profiles for variety | Real Crustdata profiles replayed by a simulator, labeled `simulated: true` in the UI |
+| Planted fakes for testing (Test Profile A–D) | Real Crustdata records paired with inflated claims **written by our team**. The real people never made these claims; names and LinkedIn URLs are hidden. |
 
 **Every claim gets one of three verdicts, with the source cited:**
 - **verified**: Crustdata shows a matching role at the same company with matching dates.

@@ -54,7 +54,7 @@ def verify(expert: dict) -> tuple[list[dict], str]:
         try:
             claims = _crust.verify(expert)
             MODE["verify"] = "real"
-            return claims, "crustdata:person_enrich"
+            return claims, (claims[0]["source"] if claims else "crustdata")
         except NotImplementedError:
             pass
     MODE["verify"] = "sim"
