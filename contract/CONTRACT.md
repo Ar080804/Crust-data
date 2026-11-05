@@ -116,3 +116,7 @@ Lives in `backend/integrations/`. Aditya imports these and calls them. Sunil nev
 - `data/experts.json` must match `contract/fixtures/pool_example.json` (a list of experts).
 - Before every push, Sunil runs `python contract/check_integrations.py`, and it must print `ALL GOOD`.
 - Deepak imports types from `contract/types.ts`.
+
+## Dev-only endpoints (NOT for the frontend)
+- `POST /dev/reply {"expert_id", "text"}`: pretend an expert replied on Telegram
+- `GET /dev/status`: shows which parts are real or simulated (pool, verify, telegram, calendar, llm), plus the outbox

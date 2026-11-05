@@ -1,19 +1,28 @@
-"""Owner: Aditya. Starts as a stub that serves contract fixtures, so the frontend can hit real URLs right away.
-Replace each handler with real logic one at a time. The response shapes must stay identical to contract/CONTRACT.md."""
+"""Owner: Aditya. HTTP API. Response shapes must match contract/CONTRACT.md exactly."""
 import json
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-FIX = Path(__file__).resolve().parents[2] / "contract" / "fixtures"
-app = FastAPI(title="Sutradhar")
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173"], allow_methods=["*"], allow_headers=["*"])
+from . import adapters, db, engine, gcal
+
+ROOT = Path(__file__).resolve().parents[2]
+FIX = ROOT / "contract" / "fixtures"
+EVAL = ROOT / "backend" / "eval" / "latest.json"
 
 
-def fixture(name: str) -> dict:
-    return json.loads((FIX / f"{name}.json").read_text())
+@asynccontextmanager
+async def lifespan(_app):
+    engine.start_worker()  # resumes any unfinished request from SQLite
+    yield
+
+
+app = FastAPI(title="Sutradhar", lifespan=lifespan)
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+                   allow_methods=["*"], allow_headers=["*"])
 
 
 class NewRequest(BaseModel):
@@ -28,35 +37,92 @@ class Approve(BaseModel):
     option_id: str
 
 
+def serialize(rid: str) -> dict:
+    r = db.get_request_row(rid)
+    if not r:
+        raise HTTPException(404, detail="not found")
+    c = r["constraints"]
+    shortlist = []
+    for row in db.shortlist_rows(rid):
+        d, e = row["data"], row["data"]["expert"]
+        shortlist.append({
+            "expert_id": e["expert_id"], "name": e["name"], "headline": e.get("headline", ""),
+            "rate_inr": e["rate_inr"], "score": d.get("score", d.get("relevance", 0)),
+            "flag": d.get("flag", "unverifiable"), "outreach_state": row["outreach_state"],
+            "claims": d.get("claims", []),
+        })
+    timeline = [{"t": t["t"], "step": t["step"], "msg": t["msg"], "source": t["source"]}
+                for t in db.q("SELECT * FROM timeline WHERE request_id=? ORDER BY id", (rid,))]
+    return {
+        "id": r["id"], "status": r["status"], "raw_text": r["raw_text"],
+        "clarification_question": r["clarification_question"],
+        "constraints": {k: v for k, v in c.items() if not k.startswith("_")} if c else None,
+        "shortlist": shortlist, "timeline": timeline,
+        "booking": r["booking"], "escalation": r["escalation"],
+    }
+
+
 @app.post("/requests")
 def create_request(body: NewRequest):
-    return {"request_id": "r_demo", "status": "INTAKE"}  # TODO(Aditya): real state machine
+    if not body.text.strip():
+        raise HTTPException(400, detail="text is empty")
+    rid = engine.create_request(body.text.strip())
+    return {"request_id": rid, "status": "INTAKE"}
 
 
 @app.get("/requests/{rid}")
 def get_request(rid: str):
-    if rid == "r_clarify":
-        return fixture("request_clarify")
-    if rid == "r_demo":
-        return fixture("request_booked")
-    raise HTTPException(404, detail="not found")
+    return serialize(rid)
 
 
 @app.post("/requests/{rid}/clarify")
 def clarify(rid: str, body: Clarify):
-    return {"status": "FINDING"}
+    st = engine.clarify(rid, body.answer)
+    if not st:
+        raise HTTPException(400, detail="request is not waiting for clarification")
+    return {"status": st}
 
 
 @app.post("/requests/{rid}/approve")
 def approve(rid: str, body: Approve):
-    return {"status": "BOOKING"}
+    st = engine.approve(rid, body.option_id)
+    if not st:
+        raise HTTPException(400, detail="no such pending option")
+    return {"status": st}
 
 
 @app.get("/experts")
 def experts():
-    return fixture("experts")
+    return {"experts": [{"expert_id": e["expert_id"], "name": e["name"], "headline": e.get("headline", ""),
+                         "linkedin_url": e.get("linkedin_url", ""), "rate_inr": e["rate_inr"],
+                         "simulated": bool(e.get("simulated"))} for e in adapters.load_experts()]}
 
 
 @app.get("/eval/latest")
 def eval_latest():
-    return fixture("eval")
+    p = EVAL if EVAL.exists() else FIX / "eval.json"
+    return json.loads(p.read_text())
+
+
+# ---- dev only (not part of the frontend contract) --------------------------
+
+class DevReply(BaseModel):
+    expert_id: str
+    text: str
+
+
+@app.post("/dev/reply")
+def dev_reply(body: DevReply):
+    """Pretend an expert replied on Telegram. Useful when Sunil's telegram.py is not ready yet."""
+    e = next((x for x in adapters.load_experts() if x["expert_id"] == body.expert_id), None)
+    if not e:
+        raise HTTPException(404, detail="unknown expert")
+    engine.ingest_replies([adapters.sim_reply(e["telegram_chat_id"], body.text)])
+    return {"ok": True}
+
+
+@app.get("/dev/status")
+def dev_status():
+    return {"modes": adapters.MODE, "calendar": gcal.mode(),
+            "llm": "claude" if engine.llm._client else "rules",
+            "outbox": db.q("SELECT * FROM outbox ORDER BY t DESC LIMIT 20")}
