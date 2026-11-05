@@ -11,4 +11,6 @@ ContextCon 04, IIT Kanpur. Team: Aditya, Sunil, Deepak.
 Crustdata does not know who consented, who is available, or what they charge.
 The expert pool is opt-in (onboarding form). Crustdata Person Enrich is used only to verify claimed work history.
 
+The claims on Test Profile A–D were written by our team for testing. The real people behind those profiles never made these claims.
+
 (More to be added at 6 AM.)

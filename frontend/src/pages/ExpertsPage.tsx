@@ -24,7 +24,9 @@ export default function ExpertsPage() {
             <p className="muted small">{x.headline}</p>
             <div className="row between">
               <span className="mono">{inr(x.rate_inr)}</span>
-              <a href={x.linkedin_url} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              {x.linkedin_url?.trim() && (
+                <a href={x.linkedin_url} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              )}
             </div>
           </article>
         ))}
