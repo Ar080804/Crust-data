@@ -100,6 +100,15 @@ def _rule_intake(text: str) -> Intake:
         date = (t + timedelta(days=1)).date().isoformat()
     elif "today" in s or "aaj" in s:
         date = t.date().isoformat()
+    else:  # "on 8 November 2026" / "8 nov" / "2026-11-08"
+        months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+        iso = re.search(r"\b(20\d\d)-(\d{2})-(\d{2})\b", s)
+        dm = re.search(r"\b(\d{1,2})(?:st|nd|rd|th)?\s+(" + "|".join(months) + r")[a-z]*\.?(?:,?\s+(20\d\d))?", s)
+        if iso:
+            date = f"{iso.group(1)}-{iso.group(2)}-{iso.group(3)}"
+        elif dm:
+            year = int(dm.group(3) or t.year)
+            date = f"{year}-{months.index(dm.group(2)) + 1:02d}-{int(dm.group(1)):02d}"
     budget = re.search(r"(?:budget|max|under|upto|up to|₹|rs\.?|inr)\s*(?:of\s*)?₹?\s*(\d[\d,]*)(k?)", s)
     max_inr = None
     if budget:
@@ -107,7 +116,8 @@ def _rule_intake(text: str) -> Intake:
     dur = re.search(r"(\d+)\s*(?:min|mins|minutes)", s)
     duration = int(dur.group(1)) if dur else (30 if "half an hour" in s else None)
     pm = any(w in s for w in ("pm", "evening", "shaam", "night"))
-    rng = re.search(r"(\d{1,2})(?::(\d{2}))?\s*(?:-|–|to)\s*(\d{1,2})(?::(\d{2}))?", s)
+    no_dates = re.sub(r"\b20\d\d-\d{2}-\d{2}\b", " ", s)  # a date like 2026-11-08 is not a time range
+    rng = re.search(r"(\d{1,2})(?::(\d{2}))?\s*(?:-|–|to)\s*(\d{1,2})(?::(\d{2}))?", no_dates)
     ws = we = None
     if rng:
         ws, we = _hhmm(rng.group(1), rng.group(2), pm), _hhmm(rng.group(3), rng.group(4), pm)
