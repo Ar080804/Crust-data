@@ -4,7 +4,7 @@ import { MOCK } from './api.ts'
 import { Avatar, Icon, Logo } from './ui.tsx'
 import { Aurora, ClickSpark, useSpotlight } from './effects.tsx'
 import { CursorFX } from './cursor.tsx'
-import { getToken, setToken, signIn, signOut, useUser } from './auth.ts'
+import { getToken, getUser, setToken, signIn, signOut, useUser } from './auth.ts'
 import { getMe, logout } from './api.ts'
 import AuthPage from './pages/AuthPage.tsx'
 import Landing from './pages/Landing.tsx'
@@ -25,10 +25,13 @@ function initialTheme(): Theme {
 
 // Only the landing page and the request wizard ask for login. Detail / experts / eval stay open,
 // so teammates can open /requests/<id> directly while testing the backend.
+// Mock mode (fixtures only, dev) has no backend to sign in against, so pages stay open there.
+// Real mode always requires a real Google sign-in: there is no typed or guest login anymore.
 function RequireAuth({ children }: { children: React.ReactElement }) {
   const user = useUser()
   const loc = useLocation()
-  if (!user) return <Navigate to="/login" replace state={{ from: loc.pathname }} />
+  const verified = !!user && user.provider === 'google' && !!getToken()
+  if (!MOCK && !verified) return <Navigate to="/login" replace state={{ from: loc.pathname }} />
   return children
 }
 
@@ -43,6 +46,13 @@ export default function App() {
   const authScreen = loc.pathname === '/login'
   const [booting, setBooting] = useState(() => !!sessionInHash())
   const [authErr, setAuthErr] = useState<string | null>(null)
+
+  // Real mode: drop any old email/guest/demo "logins" saved by earlier builds. Only a Google session counts.
+  useEffect(() => {
+    if (MOCK || sessionInHash()) return
+    const u = getUser()
+    if (u && (u.provider !== 'google' || !getToken())) signOut()
+  }, [])
 
   useEffect(() => {
     const token = sessionInHash()

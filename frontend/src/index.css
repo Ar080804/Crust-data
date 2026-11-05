@@ -620,6 +620,17 @@ input[type=range]:focus { box-shadow: none; }
 
 /* ============ auth: oauth row ============ */
 .oauth-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.role-grid { display: grid; gap: 12px; margin-top: 22px; }
+.role-card { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-align: left; padding: 20px; border-radius: 18px; border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); cursor: pointer; transition: border-color .2s, transform .2s; }
+.role-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.role-title { font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
+.role-back { background: none; border: 0; padding: 0; margin-bottom: 18px; cursor: pointer; }
+.role-btn { margin-top: 22px; padding: 14px; font-size: 15px; }
+.role-points, .role-steps { margin: 20px 0 0; padding-left: 0; display: grid; gap: 10px; color: var(--ink-2); font-size: 13.5px; }
+.role-points { list-style: none; }
+.role-points li { display: flex; gap: 8px; align-items: center; }
+.role-points .icon { color: var(--ok); }
+.role-steps { padding-left: 18px; }
 .expert-join { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); text-decoration: none; }
 .expert-join b { color: var(--ink-2); font-weight: 600; }
 .expert-join:hover b { color: var(--accent); }

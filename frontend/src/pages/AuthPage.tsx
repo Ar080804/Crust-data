@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { signIn, nameFromEmail } from '../auth.ts'
-import { REAL_GOOGLE, googleLoginUrl, ONBOARDING_URL } from '../api.ts'
+import { useLocation } from 'react-router-dom'
+import { MOCK, googleLoginUrl, ONBOARDING_URL } from '../api.ts'
 import { DotField, RotatingText } from '../cursor.tsx'
-import { Icon, LinkedInIcon, Logo, Segmented } from '../ui.tsx'
+import { Icon, LinkedInIcon, Logo } from '../ui.tsx'
 
-type Mode = 'login' | 'signup'
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+// Only real identity providers. No email/password, no guest, nothing the user can type to get in.
+//  - Client ("I need an expert"): real Google OIDC via the backend (contract "Auth" section).
+//  - Expert ("I'm an expert"):   Sunil's onboarding server: LinkedIn OIDC → Telegram → Crustdata check.
+type Role = 'client' | 'expert'
 
 function GoogleG() {
   return (
@@ -20,45 +21,12 @@ function GoogleG() {
 }
 
 export default function AuthPage() {
-  const nav = useNavigate()
   const loc = useLocation()
   const from = (loc.state as { from?: string } | null)?.from || '/'
-  const [mode, setMode] = useState<Mode>('signup')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [pw, setPw] = useState('')
-  const [showPw, setShowPw] = useState(false)
-  const [err, setErr] = useState<string | null>(null)
-  const [googlePicker, setGooglePicker] = useState(false) // mock-only Google account picker
-  const [gmail, setGmail] = useState('')
+  const [role, setRole] = useState<Role | null>(null)
 
-  const done = () => nav(from, { replace: true })
-
-  function submit(e: React.FormEvent) {
-    e.preventDefault()
-    if (mode === 'signup' && !name.trim()) return setErr('Please enter your name.')
-    if (!EMAIL_RE.test(email.trim())) return setErr('That email does not look right.')
-    if (pw.length < 6) return setErr('Password needs at least 6 characters.')
-    signIn({ name: name.trim() || nameFromEmail(email), email: email.trim(), provider: 'email' })
-    done()
-  }
-
-  // Mock mode only (VITE_MOCK=true): stand-in for the Google account picker. In real mode the
-  // Google button goes to the backend's real OIDC flow and this form is never shown.
-  function googleMockContinue(e: React.FormEvent) {
-    e.preventDefault()
-    if (REAL_GOOGLE) return
-    if (!EMAIL_RE.test(gmail.trim())) return setErr('Enter your Google email.')
-    signIn({ name: nameFromEmail(gmail), email: gmail.trim(), provider: 'google' })
-    done()
-  }
-
-  function startGoogle() {
-    setErr(null)
-    // Real backend: real Google OIDC (contract "Auth" section). Mock: demo account picker.
-    if (REAL_GOOGLE) window.location.href = googleLoginUrl(window.location.origin + from)
-    else setGooglePicker(true)
-  }
+  const googleLogin = () => { window.location.href = googleLoginUrl(window.location.origin + from) }
+  const linkedinLogin = () => { window.location.href = `${ONBOARDING_URL.replace(/\/$/, '')}/auth/linkedin/login` }
 
   return (
     <div className="auth">
@@ -82,61 +50,57 @@ export default function AuthPage() {
 
       <section className="auth-panel">
         <div className="auth-card">
-          <h2 className="auth-title">{mode === 'signup' ? 'Create your account' : 'Welcome back'}</h2>
-          <p className="muted small">{mode === 'signup' ? 'Book your first verified expert call in under a minute.' : 'Log in to continue to your requests.'}</p>
-
-          <div className="auth-tabs">
-            <Segmented value={mode} onChange={(m) => { setMode(m); setErr(null) }} options={[
-              { value: 'signup', label: 'Sign up' }, { value: 'login', label: 'Log in' },
-            ]} />
-          </div>
-
-          {!googlePicker ? (
-            <button type="button" className="btn-oauth" onClick={startGoogle} data-cursor="Google">
-              <GoogleG /> Continue with Google
-            </button>
+          {!role ? (
+            <>
+              <h2 className="auth-title">Welcome to Sutradhar</h2>
+              <p className="muted small">How do you want to use Sutradhar?</p>
+              <div className="role-grid">
+                <button type="button" className="role-card spot" onClick={() => setRole('client')} data-cursor="Client">
+                  <span className="opt-icon"><Icon name="search" size={20} /></span>
+                  <span className="role-title">I need an expert</span>
+                  <span className="muted small">Book a verified expert call in one sentence.</span>
+                  <span className="opt-cta">Continue <Icon name="arrow" size={14} /></span>
+                </button>
+                <button type="button" className="role-card spot" onClick={() => setRole('expert')} data-cursor="Expert">
+                  <span className="opt-icon"><Icon name="users" size={20} /></span>
+                  <span className="role-title">I'm an expert</span>
+                  <span className="muted small">Join the pool, verify your profile, get paid calls.</span>
+                  <span className="opt-cta">Continue <Icon name="arrow" size={14} /></span>
+                </button>
+              </div>
+            </>
           ) : (
-            <form className="oauth-box" onSubmit={googleMockContinue}>
-              <div className="row"><GoogleG /><span className="strong">Choose a Google account</span><span className="tag tag-warn push">mock</span></div>
-              <input type="email" value={gmail} onChange={(e) => setGmail(e.target.value)} placeholder="you@gmail.com" autoFocus />
-              <div className="row">
-                <button type="button" className="btn btn-ghost btn-sm" onClick={() => setGooglePicker(false)}>Cancel</button>
-                <button className="btn btn-primary btn-sm">Continue</button>
-              </div>
-            </form>
+            <>
+              <button type="button" className="back role-back" onClick={() => setRole(null)}><Icon name="back" size={14} /> Back</button>
+              {role === 'client' ? (
+                <>
+                  <h2 className="auth-title">Find your expert</h2>
+                  <p className="muted small">Sign in with your Google account to book and track calls.</p>
+                  <button type="button" className="btn-oauth role-btn" onClick={googleLogin} data-cursor="Google">
+                    <GoogleG /> Continue with Google
+                  </button>
+                  <ul className="role-points">
+                    <li><Icon name="check" size={14} /> Verified identity from Google</li>
+                    <li><Icon name="check" size={14} /> Your requests, history and chats in one place</li>
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <h2 className="auth-title">Join as an expert</h2>
+                  <p className="muted small">We verify experts so clients can trust them. It takes about a minute.</p>
+                  <button type="button" className="btn-oauth role-btn" onClick={linkedinLogin} data-cursor="LinkedIn">
+                    <LinkedInIcon /> Continue with LinkedIn
+                  </button>
+                  <ol className="role-steps">
+                    <li><b>Sign in with LinkedIn</b>: confirms who you are</li>
+                    <li><b>Link Telegram</b>: that's where clients' requests reach you</li>
+                    <li><b>Crustdata check</b>: your profile must match your LinkedIn name</li>
+                  </ol>
+                </>
+              )}
+            </>
           )}
-
-          <div className="divider"><span>or with email</span></div>
-
-          <form onSubmit={submit} className="auth-form">
-            {mode === 'signup' && (
-              <label className="field"><span>Full name</span>
-                <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Deepak Chauhan" autoComplete="name" />
-              </label>
-            )}
-            <label className="field"><span>Email</span>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@company.com" autoComplete="email" />
-            </label>
-            <label className="field"><span>Password</span>
-              <div className="pw">
-                <input type={showPw ? 'text' : 'password'} value={pw} onChange={(e) => setPw(e.target.value)} placeholder="At least 6 characters"
-                  autoComplete={mode === 'signup' ? 'new-password' : 'current-password'} />
-                <button type="button" className="pw-toggle" onClick={() => setShowPw(!showPw)}>{showPw ? 'Hide' : 'Show'}</button>
-              </div>
-            </label>
-            {err && <p className="error"><Icon name="alert" /> {err}</p>}
-            <button className="btn btn-primary btn-block" data-cursor="Go">
-              {mode === 'signup' ? 'Create account' : 'Log in'} <Icon name="arrow" />
-            </button>
-          </form>
-
-          <button type="button" className="guest" onClick={() => { signIn({ name: 'Guest', email: '', provider: 'guest' }); done() }}>
-            Skip for now, continue as guest
-          </button>
-          <p className="auth-note">Demo build: your account is stored only in this browser.</p>
-          <a className="expert-join" href={ONBOARDING_URL} target="_blank" rel="noreferrer" data-cursor="Join">
-            <LinkedInIcon /> Are you an expert? <b>Join with LinkedIn →</b>
-          </a>
+          {MOCK && <p className="auth-note">Mock mode: pages are open without sign-in. Sign-in needs the real backend.</p>}
         </div>
       </section>
     </div>
