@@ -404,16 +404,20 @@ def ingest_replies(replies: list[dict]):
             continue
         if rid:
             continue
-        late = db.q1("SELECT s.request_id FROM shortlist s JOIN requests r ON r.id=s.request_id "
+        late = db.q1("SELECT s.request_id, r.status FROM shortlist s JOIN requests r ON r.id=s.request_id "
                      "WHERE s.expert_id=? AND s.outreach_state IN ('timed_out','declined','contacted','replied') "
                      "AND r.status IN ('BOOKED','ESCALATED','FAILED') ORDER BY r.created_at DESC LIMIT 1", (eid,))
         if late:
             lrid = late["request_id"]
             db.set_outreach(lrid, eid, "released")
-            adapters.send_once(f"release:{lrid}:{eid}", e["telegram_chat_id"],
-                               "Thank you for replying! This call has already been booked with someone else. "
-                               "We'll reach out for the next one.")
-            db.log(lrid, "BOOKED", f"Late reply from {e['name']}; released politely", "code")
+            if late["status"] == "BOOKED":
+                text = ("Thank you for replying! This call has already been booked with someone else. "
+                        "We'll reach out for the next one.")
+            else:
+                text = ("Thank you for replying! We had to move this request forward without you, "
+                        "since we didn't hear back in time. We'll reach out for the next one.")
+            adapters.send_once(f"release:{lrid}:{eid}", e["telegram_chat_id"], text)
+            db.log(lrid, late["status"], f"Late reply from {e['name']}; released politely", "code")
 
 
 # ---- worker ----------------------------------------------------------------
