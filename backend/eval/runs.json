@@ -13,14 +13,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_ef9caa0b",
+      "request_id": "r_3e470c6f",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "4a19f6787fe0b3ccd34d6d9b88080c90662e0c96",
+        "calendar_event_id": "50ceb56f87cf19878e0f5e7848cd5f3d2eff5fad",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -39,26 +39,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:15 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 4a19f6787f… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 50ceb56f87… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -67,14 +75,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_e3c3159d",
+      "request_id": "r_5993b2f6",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "d35017c79fe7497fc51df40f99836f97eb995728",
+        "calendar_event_id": "0a6dd1496b0f2b096cab383770bce32e4b5cb1c2",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -93,26 +101,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:15 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event d35017c79f… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 0a6dd1496b… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -121,14 +137,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_a44f600e",
+      "request_id": "r_76e1e8de",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "b55ff03255b83658f253ecbef734f9823bb0128f",
+        "calendar_event_id": "9c749d28f664e7ee925e8cf038c836e611369b5c",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -147,26 +163,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:15 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event b55ff03255… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 9c749d28f6… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -175,14 +199,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_eb4caba7",
+      "request_id": "r_c3aa44a4",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "b52f73047a11cb68f8166a93b8bdabf6ed02b413",
+        "calendar_event_id": "60eb91aaa1e4555da63790ae4c0b87be7078a581",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -201,24 +225,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 30 min call\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"6:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event b52f73047a… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 60eb91aaa1… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
     },
@@ -227,14 +259,14 @@
       "text": "Find me someone who has run a warehouse, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_bd98f582",
+      "request_id": "r_867d17db",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "c5a896237e0abdcbcfa74e9d572087287abc24ac",
+        "calendar_event_id": "b5d2152ba8a2ccc730b327cabd72fb0ca00dee18",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -253,24 +285,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Find me someone who has run a warehouse, tomorrow 6 to 8 pm, max 3000, 30 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"6:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event c5a896237e… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event b5d2152ba8… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
     },
@@ -279,14 +319,14 @@
       "text": "warehouse management expert for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_e2d37cff",
+      "request_id": "r_b844e9c1",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "708b5d01ad13e485bf8ce46b163dc6cf7c258082",
+        "calendar_event_id": "5d008ad7a8b287ade2e58c8e1eb4e40ce8f365ae",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -305,24 +345,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 30 min call tomorrow 6-8 pm under ₹3,000\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"6:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 708b5d01ad… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 5d008ad7a8… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
     },
@@ -331,14 +379,14 @@
       "text": "Need an expert in logistics tomorrow 7-9 pm, budget 2500, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_200e7f5f",
+      "request_id": "r_70dacced",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "cbae3785d2089c6d2110a1a1e9a12cd4d95860af",
+        "calendar_event_id": "15559f43449c8fb5bbb7a3118979b3373eddf67c",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -357,24 +405,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in logistics tomorrow 7-9 pm, budget 2500, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event cbae3785d2… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 15559f4344… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -383,14 +439,14 @@
       "text": "Looking for a logistics expert, tomorrow 7 to 9 pm, max 2500, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_ebb31d14",
+      "request_id": "r_5101cacd",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "14cca4b557d4e5e77ede47422662bfe414301003",
+        "calendar_event_id": "697992f4bef7bba932fe8477e4afef651f0ccde6",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -409,24 +465,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for a logistics expert, tomorrow 7 to 9 pm, max 2500, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 14cca4b557… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 697992f4be… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -435,14 +499,14 @@
       "text": "logistics specialist for a 20 min call tomorrow 7-9 pm under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_b515d78e",
+      "request_id": "r_8d2a10b4",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "b4ebc3a24ee3f733e27276d889d5bdfd8128b1c5",
+        "calendar_event_id": "922986b5efea94d1648df4250598ee374c6a6315",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -461,24 +525,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"logistics specialist for a 20 min call tomorrow 7-9 pm under ₹2,500\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event b4ebc3a24e… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 922986b5ef… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -487,14 +559,14 @@
       "text": "Need an expert in supply chain tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_abfa8bab",
+      "request_id": "r_f9842f8c",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "80d1bd6d6ad24957442e30d9d7f9c28d03486985",
+        "calendar_event_id": "46e1025581a2abf9ff7c6e5a0e606245b5504fb4",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -528,7 +600,7 @@
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"6:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 80d1bd6d6a… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 46e1025581… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
     },
@@ -537,14 +609,14 @@
       "text": "Looking for someone who has worked in supply chain, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_a7f95adc",
+      "request_id": "r_4dc945a3",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "821a9e68fd8308183703e2708cb0108fe04bf120",
+        "calendar_event_id": "495d3562dd26d1de4eea16df0bffb41a8513143c",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -578,7 +650,7 @@
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"6:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 821a9e68fd… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 495d3562dd… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
     },
@@ -587,14 +659,14 @@
       "text": "supply chain consultant for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_947cecf4",
+      "request_id": "r_ec3cf901",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "41fb7bfd4309cd63c349bc4ce81976006dd5a17e",
+        "calendar_event_id": "62ed44a06f43a85422a89c945deb496b9628d07e",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -628,7 +700,7 @@
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"6:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 41fb7bfd43… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 62ed44a06f… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
     },
@@ -637,14 +709,14 @@
       "text": "Need an expert in fulfilment tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_e9ac45a5",
+      "request_id": "r_53285f77",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e7",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1200,
-        "calendar_event_id": "c53be50612a773416a59ae817b5e5942e968d90e",
+        "calendar_event_id": "667e620b2990742b37b1cb952bc94554b6f28c93",
         "confirmation": "6:15 PM, ₹1,200"
       },
       "constraints": {
@@ -670,7 +742,7 @@
         "OUTREACH: Sent request to Swapnil Tripathi via Telegram (timeout 90s)",
         "NEGOTIATING: Swapnil Tripathi replied \"6:15 for 1200\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1200}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,200 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event c53be50612… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 667e620b29… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,200"
       ]
     },
@@ -679,14 +751,14 @@
       "text": "Looking for someone who has led fulfilment, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_c28ff24a",
+      "request_id": "r_b323d566",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e7",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1200,
-        "calendar_event_id": "42f2fa8b13e7e17fdcfbb9023f0422c74f9c3c6c",
+        "calendar_event_id": "3553ad9a334be7eb3cf12cec0e7eb89e2996355d",
         "confirmation": "6:15 PM, ₹1,200"
       },
       "constraints": {
@@ -712,7 +784,7 @@
         "OUTREACH: Sent request to Swapnil Tripathi via Telegram (timeout 90s)",
         "NEGOTIATING: Swapnil Tripathi replied \"6:15 for 1200\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1200}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,200 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 42f2fa8b13… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 3553ad9a33… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,200"
       ]
     },
@@ -721,14 +793,14 @@
       "text": "fulfilment specialist for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_3b636b7f",
+      "request_id": "r_77b21b76",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e7",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1200,
-        "calendar_event_id": "397e4651e089fd9b108756d5034c0c3af50d6f12",
+        "calendar_event_id": "705934ff0e9f69dd5bc7e7e482807bdad83363a8",
         "confirmation": "6:15 PM, ₹1,200"
       },
       "constraints": {
@@ -754,7 +826,7 @@
         "OUTREACH: Sent request to Swapnil Tripathi via Telegram (timeout 90s)",
         "NEGOTIATING: Swapnil Tripathi replied \"6:15 for 1200\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1200}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,200 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 397e4651e0… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 705934ff0e… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,200"
       ]
     },
@@ -763,14 +835,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_8ca24aa6",
+      "request_id": "r_13e8d0e6",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "9351beaef22a37c67ace47631bf155a2803ede69",
+        "calendar_event_id": "76859a39f620a76cc9879d953546d805c8836f5d",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -790,27 +862,35 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"sorry, busy that day\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Rajarshi Nag declined",
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"6:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 9351beaef2… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 76859a39f6… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
     },
@@ -819,14 +899,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_0d3392aa",
+      "request_id": "r_b0d97d15",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "c905f7fcd980c6d32db7556948153172686d633c",
+        "calendar_event_id": "3bb5173b876eef9ed189bc4a74f07e4289e8ce11",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -846,27 +926,35 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 3000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"sorry, busy that day\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Rajarshi Nag declined",
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"6:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event c905f7fcd9… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 3bb5173b87… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
     },
@@ -875,14 +963,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_a66cf961",
+      "request_id": "r_82c3eb00",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "8f8a6b58ec6a76c1f456a0e3220f7056c4c7c462",
+        "calendar_event_id": "1f798d5fd6b7b70493aa8febce012ffa9c7e5ab7",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -902,27 +990,35 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹3,000\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"sorry, busy that day\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Rajarshi Nag declined",
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"6:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 8f8a6b58ec… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 1f798d5fd6… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
     },
@@ -931,14 +1027,14 @@
       "text": "Need an expert in logistics tomorrow 7-9 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_7ea30dfc",
+      "request_id": "r_1df4495c",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "0863531e1946b8934b317504cd410467e3084625",
+        "calendar_event_id": "8bf277d9bd37cac7a2f9633130926ea8a650b554",
         "confirmation": "7:15 PM, ₹2,600"
       },
       "constraints": {
@@ -958,26 +1054,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in logistics tomorrow 7-9 pm, budget 3000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag did not reply in 90s; moving on",
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"7:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2600}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 0863531e19… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 8bf277d9bd… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,600"
       ]
     },
@@ -986,14 +1090,14 @@
       "text": "Looking for a logistics expert, tomorrow 7 to 9 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_cce61ed3",
+      "request_id": "r_3c5492db",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "ac634ebddca9f3a4b4a13a249bafe972db43becd",
+        "calendar_event_id": "9cf5b29d88dcecaa2a31c9ce21d88ce4ce0d3de6",
         "confirmation": "7:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1013,26 +1117,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for a logistics expert, tomorrow 7 to 9 pm, max 3000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag did not reply in 90s; moving on",
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"7:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2600}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event ac634ebddc… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 9cf5b29d88… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,600"
       ]
     },
@@ -1041,14 +1153,14 @@
       "text": "logistics specialist for a 20 min call tomorrow 7-9 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_7c8a2f15",
+      "request_id": "r_8a820954",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "f8a790388745c1ca2e2329e841fd4993d4e0fe47",
+        "calendar_event_id": "a8e065eced9871b7244741262e69bfe387ef593d",
         "confirmation": "7:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1068,26 +1180,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"logistics specialist for a 20 min call tomorrow 7-9 pm under ₹3,000\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag did not reply in 90s; moving on",
         "OUTREACH: Sent request to Hardik Parikh via Telegram (timeout 90s)",
         "NEGOTIATING: Hardik Parikh replied \"7:15 for 2600\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2600}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event f8a7903887… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event a8e065eced… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,600"
       ]
     },
@@ -1096,14 +1216,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_211b224d",
+      "request_id": "r_8b7c92c5",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "7212d3ccb0db4bdf8239d13e1d8b12fc0447d5cd",
+        "calendar_event_id": "12034f7ed0bf2c38eef3c15130e67d4a4015a714",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -1122,20 +1242,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
@@ -1143,7 +1271,7 @@
         "NEGOTIATING: ₹2,500 > budget ₹2,000; one counter at ₹2,000",
         "NEGOTIATING: AMITABH SHANKAR replied \"ok done\" → {\"intent\":\"accept\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 7212d3ccb0… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 12034f7ed0… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -1152,14 +1280,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_9b1fe7b3",
+      "request_id": "r_cf053dc8",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "5a32f6d43467647bd0a41c53238e33f97f6542e0",
+        "calendar_event_id": "cf869ba08c0153668b18d371e71d9dc8c18c386b",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -1178,20 +1306,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
@@ -1199,7 +1335,7 @@
         "NEGOTIATING: ₹2,500 > budget ₹2,000; one counter at ₹2,000",
         "NEGOTIATING: AMITABH SHANKAR replied \"ok done\" → {\"intent\":\"accept\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 5a32f6d434… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event cf869ba08c… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -1208,14 +1344,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_20f012d9",
+      "request_id": "r_e2daf09e",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "40f0027ecdf7c9e8e7defbde07bec72f514e3e50",
+        "calendar_event_id": "8b531e690b37aa5069e081ed9b08c52278c9faec",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -1234,20 +1370,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
@@ -1255,7 +1399,7 @@
         "NEGOTIATING: ₹2,500 > budget ₹2,000; one counter at ₹2,000",
         "NEGOTIATING: AMITABH SHANKAR replied \"ok done\" → {\"intent\":\"accept\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 40f0027ecd… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 8b531e690b… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -1264,7 +1408,7 @@
       "text": "Need an expert in supply chain tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_6f8b6f64",
+      "request_id": "r_0d422783",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1332,7 +1476,7 @@
       "text": "Looking for someone who has worked in supply chain, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_f8993d3e",
+      "request_id": "r_d4470f1c",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1400,7 +1544,7 @@
       "text": "supply chain consultant for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_5209789e",
+      "request_id": "r_3dee2cd8",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1468,14 +1612,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_c9775801",
+      "request_id": "r_2219750c",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:30:00+05:30",
         "end": "2026-11-07T18:50:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "c53943dc428e3cc5ee16ca1bc777feeed6a331c8",
+        "calendar_event_id": "eb70df4d99df9584aa8755a41710d934d46eb78a",
         "confirmation": "6:30 PM, ₹2,000"
       },
       "constraints": {
@@ -1494,20 +1638,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
@@ -1515,7 +1667,7 @@
         "NEGOTIATING: Reply ambiguous; asked AMITABH SHANKAR once to clarify",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:30 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:30\",\"price_inr\":2000}",
         "NEGOTIATING: 6:30 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event c53943dc42… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event eb70df4d99… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:30 PM, ₹2,000"
       ]
     },
@@ -1524,14 +1676,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_74bcba9a",
+      "request_id": "r_df340c0e",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:30:00+05:30",
         "end": "2026-11-07T18:50:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "fb513ca1014f96b11a39315127102cd2995f4fcd",
+        "calendar_event_id": "ae103729819c0debff1c3309949491dd1140bb0f",
         "confirmation": "6:30 PM, ₹2,000"
       },
       "constraints": {
@@ -1550,20 +1702,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
@@ -1571,7 +1731,7 @@
         "NEGOTIATING: Reply ambiguous; asked AMITABH SHANKAR once to clarify",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:30 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:30\",\"price_inr\":2000}",
         "NEGOTIATING: 6:30 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event fb513ca101… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event ae10372981… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:30 PM, ₹2,000"
       ]
     },
@@ -1580,14 +1740,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_d8b8c598",
+      "request_id": "r_92803b84",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:30:00+05:30",
         "end": "2026-11-07T18:50:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "0e022a513266a25b8eab38efdd594acdbca701de",
+        "calendar_event_id": "f7e6f425b4a7990d3bcb9e20d9c765b90eec75db",
         "confirmation": "6:30 PM, ₹2,000"
       },
       "constraints": {
@@ -1606,20 +1766,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
@@ -1627,7 +1795,7 @@
         "NEGOTIATING: Reply ambiguous; asked AMITABH SHANKAR once to clarify",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:30 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:30\",\"price_inr\":2000}",
         "NEGOTIATING: 6:30 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 0e022a5132… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event f7e6f425b4… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:30 PM, ₹2,000"
       ]
     },
@@ -1636,14 +1804,14 @@
       "text": "Need an expert in logistics tomorrow 7-9 pm, budget 2500, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_64f2c1c0",
+      "request_id": "r_c7d469b9",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "952e2c4c63d73e6e58cbb25d49ef822cfb4d79d4",
+        "calendar_event_id": "31080012720769d8c0987f921ed26422cf65037b",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -1662,26 +1830,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in logistics tomorrow 7-9 pm, budget 2500, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"10:30 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"10:30\",\"price_inr\":2400}",
         "NEGOTIATING: Reply ambiguous; asked Rajarshi Nag once to clarify",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 952e2c4c63… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 3108001272… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -1690,14 +1866,14 @@
       "text": "Looking for a logistics expert, tomorrow 7 to 9 pm, max 2500, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_8578d7e4",
+      "request_id": "r_d83c562b",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "e8e4fdc8a2c76f5dba10b8edea452a3060368cd2",
+        "calendar_event_id": "46bdfefb3cdf988aa338bbf82e38e365e95c202e",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -1716,26 +1892,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for a logistics expert, tomorrow 7 to 9 pm, max 2500, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"10:30 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"10:30\",\"price_inr\":2400}",
         "NEGOTIATING: Reply ambiguous; asked Rajarshi Nag once to clarify",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event e8e4fdc8a2… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 46bdfefb3c… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -1744,14 +1928,14 @@
       "text": "logistics specialist for a 20 min call tomorrow 7-9 pm under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_4070e062",
+      "request_id": "r_a2ce1682",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "3f6af45a4bf798b39424905731ea1a75c9f88741",
+        "calendar_event_id": "b1c2c940c66e77d4ed9513fc22384f4de4358910",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -1770,26 +1954,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"logistics specialist for a 20 min call tomorrow 7-9 pm under ₹2,500\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"10:30 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"10:30\",\"price_inr\":2400}",
         "NEGOTIATING: Reply ambiguous; asked Rajarshi Nag once to clarify",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 3f6af45a4b… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event b1c2c940c6… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -1798,7 +1990,7 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_cd46c30a",
+      "request_id": "r_18f441ac",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1814,7 +2006,9 @@
         "e11",
         "e12",
         "e13",
-        "e14"
+        "e14",
+        "e15",
+        "e4"
       ],
       "flags": {
         "e8": "ok",
@@ -1822,20 +2016,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Rajarshi Nag declined",
@@ -1854,6 +2056,12 @@
         "OUTREACH: Sent request to Mayur Bommai via Telegram (timeout 90s)",
         "NEGOTIATING: Mayur Bommai replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Mayur Bommai declined",
+        "OUTREACH: Sent request to Anshuman Singh via Telegram (timeout 90s)",
+        "NEGOTIATING: Anshuman Singh replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
+        "NEGOTIATING: Anshuman Singh declined",
+        "OUTREACH: Sent request to AMIT VERMA via Telegram (timeout 90s)",
+        "NEGOTIATING: AMIT VERMA replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
+        "NEGOTIATING: AMIT VERMA declined",
         "ESCALATED: No verified expert accepted within budget and window. 0 closest option(s) sent to a human."
       ]
     },
@@ -1862,7 +2070,7 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_efa3fe65",
+      "request_id": "r_192d495e",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1878,7 +2086,9 @@
         "e11",
         "e12",
         "e13",
-        "e14"
+        "e14",
+        "e15",
+        "e4"
       ],
       "flags": {
         "e8": "ok",
@@ -1886,20 +2096,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 3000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Rajarshi Nag declined",
@@ -1918,6 +2136,12 @@
         "OUTREACH: Sent request to Mayur Bommai via Telegram (timeout 90s)",
         "NEGOTIATING: Mayur Bommai replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Mayur Bommai declined",
+        "OUTREACH: Sent request to Anshuman Singh via Telegram (timeout 90s)",
+        "NEGOTIATING: Anshuman Singh replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
+        "NEGOTIATING: Anshuman Singh declined",
+        "OUTREACH: Sent request to AMIT VERMA via Telegram (timeout 90s)",
+        "NEGOTIATING: AMIT VERMA replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
+        "NEGOTIATING: AMIT VERMA declined",
         "ESCALATED: No verified expert accepted within budget and window. 0 closest option(s) sent to a human."
       ]
     },
@@ -1926,7 +2150,7 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_989f098b",
+      "request_id": "r_678ac586",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1942,7 +2166,9 @@
         "e11",
         "e12",
         "e13",
-        "e14"
+        "e14",
+        "e15",
+        "e4"
       ],
       "flags": {
         "e8": "ok",
@@ -1950,20 +2176,28 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹3,000\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Rajarshi Nag declined",
@@ -1982,6 +2216,12 @@
         "OUTREACH: Sent request to Mayur Bommai via Telegram (timeout 90s)",
         "NEGOTIATING: Mayur Bommai replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
         "NEGOTIATING: Mayur Bommai declined",
+        "OUTREACH: Sent request to Anshuman Singh via Telegram (timeout 90s)",
+        "NEGOTIATING: Anshuman Singh replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
+        "NEGOTIATING: Anshuman Singh declined",
+        "OUTREACH: Sent request to AMIT VERMA via Telegram (timeout 90s)",
+        "NEGOTIATING: AMIT VERMA replied \"nahi, busy hoon\" → {\"intent\":\"decline\",\"slot_time\":null,\"price_inr\":null}",
+        "NEGOTIATING: AMIT VERMA declined",
         "ESCALATED: No verified expert accepted within budget and window. 0 closest option(s) sent to a human."
       ]
     },
@@ -1990,14 +2230,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_4beb9c8e",
+      "request_id": "r_874ccf66",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "fc7651bb1edb44d6720d471391f07825b09a7227",
+        "calendar_event_id": "14924b20c842ac4f88610377733a16c4dd913959",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2016,7 +2256,11 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, 20 min call\"",
@@ -2026,19 +2270,23 @@
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:15 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event fc7651bb1e… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 14924b20c8… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -2047,14 +2295,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_fea9de00",
+      "request_id": "r_dad1bf3d",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "01fca80367f81444bfe6169e8e688d513b324194",
+        "calendar_event_id": "038f9a9e1239d1eb40399bafff1289508dd303aa",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2073,7 +2321,11 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, 20 minutes\"",
@@ -2083,19 +2335,23 @@
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:15 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 01fca80367… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 038f9a9e12… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -2104,14 +2360,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_b5281f9e",
+      "request_id": "r_1b54d489",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "f159f720ca7073f22f3f89ae3cf68378a05d98e8",
+        "calendar_event_id": "56941be9905a6722767303589d16c5f56349dd50",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2130,7 +2386,11 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 20 min call tomorrow 6-8 pm\"",
@@ -2140,19 +2400,23 @@
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"6:15 for 2000\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event f159f720ca… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 56941be990… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -2161,14 +2425,14 @@
       "text": "Need an expert in logistics, budget 2500, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_cd77a8f8",
+      "request_id": "r_db4f2e2f",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "7970330c661e53c82a48b767872cc5265ae778ae",
+        "calendar_event_id": "0e878d9b051dc307f232c946048a9da22afa8180",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2187,7 +2451,11 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in logistics, budget 2500, 20 min call\"",
@@ -2197,17 +2465,21 @@
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 7970330c66… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 0e878d9b05… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -2216,14 +2488,14 @@
       "text": "Looking for a logistics expert, max 2500, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_b3234d2b",
+      "request_id": "r_28b690e4",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "8a602620de77861e4c4381fe167d52c9b1299862",
+        "calendar_event_id": "3da3dd7b5a6677936b58fce66ed6d0d02980dc90",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2242,7 +2514,11 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for a logistics expert, max 2500, 20 minutes\"",
@@ -2252,17 +2528,21 @@
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 8a602620de… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 3da3dd7b5a… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -2271,14 +2551,14 @@
       "text": "logistics specialist for a 20 min call under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_b052576a",
+      "request_id": "r_762e85a4",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "70dfbf538f444199506cc8465d966cc94ec3ea01",
+        "calendar_event_id": "c5cb98fc435a704c43ca7e3cd02a4866b4f4273b",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2297,7 +2577,11 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"logistics specialist for a 20 min call under ₹2,500\"",
@@ -2307,17 +2591,21 @@
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"7:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"07:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 70dfbf538f… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event c5cb98fc43… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
     },
@@ -2326,14 +2614,14 @@
       "text": "Need an expert on fest sponsorship tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_0388193f",
+      "request_id": "r_d8be253b",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e2",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1500,
-        "calendar_event_id": "40edcb95c03f3226a09706b064e9f3914cda77f3",
+        "calendar_event_id": "784ddd69881493bdb81429707a50141aad97c3c4",
         "confirmation": "6:15 PM, ₹1,500"
       },
       "constraints": {
@@ -2355,16 +2643,16 @@
         "INTAKE: Request received: \"Need an expert on fest sponsorship tomorrow 6-8 pm, budget 2000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"fest sponsorship\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: fest sponsorship, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
-        "FINDING: Expanded search terms: fest, sponsorship",
+        "FINDING: Expanded search terms: brand, event, fest, organiser, organizer, partnership, sponsor, sponsorship, sports",
         "FINDING: 3 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
-        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
         "VERIFYING: Sunil Jakhar: work history verified",
+        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
         "OUTREACH: Sai Sandeep Guduru skipped: rate ₹2,500 > budget ₹2,000",
         "OUTREACH: Sent request to Sunil Jakhar via Telegram (timeout 90s)",
         "NEGOTIATING: Sunil Jakhar replied \"6:15 for 1500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 40edcb95c0… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 784ddd6988… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,500"
       ]
     },
@@ -2373,14 +2661,14 @@
       "text": "Looking for someone who has done fest sponsorship, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_d21f68e6",
+      "request_id": "r_c0a02a62",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e2",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1500,
-        "calendar_event_id": "fe42cdcad677f8aec61b2bfce29b9d794cb70eb3",
+        "calendar_event_id": "528d991545cffc7893a9d8f4660761be59e17797",
         "confirmation": "6:15 PM, ₹1,500"
       },
       "constraints": {
@@ -2402,16 +2690,16 @@
         "INTAKE: Request received: \"Looking for someone who has done fest sponsorship, tomorrow 6 to 8 pm, max 2000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"done fest sponsorship\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: done fest sponsorship, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
-        "FINDING: Expanded search terms: done, fest, sponsorship",
+        "FINDING: Expanded search terms: brand, done, event, fest, organiser, organizer, partnership, sponsor, sponsorship, sports",
         "FINDING: 3 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
-        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
         "VERIFYING: Sunil Jakhar: work history verified",
+        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
         "OUTREACH: Sai Sandeep Guduru skipped: rate ₹2,500 > budget ₹2,000",
         "OUTREACH: Sent request to Sunil Jakhar via Telegram (timeout 90s)",
         "NEGOTIATING: Sunil Jakhar replied \"6:15 for 1500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event fe42cdcad6… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 528d991545… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,500"
       ]
     },
@@ -2420,14 +2708,14 @@
       "text": "fest sponsorship expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_1b5544c0",
+      "request_id": "r_8d61ccb3",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e2",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1500,
-        "calendar_event_id": "e377aeb5e571116aedf495618424cb96c3621aea",
+        "calendar_event_id": "99512f784384d99a492cdb148d5174a8d7f27f10",
         "confirmation": "6:15 PM, ₹1,500"
       },
       "constraints": {
@@ -2449,16 +2737,16 @@
         "INTAKE: Request received: \"fest sponsorship expert for a 20 min call tomorrow 6-8 pm under ₹2,000\"",
         "INTAKE: Parsed: {\"topic\":\"fest sponsorship\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: fest sponsorship, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
-        "FINDING: Expanded search terms: fest, sponsorship",
+        "FINDING: Expanded search terms: brand, event, fest, organiser, organizer, partnership, sponsor, sponsorship, sports",
         "FINDING: 3 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
-        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
         "VERIFYING: Sunil Jakhar: work history verified",
+        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
         "OUTREACH: Sai Sandeep Guduru skipped: rate ₹2,500 > budget ₹2,000",
         "OUTREACH: Sent request to Sunil Jakhar via Telegram (timeout 90s)",
         "NEGOTIATING: Sunil Jakhar replied \"6:15 for 1500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event e377aeb5e5… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 99512f7843… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,500"
       ]
     },
@@ -2467,15 +2755,15 @@
       "text": "Need an expert on event management tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_87902600",
+      "request_id": "r_a8e28d1d",
       "status": "BOOKED",
       "booking": {
-        "expert_id": "e2",
+        "expert_id": "e19",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
-        "price_inr": 1500,
-        "calendar_event_id": "c78abaddc4eae510272b18e1b6c9927a29af0934",
-        "confirmation": "6:15 PM, ₹1,500"
+        "price_inr": 2500,
+        "calendar_event_id": "05d8bf356816d54a28308c29acb81ed56aadf672",
+        "confirmation": "6:15 PM, ₹2,500"
       },
       "constraints": {
         "topic": "event management",
@@ -2485,23 +2773,27 @@
         "max_inr": 3000
       },
       "contacted": [
-        "e2"
+        "e19"
       ],
       "flags": {
-        "e2": "ok"
+        "e19": "ok",
+        "e2": "ok",
+        "e20": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert on event management tomorrow 6-8 pm, budget 3000, 30 min call\"",
         "INTAKE: Parsed: {\"topic\":\"event management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: event management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: event",
-        "FINDING: 1 candidates from a pool of 20 (source: real pool)",
+        "FINDING: Expanded search terms: event, fest, organiser, organizer, sponsor",
+        "FINDING: 3 candidates from a pool of 20 (source: real pool)",
+        "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
-        "OUTREACH: Sent request to Sunil Jakhar via Telegram (timeout 90s)",
-        "NEGOTIATING: Sunil Jakhar replied \"6:15 for 1500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1500}",
-        "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event c78abaddc4… created (sim); invites sent to both sides",
-        "BOOKED: Confirmed: 6:15 PM, ₹1,500"
+        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
+        "OUTREACH: Sent request to Sai Sandeep Guduru via Telegram (timeout 90s)",
+        "NEGOTIATING: Sai Sandeep Guduru replied \"6:15 for 2500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2500}",
+        "NEGOTIATING: 6:15 PM is inside the window and ₹2,500 ≤ ₹3,000: accepted",
+        "BOOKING: Calendar event 05d8bf3568… created (sim); invites sent to both sides",
+        "BOOKED: Confirmed: 6:15 PM, ₹2,500"
       ]
     },
     {
@@ -2509,15 +2801,15 @@
       "text": "Looking for an event management consultant, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_1edffbb9",
+      "request_id": "r_2d9f5909",
       "status": "BOOKED",
       "booking": {
-        "expert_id": "e2",
+        "expert_id": "e19",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
-        "price_inr": 1500,
-        "calendar_event_id": "e9ffd8cb188a5a8106ddb5399e74ad6652bace80",
-        "confirmation": "6:15 PM, ₹1,500"
+        "price_inr": 2500,
+        "calendar_event_id": "e0507146f2355afdf22537d69612e8c04ca70291",
+        "confirmation": "6:15 PM, ₹2,500"
       },
       "constraints": {
         "topic": "event management",
@@ -2527,23 +2819,27 @@
         "max_inr": 3000
       },
       "contacted": [
-        "e2"
+        "e19"
       ],
       "flags": {
-        "e2": "ok"
+        "e19": "ok",
+        "e2": "ok",
+        "e20": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for an event management consultant, tomorrow 6 to 8 pm, max 3000, 30 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"event management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: event management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: event",
-        "FINDING: 1 candidates from a pool of 20 (source: real pool)",
+        "FINDING: Expanded search terms: event, fest, organiser, organizer, sponsor",
+        "FINDING: 3 candidates from a pool of 20 (source: real pool)",
+        "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
-        "OUTREACH: Sent request to Sunil Jakhar via Telegram (timeout 90s)",
-        "NEGOTIATING: Sunil Jakhar replied \"6:15 for 1500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1500}",
-        "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event e9ffd8cb18… created (sim); invites sent to both sides",
-        "BOOKED: Confirmed: 6:15 PM, ₹1,500"
+        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
+        "OUTREACH: Sent request to Sai Sandeep Guduru via Telegram (timeout 90s)",
+        "NEGOTIATING: Sai Sandeep Guduru replied \"6:15 for 2500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2500}",
+        "NEGOTIATING: 6:15 PM is inside the window and ₹2,500 ≤ ₹3,000: accepted",
+        "BOOKING: Calendar event e0507146f2… created (sim); invites sent to both sides",
+        "BOOKED: Confirmed: 6:15 PM, ₹2,500"
       ]
     },
     {
@@ -2551,15 +2847,15 @@
       "text": "event management specialist for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_761a0b8b",
+      "request_id": "r_7505bcef",
       "status": "BOOKED",
       "booking": {
-        "expert_id": "e2",
+        "expert_id": "e19",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
-        "price_inr": 1500,
-        "calendar_event_id": "07cc398828dfbf0feec9910075d8d98556d266bf",
-        "confirmation": "6:15 PM, ₹1,500"
+        "price_inr": 2500,
+        "calendar_event_id": "e26fc7027bd153299b399f1e13b4230f9ac31a30",
+        "confirmation": "6:15 PM, ₹2,500"
       },
       "constraints": {
         "topic": "event management",
@@ -2569,23 +2865,27 @@
         "max_inr": 3000
       },
       "contacted": [
-        "e2"
+        "e19"
       ],
       "flags": {
-        "e2": "ok"
+        "e19": "ok",
+        "e2": "ok",
+        "e20": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"event management specialist for a 30 min call tomorrow 6-8 pm under ₹3,000\"",
         "INTAKE: Parsed: {\"topic\":\"event management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: event management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: event",
-        "FINDING: 1 candidates from a pool of 20 (source: real pool)",
+        "FINDING: Expanded search terms: event, fest, organiser, organizer, sponsor",
+        "FINDING: 3 candidates from a pool of 20 (source: real pool)",
+        "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
-        "OUTREACH: Sent request to Sunil Jakhar via Telegram (timeout 90s)",
-        "NEGOTIATING: Sunil Jakhar replied \"6:15 for 1500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":1500}",
-        "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 07cc398828… created (sim); invites sent to both sides",
-        "BOOKED: Confirmed: 6:15 PM, ₹1,500"
+        "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
+        "OUTREACH: Sent request to Sai Sandeep Guduru via Telegram (timeout 90s)",
+        "NEGOTIATING: Sai Sandeep Guduru replied \"6:15 for 2500\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2500}",
+        "NEGOTIATING: 6:15 PM is inside the window and ₹2,500 ≤ ₹3,000: accepted",
+        "BOOKING: Calendar event e26fc7027b… created (sim); invites sent to both sides",
+        "BOOKED: Confirmed: 6:15 PM, ₹2,500"
       ]
     },
     {
@@ -2593,7 +2893,7 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 500, 20 min call",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_77e68725",
+      "request_id": "r_62cd499f",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -2610,26 +2910,36 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in warehouse management tomorrow 6-8 pm, budget 500, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":500}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹500",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹500",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹500",
         "OUTREACH: AMITABH SHANKAR skipped: rate ₹2,000 > budget ₹500",
         "OUTREACH: Deepak Dhanotiya skipped: rate ₹2,000 > budget ₹500",
         "OUTREACH: Jai Khurana skipped: rate ₹1,200 > budget ₹500",
         "OUTREACH: Mayur Bommai skipped: rate ₹1,800 > budget ₹500",
+        "OUTREACH: Anshuman Singh skipped: rate ₹2,000 > budget ₹500",
+        "OUTREACH: AMIT VERMA skipped: rate ₹2,000 > budget ₹500",
         "ESCALATED: No verified expert accepted within budget and window. 3 closest option(s) sent to a human."
       ]
     },
@@ -2638,7 +2948,7 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 500, 20 minutes",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_87c267b3",
+      "request_id": "r_e3ae7bd3",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -2655,26 +2965,36 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 500, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":500}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹500",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹500",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹500",
         "OUTREACH: AMITABH SHANKAR skipped: rate ₹2,000 > budget ₹500",
         "OUTREACH: Deepak Dhanotiya skipped: rate ₹2,000 > budget ₹500",
         "OUTREACH: Jai Khurana skipped: rate ₹1,200 > budget ₹500",
         "OUTREACH: Mayur Bommai skipped: rate ₹1,800 > budget ₹500",
+        "OUTREACH: Anshuman Singh skipped: rate ₹2,000 > budget ₹500",
+        "OUTREACH: AMIT VERMA skipped: rate ₹2,000 > budget ₹500",
         "ESCALATED: No verified expert accepted within budget and window. 3 closest option(s) sent to a human."
       ]
     },
@@ -2683,7 +3003,7 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹500",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_fb80f540",
+      "request_id": "r_ee6e0018",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -2700,26 +3020,36 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹500\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":500}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹500",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹500",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹500",
         "OUTREACH: AMITABH SHANKAR skipped: rate ₹2,000 > budget ₹500",
         "OUTREACH: Deepak Dhanotiya skipped: rate ₹2,000 > budget ₹500",
         "OUTREACH: Jai Khurana skipped: rate ₹1,200 > budget ₹500",
         "OUTREACH: Mayur Bommai skipped: rate ₹1,800 > budget ₹500",
+        "OUTREACH: Anshuman Singh skipped: rate ₹2,000 > budget ₹500",
+        "OUTREACH: AMIT VERMA skipped: rate ₹2,000 > budget ₹500",
         "ESCALATED: No verified expert accepted within budget and window. 3 closest option(s) sent to a human."
       ]
     },
@@ -2728,14 +3058,14 @@
       "text": "kal shaam 6-8 baje warehouse expert chahiye, budget 2000, 20 min",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_a5c206fa",
+      "request_id": "r_bbd9728f",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "b2ea0d4efb00426cf5cfa935a8a75eeeaa5a1ab3",
+        "calendar_event_id": "2c60d9bf64b3ec6b2bd001b5eafdacc94116abf9",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2754,26 +3084,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"kal shaam 6-8 baje warehouse expert chahiye, budget 2000, 20 min\"",
         "INTAKE: Parsed: {\"topic\":\"baje warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: baje warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, baje, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"haan 6:15 pe 2000 chalega\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event b2ea0d4efb… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 2c60d9bf64… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -2782,14 +3120,14 @@
       "text": "kal 6 to 8 pm ek warehouse specialist chahiye, max 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_d62733e5",
+      "request_id": "r_db91c0e0",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "846536a0c1c7420700590dc27a59aa6f137a3f63",
+        "calendar_event_id": "ddc03e47b14791679079ba2f7bbcb56e85eeb953",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2808,26 +3146,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"kal 6 to 8 pm ek warehouse specialist chahiye, max 2000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"ek warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: ek warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"haan 6:15 pe 2000 chalega\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 846536a0c1… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event ddc03e47b1… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -2836,14 +3182,14 @@
       "text": "warehouse expert chahiye kal shaam 6-8, budget 2k, 20 min",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_847eb35e",
+      "request_id": "r_034137a4",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "f61aa9203dda6a7c7b304a416af8bddf169312f2",
+        "calendar_event_id": "95818b3ef4e801ed53b724cc0c7563e3ab81f05c",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2862,26 +3208,34 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"warehouse expert chahiye kal shaam 6-8, budget 2k, 20 min\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
         "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, ops, supply chain, warehouse",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
+        "VERIFYING: AMIT VERMA: work history verified",
         "OUTREACH: Rajarshi Nag skipped: rate ₹2,400 > budget ₹2,000",
         "OUTREACH: Hardik Parikh skipped: rate ₹2,600 > budget ₹2,000",
         "OUTREACH: Sent request to AMITABH SHANKAR via Telegram (timeout 90s)",
         "NEGOTIATING: AMITABH SHANKAR replied \"haan 6:15 pe 2000 chalega\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event f61aa9203d… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 95818b3ef4… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
     },
@@ -2890,14 +3244,14 @@
       "text": "Need an expert in fulfilment tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_5ecaccd5",
+      "request_id": "r_d060735a",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e7",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1200,
-        "calendar_event_id": "e2af941422f4ba96106f9fbd188a4e65102263fb",
+        "calendar_event_id": "e9d00320bea290eac3ab703f786dcd01480cb43f",
         "confirmation": "6:15 PM, ₹1,200"
       },
       "constraints": {
@@ -2923,7 +3277,7 @@
         "OUTREACH: Sent request to Swapnil Tripathi via Telegram (timeout 90s)",
         "NEGOTIATING: Swapnil Tripathi replied \"6:15 works\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,200 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event e2af941422… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event e9d00320be… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,200"
       ]
     },
@@ -2932,14 +3286,14 @@
       "text": "Looking for someone who has led fulfilment, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_fd3657f7",
+      "request_id": "r_c617cfc2",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e7",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1200,
-        "calendar_event_id": "4a68b4c232611c5a5871ecf67b6e55cce8e147fa",
+        "calendar_event_id": "306cc71f9b82595f0c706c9b5b1be44ac660ccd8",
         "confirmation": "6:15 PM, ₹1,200"
       },
       "constraints": {
@@ -2965,7 +3319,7 @@
         "OUTREACH: Sent request to Swapnil Tripathi via Telegram (timeout 90s)",
         "NEGOTIATING: Swapnil Tripathi replied \"6:15 works\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,200 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 4a68b4c232… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 306cc71f9b… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,200"
       ]
     },
@@ -2974,14 +3328,14 @@
       "text": "fulfilment specialist for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_87fbfad0",
+      "request_id": "r_09f0d547",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e7",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1200,
-        "calendar_event_id": "7a153b22e4d279ab6348c4bb641507975810c11d",
+        "calendar_event_id": "ed2ddcfc9392eb808bbbb03715dacd88eb48e7ba",
         "confirmation": "6:15 PM, ₹1,200"
       },
       "constraints": {
@@ -3007,7 +3361,7 @@
         "OUTREACH: Sent request to Swapnil Tripathi via Telegram (timeout 90s)",
         "NEGOTIATING: Swapnil Tripathi replied \"6:15 works\" → {\"intent\":\"propose\",\"slot_time\":\"06:15\",\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,200 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 7a153b22e4… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event ed2ddcfc93… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 6:15 PM, ₹1,200"
       ]
     },
@@ -3016,14 +3370,14 @@
       "text": "Need an expert in logistics tomorrow evening, budget 2500, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_9a487d79",
+      "request_id": "r_d7b5da39",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T17:15:00+05:30",
         "end": "2026-11-07T17:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "5dbeee59a8c8d78341399e9cf259f58ab5f59251",
+        "calendar_event_id": "8b7536b98a97fb9aa1ed1c24aa6c94f152fa4612",
         "confirmation": "5:15 PM, ₹2,400"
       },
       "constraints": {
@@ -3042,24 +3396,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in logistics tomorrow evening, budget 2500, 30 min call\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"17:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 30 min, 5:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"5:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"05:15\",\"price_inr\":2400}",
         "NEGOTIATING: 5:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 5dbeee59a8… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 8b7536b98a… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 5:15 PM, ₹2,400"
       ]
     },
@@ -3068,14 +3430,14 @@
       "text": "Looking for a logistics expert tomorrow evening, max 2500, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_53f3b666",
+      "request_id": "r_f6a3dfff",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T17:15:00+05:30",
         "end": "2026-11-07T17:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "eeef2491bdbb0f9fc800a261c041a56a1ab47851",
+        "calendar_event_id": "6e55cfa205410a75008536c9a978e68d77c5f76a",
         "confirmation": "5:15 PM, ₹2,400"
       },
       "constraints": {
@@ -3094,24 +3456,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for a logistics expert tomorrow evening, max 2500, 30 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"17:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 30 min, 5:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"5:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"05:15\",\"price_inr\":2400}",
         "NEGOTIATING: 5:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event eeef2491bd… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 6e55cfa205… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 5:15 PM, ₹2,400"
       ]
     },
@@ -3120,14 +3490,14 @@
       "text": "logistics specialist for a 30 min call tomorrow evening under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_c71c78ce",
+      "request_id": "r_877e95df",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T17:15:00+05:30",
         "end": "2026-11-07T17:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "98bd19926183251a6e455bcb58a8812f8697ba32",
+        "calendar_event_id": "0ef7aab9ba5b77b500fe81958dc66291e27104fc",
         "confirmation": "5:15 PM, ₹2,400"
       },
       "constraints": {
@@ -3146,24 +3516,32 @@
         "e11": "ok",
         "e12": "ok",
         "e13": "ok",
-        "e14": "ok"
+        "e14": "ok",
+        "e15": "ok",
+        "e4": "ok",
+        "e6": "ok",
+        "e7": "ok"
       },
       "timeline": [
         "INTAKE: Request received: \"logistics specialist for a 30 min call tomorrow evening under ₹2,500\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"17:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 30 min, 5:00 PM–9:00 PM IST, max ₹2,500",
         "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, shipping, supply chain",
-        "FINDING: 6 candidates from a pool of 20 (source: real pool)",
+        "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
         "VERIFYING: AMITABH SHANKAR: work history verified",
         "VERIFYING: Deepak Dhanotiya: work history verified",
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
+        "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: AMIT VERMA: work history verified",
+        "VERIFYING: Suresh Bansal: work history verified",
+        "VERIFYING: Swapnil Tripathi: work history verified",
         "OUTREACH: Sent request to Rajarshi Nag via Telegram (timeout 90s)",
         "NEGOTIATING: Rajarshi Nag replied \"5:15 for 2400\" → {\"intent\":\"propose\",\"slot_time\":\"05:15\",\"price_inr\":2400}",
         "NEGOTIATING: 5:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 98bd199261… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 0ef7aab9ba… created (sim); invites sent to both sides",
         "BOOKED: Confirmed: 5:15 PM, ₹2,400"
       ]
     }
