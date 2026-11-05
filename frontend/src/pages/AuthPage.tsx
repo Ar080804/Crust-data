@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { signIn, nameFromEmail } from '../auth.ts'
-import { REAL_GOOGLE, googleLoginUrl } from '../api.ts'
+import { REAL_GOOGLE, googleLoginUrl, ONBOARDING_URL } from '../api.ts'
 import { DotField, RotatingText } from '../cursor.tsx'
-import { Icon, Logo, Segmented } from '../ui.tsx'
+import { Icon, LinkedInIcon, Logo, Segmented } from '../ui.tsx'
 
 type Mode = 'login' | 'signup'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -19,15 +19,6 @@ function GoogleG() {
   )
 }
 
-function LinkedInIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
-      <rect width="24" height="24" rx="4" fill="#0A66C2" />
-      <path fill="#fff" d="M7.1 9.5H4.6V19h2.5V9.5zM5.9 5.2a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9zM19.4 13.6c0-2.6-1.4-4.3-3.6-4.3-1.3 0-2.1.7-2.5 1.3V9.5h-2.4V19h2.5v-4.9c0-1.3.4-2.4 1.8-2.4 1.3 0 1.7 1.1 1.7 2.5V19h2.5v-5.4z" />
-    </svg>
-  )
-}
-
 export default function AuthPage() {
   const nav = useNavigate()
   const loc = useLocation()
@@ -38,7 +29,7 @@ export default function AuthPage() {
   const [pw, setPw] = useState('')
   const [showPw, setShowPw] = useState(false)
   const [err, setErr] = useState<string | null>(null)
-  const [oauth, setOauth] = useState<null | 'google' | 'linkedin'>(null)
+  const [googlePicker, setGooglePicker] = useState(false) // mock-only Google account picker
   const [gmail, setGmail] = useState('')
 
   const done = () => nav(from, { replace: true })
@@ -52,10 +43,13 @@ export default function AuthPage() {
     done()
   }
 
-  function oauthContinue(e: React.FormEvent) {
+  // Mock mode only (VITE_MOCK=true): stand-in for the Google account picker. In real mode the
+  // Google button goes to the backend's real OIDC flow and this form is never shown.
+  function googleMockContinue(e: React.FormEvent) {
     e.preventDefault()
-    if (!EMAIL_RE.test(gmail.trim())) return setErr(`Enter your ${oauth === 'linkedin' ? 'LinkedIn' : 'Google'} email.`)
-    signIn({ name: nameFromEmail(gmail), email: gmail.trim(), provider: oauth ?? 'google' })
+    if (REAL_GOOGLE) return
+    if (!EMAIL_RE.test(gmail.trim())) return setErr('Enter your Google email.')
+    signIn({ name: nameFromEmail(gmail), email: gmail.trim(), provider: 'google' })
     done()
   }
 
@@ -63,7 +57,7 @@ export default function AuthPage() {
     setErr(null)
     // Real backend: real Google OIDC (contract "Auth" section). Mock: demo account picker.
     if (REAL_GOOGLE) window.location.href = googleLoginUrl(window.location.origin + from)
-    else setOauth('google')
+    else setGooglePicker(true)
   }
 
   return (
@@ -97,25 +91,16 @@ export default function AuthPage() {
             ]} />
           </div>
 
-          {!oauth ? (
-            <div className="oauth-row">
-              <button type="button" className="btn-oauth" onClick={startGoogle} data-cursor="Google">
-                <GoogleG /> Google
-              </button>
-              <button type="button" className="btn-oauth" onClick={() => { setOauth('linkedin'); setErr(null) }} data-cursor="LinkedIn">
-                <LinkedInIcon /> LinkedIn
-              </button>
-            </div>
+          {!googlePicker ? (
+            <button type="button" className="btn-oauth" onClick={startGoogle} data-cursor="Google">
+              <GoogleG /> Continue with Google
+            </button>
           ) : (
-            <form className="oauth-box" onSubmit={oauthContinue}>
+            <form className="oauth-box" onSubmit={googleMockContinue}>
+              <div className="row"><GoogleG /><span className="strong">Choose a Google account</span><span className="tag tag-warn push">mock</span></div>
+              <input type="email" value={gmail} onChange={(e) => setGmail(e.target.value)} placeholder="you@gmail.com" autoFocus />
               <div className="row">
-                {oauth === 'google' ? <GoogleG /> : <LinkedInIcon />}
-                <span className="strong">{oauth === 'google' ? 'Choose a Google account' : 'Sign in with LinkedIn'}</span>
-              </div>
-              <input type="email" value={gmail} onChange={(e) => setGmail(e.target.value)}
-                placeholder={oauth === 'google' ? 'you@gmail.com' : 'Email on your LinkedIn'} autoFocus />
-              <div className="row">
-                <button type="button" className="btn btn-ghost btn-sm" onClick={() => setOauth(null)}>Cancel</button>
+                <button type="button" className="btn btn-ghost btn-sm" onClick={() => setGooglePicker(false)}>Cancel</button>
                 <button className="btn btn-primary btn-sm">Continue</button>
               </div>
             </form>
@@ -149,6 +134,9 @@ export default function AuthPage() {
             Skip for now, continue as guest
           </button>
           <p className="auth-note">Demo build: your account is stored only in this browser.</p>
+          <a className="expert-join" href={ONBOARDING_URL} target="_blank" rel="noreferrer" data-cursor="Join">
+            <LinkedInIcon /> Are you an expert? <b>Join with LinkedIn →</b>
+          </a>
         </div>
       </section>
     </div>

@@ -11,6 +11,8 @@ import evalFx from '../../contract/fixtures/eval.json'
 import { addChat, listChat, listSaved, removeSaved, saveRequest, type ChatMsg, type Saved } from './history.ts'
 
 export const MOCK = import.meta.env.VITE_MOCK === 'true'
+// Sunil's expert onboarding server (real LinkedIn OIDC). Experts join there; clients never log in with LinkedIn.
+export const ONBOARDING_URL: string = import.meta.env.VITE_ONBOARDING_URL || 'http://localhost:8001'
 const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
 
 async function http<T>(path: string, init?: RequestInit): Promise<T> {

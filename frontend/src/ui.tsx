@@ -109,6 +109,15 @@ export function Confetti() {
   )
 }
 
+export function LinkedInIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden className="icon">
+      <rect width="24" height="24" rx="4" fill="#0A66C2" />
+      <path fill="#fff" d="M7.1 9.5H4.6V19h2.5V9.5zM5.9 5.2a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9zM19.4 13.6c0-2.6-1.4-4.3-3.6-4.3-1.3 0-2.1.7-2.5 1.3V9.5h-2.4V19h2.5v-4.9c0-1.3.4-2.4 1.8-2.4 1.3 0 1.7 1.1 1.7 2.5V19h2.5v-5.4z" />
+    </svg>
+  )
+}
+
 export function Logo({ size = 26 }: { size?: number }) {
   // A thread knotted through three beads: the sutradhar holding the strings.
   return (
