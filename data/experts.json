@@ -1,0 +1,86 @@
+[
+  {
+    "expert_id": "e1",
+    "name": "Aditya Raunak",
+    "headline": "TODO: Aditya ka real headline",
+    "linkedin_url": "https://www.linkedin.com/in/TODO-aditya",
+    "rate_inr": 1800,
+    "availability": [{"start": "2026-11-06T18:00:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
+    "telegram_chat_id": "7798888763",
+    "email": "TODO-aditya@example.com",
+    "claims": ["TODO: role at company, years"],
+    "simulated": false
+  },
+  {
+    "expert_id": "e2",
+    "name": "Sunil",
+    "headline": "TODO: Sunil ka real headline",
+    "linkedin_url": "https://www.linkedin.com/in/TODO-sunil",
+    "rate_inr": 1500,
+    "availability": [{"start": "2026-11-06T17:00:00+05:30", "end": "2026-11-06T20:00:00+05:30"}],
+    "telegram_chat_id": "6634891184",
+    "email": "TODO-sunil@example.com",
+    "claims": ["TODO: role at company, years"],
+    "simulated": false
+  },
+  {
+    "expert_id": "e3",
+    "name": "Deepak",
+    "headline": "TODO: Deepak ka real headline",
+    "linkedin_url": "https://www.linkedin.com/in/TODO-deepak",
+    "rate_inr": 2200,
+    "availability": [{"start": "2026-11-06T19:00:00+05:30", "end": "2026-11-06T22:00:00+05:30"}],
+    "telegram_chat_id": "7909529489",
+    "email": "TODO-deepak@example.com",
+    "claims": ["TODO: role at company, years"],
+    "simulated": false
+  },
+  {
+    "expert_id": "e4",
+    "name": "TODO friend 1",
+    "headline": "Fulfilment Head, TODO company",
+    "linkedin_url": "https://www.linkedin.com/in/TODO-friend1",
+    "rate_inr": 2500,
+    "availability": [{"start": "2026-11-06T18:00:00+05:30", "end": "2026-11-06T20:00:00+05:30"}],
+    "telegram_chat_id": "",
+    "email": "",
+    "claims": ["Fulfilment Head at TODO, 2020-2024"],
+    "simulated": true
+  },
+  {
+    "expert_id": "e5",
+    "name": "TODO friend 2",
+    "headline": "Supply Chain Analyst, TODO company",
+    "linkedin_url": "https://www.linkedin.com/in/TODO-friend2",
+    "rate_inr": 1200,
+    "availability": [{"start": "2026-11-06T18:30:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
+    "telegram_chat_id": "",
+    "email": "",
+    "claims": ["Supply Chain Analyst at TODO, 2022-2025"],
+    "simulated": true
+  },
+  {
+    "expert_id": "e9",
+    "name": "TODO PLANTED FAKE 1 (LinkedIn pe sirf intern hona chahiye)",
+    "headline": "Warehouse Head, TODO company",
+    "linkedin_url": "https://www.linkedin.com/in/TODO-fake1",
+    "rate_inr": 1000,
+    "availability": [{"start": "2026-11-06T18:00:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
+    "telegram_chat_id": "",
+    "email": "",
+    "claims": ["Warehouse Head at TODO, 2021-2024"],
+    "simulated": true
+  },
+  {
+    "expert_id": "e10",
+    "name": "TODO PLANTED FAKE 2 (inflated years)",
+    "headline": "Senior Logistics Manager, TODO company",
+    "linkedin_url": "https://www.linkedin.com/in/TODO-fake2",
+    "rate_inr": 1400,
+    "availability": [{"start": "2026-11-06T19:00:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
+    "telegram_chat_id": "",
+    "email": "",
+    "claims": ["Senior Logistics Manager at TODO, 2016-2024"],
+    "simulated": true
+  }
+]
