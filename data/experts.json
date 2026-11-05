@@ -13,14 +13,14 @@
   },
   {
     "expert_id": "e2",
-    "name": "Sunil",
-    "headline": "TODO: Sunil ka real headline",
-    "linkedin_url": "https://www.linkedin.com/in/TODO-sunil",
+    "name": "Sunil Jakhar",
+    "headline": "Organizer, Udghosh IIT Kanpur",
+    "linkedin_url": "https://www.linkedin.com/in/sunil-jakhar-3b1430326/",
     "rate_inr": 1500,
     "availability": [{"start": "2026-11-06T17:00:00+05:30", "end": "2026-11-06T20:00:00+05:30"}],
     "telegram_chat_id": "6634891184",
-    "email": "TODO-sunil@example.com",
-    "claims": ["TODO: role at company, years"],
+    "email": "sunilj24@iitk.ac.in",
+    "claims": ["Organizer at Udghosh, IIT Kanpur, 2025-present"],
     "simulated": false
   },
   {

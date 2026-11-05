@@ -1,0 +1,84 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/sunil-jakhar-3b1430326/",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "basic_profile": {
+            "current_title": "Organizer",
+            "first_name": "Sunil",
+            "headline": "Student @IIT Kanpur",
+            "languages": [],
+            "last_name": "Jakhar",
+            "location": {
+              "city": "Kanpur",
+              "continent": "Asia",
+              "country": "India",
+              "full_location": null,
+              "raw": "Kanpur, Uttar Pradesh, India",
+              "state": "Uttar Pradesh"
+            },
+            "name": "Sunil Jakhar",
+            "professional_network_name": "Sunil Jakhar",
+            "profile_picture_permalink": null,
+            "summary": null
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "company_description": "Udghosh is the annual sports festival of IIT Kanpur witnessing participation from top 200 Colleges and 50,000+ Participation. Being India's largest Inter-collegiate Sports Festival, it provides an arena to lock horns in an epic battle of sports.Udghosh is a Non-Profit organization with 300+ employees working around a year to make India's largest festival a grand success.",
+                  "company_headcount_latest": 92,
+                  "company_headcount_range": "201-500",
+                  "company_industries": [
+                    "Events Services",
+                    "Administrative and Support Services"
+                  ],
+                  "company_professional_network_industry": "Events Services",
+                  "company_professional_network_profile_url": "https://linkedin.com/company/80918453",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/6c5d165d87c29925dc7c1bc6b391beab30c9fb2cc12889dbb6515157f002c983.jpg",
+                  "company_status": "active",
+                  "company_website": "http://www.udghosh.org.in/",
+                  "company_website_domain": "udghosh.org.in",
+                  "crustdata_company_id": 3553491,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Kanpur, Uttar Pradesh, India"
+                  },
+                  "name": "UDGHOSH, IIT KANPUR",
+                  "position_id": 2751412106,
+                  "professional_network_id": "80918453",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2025-09-01T00:00:00+00:00",
+                  "title": "Organizer",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1.0
+                }
+              ],
+              "past": []
+            }
+          },
+          "social_handles": {
+            "dev_platform_identifier": {
+              "profile_url": null
+            },
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/sunil-jakhar-3b1430326"
+            },
+            "twitter_identifier": {
+              "slug": null
+            }
+          },
+          "crustdata_person_id": 602759980
+        }
+      }
+    ]
+  }
+]
