@@ -1,0 +1,166 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/sai-sandeep-guduru-612aba203",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 945407,
+          "basic_profile": {
+            "current_title": "Member",
+            "name": "Sai Sandeep Guduru"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 18,
+                  "company_headcount_range": "2-10",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "Udaipur, Rājasthān, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Non-profit Organizations",
+                    "Consumer Services"
+                  ],
+                  "company_professional_network_industry": "Non-profit Organizations",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/prayatna-the-social-responsibility-club-of-iimu",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/24f47435c7adcaaac41775d076b2c38e391f3a56103b30d96ecdc2926ce698da.jpg",
+                  "company_status": "active",
+                  "company_type": "Educational Institution",
+                  "company_website": "https://www.iimu.ac.in/life-at-iimu/clubs-aamp-committees/social-club/prayatna/",
+                  "crustdata_company_id": 18158333,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": true,
+                  "name": "Prayatna",
+                  "position_id": 3028711142,
+                  "professional_network_id": "78593011",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2026-06-01T00:00:00",
+                  "title": "Member",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 6,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "Udaipur, Rājasthān, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Sports Teams and Clubs",
+                    "Spectator Sports",
+                    "Performing Arts and Spectator Sports",
+                    "Entertainment Providers"
+                  ],
+                  "company_professional_network_industry": "Sports Teams and Clubs",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/utkrishtiimu",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/95b7c0a59658b84201683a369095d27cfda0187d8cc1bfe077f6a8dac0788b0e.jpg",
+                  "company_status": "active",
+                  "company_type": "Sole Proprietorship",
+                  "company_website": "",
+                  "crustdata_company_id": 15957649,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "Utkrisht - Annual Sports Fest of IIM Udaipur",
+                  "position_id": 3028714093,
+                  "professional_network_id": "68577672",
+                  "seniority_level": "Director",
+                  "start_date": "2026-06-01T00:00:00",
+                  "title": "Vertical Head- Sponsorship",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 17455,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Infotech  Park (Hinjawadi), Marunji, Maan SO, Wakad, Maharashtra, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Engineering Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Engineering Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/tata-technologies",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/12281bc9e0bc76f7096c161d3e715a9ab738dbb3886b75935cf82ca31b8e3c73.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.tatatechnologies.com",
+                  "crustdata_company_id": 6628,
+                  "description": "Deployed at Tata motors commercial Vehicles\nExperience in developing mathematical models of vehicles at the system and subsystem level. MATLAB programming & Simulink using model based design to develop Application software. \n\nI have worked on the Following Control Model Development for the following Functionalities\n1. VCU Software Development for the Ecu wakeup and shutdown sequence \n2.VCU Software Development for Charging Systems i.e.DCDC Control in the Vehicle, Ac and Dc charging\n3.VCU Software Development for Deration Strategies\n4.VCU software development for the Vacuum Pump in the vehicle\n5.Good Knowledge on CAN Protocol and Tools used Peakcan,Canoe\n6.Safety function monitor implementation for the vehicle functions for ensuring the safe powerdown\n7.Part of the  research team for identifying the correct hybrid configuration for the Commercial Vehicles\n8.Testing and Calibration using ETAS Inca and Analyzing through Etas MDA\n9.Very Good Understanding of Autosar Architecture, UDS Services and and Debugging Tools like Trace32 Debugger\n\nAlso inline with V-Cycle, Standards - MISRA, ASPICE and ISO26262",
+                  "employment_type": "Full-time",
+                  "end_date": "2026-03-01T00:00:00",
+                  "function_category": "Engineering",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Pune/Pimpri-Chinchwad Area"
+                  },
+                  "name": "Tata Technologies",
+                  "position_id": 2100290317,
+                  "professional_network_id": "6369",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2022-12-01T00:00:00",
+                  "title": "Ev Control Software Engineer",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 3
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 17455,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Infotech  Park (Hinjawadi), Marunji, Maan SO, Wakad, Maharashtra, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Engineering Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Engineering Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/tata-technologies",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/12281bc9e0bc76f7096c161d3e715a9ab738dbb3886b75935cf82ca31b8e3c73.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.tatatechnologies.com",
+                  "crustdata_company_id": 6628,
+                  "description": "Worked on Autosar based bsw project and testing few bsw modules like Nvm, watchdog for E-VCU and E-Traction inverter",
+                  "employment_type": "Full-time",
+                  "end_date": "2022-11-01T00:00:00",
+                  "function_category": "Engineering",
+                  "is_default": false,
+                  "name": "Tata Technologies",
+                  "position_id": 1901932756,
+                  "professional_network_id": "6369",
+                  "seniority_level": "In Training",
+                  "start_date": "2022-01-01T00:00:00",
+                  "title": "Graduate Engineer Trainee(ER&D)",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/sai-sandeep-guduru-612aba203"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

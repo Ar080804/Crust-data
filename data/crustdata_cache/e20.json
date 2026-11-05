@@ -1,0 +1,461 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/khushi-raheja-tech",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 939632,
+          "basic_profile": {
+            "current_title": "Front-end AI Engineer Intern",
+            "name": "Khushi Raheja"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 13687,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Chicago, Illinois, United States",
+                  "company_hq_location_address_components": [
+                    "Chicago",
+                    "Cook County",
+                    "Illinois",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/flyrank",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/2586ce272ec0207ca80312af92ff9212a10cb23108a20411930a90c6214f1fac.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "https://flyrank.ai",
+                  "crustdata_company_id": 15134092,
+                  "description": "",
+                  "employment_type": "Internship",
+                  "end_date": null,
+                  "function_category": "Engineering",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Chicago, IL"
+                  },
+                  "name": "FlyRank AI",
+                  "position_id": 2998694756,
+                  "professional_network_id": "105167969",
+                  "seniority_level": "In Training",
+                  "start_date": "2026-08-01T00:00:00",
+                  "title": "Front-end AI Engineer Intern",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 6649,
+                  "company_headcount_range": "11-50",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Delhi, Delhi, India",
+                  "company_hq_location_address_components": [
+                    "New Delhi",
+                    "Delhi",
+                    "India"
+                  ],
+                  "company_industries": [
+                    "IT Services and IT Consulting",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "IT Services and IT Consulting",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/girlscriptsoc",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/aad5f3f32b7ef6e88d53184da3e81e9cda7c04c69ebfd25128844e08a6b2efca.jpg",
+                  "company_status": "active",
+                  "company_type": "Nonprofit",
+                  "company_website": "https://gssoc.girlscript.tech/",
+                  "crustdata_company_id": 1050138,
+                  "description": "",
+                  "employment_type": "Part-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "GirlScript Summer of Code",
+                  "position_id": 2915051132,
+                  "professional_network_id": "14488336",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2026-05-01T00:00:00",
+                  "title": "Contributor (AI Agents / Track)",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 6649,
+                  "company_headcount_range": "11-50",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Delhi, Delhi, India",
+                  "company_hq_location_address_components": [
+                    "New Delhi",
+                    "Delhi",
+                    "India"
+                  ],
+                  "company_industries": [
+                    "IT Services and IT Consulting",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "IT Services and IT Consulting",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/girlscriptsoc",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/aad5f3f32b7ef6e88d53184da3e81e9cda7c04c69ebfd25128844e08a6b2efca.jpg",
+                  "company_status": "active",
+                  "company_type": "Nonprofit",
+                  "company_website": "https://gssoc.girlscript.tech/",
+                  "crustdata_company_id": 1050138,
+                  "description": "",
+                  "employment_type": "Internship",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "GirlScript Summer of Code",
+                  "position_id": 2897305530,
+                  "professional_network_id": "14488336",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2026-04-01T00:00:00",
+                  "title": "Ambassador",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 45,
+                  "company_headcount_range": "2-10",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Mohali, Punjab, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "E-learning"
+                  ],
+                  "company_professional_network_industry": "E-learning",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/geeksforgeeks-campus-body-cu",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/b4b06ac91f67c792815ac84d5bf7f212ccf8293dd0f505d426ebd882ce0b8efc.jpg",
+                  "company_status": "active",
+                  "company_type": "Educational Institution",
+                  "company_website": "https://www.geeksforgeeks.org/",
+                  "crustdata_company_id": 5135778,
+                  "description": "",
+                  "employment_type": "Part-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Chandigarh, India"
+                  },
+                  "name": "GeeksforGeeks Campus Body - Chandigarh University",
+                  "position_id": 2886325734,
+                  "professional_network_id": "68516416",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2026-03-01T00:00:00",
+                  "title": "Core member - Sponsorship Outreach",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 45,
+                  "company_headcount_range": "2-10",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Mohali, Punjab, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "E-learning"
+                  ],
+                  "company_professional_network_industry": "E-learning",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/geeksforgeeks-campus-body-cu",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/b4b06ac91f67c792815ac84d5bf7f212ccf8293dd0f505d426ebd882ce0b8efc.jpg",
+                  "company_status": "active",
+                  "company_type": "Educational Institution",
+                  "company_website": "https://www.geeksforgeeks.org/",
+                  "crustdata_company_id": 5135778,
+                  "description": "",
+                  "employment_type": "Part-time",
+                  "end_date": null,
+                  "function_category": "Marketing",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Chandigarh, India"
+                  },
+                  "name": "GeeksforGeeks Campus Body - Chandigarh University",
+                  "position_id": 2886448783,
+                  "professional_network_id": "68516416",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2026-03-01T00:00:00",
+                  "title": "Core member - Public Relations",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 37517,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "United States",
+                  "company_hq_location_address_components": [
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Business Consulting and Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Business Consulting and Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/mckinsey",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/7ee65a7be61f76ee9fb55f24826765dc3b59cf65facf1581117007399cb1d359.jpg",
+                  "company_status": "active",
+                  "company_type": "Partnership",
+                  "company_website": "http://www.mckinsey.com",
+                  "crustdata_company_id": 721642,
+                  "description": "• Selected for the McKinsey Forward Program, a global 10-week professional development experience\n• Developing structured problem-solving, communication, and teamwork skills through     real-world learning",
+                  "employment_type": "",
+                  "end_date": "2026-07-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "McKinsey & Company",
+                  "position_id": 2922855447,
+                  "professional_network_id": "1371",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2026-05-01T00:00:00",
+                  "title": "Forward Progam Learner",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 7,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Bangalore, Karnataka, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Defense and Space Manufacturing",
+                    "Transportation Equipment Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Defense and Space Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/originantares",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/1dbca569e6b96d55121e6d508320e11503f7efcd6e928a05cb23df7afe701bd8.jpg",
+                  "company_status": "active",
+                  "company_type": "Sole Proprietorship",
+                  "company_website": "https://originantares.in",
+                  "crustdata_company_id": 2925053,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2026-07-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "Origin Antares®",
+                  "position_id": 2631648992,
+                  "professional_network_id": "96116765",
+                  "seniority_level": "Director",
+                  "start_date": "2025-04-01T00:00:00",
+                  "title": "Director of Education",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 7,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Bangalore, Karnataka, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Defense and Space Manufacturing",
+                    "Transportation Equipment Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Defense and Space Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/originantares",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/1dbca569e6b96d55121e6d508320e11503f7efcd6e928a05cb23df7afe701bd8.jpg",
+                  "company_status": "active",
+                  "company_type": "Sole Proprietorship",
+                  "company_website": "https://originantares.in",
+                  "crustdata_company_id": 2925053,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2026-07-01T00:00:00",
+                  "function_category": "Consulting",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Bengaluru"
+                  },
+                  "name": "Origin Antares®",
+                  "position_id": 2435846216,
+                  "professional_network_id": "96116765",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2024-07-01T00:00:00",
+                  "title": "Advisory Board Member",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 2
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 10,
+                  "company_headcount_range": "2-10",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Space Research and Technology",
+                    "Government Administration"
+                  ],
+                  "company_professional_network_industry": "Space Research and Technology",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/astro-flux",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/4ae604e41cf0101d99341d148bee41713811bc9b3ab53f482cc6f25e16817fa8.jpg",
+                  "company_status": "active",
+                  "company_type": "Nonprofit",
+                  "company_website": "http://www.astroflux.club",
+                  "crustdata_company_id": 1383599,
+                  "description": "",
+                  "employment_type": "Self-employed",
+                  "end_date": "2026-01-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "India"
+                  },
+                  "name": "AstroFlux",
+                  "position_id": 2354979677,
+                  "professional_network_id": "100900644",
+                  "seniority_level": "Owner / Partner",
+                  "start_date": "2024-03-01T00:00:00",
+                  "title": "Co-Founder",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 53006,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Washington, District of Columbia, United States",
+                  "company_hq_location_address_components": [
+                    "Washington",
+                    "District of Columbia",
+                    "District of Columbia",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Aviation and Aerospace Component Manufacturing",
+                    "Transportation Equipment Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Aviation and Aerospace Component Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/nasa",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/93aa46f6aa08f7031c43227fcd85c24d1ed82385e3618d5eb08a9514067edb3b.jpg",
+                  "company_status": "active",
+                  "company_type": "Government Agency",
+                  "company_website": "http://www.nasa.gov",
+                  "crustdata_company_id": 719975,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2024-03-01T00:00:00",
+                  "function_category": "Research",
+                  "is_default": false,
+                  "name": "NASA - National Aeronautics and Space Administration",
+                  "position_id": 2888705930,
+                  "professional_network_id": "2003",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2023-08-01T00:00:00",
+                  "title": "Nasa Citizen Scientist",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 23408,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Sunnyvale, California, United States",
+                  "company_hq_location_address_components": [
+                    "Sunnyvale",
+                    "Santa Clara County",
+                    "California",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/linkedin",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/59867777fffa4136c92b88b94dff543c681bab21a79bd70ef568329d123d2899.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://careers.linkedin.com",
+                  "crustdata_company_id": 6033098,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2023-12-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "LinkedIn",
+                  "position_id": 2119212813,
+                  "professional_network_id": "1337",
+                  "seniority_level": "In Training",
+                  "start_date": "2023-02-01T00:00:00",
+                  "title": "Student Creator",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 255,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "Punjabi Bagh, Ashoka Park Extn., Shivaji Park (West Delhi), Punjabi Bagh Sec - III, Pardubický, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Education Administration Programs",
+                    "Health and Human Services",
+                    "Government Administration"
+                  ],
+                  "company_professional_network_industry": "Education Administration Programs",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/mindler",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/575cae4309debc08d45221f11911093a6691b4fe908815e7e5fe58e6acf1d549.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "https://www.mindler.com/",
+                  "crustdata_company_id": 6464923,
+                  "description": "Mindler Navigate is a fantastic opportunity for high school students to expand and upgrade their skill set.  This program aims to assist in navigating the educational and career journey.",
+                  "employment_type": "Internship",
+                  "end_date": "2023-03-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "Mindler",
+                  "position_id": 2107112122,
+                  "professional_network_id": "7939250",
+                  "seniority_level": "In Training",
+                  "start_date": "2022-11-01T00:00:00",
+                  "title": "Student Intern",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/khushi-raheja-tech"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

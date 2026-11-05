@@ -73,7 +73,7 @@ def _expert(eid: str, p: dict, claim: str, headline: str) -> dict:
 
 def _planted(ex: dict, k: int) -> dict:
     """Planted test cases get an anonymised display name: the claim is ours, not the real person's."""
-    ex.update(planted=True, name=f"Planted Test {chr(65 + k)}", availability=AVAIL,
+    ex.update(planted=True, name=f"Test Profile {chr(65 + k)}", linkedin_url="", availability=AVAIL,
               telegram_chat_id=f"sim-{ex['expert_id']}", simulated=True)
     return ex
 
@@ -88,8 +88,9 @@ REAL_KW = ["warehouse", "logistics", "supply chain", "fulfilment", "fulfillment"
 def main():
     old = json.loads(POOL.read_text(encoding="utf-8")) if POOL.exists() else []
     team = [{**e, "availability": AVAIL} for e in old if not e.get("simulated")]
-    kept_planted = [e for e in old if e.get("planted")]   # reuse: saves the intern-search credits
-    seen = {e["linkedin_url"] for e in kept_planted}
+    extras = [e for e in old if e.get("extra")]          # event/sponsorship profiles from add_events()
+    kept_planted = [e for e in old if e.get("planted") and not e.get("extra")]  # reuse: saves intern-search credits
+    seen = {e["linkedin_url"] for e in kept_planted + extras if e["linkedin_url"]}
 
     real = []
     for p in search(REAL_KW, 20):
@@ -127,6 +128,7 @@ def main():
                                  f"{role['title']}, {role['name']} (6+ yrs)"))
         out += [_planted(e, k) for k, e in enumerate(fakes)]
 
+    out += extras
     ids = [e["expert_id"] for e in out]
     assert len(ids) == len(set(ids)), f"duplicate expert ids: {ids}"
     POOL.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -134,5 +136,52 @@ def main():
           f"{sum(1 for e in out if e.get('planted'))} planted)")
 
 
+def add_events(search_json: str | None = None):
+    """Demo topic = fest sponsorship / event management. Adds two profiles from Crustdata search:
+    - a real sponsorship head at a fest, rate 2500 (so a 2000 budget shows "over budget, skipped")
+    - a planted test case: a junior sponsorship member, claimed as "Head of Sponsorships"."""
+    if search_json:
+        profiles = json.loads(Path(search_json).read_text(encoding="utf-8")).get("profiles", [])
+    else:
+        profiles = search(["sponsorship"], 15)
+    pool = json.loads(POOL.read_text(encoding="utf-8"))
+    pool = [e for e in pool if not e.get("extra")]
+    n = max(int(e["expert_id"][1:]) for e in pool) + 1
+    pro = fake = None
+    for p in profiles:
+        url = _url(p)
+        for role in (p.get("experience", {}).get("employment_details", {}) or {}).get("current") or []:
+            t = (role.get("title") or "").lower()
+            if not (url and role.get("start_date") and "sponsor" in t):
+                continue
+            if not pro and "head" in t and "fest" in (role.get("name") or "").lower():
+                pro = (p, role)
+            elif not fake and (role.get("seniority_level") == "Entry Level") and any(
+                    w in t for w in ("member", "intern", "executive")):
+                fake = (p, role)
+    added = []
+    if pro:
+        p, role = pro
+        ex = _expert(f"e{n}", p, f"{role['title']} at {role['name']}, {role['start_date'][:4]}-present",
+                     f"{role['title']}, {role['name']} (fest sponsorship)")
+        ex.update(rate_inr=2500, extra=True)
+        added.append(ex); n += 1
+    if fake:
+        p, role = fake
+        y = int(role["start_date"][:4])
+        ex = _expert(f"e{n}", p, f"Head of Sponsorships at {role['name']}, {y - 1}-present",
+                     f"Head of Sponsorships, {role['name']} (fest sponsorship)")
+        k = sum(1 for e in pool if e.get("planted"))
+        _planted(ex, k)
+        ex.update(rate_inr=1200, extra=True)
+        added.append(ex)
+    POOL.write_text(json.dumps(pool + added, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print("added:", [(e["expert_id"], e["name"], e["claims"][0], e["rate_inr"]) for e in added])
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "--events":
+        add_events(sys.argv[2] if len(sys.argv) > 2 else None)
+    else:
+        main()

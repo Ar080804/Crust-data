@@ -20,7 +20,7 @@
       }
     ],
     "telegram_chat_id": "7798888763",
-    "email": "TODO-aditya@example.com",
+    "email": "raunaka080804@gmail.com",
     "claims": [
       "TODO: role at company, years"
     ],
@@ -29,7 +29,7 @@
   {
     "expert_id": "e2",
     "name": "Sunil Jakhar",
-    "headline": "Organizer, Udghosh IIT Kanpur",
+    "headline": "Organizer, Udghosh – IIT Kanpur sports fest (event management)",
     "linkedin_url": "https://www.linkedin.com/in/sunil-jakhar-3b1430326/",
     "rate_inr": 1500,
     "availability": [
@@ -406,9 +406,9 @@
   },
   {
     "expert_id": "e16",
-    "name": "Planted Test A",
+    "name": "Test Profile A",
     "headline": "Warehouse Head, GlobalFair",
-    "linkedin_url": "https://www.linkedin.com/in/poonammeel-044126253",
+    "linkedin_url": "",
     "rate_inr": 3000,
     "availability": [
       {
@@ -434,9 +434,9 @@
   },
   {
     "expert_id": "e17",
-    "name": "Planted Test B",
+    "name": "Test Profile B",
     "headline": "Warehouse Head, Insurance Samadhan",
-    "linkedin_url": "https://www.linkedin.com/in/ansh-gambhir-864ba5239",
+    "linkedin_url": "",
     "rate_inr": 1000,
     "availability": [
       {
@@ -462,9 +462,9 @@
   },
   {
     "expert_id": "e18",
-    "name": "Planted Test C",
+    "name": "Test Profile C",
     "headline": "Product Operations Manager, Google (6+ yrs)",
-    "linkedin_url": "https://www.linkedin.com/in/prakhar-tosniwal",
+    "linkedin_url": "",
     "rate_inr": 1400,
     "availability": [
       {
@@ -487,5 +487,62 @@
     ],
     "simulated": true,
     "planted": true
+  },
+  {
+    "expert_id": "e19",
+    "name": "Sai Sandeep Guduru",
+    "headline": "Vertical Head- Sponsorship, Utkrisht - Annual Sports Fest of IIM Udaipur (fest sponsorship)",
+    "linkedin_url": "https://www.linkedin.com/in/sai-sandeep-guduru-612aba203",
+    "rate_inr": 2500,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e19",
+    "email": "",
+    "claims": [
+      "Vertical Head- Sponsorship at Utkrisht - Annual Sports Fest of IIM Udaipur, 2026-present"
+    ],
+    "simulated": true,
+    "extra": true
+  },
+  {
+    "expert_id": "e20",
+    "name": "Test Profile D",
+    "headline": "Head of Sponsorships, GeeksforGeeks Campus Body - Chandigarh University (fest sponsorship)",
+    "linkedin_url": "",
+    "rate_inr": 1200,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e20",
+    "email": "",
+    "claims": [
+      "Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present"
+    ],
+    "simulated": true,
+    "planted": true,
+    "extra": true
   }
 ]

@@ -50,7 +50,8 @@ def fetch(expert: dict, max_retries: int = 3) -> tuple[list | None, str]:
     path = _cache_path(expert)
     if path.exists():
         raw = json.loads(path.read_text(encoding="utf-8"))
-        if raw and _norm_url(raw[0].get("matched_on", "")) == _norm_url(url):
+        # Planted test profiles have no public URL in the pool, so their cache is matched by expert_id alone.
+        if raw and (not url or _norm_url(raw[0].get("matched_on", "")) == _norm_url(url)):
             fetched = datetime.fromtimestamp(path.stat().st_mtime, IST).isoformat(timespec="seconds")
             return raw, fetched
     if not url or "TODO" in url:
