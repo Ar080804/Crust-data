@@ -8,6 +8,7 @@ import escalated from '../../contract/fixtures/request_escalated.json'
 import clarify from '../../contract/fixtures/request_clarify.json'
 import expertsFx from '../../contract/fixtures/experts.json'
 import evalFx from '../../contract/fixtures/eval.json'
+import { listSaved, removeSaved, saveRequest, type Saved } from './history.ts'
 
 export const MOCK = import.meta.env.VITE_MOCK === 'true'
 const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
@@ -31,7 +32,50 @@ const fx = <T,>(x: unknown) => structuredClone(x) as T
 const mockState = new Map<string, { flow: 'demo' | 'clarify' | 'escalated'; since: number; resolved: boolean }>()
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
+// Mock-only sample dashboard data, derived from the fixtures with dates shifted.
+// Never used when VITE_MOCK=false.
+const DAY = 86400000
+function shifted(base: Request, id: string, days: number, text: string, dur: number, max: number): Request {
+  const r = fx<Request>(base)
+  const sh = (iso: string) => new Date(+new Date(iso) - days * DAY).toISOString()
+  r.id = id; r.raw_text = text
+  r.timeline = r.timeline.map((e) => ({ ...e, t: sh(e.t) }))
+  r.shortlist = r.shortlist.map((s) => ({ ...s, claims: s.claims.map((c) => ({ ...c, fetched_at: sh(c.fetched_at) })) }))
+  if (r.constraints) Object.assign(r.constraints, { duration_min: dur, max_inr: max, window_start: sh(r.constraints.window_start), window_end: sh(r.constraints.window_end) })
+  if (r.booking) {
+    const start = sh(r.booking.start)
+    Object.assign(r.booking, { start, end: new Date(+new Date(start) + dur * 60000).toISOString() })
+  }
+  return r
+}
+const SAMPLES = new Map<string, Request>()
+const SAMPLE_SAVED: Saved[] = []
+function addSample(r: Request, createdDaysAgo: number) {
+  SAMPLES.set(r.id, r)
+  SAMPLE_SAVED.push({ id: r.id, text: r.raw_text, created_at: new Date(Date.now() - createdDaysAgo * DAY).toISOString() })
+}
+if (MOCK) {
+  const b = booked as unknown as Request
+  addSample(fx<Request>({ ...b, id: 'r_sample_tonight' }), 0.1)
+  addSample(shifted(b, 'r_sample_qc', 1, 'Need a 30 min call yesterday evening with a quick commerce dark-store ops lead, budget 2500', 30, 2500), 1.2)
+  addSample(shifted(b, 'r_sample_lm', 2, 'Need a 15 min call with someone who has run last-mile delivery in Tier-2 cities, budget 1500', 15, 1500), 2.3)
+  const failed = shifted(escalated as unknown as Request, 'r_sample_fail', 4, 'Need a 20 min call today 9-10 PM with a cold chain expert, budget 800', 20, 800)
+  failed.status = 'FAILED'; failed.escalation = null
+  failed.timeline.push({ t: failed.timeline[failed.timeline.length - 1].t, step: 'FAILED', msg: 'No verified expert available under ₹800 in the window', source: 'code' })
+  addSample(failed, 4.1)
+  addSample(shifted(b, 'r_sample_d2c', 6, 'Need a 45 min working session on D2C fulfilment setup, budget 3000', 45, 3000), 6.2)
+  mockState.set('r_sample_live', { flow: 'demo', since: Date.now() + 60 * 60000, resolved: false }) // stays NEGOTIATING
+  SAMPLE_SAVED.push({ id: 'r_sample_live', text: (negotiating as unknown as Request).raw_text, created_at: new Date(Date.now() - 4 * 60000).toISOString() })
+  mockState.set('r_sample_esc', { flow: 'escalated', since: Date.now(), resolved: false })
+  SAMPLE_SAVED.push({ id: 'r_sample_esc', text: 'Need a 20 min call tonight 7-8 with a warehouse automation expert, budget 2000', created_at: new Date(Date.now() - 25 * 60000).toISOString() })
+  mockState.set('r_sample_clar', { flow: 'clarify', since: Date.now(), resolved: false })
+  SAMPLE_SAVED.push({ id: 'r_sample_clar', text: 'Need to talk to a warehouse expert', created_at: new Date(Date.now() - 9 * 60000).toISOString() })
+}
+const hiddenSamples = new Set<string>()
+
 function mockGet(id: string): Request {
+  const sample = SAMPLES.get(id)
+  if (sample) return fx<Request>(sample)
   const s = mockState.get(id) ?? { flow: 'demo' as const, since: Date.now(), resolved: false }
   mockState.set(id, s)
   const elapsed = Date.now() - s.since
@@ -41,19 +85,41 @@ function mockGet(id: string): Request {
   else if (s.flow === 'escalated') r = fx<Request>(booked)
   else r = fx<Request>(elapsed < 5000 ? negotiating : booked)
   r.id = id
+  const saved = SAMPLE_SAVED.find((x) => x.id === id)
+  if (saved && r.status !== 'NEEDS_CLARIFICATION') r.raw_text = saved.text
   return r
 }
 
 // ---------------- public API ----------------
 export async function createRequest(text: string): Promise<{ request_id: string; status: Status }> {
+  let res: { request_id: string; status: Status }
   if (MOCK) {
     await sleep(300)
     const flow = /escalat/i.test(text) ? 'escalated' : /\d/.test(text) ? 'demo' : 'clarify'
     const id = `r_mock_${Date.now().toString(36)}`
     mockState.set(id, { flow, since: Date.now(), resolved: false })
-    return { request_id: id, status: 'INTAKE' }
+    res = { request_id: id, status: 'INTAKE' }
+  } else {
+    res = await http('/requests', { method: 'POST', body: JSON.stringify({ text }) })
   }
-  return http('/requests', { method: 'POST', body: JSON.stringify({ text }) })
+  saveRequest({ id: res.request_id, text, created_at: new Date().toISOString() })
+  return res
+}
+
+// "My requests" dashboard. No list endpoint in the contract yet, so we keep the IDs this
+// browser created and fetch each with GET /requests/{id}. (Backend ask: GET /requests.)
+export interface MyRequest { saved: Saved; req: Request | null; error?: string }
+export async function listMyRequests(): Promise<MyRequest[]> {
+  const mine = listSaved()
+  const all = MOCK ? [...mine, ...SAMPLE_SAVED.filter((s) => !hiddenSamples.has(s.id))] : mine
+  return Promise.all(all.map(async (saved) => {
+    try { return { saved, req: await getRequest(saved.id) } }
+    catch (e) { return { saved, req: null, error: (e as Error).message } }
+  }))
+}
+export function removeMyRequest(id: string) {
+  removeSaved(id)
+  hiddenSamples.add(id)
 }
 
 export async function getRequest(id: string): Promise<Request> {
