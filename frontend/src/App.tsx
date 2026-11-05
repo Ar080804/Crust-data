@@ -4,7 +4,8 @@ import { MOCK } from './api.ts'
 import { Avatar, Icon, Logo } from './ui.tsx'
 import { Aurora, ClickSpark, useSpotlight } from './effects.tsx'
 import { CursorFX } from './cursor.tsx'
-import { signOut, useUser } from './auth.ts'
+import { getToken, setToken, signIn, signOut, useUser } from './auth.ts'
+import { getMe, logout } from './api.ts'
 import AuthPage from './pages/AuthPage.tsx'
 import Landing from './pages/Landing.tsx'
 import RequestPage from './pages/RequestPage.tsx'
@@ -31,12 +32,28 @@ function RequireAuth({ children }: { children: React.ReactElement }) {
   return children
 }
 
+// After real Google sign-in the backend redirects to "<page>#session=<token>" (contract: Auth section).
+const sessionInHash = () => new URLSearchParams(window.location.hash.slice(1)).get('session')
+
 export default function App() {
   const [theme, setTheme] = useState<Theme>(initialTheme)
   const user = useUser()
   const loc = useLocation()
   const nav = useNavigate()
   const authScreen = loc.pathname === '/login'
+  const [booting, setBooting] = useState(() => !!sessionInHash())
+  const [authErr, setAuthErr] = useState<string | null>(null)
+
+  useEffect(() => {
+    const token = sessionInHash()
+    if (!token) return
+    history.replaceState(null, '', window.location.pathname + window.location.search) // clear the hash
+    setToken(token)
+    getMe(token)
+      .then((me) => signIn({ name: me.name || me.email, email: me.email, provider: 'google', picture: me.picture }))
+      .catch((e) => { setToken(null); setAuthErr(`Google sign-in failed: ${(e as Error).message}`) })
+      .finally(() => setBooting(false))
+  }, [])
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     try { localStorage.setItem('theme', theme) } catch { /* ignore */ }
@@ -70,7 +87,7 @@ export default function App() {
                 <div className="user-chip">
                   <Avatar name={user.name} size={28} />
                   <span className="user-name">{user.name}</span>
-                  <button className="link-btn" onClick={() => { signOut(); nav('/login') }}>Sign out</button>
+                  <button className="link-btn" onClick={() => { const t = getToken(); if (t) logout(t); signOut(); nav('/login') }}>Sign out</button>
                 </div>
               ) : (
                 <NavLink to="/login" className="btn btn-primary btn-sm">Log in</NavLink>
@@ -81,6 +98,8 @@ export default function App() {
       )}
 
       <main className={authScreen ? '' : 'container'}>
+        {authErr && <div className="banner bad">{authErr}</div>}
+        {booting ? <div className="loading"><span className="spinner" /> Signing you in…</div> : (
         <Routes>
           <Route path="/login" element={<AuthPage />} />
           <Route path="/" element={<RequireAuth><Landing /></RequireAuth>} />
@@ -91,6 +110,7 @@ export default function App() {
           <Route path="/eval" element={<EvalPage />} />
           <Route path="*" element={<p className="muted">Page not found.</p>} />
         </Routes>
+        )}
       </main>
 
       {!authScreen && (

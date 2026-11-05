@@ -27,3 +27,24 @@ export function saveRequest(s: Saved) {
 export function removeSaved(id: string) {
   write(listSaved().filter((x) => x.id !== id))
 }
+
+/* ---- chat messages with experts, per request ---- */
+export interface ChatMsg { id: string; expert_id: string; from: 'me' | 'expert'; text: string; t: string }
+const chatKey = (rid: string) => `sutradhar_chat:${getUser()?.email || 'guest'}:${rid}`
+const chatMem: Record<string, ChatMsg[]> = {}
+
+export function listChat(rid: string): ChatMsg[] {
+  try {
+    const s = localStorage.getItem(chatKey(rid))
+    return s ? (JSON.parse(s) as ChatMsg[]) : (chatMem[chatKey(rid)] ?? [])
+  } catch { return chatMem[chatKey(rid)] ?? [] }
+}
+
+export function addChat(rid: string, m: Omit<ChatMsg, 'id' | 't'>): ChatMsg {
+  const msg: ChatMsg = { ...m, id: Math.random().toString(36).slice(2), t: new Date().toISOString() }
+  const list = [...listChat(rid), msg]
+  chatMem[chatKey(rid)] = list
+  try { localStorage.setItem(chatKey(rid), JSON.stringify(list)) } catch { /* ignore */ }
+  window.dispatchEvent(new CustomEvent('sutradhar-chat', { detail: rid }))
+  return msg
+}

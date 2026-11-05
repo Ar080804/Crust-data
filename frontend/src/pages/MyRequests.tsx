@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import type { Request, Status } from '../../../contract/types.ts'
-import { listMyRequests, removeMyRequest, MOCK, type MyRequest } from '../api.ts'
+import { listMyRequests, removeMyRequest, listChat, MOCK, type MyRequest } from '../api.ts'
 import { useUser } from '../auth.ts'
 import { ago, day, inr, time, until } from '../format.ts'
 import { Avatar, Icon, Segmented, STATUS_ICON, STATUS_LABEL } from '../ui.tsx'
@@ -156,7 +156,7 @@ export default function MyRequests() {
                   <div key={m.saved.id} className="stack-card spot" style={{ ['--i' as string]: i }}>
                     <div className="row between wrap">
                       <span className="tag tag-live"><span className="live-dot" /> {STATUS_LABEL[r.status]}</span>
-                      <span className="mono muted small">{m.saved.id} · {ago(m.saved.created_at, now)}</span>
+                      <span className="mono muted small">{m.saved.id} · {ago(m.saved.created_at, now)}<ChatCount rid={m.saved.id} /></span>
                     </div>
                     <p className="stack-q">“{m.saved.text}”</p>
                     <div className="mini-steps">
@@ -229,7 +229,7 @@ export default function MyRequests() {
                   <div key={m.saved.id} className="hist-row spot">
                     <div className="hist-prompt">
                       <span className="clamp2">“{m.saved.text}”</span>
-                      <span className="muted small">{b ? `${day(b.start)}, ${time(b.start)}` : day(m.saved.created_at)} · <span className="mono">{m.saved.id}</span></span>
+                      <span className="muted small">{b ? `${day(b.start)}, ${time(b.start)}` : day(m.saved.created_at)} · <span className="mono">{m.saved.id}</span><ChatCount rid={m.saved.id} /></span>
                     </div>
                     <span className="hist-who">{who ? <><Avatar name={who} size={26} /> {who}</> : <span className="muted">—</span>}</span>
                     <span className="mono">{b ? inr(b.price_inr) : '—'}</span>
@@ -249,6 +249,11 @@ export default function MyRequests() {
       {MOCK && <p className="muted small center dash-note">Mock mode: some entries are samples built from contract fixtures.</p>}
     </div>
   )
+}
+
+function ChatCount({ rid }: { rid: string }) {
+  const n = listChat(rid).length
+  return n ? <span className="chat-count"> · <Icon name="message" size={12} /> {n} {n === 1 ? 'message' : 'messages'}</span> : null
 }
 
 function Stat({ icon, n, label, tone = '' }: { icon: 'alert' | 'message' | 'calendar' | 'check' | 'chart'; n: number | string; label: string; tone?: string }) {

@@ -2,8 +2,16 @@
 // so the "account" lives only in this browser. Swap these functions for real API calls later.
 import { useEffect, useState } from 'react'
 
-export interface User { name: string; email: string; provider: 'email' | 'google' | 'guest' }
+export interface User { name: string; email: string; provider: 'email' | 'google' | 'linkedin' | 'guest'; picture?: string }
 const KEY = 'sutradhar_user'
+const TOKEN_KEY = 'sutradhar_session' // real Google session token from the backend (contract: Auth section)
+
+export function getToken(): string | null {
+  try { return localStorage.getItem(TOKEN_KEY) } catch { return null }
+}
+export function setToken(t: string | null) {
+  try { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY) } catch { /* ignore */ }
+}
 let memory: User | null = null // fallback when localStorage is blocked
 
 export function getUser(): User | null {
@@ -21,6 +29,7 @@ export function signIn(u: User) {
 
 export function signOut() {
   memory = null
+  setToken(null)
   try { localStorage.removeItem(KEY) } catch { /* ignore */ }
   window.dispatchEvent(new Event('sutradhar-auth'))
 }

@@ -1,6 +1,6 @@
 // The ONLY file that knows whether data is mock or real.
 // Components just call these functions.
-import type { Request, Status, Expert, Eval } from '../../contract/types.ts'
+import type { Request, Status, Expert, Eval, AuthUser } from '../../contract/types.ts'
 
 import booked from '../../contract/fixtures/request_booked.json'
 import negotiating from '../../contract/fixtures/request_negotiating.json'
@@ -8,7 +8,7 @@ import escalated from '../../contract/fixtures/request_escalated.json'
 import clarify from '../../contract/fixtures/request_clarify.json'
 import expertsFx from '../../contract/fixtures/experts.json'
 import evalFx from '../../contract/fixtures/eval.json'
-import { listSaved, removeSaved, saveRequest, type Saved } from './history.ts'
+import { addChat, listChat, listSaved, removeSaved, saveRequest, type ChatMsg, type Saved } from './history.ts'
 
 export const MOCK = import.meta.env.VITE_MOCK === 'true'
 const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
@@ -29,7 +29,16 @@ async function http<T>(path: string, init?: RequestInit): Promise<T> {
 //   has no number in it     -> NEEDS_CLARIFICATION, answer -> NEGOTIATING -> BOOKED
 //   anything else           -> NEGOTIATING for 5s, then BOOKED
 const fx = <T,>(x: unknown) => structuredClone(x) as T
-const mockState = new Map<string, { flow: 'demo' | 'clarify' | 'escalated'; since: number; resolved: boolean }>()
+//   time window outside 5–10 PM -> ESCALATED with no options ("no expert free"), like the real backend
+type Flow = 'demo' | 'clarify' | 'escalated' | 'unavailable'
+const mockState = new Map<string, { flow: Flow; since: number; resolved: boolean }>()
+const MOCK_FREE = [17, 22] // pool_example availability is 18–21; be a little generous
+function mockWindow(text: string): [number, number] | null {
+  const m = text.match(/between (\d{1,2}):(\d{2}) ?(AM|PM) and (\d{1,2}):(\d{2}) ?(AM|PM)/i)
+  if (!m) return null
+  const h = (hh: string, mm: string, ap: string) => ((+hh % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) + +mm / 60
+  return [h(m[1], m[2], m[3]), h(m[4], m[5], m[6])]
+}
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 // Mock-only sample dashboard data, derived from the fixtures with dates shifted.
@@ -80,7 +89,12 @@ function mockGet(id: string): Request {
   mockState.set(id, s)
   const elapsed = Date.now() - s.since
   let r: Request
-  if (s.flow === 'clarify' && !s.resolved) r = fx<Request>(clarify)
+  if (s.flow === 'unavailable') {
+    r = fx<Request>(escalated)
+    r.escalation = { reason: 'No verified expert is free in the time window you picked.', options: [] }
+    r.shortlist = r.shortlist.map((x) => ({ ...x, outreach_state: 'skipped' as const }))
+    r.timeline = [...r.timeline.slice(0, 4), { t: r.timeline[3].t, step: 'ESCALATED', msg: 'No expert in the pool is available in that window', source: 'code' }]
+  } else if (s.flow === 'clarify' && !s.resolved) r = fx<Request>(clarify)
   else if (s.flow === 'escalated' && !s.resolved) r = fx<Request>(escalated)
   else if (s.flow === 'escalated') r = fx<Request>(booked)
   else r = fx<Request>(elapsed < 5000 ? negotiating : booked)
@@ -95,7 +109,10 @@ export async function createRequest(text: string): Promise<{ request_id: string;
   let res: { request_id: string; status: Status }
   if (MOCK) {
     await sleep(300)
-    const flow = /escalat/i.test(text) ? 'escalated' : /\d/.test(text) ? 'demo' : 'clarify'
+    const w = mockWindow(text)
+    const flow: Flow = /escalat/i.test(text) ? 'escalated'
+      : w && (w[1] <= MOCK_FREE[0] || w[0] >= MOCK_FREE[1]) ? 'unavailable'
+      : /\d/.test(text) ? 'demo' : 'clarify'
     const id = `r_mock_${Date.now().toString(36)}`
     mockState.set(id, { flow, since: Date.now(), resolved: false })
     res = { request_id: id, status: 'INTAKE' }
@@ -154,3 +171,37 @@ export async function getEval(): Promise<Eval> {
   if (MOCK) return fx(evalFx)
   return http('/eval/latest')
 }
+
+// ---------------- auth (contract: "Auth: Sign in with Google") ----------------
+export const REAL_GOOGLE = !MOCK
+export function googleLoginUrl(redirect: string) {
+  return `${BASE}/auth/google/login?redirect=${encodeURIComponent(redirect)}`
+}
+export async function getMe(token: string): Promise<AuthUser> {
+  return http('/auth/me', { headers: { Authorization: `Bearer ${token}` } })
+}
+export async function logout(token: string) {
+  if (MOCK) return
+  await http('/auth/logout', { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => {})
+}
+
+// ---------------- chat with experts ----------------
+// NOT in the contract yet. Mock mode simulates replies; in real mode sending is disabled
+// until Aditya adds an endpoint (suggested: POST /requests/{id}/messages {expert_id, text}).
+export const CHAT_ENABLED = MOCK
+const MOCK_REPLIES = [
+  'Hi! Yes, I can do that. Does 7:15 PM work for you?',
+  'Sure. My usual rate is ₹1,800 for 20 minutes.',
+  'Happy to help. Could you share 2–3 questions beforehand?',
+  'Works for me. I will join from Google Meet.',
+]
+export async function sendChat(rid: string, expertId: string, text: string): Promise<ChatMsg> {
+  if (!CHAT_ENABLED) throw new Error('Direct chat needs a backend endpoint (not in the contract yet).')
+  const mine = addChat(rid, { expert_id: expertId, from: 'me', text })
+  setTimeout(() => {
+    addChat(rid, { expert_id: expertId, from: 'expert', text: MOCK_REPLIES[Math.floor(Math.random() * MOCK_REPLIES.length)] })
+  }, 2500 + Math.random() * 1500)
+  return mine
+}
+export { listChat }
+export type { ChatMsg }

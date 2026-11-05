@@ -9,13 +9,21 @@ import { inr } from '../format.ts'
 
 const TOPICS = ['warehouse management', 'quick commerce ops', 'last-mile delivery', 'supply chain planning', 'cold chain logistics', 'D2C fulfilment']
 const DURATIONS = [{ v: 15, d: 'Quick sanity check' }, { v: 20, d: 'Focused Q&A' }, { v: 30, d: 'Deeper dive' }, { v: 45, d: 'Working session' }]
-const DAYS = ['today', 'tomorrow', 'day after']
-const WINDOWS: { v: string; label: string; icon: IconName }[] = [
-  { v: '10-12 AM', label: 'Morning · 10–12', icon: 'sun' },
-  { v: '2-4 PM', label: 'Afternoon · 2–4', icon: 'sun' },
-  { v: '6-8 PM', label: 'Evening · 6–8', icon: 'moon' },
-  { v: '8-10 PM', label: 'Late · 8–10', icon: 'moon' },
+// Custom date + time slot. Times are minutes from midnight, IST.
+const PRESETS: { from: number; to: number; label: string; icon: IconName }[] = [
+  { from: 600, to: 720, label: 'Morning · 10–12', icon: 'sun' },
+  { from: 840, to: 960, label: 'Afternoon · 2–4', icon: 'sun' },
+  { from: 1080, to: 1200, label: 'Evening · 6–8', icon: 'moon' },
+  { from: 1200, to: 1320, label: 'Late · 8–10', icon: 'moon' },
 ]
+const TIMES = Array.from({ length: 33 }, (_, i) => 420 + i * 30) // 7:00 AM … 11:00 PM
+const fmtTime = (m: number) => {
+  const h = Math.floor(m / 60), mm = m % 60
+  return `${((h + 11) % 12) + 1}:${String(mm).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`
+}
+const isoDay = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+const addDays = (n: number) => { const d = new Date(); d.setDate(d.getDate() + n); return isoDay(d) }
+const fmtDate = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' })
 const BUDGETS = [1000, 1500, 2000, 3000]
 
 const STEPS: { key: string; title: string; sub: string }[] = [
@@ -36,8 +44,9 @@ export default function RequestPage() {
   const [dir, setDir] = useState<1 | -1>(1)
   const [topic, setTopic] = useState('')
   const [duration, setDuration] = useState(20)
-  const [day, setDay] = useState('tomorrow')
-  const [win, setWin] = useState('6-8 PM')
+  const [date, setDate] = useState(addDays(1))
+  const [from, setFrom] = useState(1080)
+  const [to, setTo] = useState(1200)
   const [budget, setBudget] = useState(2000)
   const [notes, setNotes] = useState('')
   const [text, setText] = useState(prefill ?? '')
@@ -45,12 +54,18 @@ export default function RequestPage() {
   const [err, setErr] = useState<string | null>(null)
 
   const composed = useMemo(() => {
-    let s = `Need a ${duration} min call ${day} ${win} with someone experienced in ${topic.trim() || 'warehouse management'}, budget ${budget}`
+    let s = `Need a ${duration} min call on ${fmtDate(date)} between ${fmtTime(from)} and ${fmtTime(to)} IST with someone experienced in ${topic.trim() || 'warehouse management'}, budget ${budget}`
     if (notes.trim()) s += `. ${notes.trim()}`
     return s
-  }, [duration, day, win, topic, budget, notes])
+  }, [duration, date, from, to, topic, budget, notes])
 
-  const canNext = step !== 0 || topic.trim().length > 1
+  // Slot validation: window must fit the call, and must not be in the past.
+  const nowMin = new Date().getHours() * 60 + new Date().getMinutes()
+  const slotErr = to - from < duration ? `Window is shorter than your ${duration} min call.`
+    : date < addDays(0) ? 'That date is in the past.'
+    : date === addDays(0) && from <= nowMin ? 'That time has already passed today.'
+    : null
+  const canNext = step === 0 ? topic.trim().length > 1 : STEPS[step].key === 'when' ? !slotErr : true
   const go = (n: number) => {
     const to = Math.max(0, Math.min(STEPS.length - 1, n))
     if (to === STEPS.length - 1) setText(composed) // build the sentence when arriving at review
@@ -111,22 +126,48 @@ export default function RequestPage() {
 
           {s.key === 'when' && (
             <>
-              <p className="wiz-label">Day</p>
-              <div className="tiles three">
-                {DAYS.map((d) => (
-                  <button type="button" key={d} className={`tile ${day === d ? 'on' : ''}`} onClick={() => setDay(d)}>
-                    <Icon name="calendar" size={18} /><span className="tile-mid">{d[0].toUpperCase() + d.slice(1)}</span>
-                  </button>
-                ))}
+              <p className="wiz-label">Date</p>
+              <div className="date-row">
+                {[0, 1, 2].map((n) => {
+                  const d = addDays(n)
+                  return (
+                    <button type="button" key={n} className={`chip ${date === d ? 'on' : ''}`} onClick={() => setDate(d)}>
+                      {n === 0 ? 'Today' : n === 1 ? 'Tomorrow' : fmtDate(d).split(',')[0] + ', ' + fmtDate(d).split(' ')[1] + ' ' + fmtDate(d).split(' ')[2].slice(0, 3)}
+                    </button>
+                  )
+                })}
+                <label className="date-pick">
+                  <Icon name="calendar" size={15} />
+                  <input type="date" value={date} min={addDays(0)} max={addDays(30)} onChange={(e) => e.target.value && setDate(e.target.value)} />
+                </label>
               </div>
-              <p className="wiz-label">Time window (IST)</p>
+
+              <p className="wiz-label">Time slot (IST)</p>
               <div className="tiles four">
-                {WINDOWS.map((w) => (
-                  <button type="button" key={w.v} className={`tile ${win === w.v ? 'on' : ''}`} onClick={() => setWin(w.v)}>
-                    <Icon name={w.icon} size={18} /><span className="tile-mid">{w.label}</span>
+                {PRESETS.map((p) => (
+                  <button type="button" key={p.label} className={`tile ${from === p.from && to === p.to ? 'on' : ''}`} onClick={() => { setFrom(p.from); setTo(p.to) }}>
+                    <Icon name={p.icon} size={18} /><span className="tile-mid">{p.label}</span>
                   </button>
                 ))}
               </div>
+              <div className="slot-custom">
+                <span className="muted small">or custom:</span>
+                <label className="slot-sel"><span>From</span>
+                  <select value={from} onChange={(e) => { const v = +e.target.value; setFrom(v); if (to - v < duration) setTo(Math.min(1380, v + Math.max(60, duration))) }}>
+                    {TIMES.slice(0, -1).map((m) => <option key={m} value={m}>{fmtTime(m)}</option>)}
+                  </select>
+                </label>
+                <label className="slot-sel"><span>To</span>
+                  <select value={to} onChange={(e) => setTo(+e.target.value)}>
+                    {TIMES.filter((m) => m > from).map((m) => <option key={m} value={m}>{fmtTime(m)}</option>)}
+                  </select>
+                </label>
+              </div>
+              <div className={`slot-summary ${slotErr ? 'bad' : ''}`}>
+                <Icon name={slotErr ? 'alert' : 'calendar'} size={15} />
+                {slotErr ?? <span><b>{fmtDate(date)}</b>, {fmtTime(from)} – {fmtTime(to)} · we'll find a {duration} min slot inside this window</span>}
+              </div>
+              <p className="muted small">If no verified expert is free in this window, we'll tell you right away so you can pick another slot.</p>
             </>
           )}
 
@@ -152,7 +193,7 @@ export default function RequestPage() {
               <div className="review-chips">
                 <span className="fact"><Icon name="users" size={14} />{topic || 'warehouse management'}</span>
                 <span className="fact"><Icon name="clock" size={14} />{duration} min</span>
-                <span className="fact"><Icon name="calendar" size={14} />{day}, {win}</span>
+                <span className="fact"><Icon name="calendar" size={14} />{fmtDate(date)}, {fmtTime(from)} – {fmtTime(to)}</span>
                 <span className="fact"><Icon name="chart" size={14} />up to {inr(budget)}</span>
               </div>
               <textarea className="wiz-input review-text" rows={3} value={text} onChange={(e) => setText(e.target.value)} />

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import type { Request, Status, ShortlistItem, Claim } from '../../../contract/types.ts'
-import { getRequest, sendClarification, approveOption } from '../api.ts'
+import { getRequest, sendClarification, approveOption, sendChat, listChat, CHAT_ENABLED } from '../api.ts'
 import { inr, time, clock, day } from '../format.ts'
 import { Avatar, Confetti, Icon, Segmented, STATUS_ICON, STATUS_LABEL, SOURCE_ICON } from '../ui.tsx'
 import Ticket from '../Ticket.tsx'
@@ -66,11 +66,11 @@ export default function RequestDetail() {
 
       {req.status === 'NEEDS_CLARIFICATION' && <ClarifyBox req={req} onDone={restart} />}
       {req.status === 'ESCALATED' && req.escalation && <EscalationBox req={req} onDone={restart} />}
-      {req.status === 'FAILED' && (
-        <div className="action-card bad"><Icon name="x" size={18} /><div><b>The agent could not complete this request.</b><p className="muted small">Check the agent log for the reason.</p></div></div>
-      )}
+      {req.status === 'FAILED' && <NoProvider req={req} />}
 
       <Thread req={req} />
+
+      <ChatPanel req={req} />
 
       <div className="cols">
         <Verification items={req.shortlist} req={req} />
@@ -309,6 +309,126 @@ function AgentLog({ req }: { req: Request }) {
   )
 }
 
+/* ---------- no provider available ---------- */
+function NoProvider({ req }: { req: Request }) {
+  const reason = req.escalation?.reason
+    ?? [...req.timeline].reverse().find((e) => e.step === 'FAILED' || e.step === 'ESCALATED')?.msg
+    ?? 'No verified expert could take this request.'
+  return (
+    <section className="noprov">
+      <span className="noprov-icon"><Icon name="users" size={22} /></span>
+      <div className="grow">
+        <p className="kicker">No service provider available</p>
+        <p className="action-q">{reason}</p>
+        <p className="muted small">
+          {req.constraints ? <>You asked for {day(req.constraints.window_start)}, {time(req.constraints.window_start)} – {time(req.constraints.window_end)}, up to {inr(req.constraints.max_inr)}. </> : null}
+          Try a different time slot or a slightly higher budget.
+        </p>
+        <div className="row wrap action-row">
+          <Link to="/new" className="btn btn-primary" data-cursor="Retry"><Icon name="calendar" /> Pick another slot</Link>
+          <Link to="/experts" className="btn btn-ghost">Browse experts</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ---------- chat with experts ---------- */
+type Bubble = { key: string; from: 'agent' | 'expert' | 'me'; text: string; t: string; note?: string }
+
+function ChatPanel({ req }: { req: Request }) {
+  const people = req.shortlist.filter((x) => x.flag !== 'contradicted')
+  const preferred = req.booking?.expert_id
+    ?? people.find((x) => x.outreach_state === 'replied' || x.outreach_state === 'contacted')?.expert_id
+    ?? people[0]?.expert_id
+  const [sel, setSel] = useState<string | undefined>(preferred)
+  const [, force] = useState(0)
+  const [text, setText] = useState('')
+  const [err, setErr] = useState<string | null>(null)
+  const box = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const f = (e: Event) => { if ((e as CustomEvent).detail === req.id) force((n) => n + 1) }
+    window.addEventListener('sutradhar-chat', f)
+    return () => window.removeEventListener('sutradhar-chat', f)
+  }, [req.id])
+  useEffect(() => { if (!sel && preferred) setSel(preferred) }, [sel, preferred])
+
+  const expert = people.find((x) => x.expert_id === sel)
+  const bubbles: Bubble[] = []
+  if (expert) {
+    const first = expert.name.split(' ')[0]
+    req.timeline.forEach((e, i) => {
+      if (e.source === 'telegram' && e.msg.includes(expert.name)) bubbles.push({ key: `t${i}`, from: 'agent', text: e.msg, t: e.t, note: 'Sent by agent via Telegram' })
+      const q = e.msg.match(/^Reply "([^"]+)"/)
+      if (q && (expert.outreach_state === 'replied' || expert.outreach_state === 'booked' || e.msg.includes(first))) {
+        bubbles.push({ key: `r${i}`, from: 'expert', text: q[1], t: e.t, note: e.msg.replace(/^Reply "[^"]+"\s*/, '') })
+      }
+    })
+    listChat(req.id).filter((m) => m.expert_id === expert.expert_id)
+      .forEach((m) => bubbles.push({ key: m.id, from: m.from === 'me' ? 'me' : 'expert', text: m.text, t: m.t }))
+    bubbles.sort((a, b) => +new Date(a.t) - +new Date(b.t))
+  }
+  const lastMine = [...bubbles].reverse().find((b) => b.from === 'me')
+  const waiting = !!lastMine && !bubbles.some((b) => b.from === 'expert' && +new Date(b.t) > +new Date(lastMine.t))
+  useEffect(() => { const el = box.current; if (el) el.scrollTop = el.scrollHeight }, [bubbles.length, waiting])
+
+  if (people.length === 0) return null
+
+  async function send(e: React.FormEvent) {
+    e.preventDefault()
+    if (!text.trim() || !expert) return
+    setErr(null)
+    try { await sendChat(req.id, expert.expert_id, text.trim()); setText('') }
+    catch (ex) { setErr((ex as Error).message) }
+  }
+
+  return (
+    <section className="panel chat spot">
+      <div className="panel-head">
+        <div>
+          <h2 className="h2">Conversation</h2>
+          <p className="muted small">Talk to experts directly. Messages are saved in your request history.</p>
+        </div>
+      </div>
+      <div className="chat-grid">
+        <div className="chat-people">
+          {people.map((x) => (
+            <button key={x.expert_id} type="button" className={`chat-person ${sel === x.expert_id ? 'on' : ''}`} onClick={() => setSel(x.expert_id)}>
+              <Avatar name={x.name} size={34} />
+              <span className="grow">
+                <span className="strong block">{x.name}</span>
+                <span className="muted small">{OUTREACH_TXT[x.outreach_state]}</span>
+              </span>
+              {listChat(req.id).some((m) => m.expert_id === x.expert_id) && <span className="dot-new" />}
+            </button>
+          ))}
+        </div>
+        <div className="chat-main">
+          <div className="chat-msgs" ref={box}>
+            {bubbles.length === 0 && <p className="muted small center chat-empty">No messages yet. Say hi to {expert?.name.split(' ')[0]}.</p>}
+            {bubbles.map((b) => (
+              <div key={b.key} className={`bubble b-${b.from}`}>
+                <div>{b.text}</div>
+                <div className="bubble-meta">{b.from === 'agent' ? 'Agent' : b.from === 'me' ? 'You' : expert?.name.split(' ')[0]} · {clock(b.t)}{b.note ? ` · ${b.note}` : ''}</div>
+              </div>
+            ))}
+            {waiting && <div className="bubble b-expert typing"><span /><span /><span /></div>}
+          </div>
+          <form className="chat-compose" onSubmit={send}>
+            <input value={text} onChange={(e) => setText(e.target.value)} disabled={!CHAT_ENABLED}
+              placeholder={CHAT_ENABLED ? `Message ${expert?.name.split(' ')[0] ?? ''}…` : 'Direct chat will turn on when the backend supports it'} />
+            <button className="btn btn-primary" disabled={!CHAT_ENABLED || !text.trim()} data-cursor="Send"><Icon name="send" size={15} /> Send</button>
+          </form>
+          {waiting && <p className="muted small chat-wait"><span className="spinner" /> Waiting for {expert?.name.split(' ')[0]} to reply…</p>}
+          {!CHAT_ENABLED && <p className="muted small chat-wait">Read-only for now: shows the agent's Telegram messages and the expert's replies.</p>}
+          {err && <p className="error"><Icon name="alert" /> {err}</p>}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ---------- actions ---------- */
 function ClarifyBox({ req, onDone }: { req: Request; onDone: () => void }) {
   const [answer, setAnswer] = useState('')
@@ -349,6 +469,7 @@ function EscalationBox({ req, onDone }: { req: Request; onDone: () => void }) {
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const nameOf = (eid: string) => req.shortlist.find((s) => s.expert_id === eid)?.name ?? eid
+  if (options.length === 0) return <NoProvider req={req} />
   async function approve() {
     setBusy(true); setErr(null)
     try { await approveOption(req.id, pick); onDone() }
