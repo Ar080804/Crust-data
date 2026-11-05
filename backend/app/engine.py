@@ -259,12 +259,19 @@ def escalate(rid, c, reason):
         d = row["data"]
         if ask and ask.get("slot") and ask.get("price") and d.get("flag") != "contradicted":
             e = d["expert"]
+            if _slot_taken(e["expert_id"], ask["slot"], c):
+                continue  # never offer a human a slot we already know is unavailable
             opts.append({"option_id": f"o_{e['expert_id']}", "expert_id": e["expert_id"], "slot": ask["slot"],
                          "price_inr": ask["price"],
                          "summary": f"{e['name']}, {rupees(ask['price'])} at {fmt_time(ask['slot'])}, approve?"})
     opts.sort(key=lambda o: (o["price_inr"] - c["max_inr"], o["slot"]))
     db.update_request(rid, status="ESCALATED", escalation={"reason": reason, "options": opts[:3]}, current_expert=None)
     db.log(rid, "ESCALATED", f"{reason}. {len(opts[:3])} closest option(s) sent to a human.", "code")
+
+
+def _slot_taken(expert_id: str, start: str, c) -> bool:
+    end = (datetime.fromisoformat(start) + timedelta(minutes=c["duration_min"])).isoformat()
+    return gcal.expert_conflict(expert_id, start, end, "") or gcal.calendar_busy(start, end)
 
 
 def _resolve_slot(hhmm: str | None, c) -> str | None:
@@ -353,6 +360,15 @@ def step_book(r):
     eid_cal = gcal.event_id(rid, eid, start)
     if gcal.expert_conflict(eid, start, end, eid_cal) or gcal.calendar_busy(start, end):
         db.log(rid, "BOOKING", f"Calendar conflict at {fmt_time(start)}; not double-booking", "gcal")
+        if not r["asked_once"] and e.get("telegram_chat_id"):
+            # Like a human coordinator: ask the same expert for another time once before moving on.
+            db.update_request(rid, status="NEGOTIATING", offer={"price": offer["price"]}, asked_once=1,
+                              contacted_at=time.time())
+            adapters.send_once(f"slot_taken:{rid}:{eid}", e["telegram_chat_id"],
+                               f"Sorry, {fmt_time(start)} is no longer free. Could you do another time in "
+                               f"{_window_desc(c)}? e.g. \"19:40 for {offer['price']}\"")
+            db.log(rid, "NEGOTIATING", f"Asked {e['name']} once for another time", "code")
+            return
         return _next_expert(rid, eid, "declined", f"Slot unavailable for {e['name']}; trying next expert")
     status = gcal.book(eid_cal, e, start, end,
                        summary=f"Sutradhar: {c['topic']} call with {e['name']}",
