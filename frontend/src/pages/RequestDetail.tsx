@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import type { Request, Status, ShortlistItem, Claim } from '../../../contract/types.ts'
-import { getRequest, sendClarification, approveOption, sendChat, listChat, CHAT_ENABLED } from '../api.ts'
+import { getRequest, sendClarification, approveOption, sendChat, listChat, canChat, CHAT_ENABLED } from '../api.ts'
+import { chatBubbles, type Bubble } from '../chat.ts'
+import { openReceipt } from '../receipt.ts'
 import { inr, time, clock, day } from '../format.ts'
 import { Avatar, Confetti, Icon, Segmented, STATUS_ICON, STATUS_LABEL, SOURCE_ICON } from '../ui.tsx'
 import Ticket from '../Ticket.tsx'
@@ -29,7 +31,9 @@ export default function RequestDetail() {
         const r = await getRequest(id)
         if (!alive) return
         setReq(r); setErr(null)
-        if (STOP_ON.includes(r.status)) return
+        if (r.status === 'FAILED') return
+        // After booking keep polling (slower) so chat replies from the expert show up.
+        if (r.status === 'BOOKED') { timer = setTimeout(loop, 3000); return }
       } catch (e) {
         if (alive) setErr((e as Error).message)
       }
@@ -130,7 +134,10 @@ function Booked({ req }: { req: Request }) {
         range={`${time(b.start)} – ${time(b.end)}${req.constraints ? ` · ${req.constraints.duration_min} min` : ''}`}
         price={rest.join(',').trim() || inr(b.price_inr)} name={who?.name ?? b.expert_id} headline={who?.headline}
         eventId={b.calendar_event_id} confirmation={b.confirmation} />
-      <p className="mono muted small center">Done in {fmtSecs(agentSeconds(req))} · {req.timeline.length} logged steps</p>
+      <div className="row booked-actions">
+        <button type="button" className="btn btn-ghost btn-sm" onClick={() => openReceipt(req)} data-cursor="Receipt"><Icon name="copy" size={13} /> Download receipt</button>
+        <span className="mono muted small">Done in {fmtSecs(agentSeconds(req))} · {req.timeline.length} logged steps</span>
+      </div>
     </div>
   )
 }
@@ -334,10 +341,12 @@ function NoProvider({ req }: { req: Request }) {
 }
 
 /* ---------- chat with experts ---------- */
-type Bubble = { key: string; from: 'agent' | 'expert' | 'me'; text: string; t: string; note?: string }
 
 function ChatPanel({ req }: { req: Request }) {
-  const people = req.shortlist.filter((x) => x.flag !== 'contradicted')
+  // Booked expert first, then people the agent actually talked to, then the rest.
+  const rank = (x: ShortlistItem) => x.expert_id === req.booking?.expert_id ? 0
+    : x.outreach_state === 'replied' ? 1 : x.outreach_state === 'contacted' ? 2 : x.outreach_state === 'timed_out' || x.outreach_state === 'declined' ? 3 : 4
+  const people = req.shortlist.filter((x) => x.flag !== 'contradicted').sort((a, b) => rank(a) - rank(b))
   const preferred = req.booking?.expert_id
     ?? people.find((x) => x.outreach_state === 'replied' || x.outreach_state === 'contacted')?.expert_id
     ?? people[0]?.expert_id
@@ -345,6 +354,7 @@ function ChatPanel({ req }: { req: Request }) {
   const [, force] = useState(0)
   const [text, setText] = useState('')
   const [err, setErr] = useState<string | null>(null)
+  const [sending, setSending] = useState(false)
   const box = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -355,20 +365,8 @@ function ChatPanel({ req }: { req: Request }) {
   useEffect(() => { if (!sel && preferred) setSel(preferred) }, [sel, preferred])
 
   const expert = people.find((x) => x.expert_id === sel)
-  const bubbles: Bubble[] = []
-  if (expert) {
-    const first = expert.name.split(' ')[0]
-    req.timeline.forEach((e, i) => {
-      if (e.source === 'telegram' && e.msg.includes(expert.name)) bubbles.push({ key: `t${i}`, from: 'agent', text: e.msg, t: e.t, note: 'Sent by agent via Telegram' })
-      const q = e.msg.match(/^Reply "([^"]+)"/)
-      if (q && (expert.outreach_state === 'replied' || expert.outreach_state === 'booked' || e.msg.includes(first))) {
-        bubbles.push({ key: `r${i}`, from: 'expert', text: q[1], t: e.t, note: e.msg.replace(/^Reply "[^"]+"\s*/, '') })
-      }
-    })
-    listChat(req.id).filter((m) => m.expert_id === expert.expert_id)
-      .forEach((m) => bubbles.push({ key: m.id, from: m.from === 'me' ? 'me' : 'expert', text: m.text, t: m.t }))
-    bubbles.sort((a, b) => +new Date(a.t) - +new Date(b.t))
-  }
+  const bubbles: Bubble[] = expert ? chatBubbles(req, expert, listChat(req.id)) : []
+  const allowed = canChat(req, expert?.expert_id)
   const lastMine = [...bubbles].reverse().find((b) => b.from === 'me')
   const waiting = !!lastMine && !bubbles.some((b) => b.from === 'expert' && +new Date(b.t) > +new Date(lastMine.t))
   useEffect(() => { const el = box.current; if (el) el.scrollTop = el.scrollHeight }, [bubbles.length, waiting])
@@ -377,11 +375,16 @@ function ChatPanel({ req }: { req: Request }) {
 
   async function send(e: React.FormEvent) {
     e.preventDefault()
-    if (!text.trim() || !expert) return
-    setErr(null)
+    if (!text.trim() || !expert || !allowed || sending) return
+    if (text.trim().length > 1000) return setErr('Message is too long (max 1000 characters).')
+    setErr(null); setSending(true)
     try { await sendChat(req.id, expert.expert_id, text.trim()); setText('') }
     catch (ex) { setErr((ex as Error).message) }
+    finally { setSending(false) }
   }
+  const hint = !expert ? '' : allowed ? `Message ${expert.name.split(' ')[0]}…`
+    : req.status === 'BOOKED' ? 'Chat is only with the expert you booked'
+    : 'Chat opens after booking. Until then the agent negotiates for you'
 
   return (
     <section className="panel chat spot">
@@ -416,12 +419,13 @@ function ChatPanel({ req }: { req: Request }) {
             {waiting && <div className="bubble b-expert typing"><span /><span /><span /></div>}
           </div>
           <form className="chat-compose" onSubmit={send}>
-            <input value={text} onChange={(e) => setText(e.target.value)} disabled={!CHAT_ENABLED}
-              placeholder={CHAT_ENABLED ? `Message ${expert?.name.split(' ')[0] ?? ''}…` : 'Direct chat will turn on when the backend supports it'} />
-            <button className="btn btn-primary" disabled={!CHAT_ENABLED || !text.trim()} data-cursor="Send"><Icon name="send" size={15} /> Send</button>
+            <input value={text} onChange={(e) => setText(e.target.value)} disabled={!CHAT_ENABLED || !allowed} maxLength={1000} placeholder={hint} />
+            <button className="btn btn-primary" disabled={!CHAT_ENABLED || !allowed || !text.trim() || sending} data-cursor="Send">
+              {sending ? <span className="spinner" /> : <Icon name="send" size={15} />} Send
+            </button>
           </form>
-          {waiting && <p className="muted small chat-wait"><span className="spinner" /> Waiting for {expert?.name.split(' ')[0]} to reply…</p>}
-          {!CHAT_ENABLED && <p className="muted small chat-wait">Read-only for now: shows the agent's Telegram messages and the expert's replies.</p>}
+          {waiting && allowed && <p className="muted small chat-wait"><span className="spinner" /> Waiting for {expert?.name.split(' ')[0]} to reply on Telegram…</p>}
+          {!allowed && <p className="muted small chat-wait"><Icon name="message" size={13} /> {req.status === 'BOOKED' ? 'Showing the agent’s messages with this expert.' : 'You can see the agent’s messages live. Chat with the booked expert opens after booking.'}</p>}
           {err && <p className="error"><Icon name="alert" /> {err}</p>}
         </div>
       </div>

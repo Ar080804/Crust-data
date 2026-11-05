@@ -34,10 +34,9 @@ type Flow = 'demo' | 'clarify' | 'escalated' | 'unavailable'
 const mockState = new Map<string, { flow: Flow; since: number; resolved: boolean }>()
 const MOCK_FREE = [17, 22] // pool_example availability is 18–21; be a little generous
 function mockWindow(text: string): [number, number] | null {
-  const m = text.match(/between (\d{1,2}):(\d{2}) ?(AM|PM) and (\d{1,2}):(\d{2}) ?(AM|PM)/i)
+  const m = text.match(/\b(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})\b/) // wizard writes 24h "18:00-20:00"
   if (!m) return null
-  const h = (hh: string, mm: string, ap: string) => ((+hh % 12) + (ap.toUpperCase() === 'PM' ? 12 : 0)) + +mm / 60
-  return [h(m[1], m[2], m[3]), h(m[4], m[5], m[6])]
+  return [+m[1] + +m[2] / 60, +m[3] + +m[4] / 60]
 }
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
@@ -185,10 +184,11 @@ export async function logout(token: string) {
   await http('/auth/logout', { method: 'POST', headers: { Authorization: `Bearer ${token}` } }).catch(() => {})
 }
 
-// ---------------- chat with experts ----------------
-// NOT in the contract yet. Mock mode simulates replies; in real mode sending is disabled
-// until Aditya adds an endpoint (suggested: POST /requests/{id}/messages {expert_id, text}).
-export const CHAT_ENABLED = MOCK
+// ---------------- chat with the booked expert (contract: "Chat" section) ----------------
+// POST /requests/{id}/messages {expert_id, text}. Only when BOOKED and only with the booked expert.
+// Real mode: replies arrive in the timeline (polling). Mock mode: replies are simulated locally.
+export const CHAT_ENABLED = true
+export const canChat = (r: Request, expertId?: string) => r.status === 'BOOKED' && !!r.booking && r.booking.expert_id === expertId
 const MOCK_REPLIES = [
   'Hi! Yes, I can do that. Does 7:15 PM work for you?',
   'Sure. My usual rate is ₹1,800 for 20 minutes.',
@@ -196,7 +196,10 @@ const MOCK_REPLIES = [
   'Works for me. I will join from Google Meet.',
 ]
 export async function sendChat(rid: string, expertId: string, text: string): Promise<ChatMsg> {
-  if (!CHAT_ENABLED) throw new Error('Direct chat needs a backend endpoint (not in the contract yet).')
+  if (!MOCK) {
+    // The backend logs it to the timeline ("Client message relayed…"), which the chat panel renders.
+    return http(`/requests/${encodeURIComponent(rid)}/messages`, { method: 'POST', body: JSON.stringify({ expert_id: expertId, text }) })
+  }
   const mine = addChat(rid, { expert_id: expertId, from: 'me', text })
   setTimeout(() => {
     addChat(rid, { expert_id: expertId, from: 'expert', text: MOCK_REPLIES[Math.floor(Math.random() * MOCK_REPLIES.length)] })

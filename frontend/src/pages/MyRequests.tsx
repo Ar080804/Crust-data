@@ -6,6 +6,8 @@ import { useUser } from '../auth.ts'
 import { ago, day, inr, time, until } from '../format.ts'
 import { Avatar, Icon, Segmented, STATUS_ICON, STATUS_LABEL } from '../ui.tsx'
 import { Reveal } from '../cursor.tsx'
+import { chatCount } from '../chat.ts'
+import { openReceipt } from '../receipt.ts'
 
 const STEPS: Status[] = ['INTAKE', 'FINDING', 'VERIFYING', 'OUTREACH', 'NEGOTIATING', 'BOOKING', 'BOOKED']
 type Kind = 'action' | 'pending' | 'scheduled' | 'history'
@@ -156,7 +158,7 @@ export default function MyRequests() {
                   <div key={m.saved.id} className="stack-card spot" style={{ ['--i' as string]: i }}>
                     <div className="row between wrap">
                       <span className="tag tag-live"><span className="live-dot" /> {STATUS_LABEL[r.status]}</span>
-                      <span className="mono muted small">{m.saved.id} · {ago(m.saved.created_at, now)}<ChatCount rid={m.saved.id} /></span>
+                      <span className="mono muted small">{m.saved.id} · {ago(m.saved.created_at, now)}<ChatCount rid={m.saved.id} req={r} /></span>
                     </div>
                     <p className="stack-q">“{m.saved.text}”</p>
                     <div className="mini-steps">
@@ -202,7 +204,8 @@ export default function MyRequests() {
                         <button className="btn btn-ghost btn-sm" onClick={() => {
                           navigator.clipboard?.writeText(`${name}: ${b.confirmation} (${day(b.start)})`).then(() => { setCopied(m.saved.id); setTimeout(() => setCopied(null), 1400) }).catch(() => {})
                         }}><Icon name={copied === m.saved.id ? 'check' : 'copy'} size={13} /> {copied === m.saved.id ? 'Copied' : 'Copy'}</button>
-                        <Link to={`/requests/${m.saved.id}`} className="link-btn">Details</Link>
+                        <button className="btn btn-ghost btn-sm" onClick={() => openReceipt(r)}>Receipt</button>
+                        <Link to={`/requests/${m.saved.id}`} className="link-btn">Chat &amp; details</Link>
                       </div>
                     </div>
                   </div>
@@ -229,13 +232,14 @@ export default function MyRequests() {
                   <div key={m.saved.id} className="hist-row spot">
                     <div className="hist-prompt">
                       <span className="clamp2">“{m.saved.text}”</span>
-                      <span className="muted small">{b ? `${day(b.start)}, ${time(b.start)}` : day(m.saved.created_at)} · <span className="mono">{m.saved.id}</span><ChatCount rid={m.saved.id} /></span>
+                      <span className="muted small">{b ? `${day(b.start)}, ${time(b.start)}` : day(m.saved.created_at)} · <span className="mono">{m.saved.id}</span><ChatCount rid={m.saved.id} req={r} /></span>
                     </div>
                     <span className="hist-who">{who ? <><Avatar name={who} size={26} /> {who}</> : <span className="muted">—</span>}</span>
                     <span className="mono">{b ? inr(b.price_inr) : '—'}</span>
                     <span>{m.error ? <span className="tag tag-bad">Unavailable</span> : ok ? <span className="tag tag-ok"><Icon name="check" size={12} /> Completed</span> : <span className="tag tag-bad"><Icon name="x" size={12} /> Failed</span>}</span>
                     <span className="hist-actions">
                       {r && <Link to={`/requests/${m.saved.id}`} className="link-btn">View</Link>}
+                      {r && ok && <button className="link-btn" onClick={() => openReceipt(r)}>Receipt</button>}
                       <button className="btn btn-ghost btn-sm" onClick={() => again(m.saved.text)} data-cursor="Again">Book again</button>
                     </span>
                   </div>
@@ -251,8 +255,8 @@ export default function MyRequests() {
   )
 }
 
-function ChatCount({ rid }: { rid: string }) {
-  const n = listChat(rid).length
+function ChatCount({ rid, req }: { rid: string; req: Request | null }) {
+  const n = chatCount(req, listChat(rid))
   return n ? <span className="chat-count"> · <Icon name="message" size={12} /> {n} {n === 1 ? 'message' : 'messages'}</span> : null
 }
 
