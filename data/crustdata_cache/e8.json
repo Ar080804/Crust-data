@@ -1,0 +1,348 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/rajarshinag",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 8565,
+          "basic_profile": {
+            "current_title": "CEO & Co-founder",
+            "name": "Rajarshi Nag"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 111,
+                  "company_headcount_range": "11-50",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "EAST KOLKATA TOWNSHIP, Madurdaha, West Bengal, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Transportation, Logistics, Supply Chain and Storage"
+                  ],
+                  "company_professional_network_industry": "Transportation, Logistics, Supply Chain and Storage",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/drivers4me",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/872074c28a4f1b333c545ef1cf58db6b10ff087ce544a2ec808d2d1fd1268f1f.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "https://www.drivers4me.com",
+                  "crustdata_company_id": 20598,
+                  "description": "Drivers4Me is a verified and trained driver aggregator App for both B2C & B2B. Presently operating in Bengaluru, Kolkata, Hyderabad, Delhi and aiming to start in Mumbai and Pune soon.\n\nWe are aiming to be a one-stop solution for all car owners in coming days. \n\nTo know more, visit www.drivers4me.com or download 'Drivers4Me' app from Google Play Store or App Store.",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": true,
+                  "location": {
+                    "raw": "India"
+                  },
+                  "name": "Drivers4Me",
+                  "position_id": 1342272767,
+                  "professional_network_id": "14536893",
+                  "seniority_level": "CXO",
+                  "start_date": "2019-01-01T00:00:00",
+                  "title": "CEO & Co-founder",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 7
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 341,
+                  "company_headcount_range": "201-500",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Legal Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Legal Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/bar-council-of-chhattisgarh",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/4369a45b04c7de0d97fe7d1c4a7424819ce6a12591da6d5605277fe20e607ca2.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "",
+                  "crustdata_company_id": 7606195,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "India"
+                  },
+                  "name": "Bar council of India",
+                  "position_id": 3004639764,
+                  "professional_network_id": "31084488",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2026-05-01T00:00:00",
+                  "title": "Advocate",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 311,
+                  "company_headcount_range": "201-500",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Lalbazar (Kolkata), Khengrapatti, R.N. Mukherjee Road, Telephone Bhawan, Treasury Building, Customs House, Council House Street, New Secretariat Bldg., Radha Bazar, Reserve Bank Building, W.B.Assembly House, Kolkatta G.P.O., Writer's Building, Pollock Street, West Bengal, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Non-profit Organizations",
+                    "Consumer Services"
+                  ],
+                  "company_professional_network_industry": "Non-profit Organizations",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/indianchamber",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/3e280433ac8db15ce5c944d34483d794dda47872a9a99af73858451d2e62f992.jpg",
+                  "company_status": "active",
+                  "company_type": "Nonprofit",
+                  "company_website": "https://www.indianchamber.org/",
+                  "crustdata_company_id": 25211,
+                  "description": "ICC National Logistics & Supply Chain Expert Committee Member",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "name": "Indian Chamber of Commerce",
+                  "position_id": 2604429048,
+                  "professional_network_id": "17968770",
+                  "seniority_level": "Senior",
+                  "start_date": "2025-08-01T00:00:00",
+                  "title": "National Logistics & Supply Chain Expert Committee Board Member",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 3134,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Delhi High Court, Delhi High Court Extension Counter, Pandara Road, Aliganj (South Delhi), Safdarjung Air Port, Pragati Vihar, Kasturba Nagar (South Delhi), Golf Links, C G O Complex, Lodi Road H.O, Delhi, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Non-profit Organizations",
+                    "Consumer Services"
+                  ],
+                  "company_professional_network_industry": "Non-profit Organizations",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/confederation-of-indian-industry",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/b83e10ee09a7ea3c9f922baf6cfc49542b463f88974fa1e84677056e17cdf98b.jpg",
+                  "company_status": "active",
+                  "company_type": "Nonprofit",
+                  "company_website": "http://linktr.ee/CII4India",
+                  "crustdata_company_id": 1383066,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "Confederation of Indian Industry",
+                  "position_id": 2757369698,
+                  "professional_network_id": "10792",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2025-06-01T00:00:00",
+                  "title": "CII Retail Committee Member",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 889,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Temporary P.O. (W.B.B.S.E), Nabadiganta IT, Bidhan Nagar CK Market, Sech Bhawan, West Bengal, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Education Administration Programs",
+                    "Health and Human Services",
+                    "Government Administration"
+                  ],
+                  "company_professional_network_industry": "Education Administration Programs",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/institute-of-engineering-management-iem",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/f30c1221e3ec57ed145c4a996cfbd65d0ff11f0dbb722577d9ef9fdcc747656d.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.iem.edu.in",
+                  "crustdata_company_id": 6401586,
+                  "description": "Internal Quality Assurance Committee of IEM & UEM Group - The Managing Committee",
+                  "employment_type": "",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Kolkata, West Bengal, India"
+                  },
+                  "name": "Institute of Engineering & Management (IEM)",
+                  "position_id": 2236158675,
+                  "professional_network_id": "25059147",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2023-04-01T00:00:00",
+                  "title": "IQAC Board Member",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 3
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 730420,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Tajmahal, Stock Exchange, Town Hall (Mumbai), Mumbai G.P.O., Bazargate, M.P.T., Maharashtra, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "IT Services and IT Consulting",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "IT Services and IT Consulting",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/tata-consultancy-services",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/84edc3caccf11df97ebe6630a91ca474be9e3aaa118457faacc795bdf301174e.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.tcs.com/",
+                  "crustdata_company_id": 5057,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2022-08-01T00:00:00",
+                  "function_category": "Engineering",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Kolkata"
+                  },
+                  "name": "Tata Consultancy Services",
+                  "position_id": 2039509754,
+                  "professional_network_id": "1353",
+                  "seniority_level": "Senior",
+                  "start_date": "2018-08-01T00:00:00",
+                  "title": "Senior Software Engineer - Prime",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 4
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 160,
+                  "company_headcount_range": "201-500",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Temporary P.O. (W.B.B.S.E), Nabadiganta IT, Bidhan Nagar CK Market, Sech Bhawan, West Bengal, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Education Management"
+                  ],
+                  "company_professional_network_industry": "Education Management",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/institute-of-engineering-&-management-saltlake",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/0afa4071bf68e7e13156e192fcdbb1d0a15ef4502f39025add1c0afb635ddc9f.jpg",
+                  "company_status": "active",
+                  "company_type": "Educational Institution",
+                  "company_website": "http://iemcal.com",
+                  "crustdata_company_id": 2003495,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2018-07-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Kolkata, West Bengal, India"
+                  },
+                  "name": "Institute of Engineering & Management, Kolkata",
+                  "position_id": 1063611367,
+                  "professional_network_id": "3975668",
+                  "seniority_level": "Director",
+                  "start_date": "2017-08-01T00:00:00",
+                  "title": "Student Head",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 5942,
+                  "company_headcount_range": "5001-10000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "DLF QE, Haryāna, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Retail Apparel and Fashion",
+                    "Retail"
+                  ],
+                  "company_professional_network_industry": "Retail Apparel and Fashion",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/bata-india",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/5b87e6c6a2f76f60b8dc596de54c48f9164fe2604c3f0bfc9c82fdd81d6f6d93.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.bata.in",
+                  "crustdata_company_id": 573,
+                  "description": "I was working in Bata India Ltd. as an Information Technology Development Intern.",
+                  "employment_type": "Internship",
+                  "end_date": "2017-09-01T00:00:00",
+                  "function_category": "Engineering",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Kolkata Area, India"
+                  },
+                  "name": "Bata India Limited",
+                  "position_id": 1035845883,
+                  "professional_network_id": "571704",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2017-07-01T00:00:00",
+                  "title": "Developer Internship",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 344552,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Armonk, New York, United States",
+                  "company_hq_location_address_components": [
+                    "Armonk",
+                    "North Castle",
+                    "Westchester County",
+                    "New York",
+                    "United States",
+                    "10504"
+                  ],
+                  "company_industries": [
+                    "IT Services and IT Consulting",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "IT Services and IT Consulting",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/ibm",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/ac1ff4f151ac488773c133422be757fc4d317f08fa8ca3e4f6006d537764187d.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.ibm.com",
+                  "crustdata_company_id": 681099,
+                  "description": "",
+                  "employment_type": "Internship",
+                  "end_date": "2016-08-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Kolkata, West Bengal, India"
+                  },
+                  "name": "IBM",
+                  "position_id": 830333694,
+                  "professional_network_id": "1009",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2016-07-01T00:00:00",
+                  "title": "Industrial Training",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/rajarshinag"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

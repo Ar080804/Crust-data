@@ -1,0 +1,547 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/swtripathi",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 6029,
+          "basic_profile": {
+            "current_title": "General Manager-Sort Center-Regional Management",
+            "name": "Swapnil Tripathi"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 763567,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/amazon",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/50c0868b767f02f1f5ed3285bbd5b6db93df0ef3c6f00194dba9ed7e337b8f33.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.aboutamazon.com/",
+                  "crustdata_company_id": 6034577,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": true,
+                  "name": "Amazon",
+                  "position_id": 2882996094,
+                  "professional_network_id": "1586",
+                  "seniority_level": "Director",
+                  "start_date": "2026-04-01T00:00:00",
+                  "title": "General Manager-Sort Center-Regional Management",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 763567,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/amazon",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/50c0868b767f02f1f5ed3285bbd5b6db93df0ef3c6f00194dba9ed7e337b8f33.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.aboutamazon.com/",
+                  "crustdata_company_id": 6034577,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Hyderabad, Telangana, India"
+                  },
+                  "name": "Amazon",
+                  "position_id": 2617359328,
+                  "professional_network_id": "1586",
+                  "seniority_level": "Director",
+                  "start_date": "2024-04-01T00:00:00",
+                  "title": "General Manager, Fulfilment Center",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 763567,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/amazon",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/50c0868b767f02f1f5ed3285bbd5b6db93df0ef3c6f00194dba9ed7e337b8f33.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.aboutamazon.com/",
+                  "crustdata_company_id": 6034577,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2024-03-01T00:00:00",
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Hyderabad, Telangana, India"
+                  },
+                  "name": "Amazon",
+                  "position_id": 2617361238,
+                  "professional_network_id": "1586",
+                  "seniority_level": "Experienced Manager",
+                  "start_date": "2023-01-01T00:00:00",
+                  "title": "Sr. Manager Operations, Fulfilment Center",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 763567,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/amazon",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/50c0868b767f02f1f5ed3285bbd5b6db93df0ef3c6f00194dba9ed7e337b8f33.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.aboutamazon.com/",
+                  "crustdata_company_id": 6034577,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2023-01-01T00:00:00",
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Bengaluru, Karnataka, India"
+                  },
+                  "name": "Amazon",
+                  "position_id": 2617362082,
+                  "professional_network_id": "1586",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2022-01-01T00:00:00",
+                  "title": "Senior Operations Manager, Last Mile: Grocery And Sub-Same Day",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 763567,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/amazon",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/50c0868b767f02f1f5ed3285bbd5b6db93df0ef3c6f00194dba9ed7e337b8f33.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.aboutamazon.com/",
+                  "crustdata_company_id": 6034577,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2022-01-01T00:00:00",
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Gurugram, Haryana, India"
+                  },
+                  "name": "Amazon",
+                  "position_id": 2617361174,
+                  "professional_network_id": "1586",
+                  "seniority_level": "Experienced Manager",
+                  "start_date": "2020-12-01T00:00:00",
+                  "title": "Senior Manager Operations-Grocery and Sub Same Day Urban FCs",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 763567,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/amazon",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/50c0868b767f02f1f5ed3285bbd5b6db93df0ef3c6f00194dba9ed7e337b8f33.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.aboutamazon.com/",
+                  "crustdata_company_id": 6034577,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2020-11-01T00:00:00",
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Gurugram, Haryana, India"
+                  },
+                  "name": "Amazon",
+                  "position_id": 2617358392,
+                  "professional_network_id": "1586",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2019-11-01T00:00:00",
+                  "title": "Senior Operations Manager-Fulfilment Center",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 763567,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/amazon",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/50c0868b767f02f1f5ed3285bbd5b6db93df0ef3c6f00194dba9ed7e337b8f33.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.aboutamazon.com/",
+                  "crustdata_company_id": 6034577,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2019-11-01T00:00:00",
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Gurugram, Haryana, India"
+                  },
+                  "name": "Amazon",
+                  "position_id": 2617359201,
+                  "professional_network_id": "1586",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2017-06-01T00:00:00",
+                  "title": "Operations Manager-Fulfilment Center",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 2,
+                  "company_headcount_range": "11-50",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Mumbai, Maharashtra, India",
+                  "company_hq_location_address_components": [
+                    "Mumbai",
+                    "Mumbai City",
+                    "Konkan Division",
+                    "Maharashtra",
+                    "India"
+                  ],
+                  "company_industries": [
+                    "Motor Vehicle Manufacturing",
+                    "Transportation Equipment Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Motor Vehicle Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/steero",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/0c9f1049c85b9870b0265608e9277387d78094ee6577f52f64a64be41572ab4c.jpg",
+                  "company_status": "deleted",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.steero.in",
+                  "crustdata_company_id": 15055,
+                  "description": "At Steero, we are committed to make everyday mobility smart and safe using technology for over 30 million car owners in India. Since car is the second most valuable asset an Indian buys after his/her home, there is a huge emotional connect.\n\nSteero  is a Car Lifecycle Management Solution transforming entire vehicle ownership experience by addressing three core verticals : Services, Sales and Vehicle Health Tracker \n\nWith our full stack approach, we are bringing uniqueness through credible Assignment, Pricing and Delivery using technology to create a winning ecosystem for all the stakeholders unlike ever done before.\n\nCar care has never been so easy. We offer everything you need to ‘Drive Smart Everyday.’ Check out http://steero.in/ for more details.  Download Android App : https://goo.gl/uSCJqH",
+                  "employment_type": "Full-time",
+                  "end_date": "2017-06-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Mumbai Area, India"
+                  },
+                  "name": "Steero",
+                  "position_id": 845260876,
+                  "professional_network_id": "10328254",
+                  "seniority_level": "Owner / Partner",
+                  "start_date": "2016-01-01T00:00:00",
+                  "title": "Co Founder",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 68021,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Houston, Texas, United States",
+                  "company_hq_location_address_components": [
+                    "Houston",
+                    "Harris County",
+                    "Texas",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Energy Technology"
+                  ],
+                  "company_professional_network_industry": "Energy Technology",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/bakerhughes",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/1c7fc5895a852ded10bfadce0d4ce68b406fef49ae1e1a7ac58251c946772c32.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.bakerhughes.com",
+                  "crustdata_company_id": 6033978,
+                  "description": "Country Operations Manager- DCF\n\n Responsible for the P&L account for the India Drilling and Completions Fluids Business. \n Responsible for the profit margin improvement and business growth in the strategically important emerging energy markets. \n Responsible for the team building, financial planning, and infrastructure setup for DCF PL\n Responsible for Market Share Growth\n\nProject Manager- Integrated Operations- Multistage Hydrofracturing\n\nSuccessfully bid for the work, got awarded the work and executed the work by closely coordinating with more than 8 product lines, multiple third party vendors and more than 15 client groups with zero variance and zero delay penalties. Some of the firsts, which have been achieved are:\n\n Preparation of 1-D Geomechanical earth model.\n Drilling of first well in onshore field with 99 degree angle for multistage fracturing.\n Well with 1000m of horizontal section\n Lowering of 1000m of 6”liner in horizontal section\n Multistage fracturing with 70 Tons of job horizontal section with plug and perforation technology.\n CTU (Coil Tubing Unit) of 1.75” dia for hole cleaning, perforation, plug setting and plug milling\noperations in up dip wells.\n Multistage fracturing in horizontal section of more than 500m with 5 or more fractures.\n \nMultiple SPE papers have been published on success of this complex yet exciting project",
+                  "employment_type": "",
+                  "end_date": "2016-01-01T00:00:00",
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Mumbai"
+                  },
+                  "name": "Baker Hughes",
+                  "position_id": 743387575,
+                  "professional_network_id": "4334",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2015-06-01T00:00:00",
+                  "title": "Country Operations Manager- DCF and Project Manager- Integrated Operations",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 68021,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Houston, Texas, United States",
+                  "company_hq_location_address_components": [
+                    "Houston",
+                    "Harris County",
+                    "Texas",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Energy Technology"
+                  ],
+                  "company_professional_network_industry": "Energy Technology",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/bakerhughes",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/1c7fc5895a852ded10bfadce0d4ce68b406fef49ae1e1a7ac58251c946772c32.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.bakerhughes.com",
+                  "crustdata_company_id": 6033978,
+                  "description": "•Introduced 3 new products to Indian geo-market that accounted for 10% of total revenue\n•Registered 37% revenue growth against market growth of 17% with 80% Win Rate (Revenue 2014-USD 82 Mn)\n•Improved profitability by 600 basis points by winning strategic business opportunities, upsell and business execution strategies\n•Improved client relationship by making Baker Hughes one stop shop for technical solutions\n•Generated cross product line revenue of USD 1 Mn per year by devising bidding strategies and winning the work\n•Improved Asset Utilization by utilizing idle asset through short duration and/or long tailed projects/client \n•Helped a major E&P Client increase production by 350,000 bbls/year by converting its supply vessel to stimulation vessel\n•Prepared Capex plan, headcount plan, revenue and revenue breakthrough plan for pressure pumping-India (for 2014 and 2015)\n•Negotiated with vendors to reduce procurement cost by USD 1.2 Mn/year\n•Spearheaded a change management initiative to achieve inventory cost reduction of 15% through better inventory management, smoothening logistics flow and decreasing variability by utilizing product commonalities across projects \n• Reduced Lapse Days for invoicing from 23 days to 7 days  in one year, reduced Day Sales Outstanding  by 26 days\n•Used third party agencies to convert existing equipment to class approved equipment thus saving capex  of USD 2.2 Mn\n•Reduced inventory turn cycle from 72 days to 30 days by using optimizing ordering management, reducing slob items",
+                  "employment_type": "",
+                  "end_date": "2015-06-01T00:00:00",
+                  "function_category": "Sales",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Mumbai Area, India"
+                  },
+                  "name": "Baker Hughes",
+                  "position_id": 664138917,
+                  "professional_network_id": "4334",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2013-06-01T00:00:00",
+                  "title": "Manager Sales",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 2
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 0,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [],
+                  "company_professional_network_industry": "",
+                  "company_professional_network_profile_url": "",
+                  "company_profile_picture_permalink": "",
+                  "company_status": null,
+                  "company_type": "",
+                  "company_website": "",
+                  "crustdata_company_id": 0,
+                  "description": "Identified a $400Mn business opportunity to produce and market India’s first certified-Organic Milk. Venture Launched in June’13 \n\n̶\tPerformed market assessment, designed business model and launch strategy; Idea well received by VCs and industry experts\n̶\tBusiness plan handpicked to be mentored by a leading US-based international design and innovation consulting firm",
+                  "employment_type": "",
+                  "end_date": "2013-04-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Hyderābād Area, India"
+                  },
+                  "name": "Planning an Entrepreneurial Venture",
+                  "position_id": 743386655,
+                  "professional_network_id": null,
+                  "seniority_level": "Entry Level",
+                  "start_date": "2012-12-01T00:00:00",
+                  "title": "Founding Member",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 68021,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Houston, Texas, United States",
+                  "company_hq_location_address_components": [
+                    "Houston",
+                    "Harris County",
+                    "Texas",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Energy Technology"
+                  ],
+                  "company_professional_network_industry": "Energy Technology",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/bakerhughes",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/1c7fc5895a852ded10bfadce0d4ce68b406fef49ae1e1a7ac58251c946772c32.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.bakerhughes.com",
+                  "crustdata_company_id": 6033978,
+                  "description": "•Selected for Engineering Leadership Development Program\n•Handled drilling fluids operations in Karn field for world's largest integrated petroleum company",
+                  "employment_type": "",
+                  "end_date": "2012-04-01T00:00:00",
+                  "function_category": "Engineering",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Saudi Arabia"
+                  },
+                  "name": "Baker Hughes",
+                  "position_id": 282801996,
+                  "professional_network_id": "4334",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2012-01-01T00:00:00",
+                  "title": "Field Engineer-III",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 61064,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Houston, Texas, United States",
+                  "company_hq_location_address_components": [
+                    "Houston",
+                    "Harris County",
+                    "Texas",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Oil and Gas",
+                    "Oil, Gas, and Mining"
+                  ],
+                  "company_professional_network_industry": "Oil and Gas",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/halliburton",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/b87ee7fe212be415bab5a8d30cccf20d27c0596113b3eb5c49edba139e717d2a.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.halliburton.com?utm_source=linkedin&utm_medium=social_organic",
+                  "crustdata_company_id": 682256,
+                  "description": "• Handled overall planning, execution and report delivery to clients for over 30 hydrocarbon projects ($1 million to $20 million each) with zero loss time incidents/injuries in all projects  \n•Trained junior field engineers and Technology Scientists in area of rig operations management\n• Ranked 1st in all the training courses till date in Halliburton University, Houston: A unique achievement till date, received MVP award.\n•Significant cost savings for a leading oil by designing a novel drilling fluids system for a critical situation with limited on site resources\n• Received 5 (out of 5) rating in almost all client surveys with exceptional safety record\n• Received special mention from a major client for operational excellence",
+                  "employment_type": "",
+                  "end_date": "2012-01-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "Halliburton",
+                  "position_id": 205759009,
+                  "professional_network_id": "2217",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2007-08-01T00:00:00",
+                  "title": "Field Service Representative-II",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 4
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 61064,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Houston, Texas, United States",
+                  "company_hq_location_address_components": [
+                    "Houston",
+                    "Harris County",
+                    "Texas",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Oil and Gas",
+                    "Oil, Gas, and Mining"
+                  ],
+                  "company_professional_network_industry": "Oil and Gas",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/halliburton",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/b87ee7fe212be415bab5a8d30cccf20d27c0596113b3eb5c49edba139e717d2a.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.halliburton.com?utm_source=linkedin&utm_medium=social_organic",
+                  "crustdata_company_id": 682256,
+                  "description": "Under broad direction, provide well site service to customers of Halliburton. \nUtilize knowledge of company products and services in conjunction with experience in drilling fluid technology to optimize service quality.  \nBased on interpreted results of routine and specialized testing, provide technical guidance of Halliburton's customized engineered fluids to maximize wellbore value.\nComply with health, safety and environmental regulations in all aspects of job performance. \nEnsure that an adequate inventory of palletized and bulk products are available at the rig site, based on the fluids program and anticipated conditions. \nTrack material usage and maintain record of same for inventory and billing purposes.",
+                  "employment_type": "",
+                  "end_date": "2011-12-01T00:00:00",
+                  "function_category": "Engineering",
+                  "is_default": false,
+                  "name": "Halliburton",
+                  "position_id": 41950396,
+                  "professional_network_id": "2217",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2007-08-01T00:00:00",
+                  "title": "Drilling Fluids Engineer",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 4
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/swtripathi"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

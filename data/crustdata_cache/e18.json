@@ -1,0 +1,222 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/prakhar-tosniwal",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 24796,
+          "basic_profile": {
+            "current_title": "Product Operations Manager",
+            "name": "Prakhar Tosniwal"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 309304,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Mountain View, California, United States",
+                  "company_hq_location_address_components": [
+                    "Mountain View",
+                    "Santa Clara County",
+                    "California",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Software Development",
+                    "Technology, Information and Internet",
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Software Development",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/google",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/25c2a61d60d5c9d91ca96db58d37461cd9665c025ad413b8e9dbccecf979fc24.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://goo.gle/3DLEokh",
+                  "crustdata_company_id": 4926893,
+                  "description": "Building AI product solutions for Play Apps and Games",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "Operations",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Bengaluru"
+                  },
+                  "name": "Google",
+                  "position_id": 2848519597,
+                  "professional_network_id": "1441",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2026-02-01T00:00:00",
+                  "title": "Product Operations Manager",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 392,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Domlur, Karnataka, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Technology, Information and Media",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/loco-gamestreaming",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/5ec73ea78040ade8a0e72887a672304b7b1a4442a19d3bfc6ed6c90452b9f1ca.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.loco.gg",
+                  "crustdata_company_id": 609170,
+                  "description": "Led monetization and payments product suite for live streaming platform operating in Turkey and Brazil. Scaled stablecoin-based and fiat payment infrastructure to 100+ markets, establishing localized payment rails for high-regulation verticals including gaming content. Drove 25-45% growth in key revenue metrics through experimentation framework and data-driven feature prioritization. Owned end-to-end product lifecycle from discovery through GTM, managing cross-functional teams across engineering, design, and business operations.",
+                  "employment_type": "Full-time",
+                  "end_date": "2026-02-01T00:00:00",
+                  "function_category": "Product Management",
+                  "is_default": false,
+                  "location": {
+                    "raw": "India"
+                  },
+                  "name": "Loco",
+                  "position_id": 2486808903,
+                  "professional_network_id": "14490342",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2024-08-01T00:00:00",
+                  "title": "Senior Product Manager - Payments and New Initiatives",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 392,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Domlur, Karnataka, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Technology, Information and Media"
+                  ],
+                  "company_professional_network_industry": "Technology, Information and Media",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/loco-gamestreaming",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/5ec73ea78040ade8a0e72887a672304b7b1a4442a19d3bfc6ed6c90452b9f1ca.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.loco.gg",
+                  "crustdata_company_id": 609170,
+                  "description": "As part of the Founder's Office, executed numerous 0 to 1 projects including GTM in MENA, ad monetization, B2B sales, streamlining operations and establishing multiple business verticals",
+                  "employment_type": "Full-time",
+                  "end_date": "2024-07-01T00:00:00",
+                  "function_category": "Operations",
+                  "is_default": false,
+                  "location": {
+                    "raw": "India"
+                  },
+                  "name": "Loco",
+                  "position_id": 1927915544,
+                  "professional_network_id": "14490342",
+                  "seniority_level": "Experienced Manager",
+                  "start_date": "2022-01-01T00:00:00",
+                  "title": "Senior Manager Strategy & Operations",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 38637,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Boston, Massachusetts, United States",
+                  "company_hq_location_address_components": [
+                    "Boston",
+                    "Suffolk County",
+                    "Massachusetts",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Business Consulting and Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Business Consulting and Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/boston-consulting-group",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/d65b213e7161a15b05e9a4fa8f9700db984a75987e85fe41de7fe00e8174b0de.jpg",
+                  "company_status": "active",
+                  "company_type": "Partnership",
+                  "company_website": "http://www.bcg.com",
+                  "crustdata_company_id": 1033391,
+                  "description": "Management consultant for clients across BFSI, Consumer Goods and Industrial Goods sectors",
+                  "employment_type": "Full-time",
+                  "end_date": "2022-01-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Gurugram, Haryana, India"
+                  },
+                  "name": "Boston Consulting Group (BCG)",
+                  "position_id": 1687552479,
+                  "professional_network_id": "1784",
+                  "seniority_level": "Senior",
+                  "start_date": "2020-10-01T00:00:00",
+                  "title": "Senior Associate",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 133,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "Jersey City, New Jersey, United States",
+                  "company_hq_location_address_components": [
+                    "Jersey City",
+                    "Hudson County",
+                    "New Jersey",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Business Consulting and Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Business Consulting and Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/inductis",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/d2403ca8f3675b8a74845df195ad53be127b762445ea71b46b7153147e6f112d.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.exlservice.com/analytics.html",
+                  "crustdata_company_id": 6167292,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2018-06-01T00:00:00",
+                  "function_category": "Consulting",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Gurgaon, India"
+                  },
+                  "name": "Inductis",
+                  "position_id": 1445000195,
+                  "professional_network_id": "164341",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2016-09-01T00:00:00",
+                  "title": "Management Consultant",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/prakhar-tosniwal"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

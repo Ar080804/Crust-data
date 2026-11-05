@@ -1,0 +1,217 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/amit-verma-710575183",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 2832,
+          "basic_profile": {
+            "current_title": "Supply Chain Management",
+            "name": "AMIT VERMA"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 1051,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Delhi, Delhi, India",
+                  "company_hq_location_address_components": [
+                    "New Delhi",
+                    "Delhi",
+                    "India"
+                  ],
+                  "company_industries": [
+                    "Hospitals and Health Care"
+                  ],
+                  "company_professional_network_industry": "Hospitals and Health Care",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/ujalacygnus",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/d5426311dce1a9205b8f6c98036305a9be45226fa84ae955d80cbe8f39e78dac.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.ujalacygnus.com",
+                  "crustdata_company_id": 6159603,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "Operations",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Karnal, Haryana, India"
+                  },
+                  "name": "Ujala Cygnus",
+                  "position_id": 2248474615,
+                  "professional_network_id": "31076327",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2017-03-01T00:00:00",
+                  "title": "Supply Chain Management",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 9
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 1051,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Delhi, Delhi, India",
+                  "company_hq_location_address_components": [
+                    "New Delhi",
+                    "Delhi",
+                    "India"
+                  ],
+                  "company_industries": [
+                    "Hospitals and Health Care"
+                  ],
+                  "company_professional_network_industry": "Hospitals and Health Care",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/ujalacygnus",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/d5426311dce1a9205b8f6c98036305a9be45226fa84ae955d80cbe8f39e78dac.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.ujalacygnus.com",
+                  "crustdata_company_id": 6159603,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Karnal Area, India"
+                  },
+                  "name": "Ujala Cygnus",
+                  "position_id": 1440635336,
+                  "professional_network_id": "31076327",
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2017-03-01T00:00:00",
+                  "title": "Purchasing Manager",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 9
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 34,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Tikri, Subri, Bara Gaon, Gheer, S.S. Kunjpura, Haryana, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Education Administration Programs",
+                    "Health and Human Services",
+                    "Government Administration"
+                  ],
+                  "company_professional_network_industry": "Education Administration Programs",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/sainik-school-kunjpura---india",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/939e6107348dccfe8b1b48ec5715824c5bf4f0fcc1496ecee4603aaae3d57184.jpg",
+                  "company_status": "active",
+                  "company_type": "",
+                  "company_website": "http://sskunjpura.org",
+                  "crustdata_company_id": 4231766,
+                  "description": "Accounts work",
+                  "employment_type": "Full-time",
+                  "end_date": "2017-02-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "kunjpura"
+                  },
+                  "name": "Sainik School Kunjpura - India",
+                  "position_id": 1568625906,
+                  "professional_network_id": "7827955",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2016-05-01T00:00:00",
+                  "title": "Account Assistant",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 218,
+                  "company_headcount_range": "201-500",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Karnal Model Town, Karnal NDRI, Karnal Sector-6, Mini sectt- sector-12 Kanral, Karnal Kutchery, Karnal GBS, Sector-8 Karnal, Sector 4 Karnal, Jundla Gate, Kanral Industrial Area, Cssri, Canal Colony, Karnal Partap Pura, Karnal HBC, Karnal H.O, Karnal Railway Road, Karnal Sadar Bazar, Karnal Ram Nagar, Karnal New Prem Nagar, Haryana, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Dairy Product Manufacturing",
+                    "Food and Beverage Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Dairy Product Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/modern-dairies-limited",
+                  "company_profile_picture_permalink": "",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.milplus.com",
+                  "crustdata_company_id": 3107,
+                  "description": "store executive",
+                  "employment_type": "Full-time",
+                  "end_date": "2016-05-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Karnal Area, India"
+                  },
+                  "name": "Modern Dairies Limited",
+                  "position_id": 1568626731,
+                  "professional_network_id": "729857",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2014-08-01T00:00:00",
+                  "title": "Store Executive",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 98,
+                  "company_headcount_range": "201-500",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Shakur Pur I  Block, Rani Bagh, Maurya Enclave, Sri Nagar Colony, Anandvas Shakurpur, Saraswati Vihar, Shakurbasti Rs, Delhi, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Hotels and Motels",
+                    "Hospitality",
+                    "Accommodation and Food Services"
+                  ],
+                  "company_professional_network_industry": "Hotels and Motels",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/deventureshimlahills",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/7a7ab9f9804c62bae4775dd4c3c452ab15b5023b96c8826a5c85804f1dec5a90.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.deventurehotel.com",
+                  "crustdata_company_id": 7672237,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2014-08-01T00:00:00",
+                  "function_category": "Finance",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Karnal Area, India"
+                  },
+                  "name": "DEVENTURE HOTEL AND RESORTS PRIVATE LIMITED",
+                  "position_id": 1568627574,
+                  "professional_network_id": "28160194",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2013-11-01T00:00:00",
+                  "title": "Accountant",
+                  "years_at_company": "Less than 1 year",
+                  "years_at_company_raw": 0
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/amit-verma-710575183"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

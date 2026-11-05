@@ -1,0 +1,109 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/meet-manoj-garg",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 8779,
+          "basic_profile": {
+            "current_title": "CEO & Founder | Digital Marketing Consultant",
+            "name": "Manoj Kumar"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 51,
+                  "company_headcount_range": "11-50",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Daon, Balongi, Chandigarh Sector 56, Chandigarh Sector 55, Punjab, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "IT Services and IT Consulting",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "IT Services and IT Consulting",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/websterz-technologies",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/309e178f0e4d6eadc09873f5496b5c31d97b3284c704f011a54ed7818d4274b2.jpg",
+                  "company_status": "active",
+                  "company_type": "Sole Proprietorship",
+                  "company_website": "http://www.websterztech.com/",
+                  "crustdata_company_id": 22518,
+                  "description": "We are a digital marketing agency for health and wellness professional.",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "Marketing",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Mohali"
+                  },
+                  "name": "Websterz Technologies",
+                  "position_id": 847602134,
+                  "professional_network_id": "20399991",
+                  "seniority_level": "CXO",
+                  "start_date": "2010-01-01T00:00:00",
+                  "title": "CEO & Founder | Digital Marketing Consultant",
+                  "years_at_company": "More than 10 years",
+                  "years_at_company_raw": 16
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 2,
+                  "company_headcount_range": "2-10",
+                  "company_headquarters_country": "Canada",
+                  "company_hq_location": "Toronto, Ontario, Canada",
+                  "company_hq_location_address_components": [
+                    "Toronto",
+                    "Toronto",
+                    "Toronto",
+                    "Ontario",
+                    "Canada"
+                  ],
+                  "company_industries": [
+                    "Marketing Services",
+                    "Business Consulting and Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Marketing Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/lxp-digital",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/5745bd2d78841c734cbf34a78c3d910d09a6cadc3835e48ca8f52ed5fd4ef035.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "https://linktr.ee/its.laukik",
+                  "crustdata_company_id": 13162129,
+                  "description": "It’s a partnership role.",
+                  "employment_type": "Self-employed",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Canada"
+                  },
+                  "name": "LxP Digital",
+                  "position_id": 2805257825,
+                  "professional_network_id": "42872823",
+                  "seniority_level": "Director",
+                  "start_date": "2024-12-01T00:00:00",
+                  "title": "Fulfillment Head",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                }
+              ],
+              "past": []
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/meet-manoj-garg"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

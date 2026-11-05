@@ -120,8 +120,8 @@ def _year(d: str | None) -> int | None:
 def _months(r: dict) -> int | None:
     if not r["start"]:
         return None
-    s = datetime.fromisoformat(r["start"])
-    e = datetime.fromisoformat(r["end"]) if r["end"] else datetime.now(timezone.utc)
+    s = datetime.fromisoformat(r["start"][:10])
+    e = datetime.fromisoformat(r["end"][:10]) if r["end"] else datetime.now()
     return max(1, (e.year - s.year) * 12 + e.month - s.month)
 
 
@@ -184,10 +184,11 @@ def verify(expert: dict) -> list[dict]:
     except Exception as e:  # noqa: BLE001  never break the pipeline
         return [{"text": t, "status": "unverifiable", "evidence": f"Crustdata lookup failed: {type(e).__name__}",
                  "source": SOURCE, "fetched_at": _now()} for t in texts]
+    src = raw[0].get("_source", SOURCE) if raw else SOURCE
     out = []
     for t in texts:
         status, evidence = verify_claim(t, roles)
-        out.append({"text": t, "status": status, "evidence": evidence, "source": SOURCE, "fetched_at": fetched_at})
+        out.append({"text": t, "status": status, "evidence": evidence, "source": src, "fetched_at": fetched_at})
     return out
 
 

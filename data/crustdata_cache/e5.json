@@ -1,0 +1,251 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/amar-nayak-23b14414",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 2959,
+          "basic_profile": {
+            "current_title": "Warehouse Officer",
+            "name": "AMAR NAYAK"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 18881,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "France",
+                  "company_hq_location": "Paris, Île-de-France, France",
+                  "company_hq_location_address_components": [
+                    "Île-de-France",
+                    "France"
+                  ],
+                  "company_industries": [
+                    "Engineering Services",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Engineering Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/technip-energies",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/8d7076519090dd572565c2d9d3ff4106188f193e8a1648f2e85c96d72d90cb24.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.ten.com",
+                  "crustdata_company_id": 1172139,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Assam, India"
+                  },
+                  "name": "Technip Energies",
+                  "position_id": 2550261855,
+                  "professional_network_id": "31393419",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2025-01-01T00:00:00",
+                  "title": "Warehouse Officer",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 2239,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "Germany",
+                  "company_hq_location": "Dortmund, North Rhine-Westphalia, Germany",
+                  "company_hq_location_address_components": [
+                    "Dortmund",
+                    "Arnsberg",
+                    "North Rhine-Westphalia",
+                    "Germany",
+                    "44"
+                  ],
+                  "company_industries": [
+                    "Chemical Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Chemical Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/uhde-gmbh.",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/68f269f0bb324ad3861cb8be989f263acf4e3aa384a38fe927c667b5c24fe717.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.thyssenkrupp-uhde.com",
+                  "crustdata_company_id": 1940215,
+                  "description": "Warehouse Management, Inventory control",
+                  "employment_type": "Full-time",
+                  "end_date": "2025-01-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Paradip, Kujang, Odisha, India"
+                  },
+                  "name": "thyssenkrupp Uhde",
+                  "position_id": 2173979039,
+                  "professional_network_id": "1054966",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2023-05-01T00:00:00",
+                  "title": "Sr Associate store",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 739,
+                  "company_headcount_range": "501-1000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Treasury Building, Council House Street, Telephone Bhawan, R.N. Mukherjee Road, Customs House, Reserve Bank Building, Lalbazar (Kolkata), Radha Bazar, Khengrapatti, New Secretariat Bldg., W.B.Assembly House, Writer's Building, Kolkatta G.P.O., Pollock Street, West Bengal, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Construction"
+                  ],
+                  "company_professional_network_industry": "Construction",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/tuaman-engineering-limited",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/5eb2297b41b5f26351ed4f16e3d6ca106cbd74885eceec4f727c3f03792dd881.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.tuaman.co.in",
+                  "crustdata_company_id": 1281464,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2023-05-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Vadodara, Gujarat, India"
+                  },
+                  "name": "TUAMAN ENGINEERING LIMITED",
+                  "position_id": 1517786041,
+                  "professional_network_id": "28013601",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2015-03-01T00:00:00",
+                  "title": "Sr Executive Store",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 8
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 1192,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Treasury Building, Council House Street, Telephone Bhawan, R.N. Mukherjee Road, Customs House, Reserve Bank Building, Lalbazar (Kolkata), Radha Bazar, Khengrapatti, New Secretariat Bldg., W.B.Assembly House, Writer's Building, Kolkatta G.P.O., Pollock Street, West Bengal, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Chemical Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Chemical Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/himadrispchem",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/d01b98cd84e62ffbabb8b2e14383c6c4cd97e116e2b86bded4a0085f112d3c4d.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.himadri.com/",
+                  "crustdata_company_id": 1952,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2015-03-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Kolkata, West Bengal, India"
+                  },
+                  "name": "Himadri Speciality Chemical Ltd.",
+                  "position_id": 1995937010,
+                  "professional_network_id": "2122617",
+                  "seniority_level": "Senior",
+                  "start_date": "2013-10-01T00:00:00",
+                  "title": "Senior Officer store",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 22,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "KOLKATA, West Bengal, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Machinery Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Machinery Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/pm-control-equipment-private-limited",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/008cd02459023f13541c46f8c3003acb14a84584bc482fcaefdb240140e57cd8.jpg",
+                  "company_status": "active",
+                  "company_type": "",
+                  "company_website": "",
+                  "crustdata_company_id": 10827135,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2013-10-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Kolkata, West Bengal, India"
+                  },
+                  "name": "PM CONTROL EQUIPMENT PRIVATE LIMITED",
+                  "position_id": 1649531237,
+                  "professional_network_id": "27410127",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2010-01-01T00:00:00",
+                  "title": "Store Executive",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 3
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 1395,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "France",
+                  "company_hq_location": "92084 Paris - La Défense, Île-de-France, France",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Appliances, Electrical, and Electronics Manufacturing",
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Appliances, Electrical, and Electronics Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/areva-t&d",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/cd330b141ae205ac0f44809ac076f03f61c675c7c5c0ded291acc81fd6c65470.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.alstom.com/grid",
+                  "crustdata_company_id": 6076183,
+                  "description": "",
+                  "employment_type": "Apprenticeship",
+                  "end_date": "2009-12-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Karnataka, India"
+                  },
+                  "name": "AREVA T&D",
+                  "position_id": 78475400,
+                  "professional_network_id": "3899",
+                  "seniority_level": "Entry Level",
+                  "start_date": "2007-08-01T00:00:00",
+                  "title": "Store Executive",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/amar-nayak-23b14414"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

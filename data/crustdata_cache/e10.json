@@ -1,0 +1,233 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/hardik-parikh-28a4939",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 17146,
+          "basic_profile": {
+            "current_title": "Head of Supply Chain Management",
+            "name": "Hardik Parikh"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 1103,
+                  "company_headcount_range": "501-1000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Gurgaon Kty., Khandsa Road, Urban Estate (Gurgaon), Arjun Nagar, Gurgaon H.O, Gurgaon South City I, New Colony (Gurgaon), Gurgaon Sector 17, Mini Sectt., Basai Road, Shivaji Nagar (Gurgaon), Haryana, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Manufacturing"
+                  ],
+                  "company_professional_network_industry": "Manufacturing",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/shalimar-paints",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/3c174da4501af904d0efaf3ae5019feb47e02f5c0fb62a85a2ca076bc4090f0d.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.shalimarpaints.com",
+                  "crustdata_company_id": 4370,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "Operations",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Mumbai, Maharashtra, India"
+                  },
+                  "name": "Shalimar Paints",
+                  "position_id": 2671743252,
+                  "professional_network_id": "352362",
+                  "seniority_level": "Director",
+                  "start_date": "2025-06-01T00:00:00",
+                  "title": "Head of Supply Chain Management",
+                  "years_at_company": "1 to 2 years",
+                  "years_at_company_raw": 1
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": true,
+                  "company_headcount_latest": 1883,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Wagle I.E., Mahārāshtra, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Construction"
+                  ],
+                  "company_professional_network_industry": "Construction",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/inframarket",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/775a8b3be45268afee521e2c5b1ac0da661c138a9d6f80059c5c9df026f1a67c.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "https://www.infra.market",
+                  "crustdata_company_id": 609144,
+                  "description": "",
+                  "employment_type": "Full-time",
+                  "end_date": "2025-06-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Mumbai"
+                  },
+                  "name": "Infra.Market",
+                  "position_id": 1866781892,
+                  "professional_network_id": "13654882",
+                  "seniority_level": "Owner / Partner",
+                  "start_date": "2021-11-01T00:00:00",
+                  "title": "Founder's office - Building Shalimar Paints 2.0",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 3
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 410317,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United Kingdom",
+                  "company_hq_location": "Southwark Cathedral, London Bridge, Westminster Bridge, Newington, New Kent Road, Lambeth North, Southwark, Waterloo, Lambeth, Old Kent Road, South Bank, Borough, Bermondsey, England, United Kingdom",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Professional Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/ernstandyoung",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/477e1da51a0255e2a6d0473bb770311bd75eb25e6da858c63f47f13ae09f95dd.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.ey.com",
+                  "crustdata_company_id": 891049,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2021-11-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Mumbai, Maharashtra, India"
+                  },
+                  "name": "EY",
+                  "position_id": 1079214236,
+                  "professional_network_id": "1073",
+                  "seniority_level": "Director",
+                  "start_date": "2017-09-01T00:00:00",
+                  "title": "Director",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 4
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 242408,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "Canada",
+                  "company_hq_location": "Worldwide, British Columbia, Canada",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Accounting",
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Accounting",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/kpmg",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/a1b3984f450f1804ace1fe41601a4575a6279458ea362cbb3dca465573a8c0ce.jpg",
+                  "company_status": "active",
+                  "company_type": "Partnership",
+                  "company_website": "http://www.kpmg.com",
+                  "crustdata_company_id": 890813,
+                  "description": "Experiences professional in Transaction Service  with over 9 years of experience in Transaction Consulting. Also have an experienced in accounting, auditing and other finance functions. \n\nWorked extensively in Manufacturing, Real Estate, Consumer products and Media and Entertainment sectors. \n\nWorked on various inbound as well as outbound transaction advisory engagements, large private equity as well as strategic transaction consulting engagements. \nAssisted various sell side engagements including vendor due diligence and vendor assist for transaction in India and Europe. \n\nSpecialties: \nTransaction Consulting - Due diligence\nBusiness assessment and analysis",
+                  "employment_type": "",
+                  "end_date": "2017-09-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Mumbai"
+                  },
+                  "name": "KPMG",
+                  "position_id": 655337699,
+                  "professional_network_id": "2525300",
+                  "seniority_level": "Director",
+                  "start_date": "2011-12-01T00:00:00",
+                  "title": "Associate Director",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 5
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 410317,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "United Kingdom",
+                  "company_hq_location": "Southwark Cathedral, London Bridge, Westminster Bridge, Newington, New Kent Road, Lambeth North, Southwark, Waterloo, Lambeth, Old Kent Road, South Bank, Borough, Bermondsey, England, United Kingdom",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Professional Services"
+                  ],
+                  "company_professional_network_industry": "Professional Services",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/ernstandyoung",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/477e1da51a0255e2a6d0473bb770311bd75eb25e6da858c63f47f13ae09f95dd.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "http://www.ey.com",
+                  "crustdata_company_id": 891049,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2011-12-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Mumbai Area, India"
+                  },
+                  "name": "EY",
+                  "position_id": 563144989,
+                  "professional_network_id": "1073",
+                  "seniority_level": "Senior",
+                  "start_date": "2005-10-01T00:00:00",
+                  "title": "Senior Associate",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 6
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 0,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [],
+                  "company_professional_network_industry": "",
+                  "company_professional_network_profile_url": "",
+                  "company_profile_picture_permalink": "",
+                  "company_status": null,
+                  "company_type": "",
+                  "company_website": "",
+                  "crustdata_company_id": 0,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": "2005-01-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "Deloiite",
+                  "position_id": 331679957,
+                  "professional_network_id": null,
+                  "seniority_level": "Entry Level",
+                  "start_date": "2003-01-01T00:00:00",
+                  "title": "Analyst",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/hardik-parikh-28a4939"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

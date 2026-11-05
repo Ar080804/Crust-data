@@ -1,0 +1,72 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/poonammeel-044126253",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 874763,
+          "basic_profile": {
+            "current_title": "Intern (Growth and Logistics)",
+            "name": "Poonam Meel"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 38,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "United States",
+                  "company_hq_location": "San Mateo, California, United States",
+                  "company_hq_location_address_components": [
+                    "San Mateo",
+                    "San Mateo County",
+                    "California",
+                    "United States"
+                  ],
+                  "company_industries": [
+                    "Wholesale Building Materials",
+                    "Wholesale"
+                  ],
+                  "company_professional_network_industry": "Wholesale Building Materials",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/myglobalfair",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/2a865e02b37bf6202ba49937611df36c9838597a41406dd02fd5d020dee4d4e5.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "https://www.myglobalfair.com",
+                  "crustdata_company_id": 609561,
+                  "description": "GlobalFair Inc.- Internship (Growth & Logistics Departments) Nov 2022- Present\r\n \r\n• Handle global business functions such as sales, logistics, and compliance: Keeping track of pre-export documentation and export \r\ndocumentation - Performa invoice, packing list, shipping bill/tracking details, etc.\r\n• Managing data in the system with high accuracy and efficiency. Verifying and reviewing data for errors or discrepancies.\r\n• Maintaining and updating CRM databases. Performing basic data analysis and reporting\r\n• Communicating with other departments or team members to ensure data accuracy and consistency.\r\n• Identification of potential customer leads database for the sales team to increase customer acquisition, retention and revenue.",
+                  "employment_type": "Internship",
+                  "end_date": null,
+                  "function_category": "Operations",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Bengaluru, Karnataka, India"
+                  },
+                  "name": "GlobalFair",
+                  "position_id": 2103938939,
+                  "professional_network_id": "65434102",
+                  "seniority_level": "In Training",
+                  "start_date": "2022-11-01T00:00:00",
+                  "title": "Intern (Growth and Logistics)",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 4
+                }
+              ],
+              "past": []
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/poonammeel-044126253"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

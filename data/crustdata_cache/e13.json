@@ -1,0 +1,295 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/jai-khurana-9b569424",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 37280,
+          "basic_profile": {
+            "current_title": "Joint President & Group Head – Logistics | Business Head – Ropeways & Mega Infra Project in Mumbai",
+            "name": "Jai Khurana"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 22036,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "India",
+                  "company_hq_location_address_components": [
+                    "India"
+                  ],
+                  "company_industries": [
+                    "Utilities"
+                  ],
+                  "company_professional_network_industry": "Utilities",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/adani-group",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/a290bd567e128f3ea71abc93881bc1dcf4c8c963f1123cc0084f2de6197df756.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.adani.com/",
+                  "crustdata_company_id": 9008,
+                  "description": "Driving group-wide logistics strategy, new business development and infrastructure growth, with a focus on cost competitiveness, operational efficiency and value creation at scale.\nGroup Logistics Strategy: Driving the consolidation, planning and forecasting of group-wide logistics requirements across activities representing an annual spend of approximately USD 2 billion, with a focus on cost optimisation, value delivery and strategic partnerships.\nRopeways Business: Leading the incubation and scale-up of the Group’s ropeways business, building the organisation and developing a growth pipeline in the infrastructure sector.\nKedarnath Ropeway Project: Leading the development and execution of the prestigious 13-km Kedarnath Ropeway Project on a DBFOT basis, incorporating 3S technology and designed to comply with CEN standards.\nMega Infrastructure – Mumbai Region: Driving the development of major infrastructure projects across the roads, water and metro segments in the Mumbai Metropolitan Region, expanding the Group’s infrastructure portfolio.\nDigital & Analytics-led Transformation: Strengthening management assurance and decision-making through digital dashboards, data analytics and digitisation of operational processes.\nAI-enabled Logistics: Developing AI-based predictive freight-booking models and exploring innovative solutions to optimise logistics costs, including investments in enabling infrastructure.",
+                  "employment_type": "Full-time",
+                  "end_date": null,
+                  "function_category": "Operations",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Ahmedabad"
+                  },
+                  "name": "Adani Group",
+                  "position_id": 2487356332,
+                  "professional_network_id": "45812",
+                  "seniority_level": "Vice President",
+                  "start_date": "2024-09-01T00:00:00",
+                  "title": "Joint President & Group Head – Logistics | Business Head – Ropeways & Mega Infra Project in Mumbai",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                }
+              ],
+              "past": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 4628,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Ghuma, Shela, Bopal, Ambli, Gujarat, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Transportation, Logistics, Supply Chain and Storage"
+                  ],
+                  "company_professional_network_industry": "Transportation, Logistics, Supply Chain and Storage",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/adani-ports-sez-ltd-",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/29f4087ad61ca8f96ac2360cf89757d1318c84acfa900d56c55352bb7dd18875.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.adaniports.com",
+                  "crustdata_company_id": 15544,
+                  "description": "Led HR and Industrial Relations across the Ports, Logistics, Harbour, International Business and Dredging businesses, covering approximately 10,000 employees and 38,000 contractual workmen.\nStrategic HR Leadership: Aligned the HR agenda with business priorities, driving organisational effectiveness and supporting the Group’s growth ambitions across multiple business verticals.\nDigital Transformation: Led the digital transformation of HR processes to improve business alignment, operational efficiency and decision-making.\nLeadership & Succession Planning: Developed talent management and leadership development frameworks to strengthen the internal pipeline of CXO-ready talent for critical positions.\nTalent Acquisition: Introduced a structured GET/MT cadre hiring programme, identifying high-potential talent for future leadership roles and strengthening succession pipelines.\nWorkforce Transformation: Formulated a workforce strategy targeting a five-year reduction in the organisation’s average age, alongside improvements in gender diversity.\nFuture-ready Capabilities: Drove digital dexterity and learning initiatives to strengthen organisational capabilities and prepare the workforce for evolving business requirements.\nOperational Efficiency: Implemented outsourcing initiatives across ports and functions, aligning workforce deployment with operational requirements.",
+                  "employment_type": "Full-time",
+                  "end_date": "2024-10-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Ahmedabad"
+                  },
+                  "name": "Adani Ports and SEZ",
+                  "position_id": 2091882027,
+                  "professional_network_id": "132122",
+                  "seniority_level": "CXO",
+                  "start_date": "2022-09-01T00:00:00",
+                  "title": "Joint President & CHRO",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 4628,
+                  "company_headcount_range": "1001-5000",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Ghuma, Shela, Bopal, Ambli, Gujarat, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Transportation, Logistics, Supply Chain and Storage"
+                  ],
+                  "company_professional_network_industry": "Transportation, Logistics, Supply Chain and Storage",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/adani-ports-sez-ltd-",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/29f4087ad61ca8f96ac2360cf89757d1318c84acfa900d56c55352bb7dd18875.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "http://www.adaniports.com",
+                  "crustdata_company_id": 15544,
+                  "description": "Held end-to-end P&L responsibility for five ports—Katupalli, Ennore, Karaikal, Visakhapatnam and Goa—driving business growth, operational performance, infrastructure development and stakeholder engagement.\nBusiness Growth & P&L: Led the Southern Ports portfolio with a focus on volume growth, customer acquisition, operational efficiency and long-term value creation.\nContainer Business Expansion: Successfully attracted shipping lines to the Katupalli and Ennore container terminals, nearly doubling volumes over three years and strengthening their competitive position among South Indian container ports.\nInfrastructure Development: Commissioned liquid tank farm facilities at Katupalli and secured long-term contracts to support business growth.\nGovernment & Stakeholder Engagement: Managed relationships with the governments of Tamil Nadu, Puducherry and Andhra Pradesh, the Ministry of Shipping, Indian Railways, port authorities and other stakeholders to advance business interests and facilitate growth.\nRegulatory & Concession Management: Resolved long-pending concession agreement issues involving Ennore, Visakhapatnam and Goa in coordination with port authorities and the Ministry of Shipping.\nBusiness Transformation: Led the largest outsourcing exercise undertaken across APSEZ ports at the time, retaining critical positions while transitioning other roles to an outsourced model.\nESG & Sustainability: Strengthened ESG initiatives, community engagement and CSR programmes to improve relationships with local communities and promote responsible port operations.\nGreen Port Initiatives: Commissioned a solar installation on a port breakwater to support heating requirements for liquid-terminal pipelines, an initiative described at the time as a first for an Indian port. Introduced electric vehicles into port operations at Katupalli.\nSafety Culture: Strengthened safety practices and accountability across managerial and frontline workforces.",
+                  "employment_type": "",
+                  "end_date": "2022-09-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Chennai, Tamil Nadu, India"
+                  },
+                  "name": "Adani Ports and SEZ",
+                  "position_id": 1498732840,
+                  "professional_network_id": "132122",
+                  "seniority_level": "CXO",
+                  "start_date": "2019-08-01T00:00:00",
+                  "title": "Chief Executive Officer- Southern Ports",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 3
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 22036,
+                  "company_headcount_range": "10001+",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "India",
+                  "company_hq_location_address_components": [
+                    "India"
+                  ],
+                  "company_industries": [
+                    "Utilities"
+                  ],
+                  "company_professional_network_industry": "Utilities",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/adani-group",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/a290bd567e128f3ea71abc93881bc1dcf4c8c963f1123cc0084f2de6197df756.jpg",
+                  "company_status": "active",
+                  "company_type": "Public Company",
+                  "company_website": "https://www.adani.com/",
+                  "crustdata_company_id": 9008,
+                  "description": "Led business development initiatives spanning port-led industrialisation, SEZs, logistics infrastructure, strategic partnerships and international expansion.\nIndustrial Estate Development: Drove the development and monetisation of the Mundra Industrial Estate, encompassing SEZ and Domestic Tariff Area (DTA) parcels.\nInvestment Attraction: Implemented a cluster-based strategy to attract marquee investors and create a competitive industrial ecosystem leveraging port connectivity and industrial infrastructure.\nNew Business Development: Led initiatives to enter port-based LPG and LNG terminalling businesses, including associated pipeline infrastructure under a tolling model.\nStrategic Contracts: Negotiated long-term cargo and port infrastructure contracts across the Group’s existing port and terminal portfolio, supporting future throughput and revenue growth.\nAirport Sector Entry: Participated in the privatisation tender process for six airports, supporting the Adani Group’s entry into the airport sector.\nGovernment & Institutional Partnerships: Worked with port authorities, Indian Railways, public sector undertakings and other government institutions, including NTPC, IWAI, SAIL, MMTC, STC, IFFCO and KRIBHCO.\nInternational Expansion: Served as Country Manager for Bangladesh and Myanmar, responsible for developing APSEZ’s business presence in these markets.",
+                  "employment_type": "",
+                  "end_date": "2019-08-01T00:00:00",
+                  "function_category": "Sales",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Greater Ahmedabad Area"
+                  },
+                  "name": "Adani Group",
+                  "position_id": 394018166,
+                  "professional_network_id": "45812",
+                  "seniority_level": "Vice President",
+                  "start_date": "2013-01-01T00:00:00",
+                  "title": "Senior Vice President & Head Business Development",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 6
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 22,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Maritime Transportation",
+                    "Transportation, Logistics, Supply Chain and Storage"
+                  ],
+                  "company_professional_network_industry": "Maritime Transportation",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/jitf-waterways-ltd",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/1d59e2cf1e6602bd119c571b364f80710e32f502d548ff7ed54c0a4282d79b1e.jpg",
+                  "company_status": "active",
+                  "company_type": "",
+                  "company_website": "http://www.jindalvector.com",
+                  "crustdata_company_id": 3153202,
+                  "description": "Led the waterways and shipping business with full P&L responsibility, delivering a business turnaround while developing large-scale inland waterway and multimodal coal logistics infrastructure.\nBusiness Turnaround: Increased the top line by approximately 200%, supported by cost optimisation and a sharper business development focus.\nLandmark Inland Waterways Project: Won and led the execution of the prestigious NTPC–IWAI PPP project to transport 3 million tonnes of imported thermal coal annually to NTPC’s Farakka plant through inland waterways.\nIntegrated Logistics Infrastructure: Oversaw the development of an integrated logistics chain involving a Panamax-size trans-shipment vessel at Kolkata anchorage, specialised self-propelled barges and a coal-handling terminal at Farakka.\nProject Scale: Managed a project with an estimated cost of approximately ₹650 crore and projected annual revenues exceeding ₹300 crore.\nFleet & P&L Management: Held responsibility for a fleet of 14 vessels, including container carriers, multipurpose vessels, dry bulkers and barges, alongside chartered vessels.\nInternational Business Development: Established JITF Shipping & Logistics Pte. Ltd. in Singapore in April 2011 to expand shipping operations, develop time-chartering opportunities and acquire additional vessel capacity.\nMultimodal Logistics Development: Developed and presented coastal shipping and multimodal logistics solutions to leading companies, including Nestlé, Unilever, P&G, Colgate-Palmolive, LG and Samsung, to shift suitable cargo from road to coastal transport.",
+                  "employment_type": "",
+                  "end_date": "2013-01-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "location": {
+                    "raw": "Greater Delhi Area"
+                  },
+                  "name": "JITF waterways Ltd",
+                  "position_id": 179101873,
+                  "professional_network_id": "1708303",
+                  "seniority_level": "Director",
+                  "start_date": "2010-02-01T00:00:00",
+                  "title": "Business Head & Director",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 0,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [],
+                  "company_professional_network_industry": "",
+                  "company_professional_network_profile_url": "",
+                  "company_profile_picture_permalink": "",
+                  "company_status": null,
+                  "company_type": "",
+                  "company_website": "",
+                  "crustdata_company_id": 0,
+                  "description": "Led freight forwarding and port services businesses with complete P&L across India and overseas, with responsibility for business development, customer acquisition, multimodal logistics and commercial performance.\nBusiness Leadership: Managed freight forwarding operations spanning nine branches in India, two overseas offices and approximately 100 personnel.\nCustomer & Volume Growth: Developed business across project cargo, full-container-load and air cargo segments, including volumes of approximately 25,000 TEUs and 3,000 metric tonnes of air cargo.\nMultimodal Logistics: Expanded door-to-door logistics offerings by integrating freight forwarding with warehousing and transportation, targeting customers beyond the Tata Group.\nPort Services & Commercial Development: Served as Chief Marketing Officer for port services at Haldia, Paradip and Visakhapatnam, securing cargo-handling and shipping contracts across bulk, break-bulk and other commodity segments.\nCargo Growth: Generated approximately 6.5 million tonnes of cargo in FY 2009–10 through focused marketing and business development initiatives.\nStrategic Customer Acquisition: Secured and managed NTPC thermal coal logistics through Haldia and onward rail transportation to NTPC plants, handling approximately 2.5 million tonnes annually for three consecutive years.\nThird-party Business Expansion: Increased the share of third-party customers from 20% to 85% over three years, broadening the customer base beyond the parent-group ecosystem.\nCoastal Shipping: Initiated coastal cargo movement between Haldia and Paradip/Visakhapatnam using 10,000-DWT barges, including a SAIL coking coal movement contract.\nCommercial Governance: Developed customer credit-allocation and risk-mitigation models, managed receivables and credit control, and supported implementation of the SAP Sales and Distribution module.",
+                  "employment_type": "",
+                  "end_date": "2010-01-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "Tata Martrade International Logistics Ltd, A JV between Tata Steel,NYK & Martrade",
+                  "position_id": 179101862,
+                  "professional_network_id": null,
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "2004-01-01T00:00:00",
+                  "title": "Country Manager",
+                  "years_at_company": "6 to 10 years",
+                  "years_at_company_raw": 6
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 0,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [],
+                  "company_professional_network_industry": "",
+                  "company_professional_network_profile_url": "",
+                  "company_profile_picture_permalink": "",
+                  "company_status": null,
+                  "company_type": "",
+                  "company_website": "",
+                  "crustdata_company_id": 0,
+                  "description": "Managed commercial and chartering activities supporting offshore oil and gas operations.\nManaged the chartering of offshore supply vessels and helicopters in accordance with international norms and operational requirements.\nDeveloped technical specifications for global tenders and negotiated long-term time-charter arrangements with Indian and international shipowners for Offshore Supply Vessels (OSVs) and Platform Supply Vessels (PSVs).\nMonitored the commercial performance and operations of vessels deployed under long-term charter arrangements.",
+                  "employment_type": "",
+                  "end_date": "2003-12-01T00:00:00",
+                  "function_category": "",
+                  "is_default": false,
+                  "name": "ONGC, a Navratna Company",
+                  "position_id": 232265921,
+                  "professional_network_id": null,
+                  "seniority_level": "Entry Level Manager",
+                  "start_date": "1999-05-01T00:00:00",
+                  "title": "Mumbai as Manager",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 4
+                },
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 0,
+                  "company_headcount_range": "",
+                  "company_headquarters_country": "",
+                  "company_hq_location": "",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [],
+                  "company_professional_network_industry": "",
+                  "company_professional_network_profile_url": "",
+                  "company_profile_picture_permalink": "",
+                  "company_status": null,
+                  "company_type": "",
+                  "company_website": "",
+                  "crustdata_company_id": 0,
+                  "description": "Managed industrial and retail sales of the Birla White cement brand across Delhi and the National Capital Region.\nDeveloped direct marketing channels targeting builders and architects to strengthen institutional engagement and product penetration.\nExpanded the regional dealer network and drove sales growth across the NCR market.",
+                  "employment_type": "",
+                  "end_date": "1999-04-01T00:00:00",
+                  "function_category": "Marketing",
+                  "is_default": false,
+                  "name": "Indian Rayon and Industries Ltd",
+                  "position_id": 179101864,
+                  "professional_network_id": null,
+                  "seniority_level": "Senior",
+                  "start_date": "1997-01-01T00:00:00",
+                  "title": "Senior Marketing Officer",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                }
+              ]
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/jai-khurana-9b569424"
+            }
+          }
+        }
+      }
+    ]
+  }
+]

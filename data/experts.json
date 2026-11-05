@@ -5,10 +5,25 @@
     "headline": "TODO: Aditya ka real headline",
     "linkedin_url": "https://www.linkedin.com/in/TODO-aditya",
     "rate_inr": 1800,
-    "availability": [{"start": "2026-11-06T18:00:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
     "telegram_chat_id": "7798888763",
     "email": "TODO-aditya@example.com",
-    "claims": ["TODO: role at company, years"],
+    "claims": [
+      "TODO: role at company, years"
+    ],
     "simulated": false
   },
   {
@@ -17,10 +32,25 @@
     "headline": "Organizer, Udghosh IIT Kanpur",
     "linkedin_url": "https://www.linkedin.com/in/sunil-jakhar-3b1430326/",
     "rate_inr": 1500,
-    "availability": [{"start": "2026-11-06T17:00:00+05:30", "end": "2026-11-06T20:00:00+05:30"}],
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
     "telegram_chat_id": "6634891184",
     "email": "sunilj24@iitk.ac.in",
-    "claims": ["Organizer at Udghosh, IIT Kanpur, 2025-present"],
+    "claims": [
+      "Organizer at Udghosh, IIT Kanpur, 2025-present"
+    ],
     "simulated": false
   },
   {
@@ -29,58 +59,433 @@
     "headline": "TODO: Deepak ka real headline",
     "linkedin_url": "https://www.linkedin.com/in/TODO-deepak",
     "rate_inr": 2200,
-    "availability": [{"start": "2026-11-06T19:00:00+05:30", "end": "2026-11-06T22:00:00+05:30"}],
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
     "telegram_chat_id": "7909529489",
     "email": "TODO-deepak@example.com",
-    "claims": ["TODO: role at company, years"],
+    "claims": [
+      "TODO: role at company, years"
+    ],
     "simulated": false
   },
   {
     "expert_id": "e4",
-    "name": "TODO friend 1",
-    "headline": "Fulfilment Head, TODO company",
-    "linkedin_url": "https://www.linkedin.com/in/TODO-friend1",
-    "rate_inr": 2500,
-    "availability": [{"start": "2026-11-06T18:00:00+05:30", "end": "2026-11-06T20:00:00+05:30"}],
-    "telegram_chat_id": "",
+    "name": "AMIT VERMA",
+    "headline": "Supply Chain Management, Ujala Cygnus",
+    "linkedin_url": "https://www.linkedin.com/in/amit-verma-710575183",
+    "rate_inr": 2000,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e4",
     "email": "",
-    "claims": ["Fulfilment Head at TODO, 2020-2024"],
+    "claims": [
+      "Supply Chain Management at Ujala Cygnus, 2017-present"
+    ],
     "simulated": true
   },
   {
     "expert_id": "e5",
-    "name": "TODO friend 2",
-    "headline": "Supply Chain Analyst, TODO company",
-    "linkedin_url": "https://www.linkedin.com/in/TODO-friend2",
-    "rate_inr": 1200,
-    "availability": [{"start": "2026-11-06T18:30:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
-    "telegram_chat_id": "",
+    "name": "AMAR NAYAK",
+    "headline": "Warehouse Officer, Technip Energies",
+    "linkedin_url": "https://www.linkedin.com/in/amar-nayak-23b14414",
+    "rate_inr": 1000,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e5",
     "email": "",
-    "claims": ["Supply Chain Analyst at TODO, 2022-2025"],
+    "claims": [
+      "Warehouse Officer at Technip Energies, 2025-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e6",
+    "name": "Suresh Bansal",
+    "headline": "Executive Director, Head Supply Chain Business, DTDC Express Limited",
+    "linkedin_url": "https://www.linkedin.com/in/suresh-bansal-70b30428",
+    "rate_inr": 2600,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e6",
+    "email": "",
+    "claims": [
+      "Executive Director, Head Supply Chain Business at DTDC Express Limited, 2005-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e7",
+    "name": "Swapnil Tripathi",
+    "headline": "General Manager, Fulfilment Center, Amazon",
+    "linkedin_url": "https://www.linkedin.com/in/swtripathi",
+    "rate_inr": 1200,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e7",
+    "email": "",
+    "claims": [
+      "General Manager, Fulfilment Center at Amazon, 2024-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e8",
+    "name": "Rajarshi Nag",
+    "headline": "National Logistics & Supply Chain Expert Committee Board Member, Indian Chamber of Commerce",
+    "linkedin_url": "https://www.linkedin.com/in/rajarshinag",
+    "rate_inr": 2400,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e8",
+    "email": "",
+    "claims": [
+      "National Logistics & Supply Chain Expert Committee Board Member at Indian Chamber of Commerce, 2025-present"
+    ],
     "simulated": true
   },
   {
     "expert_id": "e9",
-    "name": "TODO PLANTED FAKE 1 (LinkedIn pe sirf intern hona chahiye)",
-    "headline": "Warehouse Head, TODO company",
-    "linkedin_url": "https://www.linkedin.com/in/TODO-fake1",
-    "rate_inr": 1000,
-    "availability": [{"start": "2026-11-06T18:00:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
-    "telegram_chat_id": "",
+    "name": "Manoj Kumar",
+    "headline": "Fulfillment Head, LxP Digital",
+    "linkedin_url": "https://www.linkedin.com/in/meet-manoj-garg",
+    "rate_inr": 1200,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e9",
     "email": "",
-    "claims": ["Warehouse Head at TODO, 2021-2024"],
+    "claims": [
+      "Fulfillment Head at LxP Digital, 2024-present"
+    ],
     "simulated": true
   },
   {
     "expert_id": "e10",
-    "name": "TODO PLANTED FAKE 2 (inflated years)",
-    "headline": "Senior Logistics Manager, TODO company",
-    "linkedin_url": "https://www.linkedin.com/in/TODO-fake2",
-    "rate_inr": 1400,
-    "availability": [{"start": "2026-11-06T19:00:00+05:30", "end": "2026-11-06T21:00:00+05:30"}],
-    "telegram_chat_id": "",
+    "name": "Hardik Parikh",
+    "headline": "Head of Supply Chain Management, Shalimar Paints",
+    "linkedin_url": "https://www.linkedin.com/in/hardik-parikh-28a4939",
+    "rate_inr": 2600,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e10",
     "email": "",
-    "claims": ["Senior Logistics Manager at TODO, 2016-2024"],
+    "claims": [
+      "Head of Supply Chain Management at Shalimar Paints, 2025-present"
+    ],
     "simulated": true
+  },
+  {
+    "expert_id": "e11",
+    "name": "AMITABH SHANKAR",
+    "headline": "CEO-Logistics, Cogoport",
+    "linkedin_url": "https://www.linkedin.com/in/amitabhshankar",
+    "rate_inr": 2000,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e11",
+    "email": "",
+    "claims": [
+      "CEO-Logistics at Cogoport, 2020-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e12",
+    "name": "Deepak Dhanotiya",
+    "headline": "Founder & Supply Chain, DIRECT | Empowering Retailers",
+    "linkedin_url": "https://www.linkedin.com/in/deepak-dhanotiya-4756b723",
+    "rate_inr": 2000,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e12",
+    "email": "",
+    "claims": [
+      "Founder & Supply Chain at DIRECT | Empowering Retailers, 2015-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e13",
+    "name": "Jai Khurana",
+    "headline": "Joint President & Group Head – Logistics | Business Head – Ropeways & Mega Infra Project in Mumbai, Adani Group",
+    "linkedin_url": "https://www.linkedin.com/in/jai-khurana-9b569424",
+    "rate_inr": 1200,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e13",
+    "email": "",
+    "claims": [
+      "Joint President & Group Head – Logistics | Business Head – Ropeways & Mega Infra Project in Mumbai at Adani Group, 2024-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e14",
+    "name": "Mayur Bommai",
+    "headline": "Co-Founder & Chief Of Logistics, Laundryheap",
+    "linkedin_url": "https://www.linkedin.com/in/mayur-bommai-3571b935",
+    "rate_inr": 1800,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e14",
+    "email": "",
+    "claims": [
+      "Co-Founder & Chief Of Logistics at Laundryheap, 2014-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e15",
+    "name": "Anshuman Singh",
+    "headline": "Co-Chairman, FICCI Committee on Logistics, FICCI",
+    "linkedin_url": "https://www.linkedin.com/in/anshuman-singh-157348b",
+    "rate_inr": 2000,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e15",
+    "email": "",
+    "claims": [
+      "Co-Chairman, FICCI Committee on Logistics at FICCI, 2026-present"
+    ],
+    "simulated": true
+  },
+  {
+    "expert_id": "e16",
+    "name": "Planted Test A",
+    "headline": "Warehouse Head, GlobalFair",
+    "linkedin_url": "https://www.linkedin.com/in/poonammeel-044126253",
+    "rate_inr": 3000,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e16",
+    "email": "",
+    "claims": [
+      "Warehouse Head at GlobalFair, 2020-present"
+    ],
+    "simulated": true,
+    "planted": true
+  },
+  {
+    "expert_id": "e17",
+    "name": "Planted Test B",
+    "headline": "Warehouse Head, Insurance Samadhan",
+    "linkedin_url": "https://www.linkedin.com/in/ansh-gambhir-864ba5239",
+    "rate_inr": 1000,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e17",
+    "email": "",
+    "claims": [
+      "Warehouse Head at Insurance Samadhan, 2022-present"
+    ],
+    "simulated": true,
+    "planted": true
+  },
+  {
+    "expert_id": "e18",
+    "name": "Planted Test C",
+    "headline": "Product Operations Manager, Google (6+ yrs)",
+    "linkedin_url": "https://www.linkedin.com/in/prakhar-tosniwal",
+    "rate_inr": 1400,
+    "availability": [
+      {
+        "start": "2026-11-06T17:00:00+05:30",
+        "end": "2026-11-06T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-07T17:00:00+05:30",
+        "end": "2026-11-07T22:00:00+05:30"
+      },
+      {
+        "start": "2026-11-08T17:00:00+05:30",
+        "end": "2026-11-08T22:00:00+05:30"
+      }
+    ],
+    "telegram_chat_id": "sim-e18",
+    "email": "",
+    "claims": [
+      "Product Operations Manager at Google, 2020-present"
+    ],
+    "simulated": true,
+    "planted": true
   }
 ]

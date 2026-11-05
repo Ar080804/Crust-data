@@ -1,0 +1,67 @@
+[
+  {
+    "matched_on": "https://www.linkedin.com/in/ansh-gambhir-864ba5239",
+    "match_type": "professional_network_profile_url",
+    "match_status": "matched",
+    "_source": "crustdata:person_search",
+    "matches": [
+      {
+        "confidence_score": 1.0,
+        "person_data": {
+          "crustdata_person_id": 903276,
+          "basic_profile": {
+            "current_title": "Operations Intern",
+            "name": "Ansh Gambhir"
+          },
+          "experience": {
+            "employment_details": {
+              "current": [
+                {
+                  "business_email_verified": false,
+                  "company_headcount_latest": 164,
+                  "company_headcount_range": "51-200",
+                  "company_headquarters_country": "India",
+                  "company_hq_location": "Noida Sector 27, Noida Sector 12, Noida H.O, Noida Sector 16, Uttar Pradesh, India",
+                  "company_hq_location_address_components": [],
+                  "company_industries": [
+                    "Insurance",
+                    "Financial Services"
+                  ],
+                  "company_professional_network_industry": "Insurance",
+                  "company_professional_network_profile_url": "https://www.linkedin.com/company/insurancesamadhan",
+                  "company_profile_picture_permalink": "https://crustdata-media.s3.us-east-2.amazonaws.com/company/ce55ee97c552dc19d41ecbb1266c5928eb4c59c5939d3c61d198b44e4de0422b.jpg",
+                  "company_status": "active",
+                  "company_type": "Privately Held",
+                  "company_website": "https://www.insurancesamadhan.com/",
+                  "crustdata_company_id": 8963,
+                  "description": "",
+                  "employment_type": "",
+                  "end_date": null,
+                  "function_category": "Operations",
+                  "is_default": true,
+                  "location": {
+                    "raw": "Noida, Uttar Pradesh, India"
+                  },
+                  "name": "Insurance Samadhan",
+                  "position_id": 2445378611,
+                  "professional_network_id": "13287370",
+                  "seniority_level": "In Training",
+                  "start_date": "2024-06-01T00:00:00",
+                  "title": "Operations Intern",
+                  "years_at_company": "3 to 5 years",
+                  "years_at_company_raw": 2
+                }
+              ],
+              "past": []
+            }
+          },
+          "social_handles": {
+            "professional_network_identifier": {
+              "profile_url": "https://www.linkedin.com/in/ansh-gambhir-864ba5239"
+            }
+          }
+        }
+      }
+    ]
+  }
+]
