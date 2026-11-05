@@ -8,3 +8,5 @@ dist/
 token.json
 credentials.json
 .DS_Store
+*.db-wal
+*.db-shm
