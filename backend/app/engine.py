@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from . import adapters, db, gcal, llm
 from .config import CLIENT_EMAIL, IST, OUTREACH_TIMEOUT_S, WORKER_TICK_S, now
 
-TERMINAL = {"BOOKED", "FAILED", "ESCALATED", "NEEDS_CLARIFICATION"}
+TERMINAL = {"BOOKED", "FAILED", "ESCALATED", "NEEDS_CLARIFICATION", "CANCELLED"}
 
 SYNONYMS = {
     "warehouse": ["warehouse", "fulfilment", "fulfillment", "logistics", "supply chain", "inventory", "3pl", "ops"],
@@ -35,10 +35,10 @@ def fmt_time(iso: str) -> str:
 
 # ---- intake ----------------------------------------------------------------
 
-def create_request(text: str) -> str:
+def create_request(text: str, user_email: str | None = None) -> str:
     rid = "r_" + uuid.uuid4().hex[:8]
-    db.ex("INSERT INTO requests (id, status, raw_text, created_at) VALUES (?,?,?,?)",
-          (rid, "INTAKE", text, now().isoformat(timespec="seconds")))
+    db.ex("INSERT INTO requests (id, status, raw_text, created_at, user_email) VALUES (?,?,?,?,?)",
+          (rid, "INTAKE", text, now().isoformat(timespec="milliseconds"), (user_email or "").strip().lower() or None))
     db.log(rid, "INTAKE", f'Request received: "{text}"', "human")
     return rid
 
@@ -165,51 +165,107 @@ def step_find(r):
         if not _available(e, c):
             db.log(rid, "FINDING", f"{e['name']} matches but is not available in the window", "code")
             continue
-        cands.append((min(1.0, 0.5 + 0.25 * len(hits)), e))
+        cands.append((min(1.0, 0.5 + 0.25 * len(hits)), e, hits))
     cands.sort(key=lambda x: (-x[0], x[1]["expert_id"]))
     cands = cands[:10]  # wide enough that planted fakes get verified (and caught), not silently cut
     with db.tx() as con:
         con.execute("DELETE FROM shortlist WHERE request_id=?", (rid,))
-        for i, (score, e) in enumerate(cands):
+        for i, (score, e, hits) in enumerate(cands):
             con.execute("INSERT INTO shortlist (request_id, expert_id, ord, data, outreach_state) VALUES (?,?,?,?,?)",
-                        (rid, e["expert_id"], i, db.j({"expert": e, "relevance": score}), "pending"))
-        con.execute("UPDATE requests SET status='VERIFYING' WHERE id=?", (rid,))
+                        (rid, e["expert_id"], i, db.j({"expert": e, "relevance": score, "hits": hits}), "pending"))
+        con.execute("UPDATE requests SET status='VERIFYING' WHERE id=? AND status!='CANCELLED'", (rid,))
     db.log(rid, "FINDING", f"{len(cands)} candidates from a pool of {len(experts)} (source: {adapters.MODE['pool']} pool)", "code")
 
 
+MONTHS_RE = re.compile(r"\((\d+)\s*mo\)")
+
+
+def _verified_months(claims) -> int:
+    """Longest verified tenure, read from Crustdata evidence like '... 2025–present (14 mo)'."""
+    best = 0
+    for cl in claims:
+        if cl["status"] == "verified" and cl.get("source", "").startswith("crustdata"):
+            for m in MONTHS_RE.findall(cl.get("evidence") or ""):
+                best = max(best, int(m))
+    return best
+
+
+def rank(d: dict, c: dict) -> tuple[float, str]:
+    """Best-match score, computed by code, with a human-readable reason for every component.
+    score = (topic relevance + experience bonus + value bonus) x verification x identity"""
+    e = d["expert"]
+    rate, budget = e["rate_inr"], c["max_inr"]
+    months = _verified_months(d["claims"])
+    exp_bonus = min(months, 36) / 36 * 0.15
+    value_bonus = (budget - rate) / budget * 0.15 if rate <= budget else 0.0
+    verify_factor = {"ok": 1.0, "unverifiable": 0.6, "contradicted": 0.0}[d["flag"]]
+    identity_factor = 0.9 if d.get("identity") == "unverifiable" else 1.0
+    score = round((d["relevance"] + exp_bonus + value_bonus) * verify_factor * identity_factor, 2)
+    why = [f"topic match: {', '.join(d.get('hits', [])[:3]) or 'n/a'}",
+           {"ok": "work history verified" + (f" ({months} mo)" if months else ""),
+            "unverifiable": "work history unverifiable (×0.6)",
+            "contradicted": "claim contradicted (×0)"}[d["flag"]]]
+    if rate > budget:
+        why.append(f"{rupees(rate)} is over the {rupees(budget)} budget")
+    elif rate == budget:
+        why.append(f"{rupees(rate)}, exactly at budget")
+    else:
+        why.append(f"{rupees(rate)}, {round((budget - rate) / budget * 100)}% under budget")
+    if d.get("identity") == "verified":
+        why.append("Telegram name matches")
+    elif d.get("identity") == "unverifiable":
+        why.append("Telegram name does not match (×0.9)")
+    return score, "; ".join(why)
+
+
 def step_verify(r):
-    rid = r["id"]
+    rid, c = r["id"], r["constraints"]
     rows = db.shortlist_rows(rid)
-    scored = []
     for row in rows:
         d = row["data"]
         if "claims" in d:  # already verified before a crash
-            scored.append((d["score"], row["expert_id"]))
             continue
         e = d["expert"]
         claims, src = adapters.verify(e)
-        st = {c["status"] for c in claims}
-        if "contradicted" in st:
-            flag, factor = "contradicted", 0.0
-        elif "verified" in st:
-            flag, factor = "ok", 1.0
-        else:
-            flag, factor = "unverifiable", 0.6
-        d.update(claims=claims, flag=flag, score=round(d["relevance"] * factor, 2))
+        st = {cl["status"] for cl in claims}  # flag comes from work-history claims only
+        flag = "contradicted" if "contradicted" in st else "ok" if "verified" in st else "unverifiable"
+        ident = adapters.telegram_identity(e)
+        if ident:
+            claims = claims + [ident]
+            d["identity"] = ident["status"]
+        d.update(claims=claims, flag=flag)
         state = "skipped" if flag == "contradicted" else "pending"
         db.ex("UPDATE shortlist SET data=?, outreach_state=? WHERE request_id=? AND expert_id=?",
               (db.j(d), state, rid, row["expert_id"]))
+        row["data"], row["outreach_state"] = d, state
         if flag == "contradicted":
-            bad = next(c for c in claims if c["status"] == "contradicted")
+            bad = next(cl for cl in claims if cl["status"] == "contradicted")
             db.log(rid, "VERIFYING", f"{e['name']} dropped: claim \"{bad['text']}\" contradicted. {bad['evidence']}", src)
         elif flag == "unverifiable":
             db.log(rid, "VERIFYING", f"{e['name']}: claims unverifiable, ranked lower and flagged", src)
         else:
             db.log(rid, "VERIFYING", f"{e['name']}: work history verified", src)
-        scored.append((d["score"], row["expert_id"]))
-    scored.sort(key=lambda x: (-x[0], x[1]))
-    for i, (_, eid) in enumerate(scored):
+        if ident and ident["status"] != "verified":
+            db.log(rid, "VERIFYING", f"{e['name']}: {ident['evidence']}", "telegram:getChat")
+
+    # Rank everyone with the same formula, then apply the hard budget constraint.
+    ranked = []
+    for row in rows:
+        d = row["data"]
+        d["score"], d["why"] = rank(d, c)
+        db.ex("UPDATE shortlist SET data=? WHERE request_id=? AND expert_id=?", (db.j(d), rid, row["expert_id"]))
+        ranked.append((d["score"], row["expert_id"], row))
+    ranked.sort(key=lambda x: (-x[0], x[1]))
+    for i, (score, eid, row) in enumerate(ranked):
         db.ex("UPDATE shortlist SET ord=? WHERE request_id=? AND expert_id=?", (i, rid, eid))
+        d = row["data"]
+        if d["flag"] != "contradicted":
+            db.log(rid, "VERIFYING", f"Ranked #{i + 1} {d['expert']['name']} (score {score}): {d['why']}", "code")
+    for score, eid, row in ranked:
+        e = row["data"]["expert"]
+        if row["outreach_state"] == "pending" and e["rate_inr"] > c["max_inr"]:
+            db.set_outreach(rid, eid, "skipped", last_ask={"slot": _available(e, c), "price": e["rate_inr"]})
+            db.log(rid, "OUTREACH", f"{e['name']} skipped: rate {rupees(e['rate_inr'])} > budget {rupees(c['max_inr'])}", "code")
     db.update_request(rid, status="OUTREACH")
 
 
@@ -220,12 +276,26 @@ def _window_desc(c):
     return f"{d.strftime('%a %d %b')}, {fmt_time(c['window_start'])}–{fmt_time(c['window_end'])} IST"
 
 
+def _busy_experts(rid) -> set[str]:
+    """Experts currently talking to another request. An earlier request keeps them (first come, first served)."""
+    return {x["current_expert"] for x in db.q(
+        "SELECT current_expert FROM requests WHERE id!=? AND status IN ('NEGOTIATING','BOOKING') "
+        "AND current_expert IS NOT NULL", (rid,))}
+
+
 def step_outreach(r):
     rid, c = r["id"], r["constraints"]
+    busy, waiting = _busy_experts(rid), False
     for row in db.shortlist_rows(rid):
         if row["outreach_state"] != "pending":
             continue
         e = row["data"]["expert"]
+        if e["expert_id"] in busy:
+            waiting = True
+            if db.kv_get(f"busy_logged:{rid}:{e['expert_id']}") is None:
+                db.kv_set(f"busy_logged:{rid}:{e['expert_id']}", 1)
+                db.log(rid, "OUTREACH", f"{e['name']} is busy with an earlier request; trying the next expert first", "code")
+            continue
         if e["rate_inr"] > c["max_inr"]:
             db.set_outreach(rid, e["expert_id"], "skipped",
                             last_ask={"slot": _available(e, c), "price": e["rate_inr"]})
@@ -249,6 +319,8 @@ def step_outreach(r):
             db.update_request(rid, contacted_at=0)  # forces an immediate timeout -> next expert
             db.log(rid, "OUTREACH", f"Could not reach {e['name']} on Telegram after 3 tries; moving on", "telegram")
         return
+    if waiting:
+        return  # someone suitable is only busy, not unavailable: wait for them instead of escalating
     escalate(rid, c, "No verified expert accepted within budget and window")
 
 
@@ -353,6 +425,8 @@ def _ask_once(r, e, text, n):
 
 def step_book(r):
     rid, c, eid, offer = r["id"], r["constraints"], r["current_expert"], r["offer"]
+    if (db.get_request_row(rid) or {}).get("status") != "BOOKING":
+        return  # cancelled while we were working
     row = next(x for x in db.shortlist_rows(rid) if x["expert_id"] == eid)
     e = row["data"]["expert"]
     start = offer["slot"]
@@ -398,6 +472,29 @@ def approve(rid: str, option_id: str):
     return "BOOKING"
 
 
+# ---- cancel ------------------------------------------------------------------
+
+def cancel(rid: str) -> str:
+    """Cancel a request that is not booked yet. Returns the new status, or raises ValueError with a reason."""
+    r = db.get_request_row(rid)
+    if not r:
+        raise LookupError("not found")
+    if r["status"] in ("BOOKED", "BOOKING"):
+        raise ValueError("already booked; cancel the calendar event instead")
+    if r["status"] in ("CANCELLED", "FAILED"):
+        raise ValueError(f"request is already {r['status'].lower()}")
+    db.ex("UPDATE requests SET status='CANCELLED', current_expert=NULL WHERE id=?", (rid,))
+    db.log(rid, "CANCELLED", "Cancelled by the client", "human")
+    for row in db.shortlist_rows(rid):  # tell anyone we are waiting on, so nobody is left hanging
+        if row["outreach_state"] in ("contacted", "replied"):
+            e = row["data"]["expert"]
+            db.set_outreach(rid, e["expert_id"], "released")
+            adapters.send_once(f"cancel:{rid}:{e['expert_id']}", e["telegram_chat_id"],
+                               "Update: the client has cancelled this request, so no call is needed. Sorry for the trouble!")
+            db.log(rid, "CANCELLED", f"Told {e['name']} the request was cancelled", "telegram")
+    return "CANCELLED"
+
+
 # ---- replies router --------------------------------------------------------
 
 def ingest_replies(replies: list[dict]):
@@ -411,7 +508,7 @@ def ingest_replies(replies: list[dict]):
             continue
         eid = e["expert_id"]
         active = db.q1("SELECT id FROM requests WHERE status='NEGOTIATING' AND current_expert=? "
-                       "ORDER BY created_at DESC LIMIT 1", (eid,))
+                       "ORDER BY created_at ASC LIMIT 1", (eid,))
         rid = active["id"] if active else None
         try:
             db.ex("INSERT INTO replies (update_id, chat_id, text, t, expert_id, request_id) VALUES (?,?,?,?,?,?)",
@@ -422,11 +519,13 @@ def ingest_replies(replies: list[dict]):
             continue
         late = db.q1("SELECT s.request_id, r.status FROM shortlist s JOIN requests r ON r.id=s.request_id "
                      "WHERE s.expert_id=? AND s.outreach_state IN ('timed_out','declined','contacted','replied') "
-                     "AND r.status IN ('BOOKED','ESCALATED','FAILED') ORDER BY r.created_at DESC LIMIT 1", (eid,))
+                     "AND r.status IN ('BOOKED','ESCALATED','FAILED','CANCELLED') ORDER BY r.created_at DESC LIMIT 1", (eid,))
         if late:
             lrid = late["request_id"]
             db.set_outreach(lrid, eid, "released")
-            if late["status"] == "BOOKED":
+            if late["status"] == "CANCELLED":
+                text = "Thank you for replying! The client has cancelled this request, so no call is needed. Sorry for the trouble."
+            elif late["status"] == "BOOKED":
                 text = ("Thank you for replying! This call has already been booked with someone else. "
                         "We'll reach out for the next one.")
             else:
@@ -444,7 +543,8 @@ STEPS = {"INTAKE": step_intake, "FINDING": step_find, "VERIFYING": step_verify, 
 
 def tick():
     ingest_replies(adapters.poll_replies())
-    for r in db.q("SELECT id FROM requests WHERE status IN (%s)" % ",".join("?" * len(STEPS)), tuple(STEPS)):
+    for r in db.q("SELECT id FROM requests WHERE status IN (%s) ORDER BY created_at, id" % ",".join("?" * len(STEPS)),
+                  tuple(STEPS)):  # oldest first: first come, first served
         row = db.get_request_row(r["id"])
         try:
             STEPS[row["status"]](row)

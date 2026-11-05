@@ -2,6 +2,7 @@
   "id": "r_clarify",
   "status": "NEEDS_CLARIFICATION",
   "raw_text": "Need to talk to a warehouse expert",
+  "created_at": "2026-11-06T01:02:00.000+05:30",
   "clarification_question": "When do you want the call, and what is your budget?",
   "constraints": null,
   "shortlist": [],

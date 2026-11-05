@@ -3,7 +3,7 @@
 
 export type Status =
   | "INTAKE" | "NEEDS_CLARIFICATION" | "FINDING" | "VERIFYING" | "OUTREACH"
-  | "NEGOTIATING" | "BOOKING" | "BOOKED" | "ESCALATED" | "FAILED";
+  | "NEGOTIATING" | "BOOKING" | "BOOKED" | "ESCALATED" | "FAILED" | "CANCELLED";
 
 export interface Constraints {
   topic: string; duration_min: number; window_start: string; window_end: string; max_inr: number;
@@ -42,6 +42,7 @@ export interface Escalation { reason: string; options: EscalationOption[]; }
 
 export interface Request {
   id: string; status: Status; raw_text: string;
+  created_at: string;            // ISO 8601, +05:30. Sort history by this.
   clarification_question: string | null;
   constraints: Constraints | null;
   shortlist: ShortlistItem[];
@@ -60,3 +61,5 @@ export interface Eval {
   budget_violations: number; time_violations: number; double_bookings: number;
   fakes_planted: number; fakes_caught: number;
 }
+
+export interface RequestList { requests: Request[]; }   // GET /requests, newest first
