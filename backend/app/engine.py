@@ -156,18 +156,29 @@ def step_find(r):
             db.log(rid, "FINDING", f"Merged duplicate profile {e['expert_id']} into {merged[key]['expert_id']}", "code")
         else:
             merged[key] = dict(e)
-    cands = []
+    cands, unavailable = [], 0
     for e in merged.values():
         text = (e.get("headline", "") + " " + " ".join(e.get("claims", []))).lower()
         hits = [k for k in kws if k in text]
         if not hits:
             continue
         if not _available(e, c):
+            unavailable += 1
             db.log(rid, "FINDING", f"{e['name']} matches but is not available in the window", "code")
             continue
         cands.append((min(1.0, 0.5 + 0.25 * len(hits)), e))
     cands.sort(key=lambda x: (-x[0], x[1]["expert_id"]))
     cands = cands[:10]  # wide enough that planted fakes get verified (and caught), not silently cut
+    if not cands:
+        # Say exactly why, so the human knows what to change (time window vs topic).
+        if unavailable:
+            reason = (f"No expert matching '{c['topic']}' is free {_window_desc(c)} "
+                      f"({unavailable} match the topic but are busy then). Try another time window.")
+        else:
+            reason = f"No expert in the pool matches '{c['topic']}'. Try a broader topic."
+        db.update_request(rid, status="ESCALATED", escalation={"reason": reason, "options": []})
+        db.log(rid, "ESCALATED", reason, "code")
+        return
     with db.tx() as con:
         con.execute("DELETE FROM shortlist WHERE request_id=?", (rid,))
         for i, (score, e) in enumerate(cands):
