@@ -13,7 +13,10 @@ Flow:
 
 Env (.env at repo root):
   LINKEDIN_CLIENT_ID, LINKEDIN_CLIENT_SECRET   from the LinkedIn developer app (Auth tab)
-  ONBOARDING_BOT_TOKEN                         bot used for step 2 (defaults to TELEGRAM_BOT_TOKEN)
+  ONBOARDING_BOT_TOKEN                         bot used for step 2. REQUIRED, no fallback: it must NOT be the
+                                               booking bot, or this poller would eat the experts' booking replies.
+  BOOKING_BOT_USERNAME                         bot that sends booking messages (default aditya1267_bot). The expert
+                                               is told to START it too: a bot can only message people who started it.
   ONBOARDING_BASE_URL                          default http://localhost:8001 (must match the app's redirect URL)
 Personal data stays in data/onboarding.db (gitignored by *.db).
 """
@@ -40,7 +43,8 @@ from . import crustdata
 
 ROOT = Path(__file__).resolve().parents[2]
 load_dotenv(ROOT / ".env")
-POOL = ROOT / "data" / "experts.json"
+POOL = ROOT / "data" / "experts.json"          # read only
+OUTFILE = ROOT / "data" / "onboarded.json"     # onboarding results go here, never into experts.json
 DB = ROOT / "data" / "onboarding.db"
 IST = timezone(timedelta(hours=5, minutes=30))
 
@@ -48,7 +52,8 @@ CLIENT_ID = os.getenv("LINKEDIN_CLIENT_ID", "").strip()
 CLIENT_SECRET = os.getenv("LINKEDIN_CLIENT_SECRET", "").strip()
 BASE = os.getenv("ONBOARDING_BASE_URL", "http://localhost:8001").rstrip("/")
 REDIRECT = f"{BASE}/auth/linkedin/callback"
-BOT_TOKEN = (os.getenv("ONBOARDING_BOT_TOKEN") or os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+BOT_TOKEN = os.getenv("ONBOARDING_BOT_TOKEN", "").strip()   # no fallback to TELEGRAM_BOT_TOKEN (booking bot)
+BOOKING_BOT = os.getenv("BOOKING_BOT_USERNAME", "aditya1267_bot").strip().lstrip("@")
 
 _db = sqlite3.connect(DB, check_same_thread=False, isolation_level=None)
 _db.row_factory = sqlite3.Row
@@ -118,6 +123,7 @@ def _bot_loop():
                 tg_name = " ".join(x for x in (frm.get("first_name"), frm.get("last_name")) if x)
                 _set(row["token"], chat_id=chat, tg_name=tg_name)
                 _tg("sendMessage", chat_id=chat, text=f"✅ Telegram linked to LinkedIn account: {row['li_name']}.\n"
+                    f"Booking requests will come from @{BOOKING_BOT}: open https://t.me/{BOOKING_BOT} and press START.\n"
                     "Go back to the website to finish (paste your LinkedIn profile URL).")
         except Exception as e:  # noqa: BLE001  keep polling
             print("onboarding bot:", e)
@@ -142,14 +148,29 @@ def _next_expert_id(pool):
 def finish(token: str, linkedin_url: str) -> dict:
     row = _get(token=token)
     pool = json.loads(POOL.read_text(encoding="utf-8"))
-    existing = next((e for e in pool if row["chat_id"] and str(e.get("telegram_chat_id")) == row["chat_id"]), None)
-    eid = (existing or {}).get("expert_id") or row["expert_id"] or _next_expert_id(pool)
-    probe = {"expert_id": eid, "linkedin_url": linkedin_url}
-    raw, fetched_at = crustdata.fetch(probe)
+    # Reuse a pool listing only if BOTH the Telegram account and the name match the LinkedIn login;
+    # otherwise one person's identity could be attached to someone else's listing.
+    existing = next((e for e in pool if row["chat_id"] and str(e.get("telegram_chat_id")) == row["chat_id"]
+                     and names_match(e.get("name"), row["li_name"])), None)
+    eid = (existing or {}).get("expert_id") or row["expert_id"] or f"ob_{row['li_sub'][:10]}"
+    m = re.search(r"linkedin\.com/in/([A-Za-z0-9\-_%]+)", linkedin_url or "")
+    if not m:
+        return {"ok": False, "error": "Please paste a LinkedIn profile URL like https://www.linkedin.com/in/your-name/"}
+    linkedin_url = f"https://www.linkedin.com/in/{m.group(1)}/"
+    # Own cache key, so onboarding can never overwrite the pool's cache files (e.g. e2.json used in the demo).
+    probe = {"expert_id": f"ob_{row['li_sub'][:10]}", "linkedin_url": linkedin_url}
+    try:
+        raw, fetched_at = crustdata.fetch(probe)
+    except httpx.HTTPStatusError as e:
+        return {"ok": False, "error": f"Crustdata rejected the lookup ({e.response.status_code}): {e.response.text[:200]}"}
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "error": f"Crustdata lookup failed: {type(e).__name__}"}
     roles = crustdata.roles_from(raw)
     if roles is None:
         _set(token, linkedin_url=linkedin_url, expert_id=eid, name_match=0, crust_name=None)
-        return {"ok": False, "error": "Crustdata could not find this LinkedIn profile."}
+        return {"ok": False, "error": "Crustdata has no record of this LinkedIn profile yet (brand-new profiles take "
+                                      "time to be indexed), so your work history can't be verified. LinkedIn and "
+                                      "Telegram are verified; try your main LinkedIn profile."}
     person = raw[0]["matches"][0]["person_data"]
     crust_name = person.get("basic_profile", {}).get("name") or ""
     match = names_match(row["li_name"], crust_name)
@@ -175,17 +196,10 @@ def finish(token: str, linkedin_url: str) -> dict:
     }
     if existing:
         # Already in the pool (e.g. a teammate used in the demo): keep their listing, only attach the identity proof.
-        existing["identity"] = expert["identity"]
-        existing["linkedin_url"] = existing.get("linkedin_url") if "TODO" not in existing.get("linkedin_url", "TODO") else linkedin_url
-        existing["email"] = existing.get("email") if existing.get("email") and "TODO" not in existing["email"] else expert["email"]
-        if any("TODO" in c for c in existing.get("claims", [])):
-            existing["claims"] = claims
-        if "TODO" in existing.get("headline", ""):
-            existing["headline"] = headline
-        expert = existing
-    else:
-        pool.append(expert)
-    POOL.write_text(json.dumps(pool, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        expert = {**existing, "identity": expert["identity"]}
+    out = json.loads(OUTFILE.read_text(encoding="utf-8")) if OUTFILE.exists() else {}
+    out[eid] = expert
+    OUTFILE.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     verified = crustdata.verify(expert)
     _set(token, state="done", claims=json.dumps(verified, ensure_ascii=False))
     return {"ok": True, "expert": expert, "verification": verified}
@@ -273,8 +287,10 @@ def onboard(token: str):
                         f"<span class=muted>{html.escape(c.get('evidence') or '')} · {html.escape(c['source'])}</span></div>"
                         for c in claims)
         s3 = (f"<div class='step done'><b>3. Profile verified ✅</b><p>Crustdata name: {html.escape(row['crust_name'] or '')} "
-              f"(matches LinkedIn login)</p>{items}<p><b>You're in the expert pool as {row['expert_id']}</b> "
-              f"with identity status 🟢 verified.</p></div>")
+              f"(matches LinkedIn login)</p>{items}<p><b>Onboarded as {row['expert_id']}</b> (saved to data/onboarded.json) "
+              f"with identity status 🟢 verified.</p><p><b>Last step:</b> booking requests are sent by @{BOOKING_BOT}. Telegram only lets a bot message "
+              f"people who started it, so press START there too: <a class='btn tg' href='https://t.me/{BOOKING_BOT}' "
+              f"target=_blank>Open @{BOOKING_BOT}</a></p></div>")
     elif row["chat_id"]:
         s3 = (f"<div class=step><b>3. Verify your profile</b><form method=post action='/onboard/{token}/profile'>"
               f"<input name=linkedin_url placeholder='https://www.linkedin.com/in/your-profile' required "
@@ -310,8 +326,10 @@ def main():
     global BOT_USERNAME
     import uvicorn
     if not BOT_TOKEN:
-        raise SystemExit("Set ONBOARDING_BOT_TOKEN (or TELEGRAM_BOT_TOKEN) in .env")
+        raise SystemExit("Set ONBOARDING_BOT_TOKEN in .env (a separate bot, NOT the booking bot)")
     BOT_USERNAME = _tg("getMe")["username"]
+    if BOT_USERNAME.lower() == BOOKING_BOT.lower():
+        raise SystemExit(f"ONBOARDING_BOT_TOKEN is the booking bot @{BOOKING_BOT}; use a different bot")
     print(f"onboarding bot: @{BOT_USERNAME}   site: {BASE}   linkedin redirect: {REDIRECT}")
     threading.Thread(target=_bot_loop, daemon=True).start()
     uvicorn.run(app, host="127.0.0.1", port=int(BASE.rsplit(":", 1)[-1]) if BASE.count(":") > 1 else 8001)
