@@ -190,7 +190,19 @@ def verify(expert: dict) -> list[dict]:
     for t in texts:
         status, evidence = verify_claim(t, roles)
         out.append({"text": t, "status": status, "evidence": evidence, "source": src, "fetched_at": fetched_at})
-    return out
+    return out + _identity_claim(expert)
+
+
+def _identity_claim(expert: dict) -> list[dict]:
+    """Set by backend/integrations/onboarding.py: LinkedIn login + Telegram deep link + Crustdata name match."""
+    idn = expert.get("identity") or {}
+    if idn.get("status") != "verified":
+        return []
+    return [{"text": "Identity: this Telegram account belongs to the LinkedIn profile owner",
+             "status": "verified",
+             "evidence": f"Signed in with LinkedIn as {idn.get('linkedin_name')}, linked Telegram via one-time link; "
+                         f"Crustdata profile name: {idn.get('crustdata_name')}",
+             "source": "linkedin:oidc+telegram", "fetched_at": idn.get("verified_at") or _now()}]
 
 
 if __name__ == "__main__":
