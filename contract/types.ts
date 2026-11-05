@@ -60,3 +60,6 @@ export interface Eval {
   budget_violations: number; time_violations: number; double_bookings: number;
   fakes_planted: number; fakes_caught: number;
 }
+
+// GET /auth/me (Sign in with Google). Not used by the frontend yet.
+export interface AuthUser { email: string; name: string; picture: string; provider: 'google'; }

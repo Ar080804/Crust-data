@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from pydantic import BaseModel
 
-from . import adapters, db, engine, gcal
+from . import adapters, auth, db, engine, gcal
 
 ROOT = Path(__file__).resolve().parents[2]
 FIX = ROOT / "contract" / "fixtures"
@@ -44,6 +44,7 @@ async def server_error(_req, exc: Exception):
     return JSONResponse({"error": f"server error: {type(exc).__name__}"}, status_code=500)
 
 
+app.include_router(auth.router)  # Sign in with Google: /auth/google/login, /auth/google/callback, /auth/me, /auth/logout
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
                    allow_methods=["*"], allow_headers=["*"])
 
