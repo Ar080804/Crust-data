@@ -1,4 +1,4 @@
-﻿// Step-by-step request builder. At the end it composes ONE sentence and sends it as
+// Step-by-step request builder. At the end it composes ONE sentence and sends it as
 // POST /requests {"text"}: exactly the contract, no new fields.
 import { useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -11,12 +11,12 @@ const TOPICS = ['warehouse management', 'supply chain planning', 'logistics', 'f
 const DURATIONS = [{ v: 15, d: 'Quick sanity check' }, { v: 20, d: 'Focused Q&A' }, { v: 30, d: 'Deeper dive' }, { v: 45, d: 'Working session' }]
 // Custom date + time slot. Times are minutes from midnight, IST.
 const PRESETS: { from: number; to: number; label: string; icon: IconName }[] = [
-  { from: 600, to: 720, label: 'Morning Â· 10â€“12', icon: 'sun' },
-  { from: 840, to: 960, label: 'Afternoon Â· 2â€“4', icon: 'sun' },
-  { from: 1080, to: 1200, label: 'Evening Â· 6â€“8', icon: 'moon' },
-  { from: 1200, to: 1320, label: 'Late Â· 8â€“10', icon: 'moon' },
+  { from: 600, to: 720, label: 'Morning · 10–12', icon: 'sun' },
+  { from: 840, to: 960, label: 'Afternoon · 2–4', icon: 'sun' },
+  { from: 1080, to: 1200, label: 'Evening · 6–8', icon: 'moon' },
+  { from: 1200, to: 1320, label: 'Late · 8–10', icon: 'moon' },
 ]
-const TIMES = Array.from({ length: 33 }, (_, i) => 420 + i * 30) // 7:00 AM â€¦ 11:00 PM
+const TIMES = Array.from({ length: 33 }, (_, i) => 420 + i * 30) // 7:00 AM … 11:00 PM
 const fmtTime = (m: number) => {
   const h = Math.floor(m / 60), mm = m % 60
   return `${((h + 11) % 12) + 1}:${String(mm).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`
@@ -27,7 +27,7 @@ const fmtDate = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString(
 const BUDGETS = [1000, 1500, 2000, 3000]
 
 // One-click templates. Real dates (relative to today), evening slots and budgets that fit the
-// expert pool (logistics / warehouse / supply chain, â‚¹1,000â€“3,000, free 5â€“10 PM).
+// expert pool (logistics / warehouse / supply chain, ₹1,000–3,000, free 5–10 PM).
 const TEMPLATES: { title: string; desc: string; icon: IconName; topic: string; duration: number; dayOffset: number; from: number; to: number; budget: number }[] = [
   { title: 'Warehouse ops deep-dive', desc: 'Inventory accuracy, picking, layout', icon: 'database', topic: 'warehouse management', duration: 30, dayOffset: 1, from: 1080, to: 1200, budget: 2500 },
   { title: 'Supply chain strategy', desc: 'Network design, vendors, cost', icon: 'chart', topic: 'supply chain planning', duration: 20, dayOffset: 1, from: 1080, to: 1200, budget: 2500 },
@@ -53,7 +53,7 @@ const STEPS: { key: string; title: string; sub: string }[] = [
   { key: 'duration', title: 'How long should the call be?', sub: 'Shorter calls are easier to book quickly.' },
   { key: 'when', title: 'When works for you?', sub: 'We only book inside this window.' },
   { key: 'budget', title: "What's your budget?", sub: 'Hard limit. The agent never books above it.' },
-  { key: 'notes', title: 'Anything else we should know?', sub: 'Optional. Must-haves, companies, languageâ€¦' },
+  { key: 'notes', title: 'Anything else we should know?', sub: 'Optional. Must-haves, companies, language…' },
   { key: 'review', title: 'Looks good?', sub: 'This is exactly what the agent will read. Edit if you like.' },
 ]
 
@@ -112,7 +112,7 @@ export default function RequestPage() {
   return (
     <div className="wizard">
       <div className="wiz-top">
-        <span className="kicker">{user && user.provider !== 'guest' ? `New request Â· ${user.name.split(' ')[0]}` : 'New request'}</span>
+        <span className="kicker">{user && user.provider !== 'guest' ? `New request · ${user.name.split(' ')[0]}` : 'New request'}</span>
         <span className="mono muted small">Step {step + 1} of {STEPS.length}</span>
       </div>
       <div className="wiz-progress">
@@ -143,7 +143,7 @@ export default function RequestPage() {
                     <span className="grow">
                       <span className="strong block">{t.title}</span>
                       <span className="muted small block">{t.desc}</span>
-                      <span className="tpl-meta">{t.duration} min Â· {t.dayOffset === 1 ? 'Tomorrow' : fmtDate(addDays(t.dayOffset)).split(',')[0]} {fmtTime(t.from)}â€“{fmtTime(t.to)} Â· â‰¤ {inr(t.budget)}</span>
+                      <span className="tpl-meta">{t.duration} min · {t.dayOffset === 1 ? 'Tomorrow' : fmtDate(addDays(t.dayOffset)).split(',')[0]} {fmtTime(t.from)}–{fmtTime(t.to)} · ≤ {inr(t.budget)}</span>
                     </span>
                     <Icon name="arrow" size={14} />
                   </button>
@@ -204,7 +204,7 @@ export default function RequestPage() {
               </div>
               <div className={`slot-summary ${slotErr ? 'bad' : ''}`}>
                 <Icon name={slotErr ? 'alert' : 'calendar'} size={15} />
-                {slotErr ?? <span><b>{fmtDate(date)}</b>, {fmtTime(from)} â€“ {fmtTime(to)} Â· we'll find a {duration} min slot inside this window</span>}
+                {slotErr ?? <span><b>{fmtDate(date)}</b>, {fmtTime(from)} – {fmtTime(to)} · we'll find a {duration} min slot inside this window</span>}
               </div>
               <p className="muted small">If no verified expert is free in this window, we'll tell you right away so you can pick another slot.</p>
             </>
@@ -215,7 +215,7 @@ export default function RequestPage() {
               <div className="budget-num">{inr(budget)}<span className="muted"> max per call</span></div>
               <input type="range" min={500} max={5000} step={100} value={budget} onChange={(e) => setBudget(+e.target.value)}
                 style={{ ['--p' as string]: `${((budget - 500) / 4500) * 100}%` }} />
-              <div className="range-scale mono small muted"><span>â‚¹500</span><span>â‚¹5,000</span></div>
+              <div className="range-scale mono small muted"><span>₹500</span><span>₹5,000</span></div>
               <div className="chips">
                 {BUDGETS.map((b) => <button type="button" key={b} className={`chip ${budget === b ? 'on' : ''}`} onClick={() => setBudget(b)}>{inr(b)}</button>)}
               </div>
@@ -232,7 +232,7 @@ export default function RequestPage() {
               <div className="review-chips">
                 <span className="fact"><Icon name="users" size={14} />{topic || 'warehouse management'}</span>
                 <span className="fact"><Icon name="clock" size={14} />{duration} min</span>
-                <span className="fact"><Icon name="calendar" size={14} />{fmtDate(date)}, {fmtTime(from)} â€“ {fmtTime(to)}</span>
+                <span className="fact"><Icon name="calendar" size={14} />{fmtDate(date)}, {fmtTime(from)} – {fmtTime(to)}</span>
                 <span className="fact"><Icon name="chart" size={14} />up to {inr(budget)}</span>
               </div>
               <textarea className="wiz-input review-text" rows={3} value={text} onChange={(e) => setText(e.target.value)} />
@@ -247,7 +247,7 @@ export default function RequestPage() {
           <div className="row">
             {s.key === 'notes' && <button type="button" className="btn btn-ghost" onClick={() => go(step + 1)}>Skip</button>}
             <button className="btn btn-primary btn-lg" disabled={!canNext || busy} data-cursor={last ? 'Book' : 'Next'}>
-              {last ? (busy ? <><span className="spinner" /> Starting agentâ€¦</> : <>Find &amp; book expert <Icon name="arrow" /></>) : <>Continue <Icon name="arrow" /></>}
+              {last ? (busy ? <><span className="spinner" /> Starting agent…</> : <>Find &amp; book expert <Icon name="arrow" /></>) : <>Continue <Icon name="arrow" /></>}
             </button>
           </div>
         </div>
