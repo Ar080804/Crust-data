@@ -10,3 +10,8 @@ credentials.json
 .DS_Store
 *.db-wal
 *.db-shm
+
+# expert onboarding: personal data, never commit
+data/onboarded.json
+data/onboarding.db*
+data/crustdata_cache/ob_*.json

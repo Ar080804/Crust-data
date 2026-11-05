@@ -478,7 +478,8 @@ def ingest_replies(replies: list[dict]):
                        "ORDER BY r.created_at DESC LIMIT 1", (eid,))
         if booked:
             db.ex("UPDATE replies SET request_id=?, processed=1 WHERE update_id=?", (booked["id"], rep["update_id"]))
-            db.log(booked["id"], "BOOKED", f'Reply "{_quote(rep["text"])}" from {e["name"]} (after booking)', "telegram")
+            src = "simulator" if str(rep["chat_id"]).startswith("sim-") else "telegram"
+            db.log(booked["id"], "BOOKED", f'Reply "{_quote(rep["text"])}" from {e["name"]} (after booking)', src)
             continue
         late = db.q1("SELECT s.request_id, r.status FROM shortlist s JOIN requests r ON r.id=s.request_id "
                      "WHERE s.expert_id=? AND s.outreach_state IN ('timed_out','declined','contacted','replied') "
