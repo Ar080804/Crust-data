@@ -226,6 +226,20 @@ def step_verify(r):
 
 # ---- outreach + negotiate --------------------------------------------------
 
+def _quote(text: str) -> str:
+    return (text or "").replace('"', "”")  # keep the UI's "..." parsing intact
+
+
+def _tell(rid: str, step: str, e: dict, key: str, text: str) -> bool:
+    """Send one Telegram message to an expert (idempotent) and log its exact text.
+    Timeline format, read by the frontend chat panel: Message to <Name> via Telegram: "<text>" """
+    ok = adapters.send_once(key, e["telegram_chat_id"], text)
+    if ok:
+        src = "telegram" if adapters.MODE["telegram"] == "real" else "simulator"
+        db.log(rid, step, f'Message to {e["name"]} via Telegram: "{_quote(text)}"', src)
+    return ok
+
+
 def _window_desc(c):
     d = datetime.fromisoformat(c["window_start"])
     return f"{d.strftime('%a %d %b')}, {fmt_time(c['window_start'])}–{fmt_time(c['window_end'])} IST"
@@ -253,9 +267,8 @@ def step_outreach(r):
         db.set_outreach(rid, e["expert_id"], "contacted")
         db.update_request(rid, status="NEGOTIATING", current_expert=e["expert_id"], contacted_at=time.time(),
                           offer=None, counter_sent=0, asked_once=0)
-        if adapters.send_once(f"outreach:{rid}:{e['expert_id']}", e["telegram_chat_id"], msg):
-            db.log(rid, "OUTREACH", f"Sent request to {e['name']} via Telegram (timeout {OUTREACH_TIMEOUT_S}s)",
-                   "telegram" if adapters.MODE["telegram"] == "real" else "simulator")
+        if _tell(rid, "OUTREACH", e, f"outreach:{rid}:{e['expert_id']}", msg):
+            db.log(rid, "OUTREACH", f"Waiting up to {OUTREACH_TIMEOUT_S}s for {e['name']} to reply", "code")
         else:
             db.update_request(rid, contacted_at=0)  # forces an immediate timeout -> next expert
             db.log(rid, "OUTREACH", f"Could not reach {e['name']} on Telegram after 3 tries; moving on", "telegram")
@@ -321,7 +334,7 @@ def step_negotiate(r):
           (rid, eid, rep["update_id"]))
     db.set_outreach(rid, eid, "replied")
     p, src = llm.parse_reply(rep["text"], _window_desc(c))
-    db.log(rid, "NEGOTIATING", f'{e["name"]} replied "{rep["text"]}" → {p.model_dump_json()}', src)
+    db.log(rid, "NEGOTIATING", f'Reply "{_quote(rep["text"])}" from {e["name"]} → {p.model_dump_json()}', src)
     offer = r["offer"] or {}
     chat = e["telegram_chat_id"]
     n = int(rep["update_id"])
@@ -342,8 +355,8 @@ def step_negotiate(r):
         if not r["counter_sent"]:
             counter = c["max_inr"]
             db.update_request(rid, counter_sent=1, offer={"slot": slot, "price": counter}, contacted_at=time.time())
-            adapters.send_once(f"counter:{rid}:{eid}", chat,
-                               f"Thanks! The client's budget is {rupees(counter)}. Would {fmt_time(slot)} for {rupees(counter)} work?")
+            _tell(rid, "NEGOTIATING", e, f"counter:{rid}:{eid}",
+                  f"Thanks! The client's budget is {rupees(counter)}. Would {fmt_time(slot)} for {rupees(counter)} work?")
             db.log(rid, "NEGOTIATING", f"{rupees(price)} > budget {rupees(c['max_inr'])}; one counter at {rupees(counter)}", "code")
             return
         return _next_expert(rid, eid, "declined", f"{e['name']} still over budget ({rupees(price)}) after one counter; moving on")
@@ -356,7 +369,7 @@ def _ask_once(r, e, text, n):
     if r["asked_once"]:
         return _next_expert(rid, eid, "declined", f"{e['name']}'s reply still unclear after asking once; moving on")
     db.update_request(rid, asked_once=1, contacted_at=time.time())
-    adapters.send_once(f"ask:{rid}:{eid}", e["telegram_chat_id"], text)
+    _tell(rid, "NEGOTIATING", e, f"ask:{rid}:{eid}", text)
     db.log(rid, "NEGOTIATING", f"Reply ambiguous; asked {e['name']} once to clarify", "code")
 
 
@@ -375,9 +388,9 @@ def step_book(r):
             # Like a human coordinator: ask the same expert for another time once before moving on.
             db.update_request(rid, status="NEGOTIATING", offer={"price": offer["price"]}, asked_once=1,
                               contacted_at=time.time())
-            adapters.send_once(f"slot_taken:{rid}:{eid}", e["telegram_chat_id"],
-                               f"Sorry, {fmt_time(start)} is no longer free. Could you do another time in "
-                               f"{_window_desc(c)}? e.g. \"19:40 for {offer['price']}\"")
+            _tell(rid, "NEGOTIATING", e, f"slot_taken:{rid}:{eid}",
+                  f"Sorry, {fmt_time(start)} is no longer free. Could you do another time in "
+                  f"{_window_desc(c)}? e.g. \"19:40 for {offer['price']}\"")
             db.log(rid, "NEGOTIATING", f"Asked {e['name']} once for another time", "code")
             return
         return _next_expert(rid, eid, "declined", f"Slot unavailable for {e['name']}; trying next expert")
@@ -391,8 +404,7 @@ def step_book(r):
     db.update_request(rid, status="BOOKED", booking=booking)
     db.set_outreach(rid, eid, "booked")
     db.log(rid, "BOOKING", f"Calendar event {eid_cal[:10]}… {status} ({gcal.mode()}); invites sent to both sides", "gcal")
-    adapters.send_once(f"confirm:{rid}:{eid}", e["telegram_chat_id"],
-                       f"Confirmed: {conf}. Calendar invite sent. Thank you!")
+    _tell(rid, "BOOKED", e, f"confirm:{rid}:{eid}", f"Confirmed: {conf}. Calendar invite sent. Thank you!")
     db.log(rid, "BOOKED", f"Confirmed: {conf}", "code")
 
 
@@ -407,6 +419,36 @@ def approve(rid: str, option_id: str):
                       offer={"slot": opt["slot"], "price": opt["price_inr"]})
     db.log(rid, "BOOKING", f"Human approved: {opt['summary'].removesuffix(', approve?')}", "human")
     return "BOOKING"
+
+
+# ---- client <-> booked expert chat ------------------------------------------
+
+def send_client_message(rid: str, expert_id: str, text: str) -> dict:
+    """Relay a client's message to the booked expert. Only after booking, so chat can't disturb negotiation."""
+    r = db.get_request_row(rid)
+    if not r:
+        raise LookupError("not found")
+    text = (text or "").strip()
+    if not text:
+        raise ValueError("message is empty")
+    if len(text) > 1000:
+        raise ValueError("message is too long (max 1000 characters)")
+    if r["status"] != "BOOKED" or not r["booking"]:
+        raise ValueError("chat opens once the call is booked; until then the agent talks to experts")
+    if r["booking"]["expert_id"] != expert_id:
+        raise ValueError("you can only message the expert you booked")
+    row = next(x for x in db.shortlist_rows(rid) if x["expert_id"] == expert_id)
+    e = row["data"]["expert"]
+    mid = "m_" + uuid.uuid4().hex[:10]
+    c = r["constraints"]
+    sent = adapters.send_once(f"chat:{rid}:{mid}", e["telegram_chat_id"],
+                              f"Message from your client about the {c['topic']} call "
+                              f"({r['booking']['confirmation']}):\n{text}\n\n(Just reply here; we'll pass it on.)")
+    if not sent:
+        raise RuntimeError("could not reach the expert on Telegram; try again")
+    # source "human": the client wrote it (keeps it out of the agent's message bubbles)
+    db.log(rid, "BOOKED", f'Client message relayed to the expert: "{_quote(text)}"', "human")
+    return {"id": mid, "expert_id": expert_id, "from": "me", "text": text, "t": now().isoformat(timespec="seconds")}
 
 
 # ---- replies router --------------------------------------------------------
@@ -431,6 +473,13 @@ def ingest_replies(replies: list[dict]):
             continue
         if rid:
             continue
+        booked = db.q1("SELECT r.id FROM requests r JOIN shortlist s ON s.request_id=r.id "
+                       "WHERE r.status='BOOKED' AND s.expert_id=? AND s.outreach_state='booked' "
+                       "ORDER BY r.created_at DESC LIMIT 1", (eid,))
+        if booked:
+            db.ex("UPDATE replies SET request_id=?, processed=1 WHERE update_id=?", (booked["id"], rep["update_id"]))
+            db.log(booked["id"], "BOOKED", f'Reply "{_quote(rep["text"])}" from {e["name"]} (after booking)', "telegram")
+            continue
         late = db.q1("SELECT s.request_id, r.status FROM shortlist s JOIN requests r ON r.id=s.request_id "
                      "WHERE s.expert_id=? AND s.outreach_state IN ('timed_out','declined','contacted','replied') "
                      "AND r.status IN ('BOOKED','ESCALATED','FAILED') ORDER BY r.created_at DESC LIMIT 1", (eid,))
@@ -443,7 +492,7 @@ def ingest_replies(replies: list[dict]):
             else:
                 text = ("Thank you for replying! We had to move this request forward without you, "
                         "since we didn't hear back in time. We'll reach out for the next one.")
-            adapters.send_once(f"release:{lrid}:{eid}", e["telegram_chat_id"], text)
+            _tell(lrid, late["status"], e, f"release:{lrid}:{eid}", text)
             db.log(lrid, late["status"], f"Late reply from {e['name']}; released politely", "code")
 
 

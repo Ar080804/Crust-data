@@ -115,6 +115,24 @@ def approve(rid: str, body: Approve):
     return {"status": st}
 
 
+class ChatIn(BaseModel):
+    expert_id: str
+    text: str
+
+
+@app.post("/requests/{rid}/messages")
+def send_message(rid: str, body: ChatIn):
+    """Client -> booked expert, relayed on Telegram. Returns a ChatMsg. Expert replies appear in the timeline."""
+    try:
+        return engine.send_client_message(rid, body.expert_id, body.text)
+    except LookupError:
+        raise HTTPException(404, detail="not found")
+    except ValueError as e:
+        raise HTTPException(400, detail=str(e))
+    except RuntimeError as e:
+        raise HTTPException(502, detail=str(e))
+
+
 @app.get("/experts")
 def experts():
     return {"experts": [{"expert_id": e["expert_id"], "name": e["name"], "headline": e.get("headline", ""),

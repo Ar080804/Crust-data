@@ -138,3 +138,20 @@ To wire it later: the login button does `window.location.href = "http://localhos
 on load, read `#session=` from `location.hash`, store it, clear the hash, and call `/auth/me`.
 Only Google accounts listed as **Test users** on the OAuth consent screen can sign in.
 Existing endpoints do not require login.
+
+## Chat with the booked expert (backend ready; frontend has `CHAT_ENABLED = MOCK`, flip it to use)
+| Method | Path | Body | Returns |
+|---|---|---|---|
+| POST | `/requests/{id}/messages` | `{"expert_id": str, "text": str}` | `ChatMsg {id, expert_id, from: "me", text, t}` |
+
+- Only when the request is `BOOKED` and `expert_id` is the booked expert. Otherwise 400 `{"error"}`
+  (before booking the agent does the talking, so chat can't disturb the negotiation). Empty or >1000 chars: 400. Telegram down: 502.
+- The message is relayed on Telegram. **Expert replies show up in the timeline** (see the formats below), so polling `GET /requests/{id}` is enough.
+
+## Timeline message formats the frontend relies on (stable)
+- Every message the agent sends to an expert: `source: "telegram"` (or `"simulator"` for simulated experts),
+  `msg: Message to <Full Name> via Telegram: "<exact text>"`
+- Every expert reply: `msg: Reply "<exact text>" from <Full Name> → <parsed JSON>` (during negotiation, `source: "llm"` or `"rules"`)
+  or `Reply "<exact text>" from <Full Name> (after booking)` (`source: "telegram"`)
+- Client chat messages: `source: "human"`, `msg: Client message relayed to the expert: "<text>"`
+- Double quotes inside texts are replaced with `”` so `"…"` parsing never breaks.
