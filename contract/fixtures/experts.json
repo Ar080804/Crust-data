@@ -1,0 +1,36 @@
+{
+  "experts": [
+    {
+      "expert_id": "e1",
+      "name": "Rohan Mehta",
+      "headline": "Fulfilment Head, Delhivery",
+      "linkedin_url": "https://www.linkedin.com/in/example-e1",
+      "rate_inr": 2500,
+      "simulated": false
+    },
+    {
+      "expert_id": "e3",
+      "name": "Sunil Kumar",
+      "headline": "Logistics Manager, Blinkit",
+      "linkedin_url": "https://www.linkedin.com/in/example-e3",
+      "rate_inr": 1800,
+      "simulated": false
+    },
+    {
+      "expert_id": "e7",
+      "name": "Priya Nair",
+      "headline": "Ops Lead, regional 3PL",
+      "linkedin_url": "https://www.linkedin.com/in/example-e7",
+      "rate_inr": 1500,
+      "simulated": true
+    },
+    {
+      "expert_id": "e9",
+      "name": "Karan Shah",
+      "headline": "\"Managed a warehouse\" at Flipkart",
+      "linkedin_url": "https://www.linkedin.com/in/example-e9",
+      "rate_inr": 1200,
+      "simulated": true
+    }
+  ]
+}

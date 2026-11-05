@@ -1,0 +1,10 @@
+{
+  "run_at": "2026-11-06T05:00:00+05:30",
+  "total_runs": 60,
+  "consistent": 20,
+  "budget_violations": 0,
+  "time_violations": 0,
+  "double_bookings": 0,
+  "fakes_planted": 3,
+  "fakes_caught": 3
+}

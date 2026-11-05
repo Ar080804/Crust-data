@@ -1,0 +1,144 @@
+{
+  "id": "r_demo",
+  "status": "ESCALATED",
+  "raw_text": "Need a 20 min call tomorrow evening 6-8 with someone who has managed a warehouse, budget 2000",
+  "clarification_question": null,
+  "constraints": {
+    "topic": "warehouse management",
+    "duration_min": 20,
+    "window_start": "2026-11-06T18:00:00+05:30",
+    "window_end": "2026-11-06T20:00:00+05:30",
+    "max_inr": 2000
+  },
+  "shortlist": [
+    {
+      "expert_id": "e1",
+      "name": "Rohan Mehta",
+      "headline": "Fulfilment Head, Delhivery",
+      "rate_inr": 2500,
+      "score": 0.91,
+      "flag": "ok",
+      "outreach_state": "skipped",
+      "claims": [
+        {
+          "text": "Fulfilment Head at Delhivery, 2020–present",
+          "status": "verified",
+          "evidence": "Crustdata: Fulfilment Head, Delhivery, Mar 2020–present",
+          "source": "crustdata:person_enrich",
+          "fetched_at": "2026-11-06T01:02:10+05:30"
+        }
+      ]
+    },
+    {
+      "expert_id": "e3",
+      "name": "Sunil Kumar",
+      "headline": "Logistics Manager, Blinkit",
+      "rate_inr": 1800,
+      "score": 0.84,
+      "flag": "ok",
+      "outreach_state": "timed_out",
+      "claims": [
+        {
+          "text": "Logistics Manager at Blinkit, 2021–2024",
+          "status": "verified",
+          "evidence": "Crustdata: Logistics Manager, Blinkit, Jun 2021–Aug 2024",
+          "source": "crustdata:person_enrich",
+          "fetched_at": "2026-11-06T01:02:10+05:30"
+        }
+      ]
+    },
+    {
+      "expert_id": "e7",
+      "name": "Priya Nair",
+      "headline": "Ops Lead, regional 3PL",
+      "rate_inr": 1500,
+      "score": 0.52,
+      "flag": "unverifiable",
+      "outreach_state": "timed_out",
+      "claims": [
+        {
+          "text": "Ops Lead at ShipFast Logistics, 2019–2023",
+          "status": "unverifiable",
+          "evidence": "No matching employment record in Crustdata",
+          "source": "crustdata:person_enrich",
+          "fetched_at": "2026-11-06T01:02:10+05:30"
+        }
+      ]
+    },
+    {
+      "expert_id": "e9",
+      "name": "Karan Shah",
+      "headline": "\"Managed a warehouse\" at Flipkart",
+      "rate_inr": 1200,
+      "score": 0.0,
+      "flag": "contradicted",
+      "outreach_state": "skipped",
+      "claims": [
+        {
+          "text": "Warehouse Manager at Flipkart, 2022–2024",
+          "status": "contradicted",
+          "evidence": "Crustdata shows only: Operations Intern, Flipkart, May–Jul 2023",
+          "source": "crustdata:person_enrich",
+          "fetched_at": "2026-11-06T01:02:10+05:30"
+        }
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "t": "2026-11-06T01:02:00+05:30",
+      "step": "INTAKE",
+      "msg": "Parsed constraints: 20 min, tomorrow 18:00–20:00 IST, max ₹2000",
+      "source": "llm"
+    },
+    {
+      "t": "2026-11-06T01:02:01+05:30",
+      "step": "INTAKE",
+      "msg": "Constraints validated",
+      "source": "code"
+    },
+    {
+      "t": "2026-11-06T01:02:03+05:30",
+      "step": "FINDING",
+      "msg": "Expanded titles: Fulfilment Head, Logistics Manager, Ops Lead, Warehouse Manager; 4 candidates",
+      "source": "code"
+    },
+    {
+      "t": "2026-11-06T01:02:10+05:30",
+      "step": "VERIFYING",
+      "msg": "Karan Shah dropped: claim contradicted (intern only)",
+      "source": "crustdata"
+    },
+    {
+      "t": "2026-11-06T01:02:11+05:30",
+      "step": "OUTREACH",
+      "msg": "Rohan Mehta skipped: rate ₹2500 > budget ₹2000",
+      "source": "code"
+    },
+    {
+      "t": "2026-11-06T01:02:12+05:30",
+      "step": "OUTREACH",
+      "msg": "Sent request to Sunil Kumar via Telegram (timeout 90s)",
+      "source": "telegram"
+    },
+    {
+      "t": "2026-11-06T01:06:00+05:30",
+      "step": "ESCALATED",
+      "msg": "No expert fits all constraints; asking a human",
+      "source": "code"
+    }
+  ],
+  "booking": null,
+  "escalation": {
+    "reason": "No verified expert available within ₹2000 in the window",
+    "options": [
+      {
+        "option_id": "o1",
+        "expert_id": "e1",
+        "slot": "2026-11-06T19:30:00+05:30",
+        "price_inr": 2200,
+        "summary": "Rohan Mehta, ₹2,200 at 7:30 PM, approve?"
+      }
+    ]
+  }
+}

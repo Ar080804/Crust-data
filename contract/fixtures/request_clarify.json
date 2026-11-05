@@ -1,0 +1,18 @@
+{
+  "id": "r_clarify",
+  "status": "NEEDS_CLARIFICATION",
+  "raw_text": "Need to talk to a warehouse expert",
+  "clarification_question": "When do you want the call, and what is your budget?",
+  "constraints": null,
+  "shortlist": [],
+  "timeline": [
+    {
+      "t": "2026-11-06T01:00:00+05:30",
+      "step": "INTAKE",
+      "msg": "Missing: time window, budget",
+      "source": "code"
+    }
+  ],
+  "booking": null,
+  "escalation": null
+}
