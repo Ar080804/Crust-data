@@ -1,6 +1,7 @@
 """Owner: Aditya. The ONLY place backend/app calls Sunil's integrations.
 While a function of Sunil's raises NotImplementedError (or a file is missing), a labeled simulator is used instead.
 When Sunil pushes his code, the real version takes over automatically with no change here."""
+import time
 from datetime import timedelta
 
 from . import db
@@ -76,19 +77,24 @@ def send_once(key: str, chat_id: str, text: str) -> bool:
     except Exception:  # noqa: BLE001  (primary key exists -> already sent)
         return False
     if _tg and not str(chat_id).startswith("sim-"):
-        try:
-            _tg.send_message(str(chat_id), text)
-            MODE["telegram"] = "real"
-            db.ex("UPDATE outbox SET status='sent' WHERE key=?", (key,))
-            return True
-        except NotImplementedError:
-            pass
+        for attempt in range(3):
+            try:
+                _tg.send_message(str(chat_id), text)
+                MODE["telegram"] = "real"
+                db.ex("UPDATE outbox SET status='sent' WHERE key=?", (key,))
+                return True
+            except NotImplementedError:
+                break
+            except Exception as e:  # noqa: BLE001  network / Telegram error: retry, then give up
+                print(f"Telegram send failed ({attempt + 1}/3): {e}")
+                time.sleep(1 + attempt)
+        else:
+            db.ex("UPDATE outbox SET status='failed' WHERE key=?", (key,))
+            return False
     MODE["telegram"] = "sim"
     db.ex("UPDATE outbox SET status='simulated' WHERE key=?", (key,))
     print(f"[SIM TELEGRAM → {chat_id}] {text}")
     return True
-
-
 
 
 def poll_replies() -> list[dict]:
@@ -99,6 +105,9 @@ def poll_replies() -> list[dict]:
     try:
         replies = _tg.get_replies(since)
     except NotImplementedError:
+        return []
+    except Exception as e:  # noqa: BLE001  Telegram down / 409 conflict must not stop the pipeline
+        print("Telegram poll failed:", e)
         return []
     if replies:
         db.kv_set("tg_last_update_id", max(r["update_id"] for r in replies))

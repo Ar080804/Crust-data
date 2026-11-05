@@ -238,9 +238,12 @@ def step_outreach(r):
         db.set_outreach(rid, e["expert_id"], "contacted")
         db.update_request(rid, status="NEGOTIATING", current_expert=e["expert_id"], contacted_at=time.time(),
                           offer=None, counter_sent=0, asked_once=0)
-        adapters.send_once(f"outreach:{rid}:{e['expert_id']}", e["telegram_chat_id"], msg)
-        db.log(rid, "OUTREACH", f"Sent request to {e['name']} via Telegram (timeout {OUTREACH_TIMEOUT_S}s)",
-               "telegram" if adapters.MODE["telegram"] == "real" else "simulator")
+        if adapters.send_once(f"outreach:{rid}:{e['expert_id']}", e["telegram_chat_id"], msg):
+            db.log(rid, "OUTREACH", f"Sent request to {e['name']} via Telegram (timeout {OUTREACH_TIMEOUT_S}s)",
+                   "telegram" if adapters.MODE["telegram"] == "real" else "simulator")
+        else:
+            db.update_request(rid, contacted_at=0)  # forces an immediate timeout -> next expert
+            db.log(rid, "OUTREACH", f"Could not reach {e['name']} on Telegram after 3 tries; moving on", "telegram")
         return
     escalate(rid, c, "No verified expert accepted within budget and window")
 
