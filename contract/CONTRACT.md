@@ -8,12 +8,10 @@ Base URL: `http://localhost:8000`. JSON only. Times are ISO 8601 with `+05:30`. 
 
 | Method | Path | Body | Returns |
 |---|---|---|---|
-| POST | `/requests` | `{"text": str}` (optional header `X-User-Email`) | `{"request_id": str, "status": Status}` |
-| GET | `/requests?limit=20` | none (optional header `X-User-Email`) | `{"requests": [Request]}`, newest first. With the header: only that user's requests. Without it: everyone's. `limit` is 1–100. |
+| POST | `/requests` | `{"text": str}` | `{"request_id": str, "status": Status}` |
 | GET | `/requests/{id}` | none | `Request` (see below). The frontend polls this every 1s. |
 | POST | `/requests/{id}/clarify` | `{"answer": str}` | `{"status": Status}` |
 | POST | `/requests/{id}/approve` | `{"option_id": str}` | `{"status": Status}` |
-| POST | `/requests/{id}/cancel` | none | `{"status": "CANCELLED"}`. 400 if already BOOKING/BOOKED/CANCELLED/FAILED. Any expert we were waiting on gets a Telegram message. |
 | GET | `/experts` | none | `{"experts": [Expert]}` |
 | GET | `/eval/latest` | none | `Eval` |
 
@@ -21,7 +19,7 @@ Errors: `{"error": str}` with HTTP 400, 404 or 500.
 
 ## Status (fixed enum)
 `INTAKE` → `NEEDS_CLARIFICATION` → `FINDING` → `VERIFYING` → `OUTREACH` → `NEGOTIATING` → `BOOKING` → `BOOKED`
-Terminal or exception states: `ESCALATED`, `FAILED`, `CANCELLED`
+Terminal or exception states: `ESCALATED`, `FAILED`
 
 ## Types
 
@@ -30,13 +28,12 @@ Request {
   id: str
   status: Status
   raw_text: str
-  created_at: str                        // ISO 8601 with +05:30, e.g. "2026-11-06T01:02:00.000+05:30"
   clarification_question: str | null     // set when status == NEEDS_CLARIFICATION
   constraints: Constraints | null
   shortlist: [ShortlistItem]
   timeline: [TimelineEvent]              // append-only audit log, oldest first
   booking: Booking | null
-  escalation: Escalation | null         // escalation.options can be [] (show only the reason)
+  escalation: Escalation | null
 }
 
 Constraints {
@@ -62,7 +59,7 @@ Claim {
   text: str                              // e.g. "Logistics Manager at X, 2021–2024"
   status: "verified" | "contradicted" | "unverifiable"
   evidence: str | null                   // e.g. "Crustdata shows: Intern at X, 2022 (3 mo)"
-  source: str                            // "crustdata:person_search" | "crustdata:person_enrich" | "telegram:getChat" | ...
+  source: str                            // "crustdata:person_enrich" | "onboarding_form"
   fetched_at: str
 }
 
@@ -123,8 +120,3 @@ Lives in `backend/integrations/`. Aditya imports these and calls them. Sunil nev
 ## Dev-only endpoints (NOT for the frontend)
 - `POST /dev/reply {"expert_id", "text"}`: pretend an expert replied on Telegram
 - `GET /dev/status`: shows which parts are real or simulated (pool, verify, telegram, calendar, llm), plus the outbox
-
-## Changelog
-- **v2 (02:55):** `created_at` on Request; `GET /requests` (+ `X-User-Email`); `POST /requests/{id}/cancel`; status `CANCELLED`;
-  claims may include an identity claim with `source: "telegram:getChat"` (Telegram name vs profile name);
-  the timeline now has a "Ranked #n … (score x): reasons" line per expert. Fixture: `requests_list.json`.

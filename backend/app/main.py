@@ -3,7 +3,7 @@ import json
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, Header, HTTPException, Query
+from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -77,7 +77,7 @@ def serialize(rid: str) -> dict:
     timeline = [{"t": t["t"], "step": t["step"], "msg": t["msg"], "source": t["source"]}
                 for t in db.q("SELECT * FROM timeline WHERE request_id=? ORDER BY id", (rid,))]
     return {
-        "id": r["id"], "status": r["status"], "raw_text": r["raw_text"], "created_at": r["created_at"],
+        "id": r["id"], "status": r["status"], "raw_text": r["raw_text"],
         "clarification_question": r["clarification_question"],
         "constraints": {k: v for k, v in c.items() if not k.startswith("_")} if c else None,
         "shortlist": shortlist, "timeline": timeline,
@@ -86,22 +86,11 @@ def serialize(rid: str) -> dict:
 
 
 @app.post("/requests")
-def create_request(body: NewRequest, x_user_email: str | None = Header(default=None)):
+def create_request(body: NewRequest):
     if not body.text.strip():
         raise HTTPException(400, detail="text is empty")
-    rid = engine.create_request(body.text.strip(), x_user_email)
+    rid = engine.create_request(body.text.strip())
     return {"request_id": rid, "status": "INTAKE"}
-
-
-@app.get("/requests")
-def list_requests(limit: int = Query(20, ge=1, le=100), x_user_email: str | None = Header(default=None)):
-    """Newest first. With X-User-Email, only that user's requests; without it, everyone's (for testing)."""
-    if x_user_email and x_user_email.strip():
-        rows = db.q("SELECT id FROM requests WHERE user_email=? ORDER BY created_at DESC LIMIT ?",
-                    (x_user_email.strip().lower(), limit))
-    else:
-        rows = db.q("SELECT id FROM requests ORDER BY created_at DESC LIMIT ?", (limit,))
-    return {"requests": [serialize(r["id"]) for r in rows]}
 
 
 @app.get("/requests/{rid}")
@@ -123,16 +112,6 @@ def approve(rid: str, body: Approve):
     if not st:
         raise HTTPException(400, detail="no such pending option")
     return {"status": st}
-
-
-@app.post("/requests/{rid}/cancel")
-def cancel(rid: str):
-    try:
-        return {"status": engine.cancel(rid)}
-    except LookupError:
-        raise HTTPException(404, detail="not found")
-    except ValueError as e:
-        raise HTTPException(400, detail=str(e))
 
 
 @app.get("/experts")

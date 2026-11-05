@@ -39,12 +39,6 @@ CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT);
 
 with _lock:
     _conn.executescript(SCHEMA)
-    # migrations for DBs created before these columns existed
-    for col in ("user_email TEXT",):
-        try:
-            _conn.execute(f"ALTER TABLE requests ADD COLUMN {col}")
-        except sqlite3.OperationalError:
-            pass  # column already exists
 
 
 @contextmanager
@@ -94,8 +88,7 @@ def update_request(rid, **fields):
         if k in fields:
             fields[k] = j(fields[k])
     sets = ", ".join(f"{k}=?" for k in fields)
-    # A cancelled request is final: no step running in parallel may revive it.
-    ex(f"UPDATE requests SET {sets} WHERE id=? AND status!='CANCELLED'", (*fields.values(), rid))
+    ex(f"UPDATE requests SET {sets} WHERE id=?", (*fields.values(), rid))
 
 
 def get_request_row(rid):

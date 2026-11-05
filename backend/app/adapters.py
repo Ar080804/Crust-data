@@ -119,34 +119,3 @@ def sim_reply(chat_id: str, text: str) -> dict:
     uid = int(db.kv_get("sim_update_id", str(10**12))) + 1
     db.kv_set("sim_update_id", uid)
     return {"update_id": uid, "chat_id": str(chat_id), "text": text, "t": now_iso()}
-
-
-# ---- identity: is the Telegram account the same person as the profile? ------
-
-def _name_tokens(s: str) -> set[str]:
-    return {t for t in "".join(ch.lower() if ch.isalpha() else " " for ch in (s or "")).split() if len(t) >= 3}
-
-
-def telegram_identity(expert: dict) -> dict | None:
-    """Weak identity check: does the Telegram account's display name match the profile name?
-    Returns a Claim dict, or None for simulated / unreachable experts. Result is cached in the DB.
-    Calls Sunil's telegram._api (read-only use, his file is not changed). The strong fix is LinkedIn sign-in at onboarding."""
-    chat = str(expert.get("telegram_chat_id") or "")
-    if not chat or chat.startswith("sim-") or not _tg or not hasattr(_tg, "_api"):
-        return None
-    key = f"tg_name:{chat}"
-    tg_name = db.kv_get(key)
-    if tg_name is None:
-        try:
-            info = _tg._api("getChat", chat_id=chat)
-            tg_name = " ".join(x for x in (info.get("first_name"), info.get("last_name")) if x) or info.get("username", "")
-            db.kv_set(key, tg_name)
-        except Exception as e:  # noqa: BLE001  identity check must never break the pipeline
-            print("Telegram getChat failed:", e)
-            return None
-    match = bool(_name_tokens(tg_name) & _name_tokens(expert.get("name", "")))
-    return {"text": f"Telegram account belongs to {expert.get('name')}",
-            "status": "verified" if match else "unverifiable",
-            "evidence": (f"Telegram profile name \"{tg_name}\" matches (name match only; LinkedIn sign-in would be stronger)"
-                         if match else f"Telegram profile name \"{tg_name}\" does not match the profile name"),
-            "source": "telegram:getChat", "fetched_at": now_iso()}

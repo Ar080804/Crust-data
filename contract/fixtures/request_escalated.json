@@ -2,7 +2,6 @@
   "id": "r_demo",
   "status": "ESCALATED",
   "raw_text": "Need a 20 min call tomorrow evening 6-8 with someone who has managed a warehouse, budget 2000",
-  "created_at": "2026-11-06T01:02:00.000+05:30",
   "clarification_question": null,
   "constraints": {
     "topic": "warehouse management",
