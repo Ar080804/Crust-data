@@ -220,7 +220,7 @@ def run_one(text, scen, reset=True):
         st = engine.run_until_settled(rid)
     experts = {e["expert_id"]: e for e in adapters.load_experts()}
     order, sent = [], defaultdict(int)
-    for _ in range(25):
+    for _ in range(60):  # up to 3 replies per expert (ask + 2 counter rounds) x ~10 experts
         if st != "NEGOTIATING":
             break
         r = db.get_request_row(rid)
