@@ -155,3 +155,11 @@ Existing endpoints do not require login.
   or `Reply "<exact text>" from <Full Name> (after booking)` (`source: "telegram"`)
 - Client chat messages: `source: "human"`, `msg: Client message relayed to the expert: "<text>"`
 - Double quotes inside texts are replaced with `”` so `"…"` parsing never breaks.
+
+## Negotiation lines (stable, for the "saved by your agent" badge)
+- Counter-offer (up to 2 rounds; round 1 = 10% under budget, round 2 = full budget; never above budget):
+  `source: "code"`, `msg: Round <n>/2: <Name> asked ₹X > budget ₹Y; agent offered ₹Z (LLM-drafted, code-checked)` or `(... template)`.
+  The message itself appears as the usual `Message to <Name> via Telegram: "..."` line.
+- On booking, only when the agent actually negotiated the price down:
+  `source: "code"`, `msg: Savings: listed=<int> booked=<int> saved=<int> (...)`. `listed` = the expert's first asked price (frontend regex: `^Savings:\s*listed=(\d+)\s+booked=(\d+)`)
+  (compared to what the expert asked, never to a made-up number).

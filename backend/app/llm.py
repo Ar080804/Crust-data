@@ -163,3 +163,31 @@ def _rule_reply(text: str) -> Reply:
     if re.search(r"\b(yes|ok|okay|done|sure|haan|ha|theek|thik|fine|works)\b", s):
         return Reply(intent="accept", slot_time=None, price_inr=None)
     return Reply(intent="unclear", slot_time=None, price_inr=None)
+
+
+COUNTER_SYSTEM = """You write one short, friendly, professional Telegram message from a booking assistant to an expert,
+negotiating the fee for a paid call. Rules:
+- Max 40 words. Plain text, no emojis, no quotes around the message.
+- Mention the exact offer amount ONCE, written exactly as given (e.g. "₹1,800"), and the call time.
+- Do NOT mention any other amount, budget figure, percentage or discount. Do not invent facts or promises.
+- Round 1: polite ask, note the client is ready to book now. Round 2: say this is the client's final offer."""
+
+
+def draft_counter(first_name: str, asked: str, offer: str, slot: str, round_no: int, topic: str) -> str | None:
+    """LLM drafts the counter-offer text. The caller (code) must still check it before sending."""
+    if not _client:
+        return None
+    try:
+        r = _client.messages.create(
+            model=LLM_MODEL, max_tokens=2000, system=COUNTER_SYSTEM,
+            output_config={"effort": "low"},
+            messages=[{"role": "user", "content":
+                       f"Expert first name: {first_name}. Topic: {topic}. Expert asked: {asked}. "
+                       f"Our offer: {offer}. Call time: {slot}. Round {round_no} of 2."}])
+        if r.stop_reason == "refusal":
+            return None
+        text = "".join(b.text for b in r.content if b.type == "text").strip()
+        return text or None
+    except Exception as e:  # noqa: BLE001
+        print("LLM counter draft failed, using template:", type(e).__name__, e)
+        return None

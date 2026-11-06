@@ -351,17 +351,50 @@ def step_negotiate(r):
     if not slot:
         return _ask_once(r, e, f"Great! What exact time works in {_window_desc(c)}?", n)
     db.set_outreach(rid, eid, "replied", last_ask={"slot": slot, "price": price})
+    asked = offer.get("asked") or (price if price > c["max_inr"] else None)  # the expert's first over-budget ask
     if price > c["max_inr"]:
-        if not r["counter_sent"]:
-            counter = c["max_inr"]
-            db.update_request(rid, counter_sent=1, offer={"slot": slot, "price": counter}, contacted_at=time.time())
-            _tell(rid, "NEGOTIATING", e, f"counter:{rid}:{eid}",
-                  f"Thanks! The client's budget is {rupees(counter)}. Would {fmt_time(slot)} for {rupees(counter)} work?")
-            db.log(rid, "NEGOTIATING", f"{rupees(price)} > budget {rupees(c['max_inr'])}; one counter at {rupees(counter)}", "code")
+        rounds = int(r["counter_sent"] or 0)
+        if rounds < MAX_COUNTER_ROUNDS:
+            counter = _counter_amount(c["max_inr"], rounds)
+            text, how = _counter_text(e, slot, counter, price, rounds + 1, c)
+            db.update_request(rid, counter_sent=rounds + 1, offer={"slot": slot, "price": counter, "asked": asked},
+                              contacted_at=time.time())
+            _tell(rid, "NEGOTIATING", e, f"counter{rounds + 1}:{rid}:{eid}", text)
+            db.log(rid, "NEGOTIATING", f"Round {rounds + 1}/{MAX_COUNTER_ROUNDS}: {e['name']} asked {rupees(price)} > budget "
+                   f"{rupees(c['max_inr'])}; agent offered {rupees(counter)} ({how})", "code")
             return
-        return _next_expert(rid, eid, "declined", f"{e['name']} still over budget ({rupees(price)}) after one counter; moving on")
-    db.update_request(rid, status="BOOKING", offer={"slot": slot, "price": price})
+        return _next_expert(rid, eid, "declined",
+                            f"{e['name']} still over budget ({rupees(price)}) after {MAX_COUNTER_ROUNDS} counter rounds; moving on")
+    db.update_request(rid, status="BOOKING", offer={"slot": slot, "price": price, "asked": asked})
     db.log(rid, "NEGOTIATING", f"{fmt_time(slot)} is inside the window and {rupees(price)} ≤ {rupees(c['max_inr'])}: accepted", "code")
+
+
+MAX_COUNTER_ROUNDS = 2
+
+
+def _counter_amount(budget: int, rounds_done: int) -> int:
+    """Round 1 opens 10% under budget (rounded down to ₹50); round 2 is the full budget. Never above budget."""
+    if rounds_done == 0:
+        return max(50, int(budget * 0.9) // 50 * 50)
+    return budget
+
+
+def _counter_text(e: dict, slot: str, counter: int, asked: int, round_no: int, c: dict) -> tuple[str, str]:
+    """LLM drafts the message; code checks it. Every rupee amount in it must equal our offer (which is ≤ budget)."""
+    draft = llm.draft_counter(e["name"].split()[0], rupees(asked), rupees(counter), fmt_time(slot), round_no, c["topic"])
+    if draft:
+        no_times = re.sub(r"\b\d{1,2}[:.]\d{2}\b", " ", draft)
+        amounts = {int(x.replace(",", "")) for x in re.findall(r"\d[\d,]{2,}", no_times)}
+        if amounts == {counter} and counter <= c["max_inr"] and len(draft) <= 400:
+            return draft, "LLM-drafted, code-checked"
+        print("Counter draft rejected by code check:", amounts, draft)
+    first = e["name"].split()[0]
+    if round_no == 1:
+        text = (f"Thanks {first}! Could you do {fmt_time(slot)} for {rupees(counter)}? "
+                f"The client is ready to book right now.")
+    else:
+        text = f"{rupees(counter)} is the client's final offer for {fmt_time(slot)}. Shall I lock it in?"
+    return text, "template"
 
 
 def _ask_once(r, e, text, n):
@@ -406,6 +439,11 @@ def step_book(r):
     db.log(rid, "BOOKING", f"Calendar event {eid_cal[:10]}… {status} ({gcal.mode()}); invites sent to both sides", "gcal")
     _tell(rid, "BOOKED", e, f"confirm:{rid}:{eid}", f"Confirmed: {conf}. Calendar invite sent. Thank you!")
     db.log(rid, "BOOKED", f"Confirmed: {conf}", "code")
+    asked = offer.get("asked")
+    if asked and asked > offer["price"]:
+        # Format read by the frontend badge: ^Savings: listed=<int> booked=<int>  (listed = the expert's first ask)
+        db.log(rid, "BOOKED", f"Savings: listed={asked} booked={offer['price']} saved={asked - offer['price']} "
+               f"(expert first asked {rupees(asked)}; negotiated by agent)", "code")
 
 
 def approve(rid: str, option_id: str):
