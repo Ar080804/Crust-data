@@ -746,3 +746,9 @@ input[type=range]:focus { box-shadow: none; }
 @media (prefers-reduced-motion: reduce) {
   .blur-word, .grad-anim, .shiny, .star-border, .aurora span { animation: none !important; }
 }
+
+/* negotiator agent: savings badge on the booked ticket */
+.savings-badge { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; border-radius: 14px; font-size: 14.5px;
+  background: linear-gradient(90deg, var(--ok-soft), color-mix(in srgb, var(--accent) 14%, transparent)); border: 1px solid color-mix(in srgb, var(--ok) 45%, transparent); color: var(--ink-2); animation: rise .5s ease both; }
+.savings-badge b { color: var(--ok); font-size: 16px; }
+.savings-badge .icon { color: var(--ok); }

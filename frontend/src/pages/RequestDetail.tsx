@@ -123,13 +123,33 @@ function NowPanel({ req }: { req: Request }) {
   )
 }
 
+// Negotiator agent result. Backend logs (source "code") on booking: "Savings: listed=2400 booked=2000".
+// Shown only when that line exists and the agent actually saved money. Nothing is guessed.
+function agentSavings(r: Request): { listed: number; booked: number; saved: number } | null {
+  for (let i = r.timeline.length - 1; i >= 0; i--) {
+    const m = r.timeline[i].msg.match(/^Savings:\s*listed=(\d+)\s+booked=(\d+)/)
+    if (m) {
+      const listed = +m[1], booked = +m[2]
+      return listed > booked ? { listed, booked, saved: listed - booked } : null
+    }
+  }
+  return null
+}
+
 function Booked({ req }: { req: Request }) {
   const b = req.booking!
   const who = req.shortlist.find((s) => s.expert_id === b.expert_id)
   const [hm, ...rest] = b.confirmation.split(',')
+  const savings = agentSavings(req)
   return (
     <div className="booked-wrap glow-ok">
       <Confetti />
+      {savings && (
+        <div className="savings-badge">
+          <Icon name="sparkle" size={16} />
+          <span><b>{inr(savings.saved)} saved by your agent</b> · negotiated {inr(savings.listed)} → {inr(savings.booked)}</span>
+        </div>
+      )}
       <Ticket time={hm || time(b.start)} date={day(b.start)}
         range={`${time(b.start)} – ${time(b.end)}${req.constraints ? ` · ${req.constraints.duration_min} min` : ''}`}
         price={rest.join(',').trim() || inr(b.price_inr)} name={who?.name ?? b.expert_id} headline={who?.headline}
