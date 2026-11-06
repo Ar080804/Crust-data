@@ -13,14 +13,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_64ae09bb",
+      "request_id": "r_2c99cd9c",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "2222f5c2dfd725f9905ff16a2949f9de0c2f36b3",
+        "calendar_event_id": "bacc50a5247a28bc4a00b762bc239b1520a57565",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -67,7 +67,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 2222f5c2df… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event bacc50a524… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -77,14 +77,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_0bc4ce2f",
+      "request_id": "r_1143f03e",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "35bd9c2b75d64b864afe1c931594ad07d53256f4",
+        "calendar_event_id": "a51c4ad0120876d84f6ee0503332abac61e182f3",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -131,7 +131,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 35bd9c2b75… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event a51c4ad012… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -141,14 +141,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_9edd4106",
+      "request_id": "r_7b2d8fbb",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "f93aa05be5fb426ee68b34090126148d61941662",
+        "calendar_event_id": "3310511a65ec5a17e5e5474c1dfb5f3e463398cd",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -195,7 +195,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event f93aa05be5… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 3310511a65… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -205,14 +205,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_c171a2fe",
+      "request_id": "r_9977e45d",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "90cc8635545ec5d24e5a6fe770f94c7d30259ef2",
+        "calendar_event_id": "75a053e478e30c1ed2dddd9fc1162e969353af31",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -257,7 +257,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 90cc863554… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 75a053e478… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -267,14 +267,14 @@
       "text": "Find me someone who has run a warehouse, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_dc6a3bb3",
+      "request_id": "r_c1ce54bc",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "769f178051fab7d54e2c6478b713b54389e6f59a",
+        "calendar_event_id": "1cbc0bcfbda94e94db06f9de8cd6a7e3c04f5f67",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -319,7 +319,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 769f178051… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 1cbc0bcfbd… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -329,14 +329,14 @@
       "text": "warehouse management expert for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_e269892b",
+      "request_id": "r_8320a56e",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "701255d813fddf590b3080f4855ab6d84a5221c3",
+        "calendar_event_id": "dfe38aa5092ac5aba175fc6b9e943f0da2c57973",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -381,7 +381,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 701255d813… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event dfe38aa509… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -391,14 +391,14 @@
       "text": "Need an expert in logistics tomorrow 7-9 pm, budget 2500, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_034e7c1f",
+      "request_id": "r_083b44a3",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "ce3ae5fa963a82a54617f499360f9a616c3c47d3",
+        "calendar_event_id": "a4c52c3d41f66dd9e4fbe36df49d18e2d6222a44",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -443,7 +443,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event ce3ae5fa96… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event a4c52c3d41… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -453,14 +453,14 @@
       "text": "Looking for a logistics expert, tomorrow 7 to 9 pm, max 2500, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_7b3d657c",
+      "request_id": "r_37434e52",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "c0ab6de93981083aa0b7be779f8aa4500812407b",
+        "calendar_event_id": "a5f9b472d803718ce566a6986c1f8a68097b7e73",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -505,7 +505,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event c0ab6de939… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event a5f9b472d8… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -515,14 +515,14 @@
       "text": "logistics specialist for a 20 min call tomorrow 7-9 pm under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_f7395c0b",
+      "request_id": "r_aecfc5d2",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "18e83423674c6dc387f290cfa03727eb23266a6d",
+        "calendar_event_id": "a2551d8efb4d553e6ec99117d2e6a0d1dde63e4a",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -567,7 +567,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 18e8342367… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event a2551d8efb… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -577,14 +577,14 @@
       "text": "Need an expert in supply chain tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_65d7f1bc",
+      "request_id": "r_a53b9ce3",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "31c7eae2ff6cdc3edb748b0e126ec0059ec0d0cc",
+        "calendar_event_id": "8d50c66531662939f64cf8a63fdf600b0274562b",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -629,7 +629,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 31c7eae2ff… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 8d50c66531… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 6:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
@@ -639,14 +639,14 @@
       "text": "Looking for someone who has worked in supply chain, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_5702b9d2",
+      "request_id": "r_410ae6bc",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "5d119562425bfd628cc75fefc28f4f047d886cf5",
+        "calendar_event_id": "caef224b69bd4be98c69cbb8aa0841d33ef128f2",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -691,7 +691,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 5d11956242… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event caef224b69… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 6:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
@@ -701,14 +701,14 @@
       "text": "supply chain consultant for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_ba6fd26d",
+      "request_id": "r_669b62f5",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "df3c9d365e962e08d33f6d91c966422cee6ba951",
+        "calendar_event_id": "c8fd7a5288755b50d891c89ca6b82d12bf5f5562",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -753,7 +753,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event df3c9d365e… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event c8fd7a5288… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 6:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
@@ -763,18 +763,18 @@
       "text": "Need an expert in fulfilment tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_4eb116ff",
+      "request_id": "r_e4efafd2",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "7db2aac528c30b4f710c124d60ecb0a06d252550",
+        "calendar_event_id": "dcabf20c8f2ab5cd6f00580cadfc8b5ffe121834",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
-        "topic": "fulfilment operations",
+        "topic": "fulfilment",
         "duration_min": 20,
         "window_start": "2026-11-07T18:00:00+05:30",
         "window_end": "2026-11-07T20:00:00+05:30",
@@ -797,9 +797,9 @@
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert in fulfilment tomorrow 6-8 pm, budget 3000, 20 min call\"",
-        "INTAKE: Parsed: {\"topic\":\"fulfilment operations\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
-        "INTAKE: Constraints validated: fulfilment operations, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: fulfilment, inventory, logistics, operations, supply chain, warehouse",
+        "INTAKE: Parsed: {\"topic\":\"fulfilment\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
+        "INTAKE: Constraints validated: fulfilment, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
+        "FINDING: Expanded search terms: e-commerce operations, fulfilment, inventory, logistics, operations, supply chain, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -811,11 +811,11 @@
         "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
         "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
         "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
-        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment operations, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
+        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 7db2aac528… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event dcabf20c8f… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -825,18 +825,18 @@
       "text": "Looking for someone who has led fulfilment, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_0e2b07b2",
+      "request_id": "r_c238845c",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "1f584d694e83892fb60e4a1ab90b193bd1cd0c70",
+        "calendar_event_id": "628674516c79830aebce52c1357f75e219a4db0e",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
-        "topic": "fulfilment operations",
+        "topic": "fulfilment operations leadership",
         "duration_min": 20,
         "window_start": "2026-11-07T18:00:00+05:30",
         "window_end": "2026-11-07T20:00:00+05:30",
@@ -859,9 +859,9 @@
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has led fulfilment, tomorrow 6 to 8 pm, max 3000, 20 minutes\"",
-        "INTAKE: Parsed: {\"topic\":\"fulfilment operations\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
-        "INTAKE: Constraints validated: fulfilment operations, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: fulfilment, inventory, logistics, operations, supply chain, warehouse",
+        "INTAKE: Parsed: {\"topic\":\"fulfilment operations leadership\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
+        "INTAKE: Constraints validated: fulfilment operations leadership, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
+        "FINDING: Expanded search terms: e-commerce, fulfilment, leadership, logistics, operations, supply chain, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -873,11 +873,11 @@
         "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
         "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
         "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
-        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment operations, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
+        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment operations leadership, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 1f584d694e… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 628674516c… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -887,14 +887,14 @@
       "text": "fulfilment specialist for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_afceff35",
+      "request_id": "r_42bfd5a3",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "970f70c0b12169e4bfe51ddd3d1eb322c9a81b48",
+        "calendar_event_id": "5ff2aeb73aa51e3cdb026082af32bbd0709db1c7",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -939,7 +939,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2400}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 970f70c0b1… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 5ff2aeb73a… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -949,14 +949,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_f0132a3c",
+      "request_id": "r_fa499f55",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "d1309089cfbdd93ea00986d17c990e1abe9466da",
+        "calendar_event_id": "b5a2b2c7eb74605b5be7688cf0789b1adecdd85d",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1006,7 +1006,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event d1309089cf… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event b5a2b2c7eb… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 6:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
@@ -1016,14 +1016,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_07fe3388",
+      "request_id": "r_0200341c",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "cb0f9c43b02b22ec95532ba93a90fd07af1d19aa",
+        "calendar_event_id": "65dfe35cb34aeb30ce57f1bba481d3ce64068e3d",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1073,7 +1073,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event cb0f9c43b0… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 65dfe35cb3… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 6:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
@@ -1083,14 +1083,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_29745877",
+      "request_id": "r_89c27a64",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "0a994d52dd4efa76517c0337bd3b335cd5c50ca3",
+        "calendar_event_id": "767e5d264a99cb6501b74816f7b6d0ccb4299164",
         "confirmation": "6:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1140,7 +1140,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2600}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 0a994d52dd… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 767e5d264a… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 6:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,600"
       ]
@@ -1150,14 +1150,14 @@
       "text": "Need an expert in logistics tomorrow 7-9 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_c19203f5",
+      "request_id": "r_da8328bb",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "943c9a3bd6cf2d5856eb597b12f10c8cd97896e6",
+        "calendar_event_id": "8c1a23285a9c5d8b23bf1a669e454f26fb7a45aa",
         "confirmation": "7:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1206,7 +1206,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"7:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2600}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 943c9a3bd6… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 8c1a23285a… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 7:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,600"
       ]
@@ -1216,14 +1216,14 @@
       "text": "Looking for a logistics expert, tomorrow 7 to 9 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_93f2235b",
+      "request_id": "r_8c10878b",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "573e762e46026e03e20f35492ee152b5c3a74f4b",
+        "calendar_event_id": "9addb327c230fcd6f407a6d7bf7da1341a538a85",
         "confirmation": "7:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1245,15 +1245,15 @@
         "e13": "ok",
         "e14": "ok",
         "e15": "ok",
-        "e4": "ok",
-        "e6": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted",
         "e18": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for a logistics expert, tomorrow 7 to 9 pm, max 3000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: 3pl, distribution, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation",
+        "FINDING: Expanded search terms: 3pl, distribution, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -1262,9 +1262,9 @@
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
         "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
         "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
-        "VERIFYING: AMIT VERMA: work history verified",
-        "VERIFYING: Suresh Bansal: work history verified",
         "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on logistics, Sat 07 Nov, 7:00 PM–9:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Rajarshi Nag did not reply in 90s; moving on",
@@ -1272,7 +1272,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"7:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2600}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 573e762e46… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 9addb327c2… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 7:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,600"
       ]
@@ -1282,14 +1282,14 @@
       "text": "logistics specialist for a 20 min call tomorrow 7-9 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_126f3743",
+      "request_id": "r_89708dae",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e10",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2600,
-        "calendar_event_id": "9b41d928d32472f3bdc18c21126e83deb2223ab0",
+        "calendar_event_id": "cabf9170f9c692fdc2ac25335ab4321ced33a6fc",
         "confirmation": "7:15 PM, ₹2,600"
       },
       "constraints": {
@@ -1338,7 +1338,7 @@
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"7:15 for 2600\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2600}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,600 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 9b41d928d3… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event cabf9170f9… created (sim); invites sent to both sides",
         "BOOKED: Message to Hardik Parikh via Telegram: \"Confirmed: 7:15 PM, ₹2,600. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,600"
       ]
@@ -1348,15 +1348,15 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_3ee9fcfa",
+      "request_id": "r_87f16f72",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
-        "price_inr": 2000,
-        "calendar_event_id": "dc55446ee3380f51ac3172d6fa6aeb9af8d056bd",
-        "confirmation": "6:15 PM, ₹2,000"
+        "price_inr": 1800,
+        "calendar_event_id": "19a4791c370c9541b1944138ee7ede75865d2ba4",
+        "confirmation": "6:15 PM, ₹1,800"
       },
       "constraints": {
         "topic": "warehouse management",
@@ -1401,13 +1401,14 @@
         "OUTREACH: Message to AMITABH SHANKAR via Telegram: \"Namaste AMITABH! Sutradhar here. A client wants a 20-min call on warehouse management, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2500\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2500}",
-        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Thanks! The client's budget is ₹2,000. Would 6:15 PM for ₹2,000 work?\"",
-        "NEGOTIATING: ₹2,500 > budget ₹2,000; one counter at ₹2,000",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thanks for considering the warehouse management call at 6:15 PM. Would you be open to ₹1,800 for the session? The client is ready to book right away.\"",
+        "NEGOTIATING: Round 1/2: AMITABH SHANKAR asked ₹2,500 > budget ₹2,000; agent offered ₹1,800 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"ok done\" from AMITABH SHANKAR → {\"intent\":\"accept\",\"slot_time\":null,\"price_inr\":null}",
-        "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event dc55446ee3… created (sim); invites sent to both sides",
-        "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
-        "BOOKED: Confirmed: 6:15 PM, ₹2,000"
+        "NEGOTIATING: 6:15 PM is inside the window and ₹1,800 ≤ ₹2,000: accepted",
+        "BOOKING: Calendar event 19a4791c37… created (sim); invites sent to both sides",
+        "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹1,800. Calendar invite sent. Thank you!\"",
+        "BOOKED: Confirmed: 6:15 PM, ₹1,800",
+        "BOOKED: Savings: listed=2500 booked=1800 saved=700 (expert first asked ₹2,500; negotiated by agent)"
       ]
     },
     {
@@ -1415,15 +1416,15 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_9834b5d5",
+      "request_id": "r_455733b5",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
-        "price_inr": 2000,
-        "calendar_event_id": "36a36d8450ec51a7e6c08b0f04732b2ecc7582f3",
-        "confirmation": "6:15 PM, ₹2,000"
+        "price_inr": 1800,
+        "calendar_event_id": "d5979c430b0a83775ab589e29185ee84753a1972",
+        "confirmation": "6:15 PM, ₹1,800"
       },
       "constraints": {
         "topic": "warehouse management",
@@ -1451,7 +1452,7 @@
         "INTAKE: Request received: \"Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"warehouse management\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: warehouse management, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
-        "FINDING: Expanded search terms: 3pl, fulfillment, fulfilment, inventory, logistics, operations, ops, supply chain, warehouse",
+        "FINDING: Expanded search terms: 3pl, distribution, fulfillment, fulfilment, inventory, logistics, operations, ops, supply chain, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -1468,13 +1469,14 @@
         "OUTREACH: Message to AMITABH SHANKAR via Telegram: \"Namaste AMITABH! Sutradhar here. A client wants a 20-min call on warehouse management, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2500\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2500}",
-        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Thanks! The client's budget is ₹2,000. Would 6:15 PM for ₹2,000 work?\"",
-        "NEGOTIATING: ₹2,500 > budget ₹2,000; one counter at ₹2,000",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thanks for your interest in the warehouse management call at 6:15 PM. Would you be open to ₹1,800 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: AMITABH SHANKAR asked ₹2,500 > budget ₹2,000; agent offered ₹1,800 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"ok done\" from AMITABH SHANKAR → {\"intent\":\"accept\",\"slot_time\":null,\"price_inr\":null}",
-        "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 36a36d8450… created (sim); invites sent to both sides",
-        "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
-        "BOOKED: Confirmed: 6:15 PM, ₹2,000"
+        "NEGOTIATING: 6:15 PM is inside the window and ₹1,800 ≤ ₹2,000: accepted",
+        "BOOKING: Calendar event d5979c430b… created (sim); invites sent to both sides",
+        "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹1,800. Calendar invite sent. Thank you!\"",
+        "BOOKED: Confirmed: 6:15 PM, ₹1,800",
+        "BOOKED: Savings: listed=2500 booked=1800 saved=700 (expert first asked ₹2,500; negotiated by agent)"
       ]
     },
     {
@@ -1482,15 +1484,15 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_bbea86bc",
+      "request_id": "r_e6052e85",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
-        "price_inr": 2000,
-        "calendar_event_id": "d4e45745260d030a01e8034773f5fc0ea372dfb5",
-        "confirmation": "6:15 PM, ₹2,000"
+        "price_inr": 1800,
+        "calendar_event_id": "b0eeef2301a99b785fa670c1ec3b848399e6db45",
+        "confirmation": "6:15 PM, ₹1,800"
       },
       "constraints": {
         "topic": "warehouse management",
@@ -1535,13 +1537,14 @@
         "OUTREACH: Message to AMITABH SHANKAR via Telegram: \"Namaste AMITABH! Sutradhar here. A client wants a 20-min call on warehouse management, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2500\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2500}",
-        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Thanks! The client's budget is ₹2,000. Would 6:15 PM for ₹2,000 work?\"",
-        "NEGOTIATING: ₹2,500 > budget ₹2,000; one counter at ₹2,000",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thanks for your interest in the warehouse management call at 6:15 PM. Would you be open to ₹1,800 for the session? The client is ready to book right away if this works for you.\"",
+        "NEGOTIATING: Round 1/2: AMITABH SHANKAR asked ₹2,500 > budget ₹2,000; agent offered ₹1,800 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"ok done\" from AMITABH SHANKAR → {\"intent\":\"accept\",\"slot_time\":null,\"price_inr\":null}",
-        "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event d4e4574526… created (sim); invites sent to both sides",
-        "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
-        "BOOKED: Confirmed: 6:15 PM, ₹2,000"
+        "NEGOTIATING: 6:15 PM is inside the window and ₹1,800 ≤ ₹2,000: accepted",
+        "BOOKING: Calendar event b0eeef2301… created (sim); invites sent to both sides",
+        "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹1,800. Calendar invite sent. Thank you!\"",
+        "BOOKED: Confirmed: 6:15 PM, ₹1,800",
+        "BOOKED: Savings: listed=2500 booked=1800 saved=700 (expert first asked ₹2,500; negotiated by agent)"
       ]
     },
     {
@@ -1549,7 +1552,7 @@
       "text": "Need an expert in supply chain tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_bdb686a8",
+      "request_id": "r_9b931851",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1601,66 +1604,93 @@
         "OUTREACH: Message to Hardik Parikh via Telegram: \"Namaste Hardik! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,600. Are you free? Reply with a time and price, e.g. ”7:15 for 2600”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Hi Hardik, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Hardik Parikh asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Hardik Parikh still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Hi Hardik, thanks for your patience. The client's final offer is ₹3,000 for the supply chain call at 6:15 PM. They'd really value your insights. Would you be able to confirm?\"",
+        "NEGOTIATING: Round 2/2: Hardik Parikh asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Hardik Parikh still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Deepak Dhanotiya via Telegram: \"Namaste Deepak! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Deepak Dhanotiya to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Hi Deepak, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Deepak Dhanotiya asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Deepak Dhanotiya still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Hi Deepak, thanks for your patience. For the 6:15 PM supply chain call, the client's final offer is ₹3,000. We'd be glad to confirm right away if this works for you.\"",
+        "NEGOTIATING: Round 2/2: Deepak Dhanotiya asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Deepak Dhanotiya still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to AMIT VERMA via Telegram: \"Namaste AMIT! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMIT VERMA to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Hi Amit, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: AMIT VERMA asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: AMIT VERMA still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Hi Amit, thanks for your patience. The client's final offer for the supply chain call at 6:15 PM is ₹3,000. If that works for you, I'll confirm the booking right away.\"",
+        "NEGOTIATING: Round 2/2: AMIT VERMA asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: AMIT VERMA still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Suresh Bansal via Telegram: \"Namaste Suresh! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,600. Are you free? Reply with a time and price, e.g. ”7:15 for 2600”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Suresh Bansal to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Hi Suresh, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Suresh Bansal asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Suresh Bansal still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Hi Suresh, thanks for your patience. For the supply chain call at 6:15 PM, the client's final offer is ₹3,000. If that works for you, we can confirm right away. Please let me know.\"",
+        "NEGOTIATING: Round 2/2: Suresh Bansal asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Suresh Bansal still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Hi Rajarshi, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Rajarshi Nag asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Rajarshi Nag still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Hi Rajarshi, thanks for your patience. For the 6:15 PM supply chain call, the client's final offer is ₹3,000. If that works for you, I can confirm the booking right away. Would that be okay?\"",
+        "NEGOTIATING: Round 2/2: Rajarshi Nag asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Rajarshi Nag still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to AMITABH SHANKAR via Telegram: \"Namaste AMITABH! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thank you for your interest in the supply chain call at 6:15 PM. Would you consider ₹2,700 for the session? The client is ready to book right away if this works for you.\"",
+        "NEGOTIATING: Round 1/2: AMITABH SHANKAR asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: AMITABH SHANKAR still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thank you for your patience. For the 6:15 PM supply chain call, the client can offer ₹3,000, and this is their final offer. Would that work for you?\"",
+        "NEGOTIATING: Round 2/2: AMITABH SHANKAR asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: AMITABH SHANKAR still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Jai Khurana via Telegram: \"Namaste Jai! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹1,200. Are you free? Reply with a time and price, e.g. ”7:15 for 1200”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Jai Khurana to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Hi Jai, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away.\"",
+        "NEGOTIATING: Round 1/2: Jai Khurana asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Jai Khurana still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Hi Jai, thanks for your patience. The client's final offer for the 6:15 PM supply chain call is ₹3,000. If that works for you, we can confirm the booking right away. Let me know.\"",
+        "NEGOTIATING: Round 2/2: Jai Khurana asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Jai Khurana still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Mayur Bommai via Telegram: \"Namaste Mayur! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹1,800. Are you free? Reply with a time and price, e.g. ”7:15 for 1800”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Mayur Bommai to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Hi Mayur, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Mayur Bommai asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Mayur Bommai still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Hi Mayur, thanks for your patience. The client's final offer for the supply chain call at 6:15 PM is ₹3,000. They'd really value your insights. Could you confirm if this works for you?\"",
+        "NEGOTIATING: Round 2/2: Mayur Bommai asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Mayur Bommai still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Anshuman Singh via Telegram: \"Namaste Anshuman! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Anshuman Singh to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Hi Anshuman, thanks for your interest in the supply chain call at 6:15 PM. Would you consider ₹2,700 for the session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Anshuman Singh asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Anshuman Singh still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Hi Anshuman, thanks for your patience. The client's final offer is ₹3,000 for the supply chain call at 6:15 PM. Would that work for you? Happy to confirm the booking right away.\"",
+        "NEGOTIATING: Round 2/2: Anshuman Singh asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Anshuman Singh still over budget (₹3,800) after 2 counter rounds; moving on",
         "ESCALATED: No verified expert accepted within budget and window. 3 closest option(s) sent to a human."
       ]
     },
@@ -1669,7 +1699,7 @@
       "text": "Looking for someone who has worked in supply chain, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_398e7340",
+      "request_id": "r_73653855",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1721,66 +1751,93 @@
         "OUTREACH: Message to Hardik Parikh via Telegram: \"Namaste Hardik! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,600. Are you free? Reply with a time and price, e.g. ”7:15 for 2600”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Hi Hardik, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away.\"",
+        "NEGOTIATING: Round 1/2: Hardik Parikh asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Hardik Parikh still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Hi Hardik, thanks for your patience. The client's final offer is ₹3,000 for the supply chain call at 6:15 PM. They'd really value your insights. Would this work for you?\"",
+        "NEGOTIATING: Round 2/2: Hardik Parikh asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Hardik Parikh still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Deepak Dhanotiya via Telegram: \"Namaste Deepak! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Deepak Dhanotiya to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Hi Deepak, thank you for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if this works for you.\"",
+        "NEGOTIATING: Round 1/2: Deepak Dhanotiya asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Deepak Dhanotiya still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Hi Deepak, thanks for your patience. For the supply chain call at 6:15 PM, the client's final offer is ₹3,000. Would that work for you? Happy to confirm right away if so.\"",
+        "NEGOTIATING: Round 2/2: Deepak Dhanotiya asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Deepak Dhanotiya still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to AMIT VERMA via Telegram: \"Namaste AMIT! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMIT VERMA to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Hi Amit, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: AMIT VERMA asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: AMIT VERMA still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Hi Amit, thanks for your patience. The client's final offer for the 6:15 PM supply chain call is ₹3,000. If that works for you, I'll confirm the booking right away. Let me know.\"",
+        "NEGOTIATING: Round 2/2: AMIT VERMA asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: AMIT VERMA still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Suresh Bansal via Telegram: \"Namaste Suresh! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,600. Are you free? Reply with a time and price, e.g. ”7:15 for 2600”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Suresh Bansal to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Hi Suresh, thanks for getting back to us. Would you be open to ₹2,700 for the supply chain call at 6:15 PM? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Suresh Bansal asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Suresh Bansal still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Hi Suresh, thanks for your patience. For the 6:15 PM supply chain call, the client's final offer is ₹3,000. We'd love to confirm with you. Would that work?\"",
+        "NEGOTIATING: Round 2/2: Suresh Bansal asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Suresh Bansal still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Hi Rajarshi, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Rajarshi Nag asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Rajarshi Nag still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Hi Rajarshi, thanks for your patience. For the 6:15 PM supply chain call, the client's final offer is ₹3,000. Would that work for you? Happy to confirm the booking right away.\"",
+        "NEGOTIATING: Round 2/2: Rajarshi Nag asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Rajarshi Nag still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to AMITABH SHANKAR via Telegram: \"Namaste AMITABH! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thanks for your interest in the supply chain call at 6:15 PM. Would you consider ₹2,700 for the session? The client is ready to book right away if this works for you.\"",
+        "NEGOTIATING: Round 1/2: AMITABH SHANKAR asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: AMITABH SHANKAR still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thanks for your patience. For the 6:15 PM supply chain call, the client's final offer is ₹3,000. We'd be glad to confirm the booking if this works for you.\"",
+        "NEGOTIATING: Round 2/2: AMITABH SHANKAR asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: AMITABH SHANKAR still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Jai Khurana via Telegram: \"Namaste Jai! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹1,200. Are you free? Reply with a time and price, e.g. ”7:15 for 1200”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Jai Khurana to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Hi Jai, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Jai Khurana asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Jai Khurana still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Hi Jai, thanks for your patience. The client's final offer is ₹3,000 for the supply chain call at 6:15 PM. They'd really value your insights and hope this works for you. Please let me know.\"",
+        "NEGOTIATING: Round 2/2: Jai Khurana asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Jai Khurana still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Mayur Bommai via Telegram: \"Namaste Mayur! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹1,800. Are you free? Reply with a time and price, e.g. ”7:15 for 1800”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Mayur Bommai to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Hi Mayur, thanks for your interest in the supply chain call at 6:15 PM. Would you consider ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Mayur Bommai asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Mayur Bommai still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Hi Mayur, thanks for your patience. The client's final offer for the supply chain call at 6:15 PM is ₹3,000. They'd really value your insights. Could you confirm if this works for you?\"",
+        "NEGOTIATING: Round 2/2: Mayur Bommai asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Mayur Bommai still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Anshuman Singh via Telegram: \"Namaste Anshuman! Sutradhar here. A client wants a 30-min call on supply chain, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Anshuman Singh to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Hi Anshuman, thanks for your interest in the supply chain call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Anshuman Singh asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Anshuman Singh still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Hi Anshuman, thanks for your patience. The client's final offer is ₹3,000 for the supply chain call at 6:15 PM. Would that work for you? Happy to confirm the booking right away.\"",
+        "NEGOTIATING: Round 2/2: Anshuman Singh asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Anshuman Singh still over budget (₹3,800) after 2 counter rounds; moving on",
         "ESCALATED: No verified expert accepted within budget and window. 3 closest option(s) sent to a human."
       ]
     },
@@ -1789,7 +1846,7 @@
       "text": "supply chain consultant for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_2111bb9c",
+      "request_id": "r_7efa5368",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -1841,66 +1898,93 @@
         "OUTREACH: Message to Hardik Parikh via Telegram: \"Namaste Hardik! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,600. Are you free? Reply with a time and price, e.g. ”7:15 for 2600”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Hardik Parikh to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Hi Hardik, thanks for your interest in the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if this works for you.\"",
+        "NEGOTIATING: Round 1/2: Hardik Parikh asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Hardik Parikh still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Hardik Parikh via Telegram: \"Hi Hardik, thanks for your patience. The client's final offer for the supply chain consulting call at 6:15 PM is ₹3,000. Would you be able to confirm so we can lock it in?\"",
+        "NEGOTIATING: Round 2/2: Hardik Parikh asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Hardik Parikh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Hardik Parikh still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Deepak Dhanotiya via Telegram: \"Namaste Deepak! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Deepak Dhanotiya to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Hi Deepak, thanks for your interest in the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: Deepak Dhanotiya asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Deepak Dhanotiya still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Deepak Dhanotiya via Telegram: \"Hi Deepak, thanks for your patience. For the supply chain consulting call at 6:15 PM, the client's final offer is ₹3,000. Would you be able to confirm so we can lock it in?\"",
+        "NEGOTIATING: Round 2/2: Deepak Dhanotiya asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Deepak Dhanotiya → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Deepak Dhanotiya still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to AMIT VERMA via Telegram: \"Namaste AMIT! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMIT VERMA to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Hi Amit, thanks for getting back to us. For the 6:15 PM supply chain consulting call, would you consider ₹2,700? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: AMIT VERMA asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: AMIT VERMA still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to AMIT VERMA via Telegram: \"Hi Amit, thanks for your patience. For the 6:15 PM supply chain consulting call, the client's final offer is ₹3,000. Would you be able to confirm at this fee so we can lock it in?\"",
+        "NEGOTIATING: Round 2/2: AMIT VERMA asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from AMIT VERMA → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: AMIT VERMA still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Suresh Bansal via Telegram: \"Namaste Suresh! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,600. Are you free? Reply with a time and price, e.g. ”7:15 for 2600”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Suresh Bansal to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Hi Suresh, thanks for your interest in the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away.\"",
+        "NEGOTIATING: Round 1/2: Suresh Bansal asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Suresh Bansal still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Suresh Bansal via Telegram: \"Hi Suresh, thanks for your patience. For the supply chain consulting call at 6:15 PM, the client's final offer is ₹3,000. Would you be able to accept so we can confirm the booking?\"",
+        "NEGOTIATING: Round 2/2: Suresh Bansal asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Suresh Bansal → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Suresh Bansal still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Hi Rajarshi, thanks for getting back on the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away.\"",
+        "NEGOTIATING: Round 1/2: Rajarshi Nag asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Rajarshi Nag still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Rajarshi Nag via Telegram: \"Hi Rajarshi, thanks for your patience. The client's final offer is ₹3,000 for the supply chain consulting call at 6:15 PM. Would that work for you? Happy to confirm right away if so.\"",
+        "NEGOTIATING: Round 2/2: Rajarshi Nag asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Rajarshi Nag still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to AMITABH SHANKAR via Telegram: \"Namaste AMITABH! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thanks for your interest in the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for this session? The client is ready to book right away if that works for you.\"",
+        "NEGOTIATING: Round 1/2: AMITABH SHANKAR asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: AMITABH SHANKAR still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to AMITABH SHANKAR via Telegram: \"Hi Amitabh, thank you for your patience. The client's final offer is ₹3,000 for the supply chain consulting call at 6:15 PM. Would you be able to confirm? We'd be glad to lock it in right away.\"",
+        "NEGOTIATING: Round 2/2: AMITABH SHANKAR asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: AMITABH SHANKAR still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Jai Khurana via Telegram: \"Namaste Jai! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹1,200. Are you free? Reply with a time and price, e.g. ”7:15 for 1200”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Jai Khurana to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Hi Jai, thanks for your interest in the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if this works for you.\"",
+        "NEGOTIATING: Round 1/2: Jai Khurana asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Jai Khurana still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Jai Khurana via Telegram: \"Hi Jai, thanks for your patience. For the supply chain consulting call at 6:15 PM, the client's final offer is ₹3,000. We'd be glad to confirm the booking if that works for you.\"",
+        "NEGOTIATING: Round 2/2: Jai Khurana asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Jai Khurana → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Jai Khurana still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Mayur Bommai via Telegram: \"Namaste Mayur! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹1,800. Are you free? Reply with a time and price, e.g. ”7:15 for 1800”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Mayur Bommai to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Hi Mayur, thanks for your interest in the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book now and would love to confirm with you.\"",
+        "NEGOTIATING: Round 1/2: Mayur Bommai asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Mayur Bommai still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Mayur Bommai via Telegram: \"Hi Mayur, thanks for your patience. The client's final offer for the 6:15 PM supply chain consulting call is ₹3,000. Would you be able to confirm at this fee so we can lock it in?\"",
+        "NEGOTIATING: Round 2/2: Mayur Bommai asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Mayur Bommai → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Mayur Bommai still over budget (₹3,800) after 2 counter rounds; moving on",
         "OUTREACH: Message to Anshuman Singh via Telegram: \"Namaste Anshuman! Sutradhar here. A client wants a 30-min call on supply chain consulting, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,000. Are you free? Reply with a time and price, e.g. ”7:15 for 2000”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Anshuman Singh to reply",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Thanks! The client's budget is ₹3,000. Would 6:15 PM for ₹3,000 work?\"",
-        "NEGOTIATING: ₹3,800 > budget ₹3,000; one counter at ₹3,000",
+        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Hi Anshuman, thanks for your interest in the supply chain consulting call at 6:15 PM. Would you be open to ₹2,700 for the session? The client is ready to book right away if this works for you.\"",
+        "NEGOTIATING: Round 1/2: Anshuman Singh asked ₹3,800 > budget ₹3,000; agent offered ₹2,700 (LLM-drafted, code-checked)",
         "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
-        "NEGOTIATING: Anshuman Singh still over budget (₹3,800) after one counter; moving on",
+        "NEGOTIATING: Message to Anshuman Singh via Telegram: \"Hi Anshuman, thank you for your patience. For the 6:15 PM supply chain consulting call, the client's final offer is ₹3,000. Would you be able to accept so we can confirm the booking?\"",
+        "NEGOTIATING: Round 2/2: Anshuman Singh asked ₹3,800 > budget ₹3,000; agent offered ₹3,000 (LLM-drafted, code-checked)",
+        "NEGOTIATING: Reply \"6:15 for 3800\" from Anshuman Singh → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":3800}",
+        "NEGOTIATING: Anshuman Singh still over budget (₹3,800) after 2 counter rounds; moving on",
         "ESCALATED: No verified expert accepted within budget and window. 3 closest option(s) sent to a human."
       ]
     },
@@ -1909,14 +1993,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_1bd38242",
+      "request_id": "r_6efdc45c",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:30:00+05:30",
         "end": "2026-11-07T18:50:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "48707ed1c7b4985d61c48dd4978570a6c2714b7b",
+        "calendar_event_id": "cf4210cb45a1c8f096a6d63f897dbeb53b0cfd10",
         "confirmation": "6:30 PM, ₹2,000"
       },
       "constraints": {
@@ -1966,7 +2050,7 @@
         "NEGOTIATING: Reply ambiguous; asked AMITABH SHANKAR once to clarify",
         "NEGOTIATING: Reply \"6:30 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:30\",\"price_inr\":2000}",
         "NEGOTIATING: 6:30 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 48707ed1c7… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event cf4210cb45… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:30 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:30 PM, ₹2,000"
       ]
@@ -1976,14 +2060,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_055fc0dc",
+      "request_id": "r_7b1b7e4a",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:30:00+05:30",
         "end": "2026-11-07T18:50:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "7183e7b91a55385de5152acc414dd8b88b1438a4",
+        "calendar_event_id": "186459162a9048420101480333372f54f3b22b67",
         "confirmation": "6:30 PM, ₹2,000"
       },
       "constraints": {
@@ -2033,7 +2117,7 @@
         "NEGOTIATING: Reply ambiguous; asked AMITABH SHANKAR once to clarify",
         "NEGOTIATING: Reply \"6:30 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:30\",\"price_inr\":2000}",
         "NEGOTIATING: 6:30 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 7183e7b91a… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 186459162a… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:30 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:30 PM, ₹2,000"
       ]
@@ -2043,14 +2127,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_1d65a8fc",
+      "request_id": "r_99caae99",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:30:00+05:30",
         "end": "2026-11-07T18:50:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "824c0178bf9e98d62a9d63b986cd0c59643d5c45",
+        "calendar_event_id": "843612d29ead97562edc1ecfc59fd385c8564fb9",
         "confirmation": "6:30 PM, ₹2,000"
       },
       "constraints": {
@@ -2100,7 +2184,7 @@
         "NEGOTIATING: Reply ambiguous; asked AMITABH SHANKAR once to clarify",
         "NEGOTIATING: Reply \"6:30 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:30\",\"price_inr\":2000}",
         "NEGOTIATING: 6:30 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 824c0178bf… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 843612d29e… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:30 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:30 PM, ₹2,000"
       ]
@@ -2110,14 +2194,14 @@
       "text": "Need an expert in logistics tomorrow 7-9 pm, budget 2500, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_36304096",
+      "request_id": "r_edd561ae",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "50144df6f15486c58cfe42595f7f23db693cd0c5",
+        "calendar_event_id": "02cdfdecac65adf93390aace35f5c4a42596b831",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2146,7 +2230,7 @@
         "INTAKE: Request received: \"Need an expert in logistics tomorrow 7-9 pm, budget 2500, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"19:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 20 min, 7:00 PM–9:00 PM IST, max ₹2,500",
-        "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation, warehouse",
+        "FINDING: Expanded search terms: 3pl, distribution, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -2165,7 +2249,7 @@
         "NEGOTIATING: Reply ambiguous; asked Rajarshi Nag once to clarify",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 50144df6f1… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 02cdfdecac… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -2175,14 +2259,14 @@
       "text": "Looking for a logistics expert, tomorrow 7 to 9 pm, max 2500, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_636fc3cf",
+      "request_id": "r_7d108126",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "4ff5f45fab82f908c84ffdcc9d870553a156ad3a",
+        "calendar_event_id": "4a29f99a45fd75c50ed1542d85cc48cb7fd3ea8c",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2230,7 +2314,7 @@
         "NEGOTIATING: Reply ambiguous; asked Rajarshi Nag once to clarify",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 4ff5f45fab… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 4a29f99a45… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -2240,14 +2324,14 @@
       "text": "logistics specialist for a 20 min call tomorrow 7-9 pm under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_640df618",
+      "request_id": "r_5e7c6945",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "9a29b535510e7b7da2c705ad895520b7c1a9a642",
+        "calendar_event_id": "d09c7ea37ee1f47a24beeddc87d02879a6edb477",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2295,7 +2379,7 @@
         "NEGOTIATING: Reply ambiguous; asked Rajarshi Nag once to clarify",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 9a29b53551… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event d09c7ea37e… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -2305,7 +2389,7 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_66f01816",
+      "request_id": "r_56925c8f",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -2388,7 +2472,7 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_6cf6d59c",
+      "request_id": "r_2c0d7867",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -2471,7 +2555,7 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_e42c4288",
+      "request_id": "r_f1f3cc58",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -2554,14 +2638,14 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_e47de601",
+      "request_id": "r_d4f2ec2e",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "566e1f1b80c20a3570e6017cdd548a85b35e9bc0",
+        "calendar_event_id": "3f97134be4a3f81a8ee5e876c5f1388513a8d6d6",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2611,7 +2695,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 566e1f1b80… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 3f97134be4… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -2621,14 +2705,14 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_33cffd27",
+      "request_id": "r_de775996",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "89af40f70afc2cb99ddec0dee1523f15175d0947",
+        "calendar_event_id": "d8b74c1100c867c97d5fa96fa866ec7e780d494e",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2678,7 +2762,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 89af40f70a… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event d8b74c1100… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -2688,14 +2772,14 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_a829153c",
+      "request_id": "r_690c343f",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "94aa146c437afe4d2a6d8f7885c31f5baf87661a",
+        "calendar_event_id": "4a8a2d9274caecbc816b71da424fafad84af9cf7",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -2745,7 +2829,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"6:15 for 2000\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 94aa146c43… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 4a8a2d9274… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -2755,14 +2839,14 @@
       "text": "Need an expert in logistics, budget 2500, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_15f26e9a",
+      "request_id": "r_7b5018d4",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "384a3f6e2142a70b5b51bb28dcd7c4258e5efb66",
+        "calendar_event_id": "4243779551c9c4177fcaa185ee74bf5e5364542a",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2810,7 +2894,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 384a3f6e21… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 4243779551… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -2820,14 +2904,14 @@
       "text": "Looking for a logistics expert, max 2500, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_64e65384",
+      "request_id": "r_6161462f",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "81969029cf5bc56ee1b1e326ed66f39cdf22f5ad",
+        "calendar_event_id": "1ceb35b9efffa5251831acb18c7e9d9dfb255b7e",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2875,7 +2959,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 81969029cf… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 1ceb35b9ef… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -2885,14 +2969,14 @@
       "text": "logistics specialist for a 20 min call under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_9311dd98",
+      "request_id": "r_44100bee",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T19:15:00+05:30",
         "end": "2026-11-07T19:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "b43654a3496dce631d55e3ea31f3d375877915aa",
+        "calendar_event_id": "3aad2c2544dda4b8b1fde338ef1b7b6d366e20b7",
         "confirmation": "7:15 PM, ₹2,400"
       },
       "constraints": {
@@ -2940,7 +3024,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"7:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"19:15\",\"price_inr\":2400}",
         "NEGOTIATING: 7:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event b43654a349… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 3aad2c2544… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 7:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 7:15 PM, ₹2,400"
       ]
@@ -2950,14 +3034,14 @@
       "text": "Need an expert on fest sponsorship tomorrow 6-8 pm, budget 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_c72adcc4",
+      "request_id": "r_92d28af9",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e2",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1500,
-        "calendar_event_id": "7ae090287786255bdff97de7777d41574b072e99",
+        "calendar_event_id": "4b2a0377ed844c702c7f86f09ea4a53255972907",
         "confirmation": "6:15 PM, ₹1,500"
       },
       "constraints": {
@@ -2979,7 +3063,7 @@
         "INTAKE: Request received: \"Need an expert on fest sponsorship tomorrow 6-8 pm, budget 2000, 20 min call\"",
         "INTAKE: Parsed: {\"topic\":\"fest sponsorship\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: fest sponsorship, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
-        "FINDING: Expanded search terms: brand, brand marketing, college fest, event, event management, fest, marketing, organiser, organizer, partnership, partnerships, sponsor, sponsorship, sports",
+        "FINDING: Expanded search terms: brand, brand marketing, college fest, event, event management, fest, fundraising, organiser, organizer, partnership, partnerships, sponsor, sponsorship, sports",
         "FINDING: 3 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
@@ -2989,7 +3073,7 @@
         "OUTREACH: Waiting up to 90s for Sunil Jakhar to reply",
         "NEGOTIATING: Reply \"6:15 for 1500\" from Sunil Jakhar → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":1500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 7ae0902877… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 4b2a0377ed… created (sim); invites sent to both sides",
         "BOOKED: Message to Sunil Jakhar via Telegram: \"Confirmed: 6:15 PM, ₹1,500. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹1,500"
       ]
@@ -2999,14 +3083,14 @@
       "text": "Looking for someone who has done fest sponsorship, tomorrow 6 to 8 pm, max 2000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_9f521add",
+      "request_id": "r_eb274a4e",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e2",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1500,
-        "calendar_event_id": "196531cc66ebb205ff2cdff2b9235332565869ca",
+        "calendar_event_id": "1c8eaf7fbfd3cbcda53dca298f49fc4cc34ace08",
         "confirmation": "6:15 PM, ₹1,500"
       },
       "constraints": {
@@ -3038,7 +3122,7 @@
         "OUTREACH: Waiting up to 90s for Sunil Jakhar to reply",
         "NEGOTIATING: Reply \"6:15 for 1500\" from Sunil Jakhar → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":1500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 196531cc66… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 1c8eaf7fbf… created (sim); invites sent to both sides",
         "BOOKED: Message to Sunil Jakhar via Telegram: \"Confirmed: 6:15 PM, ₹1,500. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹1,500"
       ]
@@ -3048,14 +3132,14 @@
       "text": "fest sponsorship expert for a 20 min call tomorrow 6-8 pm under ₹2,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_4680107c",
+      "request_id": "r_c122c7b5",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e2",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 1500,
-        "calendar_event_id": "8beccfe865979b91417b2df8aef00ebfc2c2c7f7",
+        "calendar_event_id": "5d7bafa1d4326aa9eee5b8e070703be961891107",
         "confirmation": "6:15 PM, ₹1,500"
       },
       "constraints": {
@@ -3077,7 +3161,7 @@
         "INTAKE: Request received: \"fest sponsorship expert for a 20 min call tomorrow 6-8 pm under ₹2,000\"",
         "INTAKE: Parsed: {\"topic\":\"fest sponsorship\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":2000}",
         "INTAKE: Constraints validated: fest sponsorship, 20 min, 6:00 PM–8:00 PM IST, max ₹2,000",
-        "FINDING: Expanded search terms: brand, event, events, fest, fundraising, marketing, organiser, organizer, partnership, partnerships, sponsor, sponsorship, sports",
+        "FINDING: Expanded search terms: brand, brand partnerships, event, events, fest, marketing, organiser, organizer, partnership, partnerships, sponsor, sponsorship, sports",
         "FINDING: 3 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
@@ -3087,7 +3171,7 @@
         "OUTREACH: Waiting up to 90s for Sunil Jakhar to reply",
         "NEGOTIATING: Reply \"6:15 for 1500\" from Sunil Jakhar → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":1500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹1,500 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event 8beccfe865… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 5d7bafa1d4… created (sim); invites sent to both sides",
         "BOOKED: Message to Sunil Jakhar via Telegram: \"Confirmed: 6:15 PM, ₹1,500. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹1,500"
       ]
@@ -3097,14 +3181,14 @@
       "text": "Need an expert on event management tomorrow 6-8 pm, budget 3000, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_67f6f391",
+      "request_id": "r_18e221f9",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e19",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2500,
-        "calendar_event_id": "774a2ae291823e1a48059b28614c9df08c058c7b",
+        "calendar_event_id": "ce6d4c8ff446ed5107eb907bdc1b7ea18ff85790",
         "confirmation": "6:15 PM, ₹2,500"
       },
       "constraints": {
@@ -3120,22 +3204,24 @@
       "flags": {
         "e19": "ok",
         "e2": "ok",
+        "e18": "contradicted",
         "e20": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Need an expert on event management tomorrow 6-8 pm, budget 3000, 30 min call\"",
         "INTAKE: Parsed: {\"topic\":\"event management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: event management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: conferences, event, event coordinator, event management, event planner, events, fest, hospitality, organiser, organizer, production, sponsor, weddings",
-        "FINDING: 3 candidates from a pool of 20 (source: real pool)",
+        "FINDING: Expanded search terms: conference, event, event management, event planning, events, fest, hospitality, operations, organiser, organizer, sponsor, wedding planner",
+        "FINDING: 4 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
         "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
+        "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
         "OUTREACH: Message to Sai Sandeep Guduru via Telegram: \"Namaste Sai! Sutradhar here. A client wants a 30-min call on event management, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,500. Are you free? Reply with a time and price, e.g. ”7:15 for 2500”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Sai Sandeep Guduru to reply",
         "NEGOTIATING: Reply \"6:15 for 2500\" from Sai Sandeep Guduru → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,500 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 774a2ae291… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event ce6d4c8ff4… created (sim); invites sent to both sides",
         "BOOKED: Message to Sai Sandeep Guduru via Telegram: \"Confirmed: 6:15 PM, ₹2,500. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,500"
       ]
@@ -3145,14 +3231,14 @@
       "text": "Looking for an event management consultant, tomorrow 6 to 8 pm, max 3000, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_000c210e",
+      "request_id": "r_b0c313e5",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e19",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2500,
-        "calendar_event_id": "9e1459e1f0847566f457b43eed4459c9910d2921",
+        "calendar_event_id": "d00474b8ddb41e067338f83f2b0831a16e95c02b",
         "confirmation": "6:15 PM, ₹2,500"
       },
       "constraints": {
@@ -3174,7 +3260,7 @@
         "INTAKE: Request received: \"Looking for an event management consultant, tomorrow 6 to 8 pm, max 3000, 30 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"event management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: event management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: conferences, event, event coordinator, event management, event planning, events, fest, hospitality, organiser, organizer, sponsor, weddings",
+        "FINDING: Expanded search terms: event, event management, event operations, event planner, event production, events, fest, hospitality, organiser, organizer, sponsor",
         "FINDING: 3 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
@@ -3183,7 +3269,7 @@
         "OUTREACH: Waiting up to 90s for Sai Sandeep Guduru to reply",
         "NEGOTIATING: Reply \"6:15 for 2500\" from Sai Sandeep Guduru → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,500 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 9e1459e1f0… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event d00474b8dd… created (sim); invites sent to both sides",
         "BOOKED: Message to Sai Sandeep Guduru via Telegram: \"Confirmed: 6:15 PM, ₹2,500. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,500"
       ]
@@ -3193,14 +3279,14 @@
       "text": "event management specialist for a 30 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_75e206ae",
+      "request_id": "r_b64584ac",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e19",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:45:00+05:30",
         "price_inr": 2500,
-        "calendar_event_id": "656e68fce5657fe3d319d53e58e756569143626e",
+        "calendar_event_id": "613fd9811de0137a8400a397f79dfcba3dd88ac7",
         "confirmation": "6:15 PM, ₹2,500"
       },
       "constraints": {
@@ -3216,22 +3302,24 @@
       "flags": {
         "e19": "ok",
         "e2": "ok",
+        "e18": "contradicted",
         "e20": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"event management specialist for a 30 min call tomorrow 6-8 pm under ₹3,000\"",
         "INTAKE: Parsed: {\"topic\":\"event management\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
         "INTAKE: Constraints validated: event management, 30 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: event, event coordinator, event management, event planning, events, fest, hospitality, organiser, organizer, production, sponsor, wedding planner",
-        "FINDING: 3 candidates from a pool of 20 (source: real pool)",
+        "FINDING: Expanded search terms: event, event coordinator, event management, event planning, events, fest, hospitality, operations, organiser, organizer, production, sponsor",
+        "FINDING: 4 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Sai Sandeep Guduru: work history verified",
         "VERIFYING: Sunil Jakhar: work history verified",
         "VERIFYING: Test Profile D dropped: claim \"Head of Sponsorships at GeeksforGeeks Campus Body - Chandigarh University, 2025-present\" contradicted. Crustdata shows: Core member - Sponsorship Outreach at GeeksforGeeks Campus Body - Chandigarh University, 2026–present (8 mo) (claimed seniority not supported)",
+        "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
         "OUTREACH: Message to Sai Sandeep Guduru via Telegram: \"Namaste Sai! Sutradhar here. A client wants a 30-min call on event management, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,500. Are you free? Reply with a time and price, e.g. ”7:15 for 2500”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Sai Sandeep Guduru to reply",
         "NEGOTIATING: Reply \"6:15 for 2500\" from Sai Sandeep Guduru → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2500}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,500 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 656e68fce5… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 613fd9811d… created (sim); invites sent to both sides",
         "BOOKED: Message to Sai Sandeep Guduru via Telegram: \"Confirmed: 6:15 PM, ₹2,500. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,500"
       ]
@@ -3241,7 +3329,7 @@
       "text": "Need an expert in warehouse management tomorrow 6-8 pm, budget 500, 20 min call",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_8523cc91",
+      "request_id": "r_abbb7720",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -3295,7 +3383,7 @@
       "text": "Looking for someone who has managed a warehouse, tomorrow 6 to 8 pm, max 500, 20 minutes",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_3fddb0be",
+      "request_id": "r_d3ec00ce",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -3349,7 +3437,7 @@
       "text": "warehouse management expert for a 20 min call tomorrow 6-8 pm under ₹500",
       "expected_status": "ESCALATED",
       "ok": true,
-      "request_id": "r_6738248e",
+      "request_id": "r_3a196032",
       "status": "ESCALATED",
       "booking": null,
       "constraints": {
@@ -3403,14 +3491,14 @@
       "text": "kal shaam 6-8 baje warehouse expert chahiye, budget 2000, 20 min",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_66b97b7a",
+      "request_id": "r_525760b9",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "c287e7cb2d808c3f6323c66bc1e92ef231d99243",
+        "calendar_event_id": "bdc15497ae494de8857756f803208ba4b30a2c48",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -3457,7 +3545,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"haan 6:15 pe 2000 chalega\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event c287e7cb2d… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event bdc15497ae… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -3467,14 +3555,14 @@
       "text": "kal 6 to 8 pm ek warehouse specialist chahiye, max 2000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_dd3923c3",
+      "request_id": "r_1552db92",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "f5a32fa1b6c7185f7f930d5d99b9012137a1dda9",
+        "calendar_event_id": "294cff679e61352f865ada65a9b8e7dab80a7676",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -3521,7 +3609,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"haan 6:15 pe 2000 chalega\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event f5a32fa1b6… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 294cff679e… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -3531,14 +3619,14 @@
       "text": "warehouse expert chahiye kal shaam 6-8, budget 2k, 20 min",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_4351bbc9",
+      "request_id": "r_116e7e0d",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e11",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2000,
-        "calendar_event_id": "b36dbe47de12d8de3f380d7e8a32114e1d8f2ac4",
+        "calendar_event_id": "76b5a90ce6d3c28127ea466a578d1099fc570188",
         "confirmation": "6:15 PM, ₹2,000"
       },
       "constraints": {
@@ -3585,7 +3673,7 @@
         "OUTREACH: Waiting up to 90s for AMITABH SHANKAR to reply",
         "NEGOTIATING: Reply \"haan 6:15 pe 2000 chalega\" from AMITABH SHANKAR → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":2000}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,000 ≤ ₹2,000: accepted",
-        "BOOKING: Calendar event b36dbe47de… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 76b5a90ce6… created (sim); invites sent to both sides",
         "BOOKED: Message to AMITABH SHANKAR via Telegram: \"Confirmed: 6:15 PM, ₹2,000. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,000"
       ]
@@ -3595,14 +3683,14 @@
       "text": "Need an expert in fulfilment tomorrow 6-8 pm, budget 3000, 20 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_6b36e09a",
+      "request_id": "r_78744af7",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "cbedccbfce6715a5164bd04a88f524e01cedbe01",
+        "calendar_event_id": "a05752b0ef7bd0025642fe87959ff5d4cdf72f4e",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
@@ -3647,7 +3735,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 works\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event cbedccbfce… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event a05752b0ef… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -3657,18 +3745,18 @@
       "text": "Looking for someone who has led fulfilment, tomorrow 6 to 8 pm, max 3000, 20 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_fe8d9719",
+      "request_id": "r_3852f0f9",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "df2bb09c3ab10fc0b3ff89a9246537f2ffe1534d",
+        "calendar_event_id": "00a855ffd4e553ef70ce51b88806eb07359cbcef",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
-        "topic": "fulfilment operations leadership",
+        "topic": "fulfilment operations",
         "duration_min": 20,
         "window_start": "2026-11-07T18:00:00+05:30",
         "window_end": "2026-11-07T20:00:00+05:30",
@@ -3691,9 +3779,9 @@
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for someone who has led fulfilment, tomorrow 6 to 8 pm, max 3000, 20 minutes\"",
-        "INTAKE: Parsed: {\"topic\":\"fulfilment operations leadership\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
-        "INTAKE: Constraints validated: fulfilment operations leadership, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
-        "FINDING: Expanded search terms: fulfilment, head of fulfilment, leadership, logistics, operations, supply chain, warehouse",
+        "INTAKE: Parsed: {\"topic\":\"fulfilment operations\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
+        "INTAKE: Constraints validated: fulfilment operations, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
+        "FINDING: Expanded search terms: fulfilment, inventory, logistics, operations, supply chain, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -3705,11 +3793,11 @@
         "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
         "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
         "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
-        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment operations leadership, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
+        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment operations, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 works\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event df2bb09c3a… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 00a855ffd4… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -3719,18 +3807,18 @@
       "text": "fulfilment specialist for a 20 min call tomorrow 6-8 pm under ₹3,000",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_7aa67a66",
+      "request_id": "r_539c9091",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T18:15:00+05:30",
         "end": "2026-11-07T18:35:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "230207d49ff1e4def23061d8a852af79aabcc0ff",
+        "calendar_event_id": "5d5303cf6484a42dc93bc1d04e832e82bb7a6c01",
         "confirmation": "6:15 PM, ₹2,400"
       },
       "constraints": {
-        "topic": "fulfilment",
+        "topic": "fulfilment operations",
         "duration_min": 20,
         "window_start": "2026-11-07T18:00:00+05:30",
         "window_end": "2026-11-07T20:00:00+05:30",
@@ -3753,8 +3841,8 @@
       },
       "timeline": [
         "INTAKE: Request received: \"fulfilment specialist for a 20 min call tomorrow 6-8 pm under ₹3,000\"",
-        "INTAKE: Parsed: {\"topic\":\"fulfilment\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
-        "INTAKE: Constraints validated: fulfilment, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
+        "INTAKE: Parsed: {\"topic\":\"fulfilment operations\",\"duration_min\":20,\"date\":\"2026-11-07\",\"window_start_time\":\"18:00\",\"window_end_time\":\"20:00\",\"max_inr\":3000}",
+        "INTAKE: Constraints validated: fulfilment operations, 20 min, 6:00 PM–8:00 PM IST, max ₹3,000",
         "FINDING: Expanded search terms: ecommerce, fulfilment, inventory, logistics, operations, supply chain, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
@@ -3767,11 +3855,11 @@
         "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
         "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
         "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
-        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
+        "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 20-min call on fulfilment operations, Sat 07 Nov, 6:00 PM–8:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"6:15 works\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"18:15\",\"price_inr\":null}",
         "NEGOTIATING: 6:15 PM is inside the window and ₹2,400 ≤ ₹3,000: accepted",
-        "BOOKING: Calendar event 230207d49f… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 5d5303cf64… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 6:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 6:15 PM, ₹2,400"
       ]
@@ -3781,14 +3869,14 @@
       "text": "Need an expert in logistics tomorrow evening, budget 2500, 30 min call",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_9e2eb6fe",
+      "request_id": "r_d3669d56",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T17:15:00+05:30",
         "end": "2026-11-07T17:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "af0c63c980311c5b0f73d744ee0c7f77a9e0376e",
+        "calendar_event_id": "f197089dea0765760680180f5f34678d73aa0c5f",
         "confirmation": "5:15 PM, ₹2,400"
       },
       "constraints": {
@@ -3817,7 +3905,7 @@
         "INTAKE: Request received: \"Need an expert in logistics tomorrow evening, budget 2500, 30 min call\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"17:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 30 min, 5:00 PM–9:00 PM IST, max ₹2,500",
-        "FINDING: Expanded search terms: 3pl, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation, warehouse",
+        "FINDING: Expanded search terms: 3pl, distribution, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -3833,7 +3921,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"5:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"17:15\",\"price_inr\":2400}",
         "NEGOTIATING: 5:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event af0c63c980… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event f197089dea… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 5:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 5:15 PM, ₹2,400"
       ]
@@ -3843,14 +3931,14 @@
       "text": "Looking for a logistics expert tomorrow evening, max 2500, 30 minutes",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_538a82ba",
+      "request_id": "r_bd395421",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T17:15:00+05:30",
         "end": "2026-11-07T17:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "ef8972b16d2cf5fcbca54de67592d524e0a5340f",
+        "calendar_event_id": "513a628b554c096e1a2db599a038613136e33a24",
         "confirmation": "5:15 PM, ₹2,400"
       },
       "constraints": {
@@ -3871,15 +3959,15 @@
         "e13": "ok",
         "e14": "ok",
         "e15": "ok",
-        "e4": "ok",
-        "e6": "ok",
+        "e16": "contradicted",
+        "e17": "contradicted",
         "e18": "contradicted"
       },
       "timeline": [
         "INTAKE: Request received: \"Looking for a logistics expert tomorrow evening, max 2500, 30 minutes\"",
         "INTAKE: Parsed: {\"topic\":\"logistics\",\"duration_min\":30,\"date\":\"2026-11-07\",\"window_start_time\":\"17:00\",\"window_end_time\":\"21:00\",\"max_inr\":2500}",
         "INTAKE: Constraints validated: logistics, 30 min, 5:00 PM–9:00 PM IST, max ₹2,500",
-        "FINDING: Expanded search terms: 3pl, distribution, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation",
+        "FINDING: Expanded search terms: 3pl, distribution, freight, fulfillment, fulfilment, logistics, operations, shipping, supply chain, transportation, warehouse",
         "FINDING: 10 candidates from a pool of 20 (source: real pool)",
         "VERIFYING: Rajarshi Nag: work history verified",
         "VERIFYING: Hardik Parikh: work history verified",
@@ -3888,14 +3976,14 @@
         "VERIFYING: Jai Khurana: work history verified",
         "VERIFYING: Mayur Bommai: work history verified",
         "VERIFYING: Anshuman Singh: work history verified",
+        "VERIFYING: Test Profile A dropped: claim \"Warehouse Head at GlobalFair, 2020-present\" contradicted. Crustdata shows: Intern (Growth and Logistics) at GlobalFair, 2022–present (claimed seniority not supported)",
+        "VERIFYING: Test Profile B dropped: claim \"Warehouse Head at Insurance Samadhan, 2022-present\" contradicted. Crustdata shows: Operations Intern at Insurance Samadhan, 2024–present (claimed seniority not supported)",
         "VERIFYING: Test Profile C dropped: claim \"Product Operations Manager at Google, 2020-present\" contradicted. Crustdata shows: Product Operations Manager at Google, 2026–present (9 mo) (dates do not match)",
-        "VERIFYING: AMIT VERMA: work history verified",
-        "VERIFYING: Suresh Bansal: work history verified",
         "OUTREACH: Message to Rajarshi Nag via Telegram: \"Namaste Rajarshi! Sutradhar here. A client wants a 30-min call on logistics, Sat 07 Nov, 5:00 PM–9:00 PM IST. Your listed rate is ₹2,400. Are you free? Reply with a time and price, e.g. ”7:15 for 2400”, or ”no”.\"",
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"5:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"17:15\",\"price_inr\":2400}",
         "NEGOTIATING: 5:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event ef8972b16d… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event 513a628b55… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 5:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 5:15 PM, ₹2,400"
       ]
@@ -3905,14 +3993,14 @@
       "text": "logistics specialist for a 30 min call tomorrow evening under ₹2,500",
       "expected_status": "BOOKED",
       "ok": true,
-      "request_id": "r_844d88df",
+      "request_id": "r_1f7ec72f",
       "status": "BOOKED",
       "booking": {
         "expert_id": "e8",
         "start": "2026-11-07T17:15:00+05:30",
         "end": "2026-11-07T17:45:00+05:30",
         "price_inr": 2400,
-        "calendar_event_id": "5df5900ed7c32f18e6f53cfc1e132e36abb6af32",
+        "calendar_event_id": "e4ad4e4ef9c0c7ab3f24f29cb553188d5eb704ca",
         "confirmation": "5:15 PM, ₹2,400"
       },
       "constraints": {
@@ -3957,7 +4045,7 @@
         "OUTREACH: Waiting up to 90s for Rajarshi Nag to reply",
         "NEGOTIATING: Reply \"5:15 for 2400\" from Rajarshi Nag → {\"intent\":\"propose\",\"slot_time\":\"17:15\",\"price_inr\":2400}",
         "NEGOTIATING: 5:15 PM is inside the window and ₹2,400 ≤ ₹2,500: accepted",
-        "BOOKING: Calendar event 5df5900ed7… created (sim); invites sent to both sides",
+        "BOOKING: Calendar event e4ad4e4ef9… created (sim); invites sent to both sides",
         "BOOKED: Message to Rajarshi Nag via Telegram: \"Confirmed: 5:15 PM, ₹2,400. Calendar invite sent. Thank you!\"",
         "BOOKED: Confirmed: 5:15 PM, ₹2,400"
       ]
