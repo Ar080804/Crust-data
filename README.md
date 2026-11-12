@@ -127,7 +127,7 @@ npm ci
 cp .env.example .env               # VITE_MOCK=false to use the real backend
 npm run dev                        # → http://localhost:5173
 ```
-With `VITE_MOCK=true` the UI runs on `contract/fixtures/` only. No backend needed.
+With `VITE_MOCK=true` the UI replays fictional booking scenarios from `frontend/src/demoFixtures.ts` in the browser.
 
 **3. Expert onboarding** (optional, port 8001)
 ```bash

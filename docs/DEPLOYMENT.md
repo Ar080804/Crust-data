@@ -1,6 +1,6 @@
 # Sutradhar deployment
 
-The public demo replays fixture data in the browser. The `vercel-deploy` branch also packages the FastAPI API and one optional Telegram worker. The API and worker share PostgreSQL. Local development continues to use SQLite when `DATABASE_URL` is empty.
+The public demo replays newly authored fictional profiles in the browser. The public examples have no contact information, profile links or individual employment histories. The `vercel-deploy` branch also packages the FastAPI API and one optional Telegram worker. The API and worker share PostgreSQL. Local development continues to use SQLite when `DATABASE_URL` is empty.
 
 ## Vercel project setup
 

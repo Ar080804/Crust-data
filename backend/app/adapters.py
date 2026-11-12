@@ -28,12 +28,11 @@ def _dev_pool():
     d = (now() + timedelta(days=1)).date().isoformat()
     avail = [{"start": f"{d}T17:00:00+05:30", "end": f"{d}T22:00:00+05:30"}]
     base = [
-        ("e1", "Rohan Mehta", "Fulfilment Head, Delhivery", 2500, ["Fulfilment Head at Delhivery, 2020-present"], "verified"),
-        ("e3", "Sunil Kumar", "Logistics Manager, Blinkit", 1800, ["Logistics Manager at Blinkit, 2021-2024"], "verified"),
-        ("e7", "Priya Nair", "Ops Lead, regional 3PL", 1500, ["Ops Lead at ShipFast Logistics, 2019-2023"], "unverifiable"),
-        ("e9", "Karan Shah", "Warehouse Manager, Flipkart", 1200, ["Warehouse Manager at Flipkart, 2022-2024"], "contradicted"),
+        ("sample-a", "Demo Expert A", "Sample warehouse profile", 1400, ["Warehouse operations"], "verified"),
+        ("sample-b", "Demo Expert B", "Sample inventory profile", 1150, ["Inventory planning"], "unverifiable"),
+        ("sample-c", "Demo Expert C", "Sample fulfilment profile", 1250, ["Fulfilment supervision"], "contradicted"),
     ]
-    return [{"expert_id": i, "name": n, "headline": h, "linkedin_url": f"https://www.linkedin.com/in/dev-{i}",
+    return [{"expert_id": i, "name": n, "headline": h, "linkedin_url": "",
              "rate_inr": r, "availability": avail, "telegram_chat_id": f"sim-{i}", "email": "",
              "claims": c, "simulated": True, "_sim_verify": v} for i, n, h, r, c, v in base]
 

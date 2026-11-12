@@ -3,12 +3,8 @@
 import { getToken } from './auth.ts'
 import type { Request, Status, Expert, Eval, AuthUser } from '../../contract/types.ts'
 
-import booked from '../../contract/fixtures/request_booked.json'
-import negotiating from '../../contract/fixtures/request_negotiating.json'
-import escalated from '../../contract/fixtures/request_escalated.json'
-import clarify from '../../contract/fixtures/request_clarify.json'
-import expertsFx from '../../contract/fixtures/experts.json'
-import evalFx from '../../contract/fixtures/eval.json'
+import { booked, clarify, escalated, expertsFx, negotiating } from './demoFixtures.ts'
+import evalFx from '../../backend/eval/latest.json'
 import { addChat, listChat, listSaved, removeSaved, saveRequest, type ChatMsg, type Saved } from './history.ts'
 
 export const MOCK = import.meta.env.VITE_MOCK === 'true'
