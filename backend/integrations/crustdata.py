@@ -14,6 +14,7 @@ import httpx
 from dotenv import load_dotenv
 
 from . import synonyms
+from backend.app.config import CLOUD, DATABASE_URL
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / "data" / "crustdata_cache"
@@ -48,7 +49,14 @@ def fetch(expert: dict, max_retries: int = 3) -> tuple[list | None, str]:
     """Return (raw_response, fetched_at). Reads cache first; calls the API only on a miss."""
     url = expert.get("linkedin_url") or ""
     path = _cache_path(expert)
-    if path.exists():
+    cache_key = "crustdata:" + path.stem + ":" + _norm_url(url)
+    if DATABASE_URL:
+        from backend.app import db
+        stored = db.kv_get(cache_key)
+        if stored:
+            entry = json.loads(stored)
+            return entry["raw"], entry["fetched_at"]
+    if not CLOUD and path.exists():
         raw = json.loads(path.read_text(encoding="utf-8"))
         # Planted test profiles have no public URL in the pool, so their cache is matched by expert_id alone.
         if raw and (not url or _norm_url(raw[0].get("matched_on", "")) == _norm_url(url)):
@@ -68,9 +76,13 @@ def fetch(expert: dict, max_retries: int = 3) -> tuple[list | None, str]:
             continue
         r.raise_for_status()
         raw = r.json()
-        CACHE.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(raw, indent=2, ensure_ascii=False), encoding="utf-8")
-        return raw, _now()
+        fetched = _now()
+        if DATABASE_URL:
+            db.kv_set(cache_key, json.dumps({"raw": raw, "fetched_at": fetched}, ensure_ascii=False))
+        else:
+            CACHE.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps(raw, indent=2, ensure_ascii=False), encoding="utf-8")
+        return raw, fetched
     raise RuntimeError("Crustdata rate limit: retries exhausted")
 
 

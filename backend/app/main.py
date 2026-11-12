@@ -1,9 +1,10 @@
 """Owner: Aditya. HTTP API. Response shapes must match contract/CONTRACT.md exactly."""
 import json
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import APIRouter, Depends, FastAPI, Header, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -11,6 +12,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from pydantic import BaseModel
 
 from . import adapters, auth, db, engine, gcal
+from .config import APP_URL, CLOUD, DATABASE_URL, RUN_WORKER_IN_API
 
 ROOT = Path(__file__).resolve().parents[2]
 FIX = ROOT / "contract" / "fixtures"
@@ -19,7 +21,8 @@ EVAL = ROOT / "backend" / "eval" / "latest.json"
 
 @asynccontextmanager
 async def lifespan(_app):
-    engine.start_worker()  # resumes any unfinished request from SQLite
+    if RUN_WORKER_IN_API:
+        engine.start_worker()
     yield
 
 
@@ -45,8 +48,33 @@ async def server_error(_req, exc: Exception):
 
 
 app.include_router(auth.router)  # Sign in with Google: /auth/google/login, /auth/google/callback, /auth/me, /auth/logout
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+app.add_middleware(CORSMiddleware, allow_origins=([APP_URL] if CLOUD else ["http://localhost:5173", "http://127.0.0.1:5173"]),
                    allow_methods=["*"], allow_headers=["*"])
+
+
+def session_user(authorization: str | None = Header(default=None)):
+    user = auth.current_user(authorization)
+    if CLOUD and not user:
+        raise HTTPException(401, detail="Sign in with Google")
+    return user
+
+
+def request_owner(rid: str, user=Depends(session_user)):
+    if CLOUD:
+        owner = db.q1("SELECT owner_email FROM requests WHERE id=?", (rid,))
+        if owner is None or owner["owner_email"] != user["email"]:
+            raise HTTPException(404, detail="Request not found")
+
+
+@app.get("/health")
+def health():
+    if CLOUD and not DATABASE_URL:
+        return JSONResponse({"database": "awaiting configuration"}, status_code=503)
+    try:
+        ready = db.q1("SELECT 1 AS ready")["ready"] == 1
+    except Exception:
+        ready = False
+    return JSONResponse({"database": "ready" if ready else "unavailable"}, status_code=200 if ready else 503)
 
 
 class NewRequest(BaseModel):
@@ -87,19 +115,21 @@ def serialize(rid: str) -> dict:
 
 
 @app.post("/requests")
-def create_request(body: NewRequest):
+def create_request(body: NewRequest, user=Depends(session_user)):
+    if CLOUD and not (os.getenv("TELEGRAM_BOT_TOKEN") and os.getenv("GOOGLE_CALENDAR_TOKEN_JSON")):
+        raise HTTPException(503, detail="Live booking is awaiting integration setup")
     if not body.text.strip():
         raise HTTPException(400, detail="text is empty")
-    rid = engine.create_request(body.text.strip())
+    rid = engine.create_request(body.text.strip(), user["email"] if user else None)
     return {"request_id": rid, "status": "INTAKE"}
 
 
-@app.get("/requests/{rid}")
+@app.get("/requests/{rid}", dependencies=[Depends(request_owner)])
 def get_request(rid: str):
     return serialize(rid)
 
 
-@app.post("/requests/{rid}/clarify")
+@app.post("/requests/{rid}/clarify", dependencies=[Depends(request_owner)])
 def clarify(rid: str, body: Clarify):
     st = engine.clarify(rid, body.answer)
     if not st:
@@ -107,7 +137,7 @@ def clarify(rid: str, body: Clarify):
     return {"status": st}
 
 
-@app.post("/requests/{rid}/approve")
+@app.post("/requests/{rid}/approve", dependencies=[Depends(request_owner)])
 def approve(rid: str, body: Approve):
     st = engine.approve(rid, body.option_id)
     if not st:
@@ -120,7 +150,7 @@ class ChatIn(BaseModel):
     text: str
 
 
-@app.post("/requests/{rid}/messages")
+@app.post("/requests/{rid}/messages", dependencies=[Depends(request_owner)])
 def send_message(rid: str, body: ChatIn):
     """Client -> booked expert, relayed on Telegram. Returns a ChatMsg. Expert replies appear in the timeline."""
     try:
@@ -133,7 +163,7 @@ def send_message(rid: str, body: ChatIn):
         raise HTTPException(502, detail=str(e))
 
 
-@app.get("/experts")
+@app.get("/experts", dependencies=[Depends(session_user)])
 def experts():
     return {"experts": [{"expert_id": e["expert_id"], "name": e["name"], "headline": e.get("headline", ""),
                          "linkedin_url": e.get("linkedin_url", ""), "rate_inr": e["rate_inr"],
@@ -153,7 +183,10 @@ class DevReply(BaseModel):
     text: str
 
 
-@app.post("/dev/reply")
+dev = APIRouter()
+
+
+@dev.post("/dev/reply")
 def dev_reply(body: DevReply):
     """Pretend an expert replied on Telegram. Useful when Sunil's telegram.py is not ready yet."""
     e = next((x for x in adapters.load_experts() if x["expert_id"] == body.expert_id), None)
@@ -163,8 +196,12 @@ def dev_reply(body: DevReply):
     return {"ok": True}
 
 
-@app.get("/dev/status")
+@dev.get("/dev/status")
 def dev_status():
     return {"modes": adapters.MODE, "calendar": gcal.mode(),
             "llm": "claude" if engine.llm._client else "rules",
             "outbox": db.q("SELECT * FROM outbox ORDER BY t DESC LIMIT 20")}
+
+
+if not CLOUD:
+    app.include_router(dev)

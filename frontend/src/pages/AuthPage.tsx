@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { MOCK, googleLoginUrl, ONBOARDING_URL } from '../api.ts'
 import { DotField, RotatingText } from '../cursor.tsx'
 import { Icon, LinkedInIcon, Logo } from '../ui.tsx'
@@ -24,6 +24,14 @@ export default function AuthPage() {
   const loc = useLocation()
   const from = (loc.state as { from?: string } | null)?.from || '/'
   const [role, setRole] = useState<Role | null>(null)
+
+  if (MOCK) return (
+    <section className="container">
+      <h1>Try Sutradhar</h1>
+      <p>This demo uses sample requests and simulated bookings.</p>
+      <Link className="btn btn-primary" to="/new">Start a demo request</Link>
+    </section>
+  )
 
   const googleLogin = () => { window.location.href = googleLoginUrl(window.location.origin + from) }
   const linkedinLogin = () => { window.location.href = `${ONBOARDING_URL.replace(/\/$/, '')}/auth/linkedin/login` }
@@ -88,8 +96,8 @@ export default function AuthPage() {
                 <>
                   <h2 className="auth-title">Join as an expert</h2>
                   <p className="muted small">We verify experts so clients can trust them. It takes about a minute.</p>
-                  <button type="button" className="btn-oauth role-btn" onClick={linkedinLogin} data-cursor="LinkedIn">
-                    <LinkedInIcon /> Continue with LinkedIn
+                  <button type="button" className="btn-oauth role-btn" onClick={linkedinLogin} disabled={!ONBOARDING_URL} data-cursor="LinkedIn">
+                    <LinkedInIcon /> {ONBOARDING_URL ? 'Continue with LinkedIn' : 'Expert onboarding is closed'}
                   </button>
                   <ol className="role-steps">
                     <li><b>Sign in with LinkedIn</b>: confirms who you are</li>
@@ -100,7 +108,6 @@ export default function AuthPage() {
               )}
             </>
           )}
-          {MOCK && <p className="auth-note">Mock mode: pages are open without sign-in. Sign-in needs the real backend.</p>}
         </div>
       </section>
     </div>

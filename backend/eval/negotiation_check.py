@@ -19,6 +19,9 @@ from pathlib import Path
 EVAL_DB = Path(tempfile.gettempdir()) / "sutradhar_negotiation.db"
 for suffix in ("", "-wal", "-shm"):
     Path(str(EVAL_DB) + suffix).unlink(missing_ok=True)
+os.environ["DATABASE_URL"] = ""
+os.environ["APP_URL"] = ""
+os.environ["VERCEL"] = ""
 os.environ["DB_PATH"] = str(EVAL_DB)
 os.environ["TELEGRAM_BOT_TOKEN"] = ""
 

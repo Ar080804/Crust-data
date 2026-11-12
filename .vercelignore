@@ -1,0 +1,11 @@
+data/
+backend/integrations/onboarding.py
+backend/integrations/seed_pool.py
+backend/eval/runs.json
+contract/fixtures/pool_example.json
+.env*
+**/.env*
+**/token.json
+**/credentials.json
+**/*.db*
+**/*.sqlite*

@@ -9,7 +9,7 @@ import uuid
 from datetime import datetime, timedelta
 
 from . import adapters, db, gcal, llm
-from .config import CLIENT_EMAIL, IST, OUTREACH_TIMEOUT_S, WORKER_TICK_S, now
+from .config import CLIENT_EMAIL, CLOUD, IST, OUTREACH_TIMEOUT_S, WORKER_TICK_S, now
 
 TERMINAL = {"BOOKED", "FAILED", "ESCALATED", "NEEDS_CLARIFICATION"}
 
@@ -35,10 +35,10 @@ def fmt_time(iso: str) -> str:
 
 # ---- intake ----------------------------------------------------------------
 
-def create_request(text: str) -> str:
-    rid = "r_" + uuid.uuid4().hex[:8]
-    db.ex("INSERT INTO requests (id, status, raw_text, created_at) VALUES (?,?,?,?)",
-          (rid, "INTAKE", text, now().isoformat(timespec="seconds")))
+def create_request(text: str, owner_email: str | None = None) -> str:
+    rid = "r_" + uuid.uuid4().hex
+    db.ex("INSERT INTO requests (id, status, raw_text, created_at, owner_email) VALUES (?,?,?,?,?)",
+          (rid, "INTAKE", text, now().isoformat(timespec="seconds"), owner_email))
     db.log(rid, "INTAKE", f'Request received: "{text}"', "human")
     return rid
 
@@ -135,7 +135,9 @@ def _available(e, c) -> str | None:
     """Earliest start inside the window where the expert is free for the whole call, else None."""
     ws, we = datetime.fromisoformat(c["window_start"]), datetime.fromisoformat(c["window_end"])
     dur = timedelta(minutes=c["duration_min"])
-    slots = e.get("availability") or [{"start": c["window_start"], "end": c["window_end"]}]
+    slots = e.get("availability") or []
+    if not slots and not CLOUD:
+        slots = [{"start": c["window_start"], "end": c["window_end"]}]
     for a in slots:
         s = max(ws, datetime.fromisoformat(a["start"]))
         if s + dur <= min(we, datetime.fromisoformat(a["end"])):
@@ -247,6 +249,7 @@ def _window_desc(c):
 
 def step_outreach(r):
     rid, c = r["id"], r["constraints"]
+    waiting_for_expert = False
     for row in db.shortlist_rows(rid):
         if row["outreach_state"] != "pending":
             continue
@@ -259,6 +262,11 @@ def step_outreach(r):
         if not e.get("telegram_chat_id"):
             db.set_outreach(rid, e["expert_id"], "skipped")
             db.log(rid, "OUTREACH", f"{e['name']} skipped: no contact channel", "code")
+            continue
+        if db.q1("SELECT 1 AS active FROM requests WHERE current_expert=? AND id<>? "
+                 "AND status IN ('NEGOTIATING','BOOKING') LIMIT 1", (e["expert_id"], rid)):
+            # An unthreaded Telegram reply can belong to only one negotiation.
+            waiting_for_expert = True
             continue
         first = e["name"].split()[0]
         msg = (f"Namaste {first}! Sutradhar here. A client wants a {c['duration_min']}-min call on {c['topic']}, "
@@ -273,7 +281,8 @@ def step_outreach(r):
             db.update_request(rid, contacted_at=0)  # forces an immediate timeout -> next expert
             db.log(rid, "OUTREACH", f"Could not reach {e['name']} on Telegram after 3 tries; moving on", "telegram")
         return
-    escalate(rid, c, "No verified expert accepted within budget and window")
+    if not waiting_for_expert:
+        escalate(rid, c, "No verified expert accepted within budget and window")
 
 
 def escalate(rid, c, reason):
@@ -415,7 +424,7 @@ def step_book(r):
     start = offer["slot"]
     end = (datetime.fromisoformat(start) + timedelta(minutes=c["duration_min"])).isoformat()
     eid_cal = gcal.event_id(rid, eid, start)
-    if gcal.expert_conflict(eid, start, end, eid_cal) or gcal.calendar_busy(start, end):
+    if gcal.expert_conflict(eid, start, end, eid_cal) or (gcal.calendar_busy(start, end) and not gcal.event_exists(eid_cal)):
         db.log(rid, "BOOKING", f"Calendar conflict at {fmt_time(start)}; not double-booking", "gcal")
         if not r["asked_once"] and e.get("telegram_chat_id"):
             # Like a human coordinator: ask the same expert for another time once before moving on.
@@ -430,7 +439,7 @@ def step_book(r):
     status = gcal.book(eid_cal, e, start, end,
                        summary=f"Sutradhar: {c['topic']} call with {e['name']}",
                        description=f"{c['duration_min']}-min expert call. Fee {rupees(offer['price'])}. Request {rid}.",
-                       attendees=[e.get("email", ""), CLIENT_EMAIL])
+                       attendees=[e.get("email", ""), r.get("owner_email") or CLIENT_EMAIL])
     conf = f"{fmt_time(start)}, {rupees(offer['price'])}"
     booking = {"expert_id": eid, "start": start, "end": end, "price_inr": offer["price"],
                "calendar_event_id": eid_cal, "confirmation": conf}
@@ -504,10 +513,10 @@ def ingest_replies(replies: list[dict]):
         active = db.q1("SELECT id FROM requests WHERE status='NEGOTIATING' AND current_expert=? "
                        "ORDER BY created_at DESC LIMIT 1", (eid,))
         rid = active["id"] if active else None
-        try:
-            db.ex("INSERT INTO replies (update_id, chat_id, text, t, expert_id, request_id) VALUES (?,?,?,?,?,?)",
-                  (rep["update_id"], str(rep["chat_id"]), rep["text"], rep["t"], eid, rid))
-        except Exception:  # noqa: BLE001  (already ingested)
+        inserted = db.ex("INSERT INTO replies (update_id, chat_id, text, t, expert_id, request_id) "
+                         "VALUES (?,?,?,?,?,?) ON CONFLICT(update_id) DO NOTHING",
+                         (rep["update_id"], str(rep["chat_id"]), rep["text"], rep["t"], eid, rid))
+        if not inserted:
             continue
         if rid:
             continue
@@ -542,14 +551,17 @@ STEPS = {"INTAKE": step_intake, "FINDING": step_find, "VERIFYING": step_verify, 
 
 
 def tick():
-    ingest_replies(adapters.poll_replies())
+    replies = adapters.poll_replies()
+    ingest_replies(replies)
+    if replies:
+        db.kv_set("tg_last_update_id", max(r["update_id"] for r in replies))
     for r in db.q("SELECT id FROM requests WHERE status IN (%s)" % ",".join("?" * len(STEPS)), tuple(STEPS)):
         row = db.get_request_row(r["id"])
         try:
             STEPS[row["status"]](row)
         except Exception as ex:  # noqa: BLE001
             traceback.print_exc()
-            db.log(row["id"], row["status"], f"Step error: {type(ex).__name__}: {ex}; will retry", "code")
+            db.log(row["id"], row["status"], f"Step error: {type(ex).__name__}; will retry", "code")
 
 
 def run_until_settled(rid: str, max_ticks: int = 50):

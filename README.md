@@ -9,6 +9,8 @@
 
 **ContextCon 04 · IIT Kanpur** · Team: **Aditya** (backend & agent) · **Sunil** (integrations, eval, onboarding) · **Deepak** (frontend)
 
+[Try the public demo](https://sutradhar-kappa.vercel.app) to replay a sample booking. [Full-stack deployment guide](docs/DEPLOYMENT.md)
+
 ---
 
 ## 📊 The numbers (from our real eval, not mock data)

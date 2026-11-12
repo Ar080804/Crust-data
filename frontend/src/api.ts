@@ -1,5 +1,6 @@
 // The ONLY file that knows whether data is mock or real.
 // Components just call these functions.
+import { getToken } from './auth.ts'
 import type { Request, Status, Expert, Eval, AuthUser } from '../../contract/types.ts'
 
 import booked from '../../contract/fixtures/request_booked.json'
@@ -12,14 +13,15 @@ import { addChat, listChat, listSaved, removeSaved, saveRequest, type ChatMsg, t
 
 export const MOCK = import.meta.env.VITE_MOCK === 'true'
 // Sunil's expert onboarding server (real LinkedIn OIDC). Experts join there; clients never log in with LinkedIn.
-export const ONBOARDING_URL: string = import.meta.env.VITE_ONBOARDING_URL || 'http://localhost:8001'
-const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '')
+export const ONBOARDING_URL: string = import.meta.env.VITE_ONBOARDING_URL || (import.meta.env.DEV ? 'http://localhost:8001' : '')
+const BASE = (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : '/api')).replace(/\/$/, '')
 
 async function http<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(BASE + path, {
-    ...init,
-    headers: { 'Content-Type': 'application/json', ...(init?.headers || {}) },
-  })
+  const headers = new Headers(init?.headers)
+  headers.set('Content-Type', 'application/json')
+  const token = getToken()
+  if (token && !headers.has('Authorization')) headers.set('Authorization', `Bearer ${token}`)
+  const res = await fetch(BASE + path, { ...init, headers })
   const body = await res.json().catch(() => ({}))
   if (!res.ok) throw new Error((body as { error?: string }).error || `HTTP ${res.status}`)
   return body as T

@@ -1,11 +1,12 @@
 """Owner: Aditya. The ONLY place backend/app calls Sunil's integrations.
 While a function of Sunil's raises NotImplementedError (or a file is missing), a labeled simulator is used instead.
 When Sunil pushes his code, the real version takes over automatically with no change here."""
+import os
 import time
 from datetime import timedelta
 
 from . import db
-from .config import now, now_iso
+from .config import CLOUD, now, now_iso
 
 try:
     from backend.integrations import crustdata as _crust
@@ -45,6 +46,8 @@ def load_experts() -> list[dict]:
             return ex
         except (FileNotFoundError, NotImplementedError):
             pass
+    if CLOUD:
+        raise RuntimeError("The expert pool is unavailable")
     MODE["pool"] = "sim"
     return _dev_pool()
 
@@ -71,12 +74,11 @@ def verify(expert: dict) -> tuple[list[dict], str]:
 def send_once(key: str, chat_id: str, text: str) -> bool:
     """Idempotent send: the outbox row is written first, so a crash never causes a double message.
     Returns False if this key was already sent."""
-    try:
-        db.ex("INSERT INTO outbox (key, chat_id, text, status, t) VALUES (?,?,?,?,?)",
-              (key, chat_id, text, "pending", now_iso()))
-    except Exception:  # noqa: BLE001  (primary key exists -> already sent)
+    inserted = db.ex("INSERT INTO outbox (key, chat_id, text, status, t) VALUES (?,?,?,?,?) "
+                     "ON CONFLICT(key) DO NOTHING", (key, chat_id, text, "pending", now_iso()))
+    if not inserted:
         return False
-    if _tg and not str(chat_id).startswith("sim-"):
+    if _tg and os.getenv("TELEGRAM_BOT_TOKEN") and not str(chat_id).startswith("sim-"):
         for attempt in range(3):
             try:
                 _tg.send_message(str(chat_id), text)
@@ -86,7 +88,7 @@ def send_once(key: str, chat_id: str, text: str) -> bool:
             except NotImplementedError:
                 break
             except Exception as e:  # noqa: BLE001  network / Telegram error: retry, then give up
-                print(f"Telegram send failed ({attempt + 1}/3): {e}")
+                print(f"Telegram send failed ({attempt + 1}/3): {type(e).__name__}")
                 time.sleep(1 + attempt)
         else:
             db.ex("UPDATE outbox SET status='failed' WHERE key=?", (key,))
@@ -99,7 +101,7 @@ def send_once(key: str, chat_id: str, text: str) -> bool:
 
 def poll_replies() -> list[dict]:
     """Return new replies [{update_id, chat_id, text, t}] and remember the offset in the DB."""
-    if not _tg:
+    if not _tg or not os.getenv("TELEGRAM_BOT_TOKEN"):
         return []
     since = int(db.kv_get("tg_last_update_id", "0"))
     try:
@@ -107,10 +109,8 @@ def poll_replies() -> list[dict]:
     except NotImplementedError:
         return []
     except Exception as e:  # noqa: BLE001  Telegram down / 409 conflict must not stop the pipeline
-        print("Telegram poll failed:", e)
+        print("Telegram poll failed:", type(e).__name__)
         return []
-    if replies:
-        db.kv_set("tg_last_update_id", max(r["update_id"] for r in replies))
     return replies
 
 
