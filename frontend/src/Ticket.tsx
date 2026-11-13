@@ -11,6 +11,7 @@ export interface TicketProps {
   eventId: string
   confirmation?: string
   sample?: boolean
+  simulated?: boolean
 }
 
 export default function Ticket(p: TicketProps) {
@@ -23,7 +24,7 @@ export default function Ticket(p: TicketProps) {
     <div className={`ticket ${p.sample ? 'sample' : ''}`}>
       <div className="ticket-main">
         <div className="ticket-top">
-          <span className="ticket-kicker"><Icon name="check" size={14} /> Call confirmed</span>
+          <span className="ticket-kicker"><Icon name="check" size={14} /> {p.sample || p.simulated ? 'Sample booking' : 'Call confirmed'}</span>
           <span className="mono muted small">{p.date}</span>
         </div>
         <div className="ticket-time">{p.time}</div>
@@ -40,7 +41,7 @@ export default function Ticket(p: TicketProps) {
         <div className="stub-label">Price</div>
         <div className="ticket-price">{p.price}</div>
         <div className="stub-label">Invite</div>
-        <div className="small"><Icon name="calendar" size={13} /> Sent to both</div>
+        <div className="small"><Icon name="calendar" size={13} /> {p.sample || p.simulated ? 'Simulated' : 'Sent to both'}</div>
         <div className="stub-label">Event</div>
         <div className="mono small ellip">{p.eventId}</div>
         {!p.sample && (

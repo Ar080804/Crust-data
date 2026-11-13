@@ -89,7 +89,7 @@ export default function App() {
               <NavLink to="/eval">Eval</NavLink>
             </nav>
             <div className="row">
-              {MOCK && <span className="tag tag-warn" title="Reading contract/fixtures, not the backend">Mock data</span>}
+              {MOCK && <span className="tag tag-warn" title="Sample requests with simulated Telegram replies and calendar bookings">Mock data</span>}
               <button className="icon-btn" aria-label="Toggle theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
                 <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
               </button>
@@ -100,7 +100,9 @@ export default function App() {
                   <button className="link-btn" onClick={() => { const t = getToken(); if (t) logout(t); signOut(); nav('/login') }}>Sign out</button>
                 </div>
               ) : (
-                <NavLink to="/login" className="btn btn-primary btn-sm">Log in</NavLink>
+                <NavLink to={MOCK ? '/new' : '/login'} className="btn btn-primary btn-sm">
+                  {MOCK ? 'Try demo' : 'Log in'}
+                </NavLink>
               )}
             </div>
           </div>

@@ -5,10 +5,12 @@ If credentials.json/token.json are missing, a local simulated calendar (SQLite) 
 One-time setup for real Google Calendar:  python -m backend.app.gcal auth"""
 import hashlib
 import json
+import os
+from functools import lru_cache
 import sys
 
 from . import db
-from .config import GOOGLE_CALENDAR_ID, ROOT
+from .config import CLOUD, GOOGLE_CALENDAR_ID, ROOT
 
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 CREDS = ROOT / "credentials.json"
@@ -20,29 +22,57 @@ def event_id(request_id: str, expert_id: str, start_iso: str) -> str:
     return hashlib.sha1(f"{request_id}|{expert_id}|{start_iso}".encode()).hexdigest()
 
 
-def _service():
-    if not TOKEN.exists():
-        return None
-    from google.auth.transport.requests import Request
+@lru_cache(maxsize=1)
+def _credentials():
     from google.oauth2.credentials import Credentials
+
+    raw = os.getenv("GOOGLE_CALENDAR_TOKEN_JSON")
+    if raw:
+        return Credentials.from_authorized_user_info(json.loads(raw), SCOPES)
+    if not CLOUD and TOKEN.is_file():
+        return Credentials.from_authorized_user_file(str(TOKEN), SCOPES)
+    return None
+
+
+def _service():
+    from google.auth.transport.requests import Request
     from googleapiclient.discovery import build
 
-    creds = Credentials.from_authorized_user_file(str(TOKEN), SCOPES)
-    if creds.expired and creds.refresh_token:
+    creds = _credentials()
+    if creds is None:
+        return None
+    if not creds.valid and creds.refresh_token:
         creds.refresh(Request())
-        TOKEN.write_text(creds.to_json())
+        if not CLOUD and not os.getenv("GOOGLE_CALENDAR_TOKEN_JSON"):
+            TOKEN.write_text(creds.to_json())
     return build("calendar", "v3", credentials=creds, cache_discovery=False)
 
 
 def mode() -> str:
-    return "google" if TOKEN.exists() else "sim"
+    return "google" if _credentials() is not None else "sim"
 
 
 def expert_conflict(expert_id: str, start: str, end: str, eid: str) -> bool:
     """True if this expert already has a different booking overlapping the slot (prevents double-booking)."""
-    rows = db.q("SELECT * FROM calendar_events WHERE expert_id=? AND event_id!=? AND start<? AND end>?",
+    rows = db.q('SELECT 1 FROM calendar_events WHERE expert_id=? AND event_id!=? AND start<? AND "end">?',
                 (expert_id, eid, end, start))
     return bool(rows)
+
+
+def event_exists(eid: str) -> bool:
+    if db.q1("SELECT event_id FROM calendar_events WHERE event_id=?", (eid,)):
+        return True
+    svc = _service()
+    if svc is None:
+        return False
+    from googleapiclient.errors import HttpError
+    try:
+        event = svc.events().get(calendarId=GOOGLE_CALENDAR_ID, eventId=eid).execute()
+    except HttpError as exc:
+        if exc.resp.status in (404, 410):
+            return False
+        raise
+    return event.get("status") != "cancelled"
 
 
 def calendar_busy(start: str, end: str) -> bool:
@@ -75,7 +105,7 @@ def book(eid: str, expert: dict, start: str, end: str, summary: str, description
     elif existing:
         status = "already_exists"
     if not existing:
-        db.ex("INSERT OR IGNORE INTO calendar_events (event_id, expert_id, start, end, data) VALUES (?,?,?,?,?)",
+        db.ex('INSERT INTO calendar_events (event_id, expert_id, start, "end", data) VALUES (?,?,?,?,?) ON CONFLICT(event_id) DO NOTHING',
               (eid, expert["expert_id"], start, end, json.dumps({"summary": summary, "attendees": attendees})))
     return status
 

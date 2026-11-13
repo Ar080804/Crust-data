@@ -13,6 +13,7 @@ allows to redirect to localhost). Users must be listed as Test users on the OAut
 import base64
 import hashlib
 import json
+import os
 import secrets
 import time
 from urllib.parse import urlencode, urlparse
@@ -24,25 +25,25 @@ from google.auth.transport import requests as g_requests
 from google.oauth2 import id_token as g_id_token
 
 from . import db
-from .config import ROOT, now_iso
+from .config import APP_URL, CLOUD, ROOT, now_iso
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 CREDS = ROOT / "credentials.json"
-CALLBACK = "http://localhost:8000/auth/google/callback"
+CALLBACK = f"{APP_URL}/api/auth/google/callback" if APP_URL else "http://localhost:8000/auth/google/callback"
 SESSION_TTL_S = 7 * 24 * 3600
 STATE_TTL_S = 10 * 60
 # Only send users back to our own frontend (prevents open redirects).
-ALLOWED_REDIRECT_ORIGINS = {"http://localhost:5173", "http://127.0.0.1:5173"}
-DEFAULT_REDIRECT = "http://localhost:5173/"
-
-db.ex("""CREATE TABLE IF NOT EXISTS auth_sessions (
-  token_hash TEXT PRIMARY KEY, email TEXT, name TEXT, picture TEXT, created_at TEXT, expires_at REAL)""")
-db.ex("""CREATE TABLE IF NOT EXISTS auth_states (
-  state TEXT PRIMARY KEY, verifier TEXT, redirect TEXT, expires_at REAL)""")
+ALLOWED_REDIRECT_ORIGINS = {APP_URL} if CLOUD else {"http://localhost:5173", "http://127.0.0.1:5173"}
+DEFAULT_REDIRECT = (APP_URL or "http://localhost:5173") + "/"
 
 
 def _client() -> tuple[str, str]:
+    client_id, secret = os.getenv("GOOGLE_CLIENT_ID"), os.getenv("GOOGLE_CLIENT_SECRET")
+    if client_id and secret and (APP_URL or not CLOUD):
+        return client_id, secret
+    if CLOUD:
+        raise HTTPException(503, detail="Google sign-in is awaiting configuration")
     if not CREDS.exists():
         raise HTTPException(503, detail="Google login is not configured (credentials.json missing)")
     c = json.loads(CREDS.read_text())
@@ -82,8 +83,7 @@ def google_callback(code: str | None = None, state: str | None = None, error: st
         raise HTTPException(400, detail=f"Google sign-in was cancelled or failed: {error}")
     if not code or not state:
         raise HTTPException(400, detail="missing code or state")
-    row = db.q1("SELECT * FROM auth_states WHERE state=?", (state,))
-    db.ex("DELETE FROM auth_states WHERE state=?", (state,))  # one-time use
+    row = db.q1("DELETE FROM auth_states WHERE state=? RETURNING *", (state,))
     if not row or row["expires_at"] < time.time():
         raise HTTPException(400, detail="login link expired or invalid; start again")
     client_id, client_secret = _client()

@@ -8,6 +8,11 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parents[2]
 load_dotenv(ROOT / ".env")
 
+APP_URL = os.getenv("APP_URL", "").rstrip("/")
+CLOUD = bool(os.getenv("VERCEL") or APP_URL)
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
+RUN_WORKER_IN_API = not CLOUD and os.getenv("RUN_WORKER_IN_API", "1") == "1"
+
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 LLM_MODEL = os.getenv("LLM_MODEL", "claude-opus-5-5")
 DB_PATH = str(ROOT / os.getenv("DB_PATH", "sutradhar.db"))

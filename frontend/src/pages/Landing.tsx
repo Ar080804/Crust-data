@@ -17,7 +17,7 @@ const OPTIONS: { to: string; icon: IconName; title: string; text: string; cta: s
 const STEPS: { icon: IconName; t: string; d: string }[] = [
   { icon: 'sparkle', t: 'You type one sentence', d: '“20 min tomorrow evening with a warehouse expert, ₹2000.”' },
   { icon: 'shield', t: 'We check every claim', d: 'Each résumé line is matched against Crustdata. Fakes get dropped.' },
-  { icon: 'message', t: 'We negotiate for you', d: 'Experts get a Telegram message. Replies like “7:15 for 1800” are parsed.' },
+  { icon: 'message', t: 'We negotiate for you', d: 'Experts get a Telegram message. The agent reads the time and price in each reply.' },
   { icon: 'calendar', t: 'It lands on your calendar', d: 'Within window, within budget, invites sent to both sides.' },
 ]
 
@@ -102,11 +102,11 @@ export default function Landing() {
             ))}
           </div>
           <Reveal delay={200} className="how-visual">
-            <Ticket sample time="7:15 PM" date="Fri, 6 Nov" range="7:15 – 7:35 PM · 20 min" price="₹1,800"
-              name="Sunil Kumar" headline="Logistics Manager, Blinkit" eventId="a1b2c3d4e5f60718" />
+            <Ticket sample time="6:30 PM" date="Sample date" range="6:30 – 6:50 PM · 20 min" price="₹1,400"
+              name="Demo Expert A" headline="Sample warehouse operations profile" eventId="sample-calendar-event" />
             <div className="proof-row bad spot">
               <Icon name="x" size={14} />
-              <div><b>Caught.</b> Claimed “Warehouse Manager, Flipkart”. Crustdata shows a 3-month internship.</div>
+              <div><b>Caught.</b> A synthetic skill claim conflicts with the sample record.</div>
             </div>
           </Reveal>
         </div>

@@ -1,0 +1,15 @@
+.git
+data/
+backend/eval/
+backend/integrations/onboarding.py
+backend/integrations/seed_pool.py
+contract/fixtures/pool_example.json
+node_modules
+**/node_modules
+**/.env*
+.env*
+**/token.json
+**/credentials.json
+**/*.db*
+**/*.sqlite*
+**/__pycache__

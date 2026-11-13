@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import type { Request, Status, ShortlistItem, Claim } from '../../../contract/types.ts'
-import { getRequest, sendClarification, approveOption, sendChat, listChat, canChat, CHAT_ENABLED } from '../api.ts'
+import { MOCK, getRequest, sendClarification, approveOption, sendChat, listChat, canChat, CHAT_ENABLED } from '../api.ts'
 import { chatBubbles, type Bubble } from '../chat.ts'
 import { openReceipt } from '../receipt.ts'
 import { inr, time, clock, day } from '../format.ts'
@@ -150,7 +150,7 @@ function Booked({ req }: { req: Request }) {
           <span><b>{inr(savings.saved)} saved by your agent</b> · negotiated {inr(savings.listed)} → {inr(savings.booked)}</span>
         </div>
       )}
-      <Ticket time={hm || time(b.start)} date={day(b.start)}
+      <Ticket simulated={MOCK} time={hm || time(b.start)} date={day(b.start)}
         range={`${time(b.start)} – ${time(b.end)}${req.constraints ? ` · ${req.constraints.duration_min} min` : ''}`}
         price={rest.join(',').trim() || inr(b.price_inr)} name={who?.name ?? b.expert_id} headline={who?.headline}
         eventId={b.calendar_event_id} confirmation={b.confirmation} />

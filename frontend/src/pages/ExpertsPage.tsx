@@ -32,10 +32,10 @@ export default function ExpertsPage() {
         <div>
           <p className="kicker">Directory</p>
           <h1 className="display-sm">Expert pool</h1>
-          <p className="muted">Everyone here opted in. Profiles marked <i>Simulated</i> are replayed by a labelled simulator, not real people.</p>
-          <a className="expert-join inline" href={ONBOARDING_URL} target="_blank" rel="noreferrer" data-cursor="Join">
+          <p className="muted">Live profiles come from opt-in onboarding. Profiles marked <i>Simulated</i> are fictional examples.</p>
+          {ONBOARDING_URL && <a className="expert-join inline" href={ONBOARDING_URL} target="_blank" rel="noreferrer" data-cursor="Join">
             <LinkedInIcon size={16} /> <b>Join as an expert →</b>
-          </a>
+          </a>}
         </div>
         <div className="kpis">
           <div className="kpi"><b>{list.length}</b><span>experts</span></div>

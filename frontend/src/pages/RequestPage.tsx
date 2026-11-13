@@ -2,7 +2,7 @@
 // POST /requests {"text"}: exactly the contract, no new fields.
 import { useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { createRequest } from '../api.ts'
+import { createRequest, MOCK } from '../api.ts'
 import { useUser } from '../auth.ts'
 import { Icon, type IconName } from '../ui.tsx'
 import { inr } from '../format.ts'
@@ -126,6 +126,7 @@ export default function RequestPage() {
         onSubmit={(e) => { e.preventDefault(); if (last) submit(); else if (canNext) go(step + 1) }}>
         <h1 className="wiz-title">{s.title}</h1>
         <p className="muted">{s.sub}</p>
+        {MOCK && last && <p className="muted small">This demo replays a sample booking. Its receipt shows the sample’s date, expert and price.</p>}
 
         <div className="wiz-body">
           {s.key === 'topic' && (
