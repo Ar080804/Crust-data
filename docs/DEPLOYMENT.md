@@ -11,18 +11,18 @@ The public demo replays newly authored fictional profiles in the browser. The pu
 5. `ANTHROPIC_API_KEY` enables the model parser. `CRUSTDATA_API_KEY` enables fresh verification on cache misses. Cloud verification caches fresh results in the database. The original roster and historical profile cache stay out of the build. The rule-based parser works without an API key.
 6. Deploy the complete app. Confirm `/api/health` reports the database ready, stop any other poller using the same Telegram token, then scale `worker` to **one** production instance. Its committed initial count is zero so publishing the portfolio does not consume worker quota. Vercel Hobby meters reserved memory even while the worker waits. [Vercel daemon limits](https://vercel.com/docs/daemons/limits)
 
-## Activate the homepage sign-in buttons
+## Activate user and expert login
 
-The home page shows Google for users and Telegram for experts. Sign-in availability is independent of `VITE_MOCK`, which selects the booking experience. Configure a reachable production `DATABASE_URL` and set `APP_URL=https://sutradhar-kappa.vercel.app` to store sessions for either provider. Supply each provider's own credentials only on the server.
+Select **Login** in the site header to open `/login`. The page offers Google for users and LinkedIn for experts. The `VITE_MOCK` setting controls the booking demo independently. Either provider needs a reachable production `DATABASE_URL` and `APP_URL=https://sutradhar-kappa.vercel.app` to issue sessions. Set client secrets in the server environment.
 
-| Account | Vercel production variables | Register this redirect URL |
+| Account | Vercel production settings | Authorized redirect URL |
 |---|---|---|
-| Google user | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` from a Google OAuth Web application | `https://sutradhar-kappa.vercel.app/api/auth/google/callback` |
-| Telegram expert | `TELEGRAM_CLIENT_ID`, `TELEGRAM_CLIENT_SECRET` from BotFather’s Web Login settings, using the default RS256 signing algorithm | `https://sutradhar-kappa.vercel.app/api/auth/telegram/callback` |
+| Google user | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` for a Web application | `https://sutradhar-kappa.vercel.app/api/auth/google/callback` |
+| LinkedIn expert | `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET` for the LinkedIn developer app | `https://sutradhar-kappa.vercel.app/api/auth/linkedin/callback` |
 
-In BotFather, also add the public site origin to Allowed URLs. Redeploy after editing environment variables and check `/api/auth/providers` for the two availability flags. The Telegram booking bot token is used for outreach. Telegram sign-in establishes identity only. Enrolling an expert for real bookings uses the separate opt-in onboarding flow.
+In the LinkedIn developer app, enable **Sign In with LinkedIn using OpenID Connect** under Products and register the redirect URL under Auth. Redeploy after editing environment variables. `/api/auth/providers` returns a boolean for each provider. LinkedIn sign-in connects the member account. The separate onboarding service checks professional claims through Crustdata and links Telegram for booking messages. Set `VITE_ONBOARDING_URL` to that service when available.
 
-[Google OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect) · [Telegram Web Login](https://core.telegram.org/bots/telegram-login)
+[Google OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect) · [LinkedIn OpenID Connect](https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2)
 
 ## Test a real booking
 

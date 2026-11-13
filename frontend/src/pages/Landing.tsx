@@ -4,7 +4,7 @@ import type { Eval } from '../../../contract/types.ts'
 import { getEval, MOCK } from '../api.ts'
 import { useUser } from '../auth.ts'
 import { DotField, Magnetic, Reveal, RotatingText } from '../cursor.tsx'
-import { GoogleIcon, Icon, type IconName } from '../ui.tsx'
+import { Icon, type IconName } from '../ui.tsx'
 import Ticket from '../Ticket.tsx'
 
 const OPTIONS: { to: string; icon: IconName; title: string; text: string; cta: string; tag?: string }[] = [
@@ -46,26 +46,14 @@ export default function Landing() {
             Sutradhar finds the expert, fact-checks their résumé against Crustdata, haggles on Telegram
             and drops the call on your calendar. You just type one sentence.
           </p>
-          {user?.provider === 'google' || user?.provider === 'telegram' ? (
-            <div className="hero-cta">
-              {user.provider === 'google'
-                ? <Link to="/new" className="btn btn-primary btn-lg">Start a request <Icon name="arrow" /></Link>
-                : <Link to="/login?role=expert" className="btn btn-primary btn-lg">Expert account <Icon name="arrow" /></Link>}
-              <Link to="/experts" className="btn btn-ghost btn-lg">Browse experts</Link>
-            </div>
-          ) : (
-            <div className="home-signin" aria-label="Sign-in options">
-              <div className="home-signin-option">
-                <span>For users</span>
-                <Link to="/login?role=user" className="btn btn-ghost btn-lg"><GoogleIcon /> Sign in with Google</Link>
-              </div>
-              <div className="home-signin-option">
-                <span>For experts</span>
-                <Link to="/login?role=expert" className="btn btn-ghost btn-lg"><Icon name="send" /> Sign in with Telegram</Link>
-              </div>
-              {MOCK && <Link to="/new" className="home-demo-link">Try the booking demo <Icon name="arrow" size={14} /></Link>}
-            </div>
-          )}
+          <div className="hero-cta">
+            <Magnetic>
+              <Link to="/new" className="btn btn-primary btn-lg" data-cursor="Start">
+                {MOCK ? 'Try the booking demo' : 'Start a request'} <Icon name="arrow" />
+              </Link>
+            </Magnetic>
+            <Link to="/experts" className="btn btn-ghost btn-lg">Browse experts</Link>
+          </div>
           <div className="hero-proof">
             <span><b>{ev ? `${ev.fakes_caught}/${ev.fakes_planted}` : '3/3'}</b> fake profiles caught</span>
             <span className="dotsep" />

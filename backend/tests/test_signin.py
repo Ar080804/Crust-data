@@ -27,27 +27,32 @@ class SignInTests(unittest.TestCase):
         self.enterContext(patch.object(main, "CLOUD", True))
         self.enterContext(patch.object(main, "RUN_WORKER_IN_API", False))
         self.enterContext(patch.dict(os.environ, {"GOOGLE_CLIENT_ID": "example-google", "GOOGLE_CLIENT_SECRET": "test-only",
-                                                  "TELEGRAM_CLIENT_ID": "1234", "TELEGRAM_CLIENT_SECRET": "test-only"}))
+                                                  "LINKEDIN_CLIENT_ID": "1234", "LINKEDIN_CLIENT_SECRET": "test-only"}))
         self.client = self.enterContext(TestClient(main.app, follow_redirects=False))
 
     def begin(self, provider):
         response = self.client.get(f"/auth/{provider}/login", params={"redirect": "http://testserver/"})
         self.assertEqual(response.status_code, 302)
         params = parse_qs(urlsplit(response.headers["location"]).query)
-        self.assertEqual(params["code_challenge_method"], ["S256"])
+        if provider == 'google':
+            self.assertEqual(params['code_challenge_method'], ['S256'])
+        else:
+            self.assertEqual(urlsplit(response.headers['location']).netloc, 'www.linkedin.com')
+            self.assertEqual(params['scope'], ['openid profile'])
+            self.assertEqual(params['redirect_uri'], ['http://testserver/auth/linkedin/callback'])
         return params["state"][0]
 
     def test_missing_setup_keeps_both_choices_visible(self):
         with patch.object(auth, "CLOUD", True), patch.object(auth, "DATABASE_URL", ""):
-            self.assertEqual(self.client.get('/auth/providers').json(), {"google": False, "telegram": False})
-            for provider in ("google", "telegram"):
+            self.assertEqual(self.client.get('/auth/providers').json(), {"google": False, "linkedin": False})
+            for provider in ("google", "linkedin"):
                 self.assertEqual(self.client.get(f'/auth/{provider}/login').status_code, 503)
 
-    def test_telegram_round_trip_and_client_permissions(self):
-        self.assertEqual(self.client.get('/auth/providers').json(), {"google": True, "telegram": True})
-        state = self.begin('telegram')
+    def test_linkedin_round_trip_and_client_permissions(self):
+        self.assertEqual(self.client.get('/auth/providers').json(), {"google": True, "linkedin": True})
+        state = self.begin('linkedin')
         key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
-        claims = {"iss": "https://oauth.telegram.org", "aud": "1234", "sub": "sample-expert", "name": "Test Expert",
+        claims = {"iss": "https://www.linkedin.com/oauth", "aud": "1234", "sub": "sample-expert", "name": "Test Expert",
                   "iat": int(time.time()), "exp": int(time.time()) + 120}
         token = jwt.encode(claims, key, algorithm='RS256', headers={"kid": "test"})
         keys = Mock()
@@ -55,17 +60,18 @@ class SignInTests(unittest.TestCase):
         payload = Mock()
         payload.json.return_value = {"id_token": token}
         cb = {"code": "local-test", "state": state}
-        with patch.object(auth, '_telegram_keys', return_value=keys), patch.object(auth.httpx, 'post', return_value=payload) as exchange:
-            response = self.client.get('/auth/telegram/callback', params=cb)
+        with patch.object(auth, '_linkedin_keys', return_value=keys), patch.object(auth.httpx, 'post', return_value=payload) as exchange:
+            response = self.client.get('/auth/linkedin/callback', params=cb)
             self.assertEqual(response.status_code, 302)
-            self.assertEqual(exchange.call_args.kwargs['auth'], ('1234', 'test-only'))
-            self.assertIn('code_verifier', exchange.call_args.kwargs['data'])
+            self.assertEqual(exchange.call_args.args[0], 'https://www.linkedin.com/oauth/v2/accessToken')
+            self.assertEqual(exchange.call_args.kwargs['data']['client_secret'], 'test-only')
+            self.assertEqual(exchange.call_args.kwargs['data']['client_id'], '1234')
             session = parse_qs(urlsplit(response.headers['location']).fragment)['session'][0]
             headers = {"Authorization": "Bearer " + session}
             me = self.client.get('/auth/me', headers=headers).json()
-            self.assertEqual((me['provider'], me['subject'], me['email']), ('telegram', 'sample-expert', None))
+            self.assertEqual((me['provider'], me['subject'], me['email']), ('linkedin', 'sample-expert', None))
             self.assertEqual(self.client.post('/requests', json={'text':'sample'}, headers=headers).status_code, 403)
-            self.assertEqual(self.client.get('/auth/telegram/callback', params=cb).status_code, 400)
+            self.assertEqual(self.client.get('/auth/linkedin/callback', params=cb).status_code, 400)
             self.assertEqual(self.client.post('/auth/logout', headers=headers).status_code, 200)
             self.assertEqual(self.client.get('/auth/me', headers=headers).status_code, 401)
 
@@ -80,9 +86,14 @@ class SignInTests(unittest.TestCase):
             session = parse_qs(urlsplit(response.headers['location']).fragment)['session'][0]
             user = self.client.get('/auth/me', headers={'Authorization': 'Bearer ' + session}).json()
             self.assertEqual((user['provider'], user['email']), ('google','client@example.com'))
-        state = self.begin('telegram')
-        cancelled = self.client.get('/auth/telegram/callback', params={'state':state,'error':'access_denied'})
+        state = self.begin('linkedin')
+        cancelled = self.client.get('/auth/linkedin/callback', params={'state':state,'error':'access_denied'})
         self.assertEqual(cancelled.headers['location'], 'http://testserver/login?role=expert&result=cancelled')
+
+    def test_retired_expert_session_is_not_a_linkedin_identity(self):
+        db.ex('INSERT INTO auth_sessions(token_hash,provider,subject,expires_at) VALUES(?,?,?,?)',
+              (auth._hash('retired-local'), 'telegram', 'former-expert', time.time() + 120))
+        self.assertEqual(self.client.get('/auth/me', headers={'Authorization': 'Bearer retired-local'}).status_code, 401)
 
     def test_old_google_sessions_survive_upgrade(self):
         import sqlite3

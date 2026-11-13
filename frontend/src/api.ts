@@ -172,13 +172,13 @@ export async function getEval(): Promise<Eval> {
 }
 
 // ---------------- auth (contract: "Auth: Sign in with Google") ----------------
-export type SignInProvider = 'google' | 'telegram'
+export type SignInProvider = 'google' | 'linkedin'
 export async function getSignInProviders(signal: AbortSignal): Promise<Record<SignInProvider, boolean>> {
   const result = await http<Partial<Record<SignInProvider, unknown>>>('/auth/providers', { signal, cache: 'no-store' })
-  if (typeof result.google !== 'boolean' || typeof result.telegram !== 'boolean') {
+  if (typeof result.google !== 'boolean' || typeof result.linkedin !== 'boolean') {
     throw new Error('Sign-in status is unavailable')
   }
-  return { google: result.google, telegram: result.telegram }
+  return { google: result.google, linkedin: result.linkedin }
 }
 export function providerLoginUrl(provider: SignInProvider, redirect: string) {
   return `${BASE}/auth/${provider}/login?redirect=${encodeURIComponent(redirect)}`

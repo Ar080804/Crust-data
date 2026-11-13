@@ -7,7 +7,7 @@ export interface Saved { id: string; text: string; created_at: string }
 
 function accountKey() {
   const user = getUser()
-  if (user?.provider === 'telegram' && user.subject) return `telegram:${user.subject}`
+  if (user?.provider === 'linkedin' && user.subject) return `linkedin:${user.subject}`
   return user?.email || 'guest'
 }
 const key = () => `sutradhar_requests:${accountKey()}`

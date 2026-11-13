@@ -62,4 +62,4 @@ export interface Eval {
 }
 
 // Identity returned by GET /auth/me after provider verification.
-export interface AuthUser { email: string | null; name: string; picture: string; provider: 'google' | 'telegram'; subject: string | null; }
+export interface AuthUser { email: string | null; name: string; picture: string; provider: 'google' | 'linkedin'; subject: string | null; }
