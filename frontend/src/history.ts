@@ -5,7 +5,12 @@ import { getUser } from './auth.ts'
 
 export interface Saved { id: string; text: string; created_at: string }
 
-const key = () => `sutradhar_requests:${getUser()?.email || 'guest'}`
+function accountKey() {
+  const user = getUser()
+  if (user?.provider === 'telegram' && user.subject) return `telegram:${user.subject}`
+  return user?.email || 'guest'
+}
+const key = () => `sutradhar_requests:${accountKey()}`
 const mem: Record<string, Saved[]> = {}
 
 export function listSaved(): Saved[] {
@@ -30,7 +35,7 @@ export function removeSaved(id: string) {
 
 /* ---- chat messages with experts, per request ---- */
 export interface ChatMsg { id: string; expert_id: string; from: 'me' | 'expert'; text: string; t: string }
-const chatKey = (rid: string) => `sutradhar_chat:${getUser()?.email || 'guest'}:${rid}`
+const chatKey = (rid: string) => `sutradhar_chat:${accountKey()}:${rid}`
 const chatMem: Record<string, ChatMsg[]> = {}
 
 export function listChat(rid: string): ChatMsg[] {

@@ -56,6 +56,8 @@ def session_user(authorization: str | None = Header(default=None)):
     user = auth.current_user(authorization)
     if CLOUD and not user:
         raise HTTPException(401, detail="Sign in with Google")
+    if user and user["provider"] != "google":
+        raise HTTPException(403, detail="Use a Google client account for booking requests")
     return user
 
 
