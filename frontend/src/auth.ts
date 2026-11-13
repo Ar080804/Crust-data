@@ -1,8 +1,6 @@
-// FRONTEND-ONLY auth draft. The backend has no auth endpoints yet (see contract/CONTRACT.md),
-// so the "account" lives only in this browser. Swap these functions for real API calls later.
 import { useEffect, useState } from 'react'
 
-export interface User { name: string; email: string; provider: 'email' | 'google' | 'linkedin' | 'guest'; picture?: string }
+export interface User { name: string; email: string | null; provider: 'email' | 'google' | 'linkedin' | 'guest' | 'telegram'; subject?: string | null; picture?: string }
 const KEY = 'sutradhar_user'
 const TOKEN_KEY = 'sutradhar_session' // real Google session token from the backend (contract: Auth section)
 

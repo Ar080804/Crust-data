@@ -7,6 +7,7 @@ TEAM.md
 backend/eval/*.py
 backend/eval/README.md
 backend/eval/runs.json
+backend/tests/
 frontend/README.md
 contract/CONTRACT.md
 contract/check_integrations.py

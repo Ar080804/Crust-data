@@ -61,5 +61,5 @@ export interface Eval {
   fakes_planted: number; fakes_caught: number;
 }
 
-// GET /auth/me (Sign in with Google). Not used by the frontend yet.
-export interface AuthUser { email: string; name: string; picture: string; provider: 'google'; }
+// Identity returned by GET /auth/me after provider verification.
+export interface AuthUser { email: string | null; name: string; picture: string; provider: 'google' | 'telegram'; subject: string | null; }

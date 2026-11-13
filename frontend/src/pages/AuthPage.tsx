@@ -1,111 +1,91 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { MOCK, googleLoginUrl, ONBOARDING_URL } from '../api.ts'
+import { useEffect, useState } from 'react'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
+import { getSignInProviders, MOCK, ONBOARDING_URL, providerLoginUrl, type SignInProvider } from '../api.ts'
+import { getToken, useUser } from '../auth.ts'
 import { DotField, RotatingText } from '../cursor.tsx'
-import { Icon, LinkedInIcon, Logo } from '../ui.tsx'
-
-// Only real identity providers. No email/password, no guest, nothing the user can type to get in.
-//  - Client ("I need an expert"): real Google OIDC via the backend (contract "Auth" section).
-//  - Expert ("I'm an expert"):   Sunil's onboarding server: LinkedIn OIDC → Telegram → Crustdata check.
-type Role = 'client' | 'expert'
-
-function GoogleG() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden>
-      <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z" />
-      <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z" />
-      <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z" />
-      <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
-    </svg>
-  )
-}
+import { GoogleIcon, Icon, LinkedInIcon, Logo } from '../ui.tsx'
 
 export default function AuthPage() {
-  const loc = useLocation()
-  const from = (loc.state as { from?: string } | null)?.from || '/'
-  const [role, setRole] = useState<Role | null>(null)
+  const location = useLocation()
+  const [query] = useSearchParams()
+  const role = query.get('role')
+  const provider = role === 'user' ? 'google' : role === 'expert' ? 'telegram' : null
+  const expert = provider === 'telegram'
+  const label = expert ? 'Telegram' : 'Google'
+  const user = useUser()
+  const signedIn = !!provider && user?.provider === provider && !!getToken()
+  const [availability, setAvailability] = useState<Record<SignInProvider, boolean> | 'error' | null>(null)
+  const [attempt, setAttempt] = useState(0)
+  useEffect(() => {
+    if (!provider || signedIn) return
+    const controller = new AbortController()
+    getSignInProviders(controller.signal)
+      .then((providers) => { if (!controller.signal.aborted) setAvailability(providers) })
+      .catch(() => { if (!controller.signal.aborted) setAvailability('error') })
+    return () => controller.abort()
+  }, [provider, signedIn, attempt])
 
-  if (MOCK) return (
-    <section className="container">
-      <h1>Try Sutradhar</h1>
-      <p>This demo uses sample requests and simulated bookings.</p>
-      <Link className="btn btn-primary" to="/new">Start a demo request</Link>
-    </section>
-  )
-
-  const googleLogin = () => { window.location.href = googleLoginUrl(window.location.origin + from) }
-  const linkedinLogin = () => { window.location.href = `${ONBOARDING_URL.replace(/\/$/, '')}/auth/linkedin/login` }
+  const from = (location.state as { from?: string } | null)?.from
+  const next = !expert && from?.startsWith('/') && !from.startsWith('//') ? from : expert ? '/login?role=expert' : '/new'
+  const ready = provider && availability && availability !== 'error' && availability[provider]
 
   return (
     <div className="auth">
       <section className="auth-art">
         <DotField />
         <div className="auth-art-in">
-          <div className="row"><Logo size={30} /><span className="brand-word">Sutradhar</span></div>
-          <h1 className="auth-line">
-            The right expert<br />is already out there.<br />
+          <Link to="/" className="brand"><Logo size={30} /><span className="brand-word">Sutradhar</span></Link>
+          <h1 className="auth-line">The right expert<br />is already out there.<br />
             <span className="muted-line">We make sure they're</span>{' '}
             <RotatingText className="grad-anim" words={['real.', 'verified.', 'available.', 'on budget.']} />
           </h1>
-          <ul className="auth-points">
-            <li><Icon name="shield" size={16} /> Every work-history claim checked against Crustdata</li>
-            <li><Icon name="message" size={16} /> Negotiated live on Telegram, in seconds</li>
-            <li><Icon name="calendar" size={16} /> Lands straight on your Google Calendar</li>
-          </ul>
-          <p className="auth-hint">Move your cursor around ✦</p>
         </div>
       </section>
-
       <section className="auth-panel">
         <div className="auth-card">
-          {!role ? (
+          <Link className="back role-back" to="/"><Icon name="back" size={14} /> Home</Link>
+          {!provider ? (
             <>
-              <h2 className="auth-title">Welcome to Sutradhar</h2>
-              <p className="muted small">How do you want to use Sutradhar?</p>
+              <h2 className="auth-title">Sign in to Sutradhar</h2>
               <div className="role-grid">
-                <button type="button" className="role-card spot" onClick={() => setRole('client')} data-cursor="Client">
-                  <span className="opt-icon"><Icon name="search" size={20} /></span>
-                  <span className="role-title">I need an expert</span>
-                  <span className="muted small">Book a verified expert call in one sentence.</span>
-                  <span className="opt-cta">Continue <Icon name="arrow" size={14} /></span>
-                </button>
-                <button type="button" className="role-card spot" onClick={() => setRole('expert')} data-cursor="Expert">
-                  <span className="opt-icon"><Icon name="users" size={20} /></span>
-                  <span className="role-title">I'm an expert</span>
-                  <span className="muted small">Join the pool, verify your profile, get paid calls.</span>
-                  <span className="opt-cta">Continue <Icon name="arrow" size={14} /></span>
-                </button>
+                <Link className="role-card" to="/login?role=user" state={location.state}>
+                  <GoogleIcon /><span className="role-title">I need an expert</span><span>Sign in with Google</span>
+                </Link>
+                <Link className="role-card" to="/login?role=expert">
+                  <Icon name="send" /><span className="role-title">I'm an expert</span><span>Sign in with Telegram</span>
+                </Link>
               </div>
+            </>
+          ) : signedIn ? (
+            <>
+              <h2 className="auth-title">{expert ? 'Expert account' : 'User account'}</h2>
+              <p className="muted">Signed in with {label} as {user.name}.</p>
+              {expert && <p className="auth-status">Professional verification and booking availability are managed through expert onboarding.</p>}
+              {expert && ONBOARDING_URL && <a className="btn btn-ghost role-btn" href={`${ONBOARDING_URL}/auth/linkedin/login`}><LinkedInIcon /> Verify professional profile</a>}
+              <Link to={expert ? '/' : next} className="btn btn-primary role-btn">{expert ? 'Back to home' : 'Continue to booking'}</Link>
             </>
           ) : (
             <>
-              <button type="button" className="back role-back" onClick={() => setRole(null)}><Icon name="back" size={14} /> Back</button>
-              {role === 'client' ? (
-                <>
-                  <h2 className="auth-title">Find your expert</h2>
-                  <p className="muted small">Sign in with your Google account to book and track calls.</p>
-                  <button type="button" className="btn-oauth role-btn" onClick={googleLogin} data-cursor="Google">
-                    <GoogleG /> Continue with Google
-                  </button>
-                  <ul className="role-points">
-                    <li><Icon name="check" size={14} /> Verified identity from Google</li>
-                    <li><Icon name="check" size={14} /> Your requests, history and chats in one place</li>
-                  </ul>
-                </>
+              <h2 className="auth-title">{expert ? 'Expert sign-in' : 'User sign-in'}</h2>
+              <p className="muted">{expert ? 'Use Telegram to identify yourself as an expert.' : 'Use Google to sign in and manage your booking requests.'}</p>
+              {query.get('result') === 'cancelled' && <p role="status" className="auth-status">Sign-in was cancelled. You can try again.</p>}
+              {ready ? (
+                <a className="btn-oauth role-btn" href={providerLoginUrl(provider, window.location.origin + next)}>
+                  {expert ? <Icon name="send" /> : <GoogleIcon />} Continue with {label}
+                </a>
               ) : (
                 <>
-                  <h2 className="auth-title">Join as an expert</h2>
-                  <p className="muted small">We verify experts so clients can trust them. It takes about a minute.</p>
-                  <button type="button" className="btn-oauth role-btn" onClick={linkedinLogin} disabled={!ONBOARDING_URL} data-cursor="LinkedIn">
-                    <LinkedInIcon /> {ONBOARDING_URL ? 'Continue with LinkedIn' : 'Expert onboarding is closed'}
+                  <button type="button" className="btn-oauth role-btn" disabled aria-describedby="provider-status">
+                    {expert ? <Icon name="send" /> : <GoogleIcon />} Continue with {label}
                   </button>
-                  <ol className="role-steps">
-                    <li><b>Sign in with LinkedIn</b>: confirms who you are</li>
-                    <li><b>Link Telegram</b>: that's where clients' requests reach you</li>
-                    <li><b>Crustdata check</b>: your profile must match your LinkedIn name</li>
-                  </ol>
+                  <p id="provider-status" className="auth-status" role="status">{availability === null ? 'Checking sign-in availability…'
+                    : availability === 'error' ? 'Could not check sign-in availability.' : `${label} sign-in is awaiting setup on this site.`}</p>
+                  {availability === 'error' && <button type="button" className="link-btn" onClick={() => { setAvailability(null); setAttempt((count) => count + 1) }}>Check again</button>}
                 </>
               )}
+              {expert && ONBOARDING_URL && <a className="expert-join inline" href={`${ONBOARDING_URL}/auth/linkedin/login`}><LinkedInIcon size={16} /> Join with LinkedIn and link Telegram</a>}
+              {MOCK && <Link to="/new" className="btn btn-ghost role-btn">Try the booking demo <Icon name="arrow" size={14} /></Link>}
+              <Link to="/login" state={location.state} className="auth-switch">Choose another sign-in option</Link>
             </>
           )}
         </div>

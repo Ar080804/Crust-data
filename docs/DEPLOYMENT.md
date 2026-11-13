@@ -11,6 +11,19 @@ The public demo replays newly authored fictional profiles in the browser. The pu
 5. `ANTHROPIC_API_KEY` enables the model parser. `CRUSTDATA_API_KEY` enables fresh verification on cache misses. Cloud verification caches fresh results in the database. The original roster and historical profile cache stay out of the build. The rule-based parser works without an API key.
 6. Deploy the complete app. Confirm `/api/health` reports the database ready, stop any other poller using the same Telegram token, then scale `worker` to **one** production instance. Its committed initial count is zero so publishing the portfolio does not consume worker quota. Vercel Hobby meters reserved memory even while the worker waits. [Vercel daemon limits](https://vercel.com/docs/daemons/limits)
 
+## Activate the homepage sign-in buttons
+
+The home page shows Google for users and Telegram for experts. Sign-in availability is independent of `VITE_MOCK`, which selects the booking experience. Configure a reachable production `DATABASE_URL` and set `APP_URL=https://sutradhar-kappa.vercel.app` to store sessions for either provider. Supply each provider's own credentials only on the server.
+
+| Account | Vercel production variables | Register this redirect URL |
+|---|---|---|
+| Google user | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` from a Google OAuth Web application | `https://sutradhar-kappa.vercel.app/api/auth/google/callback` |
+| Telegram expert | `TELEGRAM_CLIENT_ID`, `TELEGRAM_CLIENT_SECRET` from BotFather’s Web Login settings, using the default RS256 signing algorithm | `https://sutradhar-kappa.vercel.app/api/auth/telegram/callback` |
+
+In BotFather, also add the public site origin to Allowed URLs. Redeploy after editing environment variables and check `/api/auth/providers` for the two availability flags. The Telegram booking bot token is used for outreach. Telegram sign-in establishes identity only. Enrolling an expert for real bookings uses the separate opt-in onboarding flow.
+
+[Google OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect) · [Telegram Web Login](https://core.telegram.org/bots/telegram-login)
+
 ## Test a real booking
 
 Use two consenting test accounts and an available future slot. Sign in, create a request, reply to the bot and verify the event and attendees in the test calendar. Confirm the request survives a worker restart. The hosted API requires a Google session and checks request ownership. Development-only endpoints are available locally.

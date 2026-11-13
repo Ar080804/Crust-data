@@ -23,15 +23,12 @@ function initialTheme(): Theme {
   return 'dark'
 }
 
-// Only the landing page and the request wizard ask for login. Detail / experts / eval stay open,
-// so teammates can open /requests/<id> directly while testing the backend.
-// Mock mode (fixtures only, dev) has no backend to sign in against, so pages stay open there.
-// Real mode always requires a real Google sign-in: there is no typed or guest login anymore.
+// The sample wizard is public. Live booking requires a Google client session.
 function RequireAuth({ children }: { children: React.ReactElement }) {
   const user = useUser()
   const loc = useLocation()
   const verified = !!user && user.provider === 'google' && !!getToken()
-  if (!MOCK && !verified) return <Navigate to="/login" replace state={{ from: loc.pathname }} />
+  if (!MOCK && !verified) return <Navigate to="/login?role=user" replace state={{ from: loc.pathname + loc.search }} />
   return children
 }
 
@@ -44,26 +41,31 @@ export default function App() {
   const loc = useLocation()
   const nav = useNavigate()
   const authScreen = loc.pathname === '/login'
-  const [booting, setBooting] = useState(() => !!sessionInHash())
+  const [callbackToken] = useState(sessionInHash)
+  const [booting, setBooting] = useState(!!callbackToken)
   const [authErr, setAuthErr] = useState<string | null>(null)
 
   // Real mode: drop any old email/guest/demo "logins" saved by earlier builds. Only a Google session counts.
   useEffect(() => {
     if (MOCK || sessionInHash()) return
     const u = getUser()
-    if (u && (u.provider !== 'google' || !getToken())) signOut()
+    if (u && (!['google', 'telegram'].includes(u.provider) || !getToken())) signOut()
   }, [])
 
   useEffect(() => {
-    const token = sessionInHash()
-    if (!token) return
+    if (!callbackToken) return
+    let active = true
     history.replaceState(null, '', window.location.pathname + window.location.search) // clear the hash
-    setToken(token)
-    getMe(token)
-      .then((me) => signIn({ name: me.name || me.email, email: me.email, provider: 'google', picture: me.picture }))
-      .catch((e) => { setToken(null); setAuthErr(`Google sign-in failed: ${(e as Error).message}`) })
-      .finally(() => setBooting(false))
-  }, [])
+    getMe(callbackToken)
+      .then((me) => {
+        if (!active) return
+        setToken(callbackToken)
+        signIn(me)
+      })
+      .catch((e) => { if (active) { signOut(); setAuthErr(`Sign-in failed: ${(e as Error).message}`) } })
+      .finally(() => { if (active) setBooting(false) })
+    return () => { active = false }
+  }, [callbackToken])
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     try { localStorage.setItem('theme', theme) } catch { /* ignore */ }
@@ -96,13 +98,13 @@ export default function App() {
               {user ? (
                 <div className="user-chip">
                   <Avatar name={user.name} size={28} />
-                  <span className="user-name">{user.name}</span>
+                  {user.provider === 'telegram'
+                    ? <NavLink to="/login?role=expert" className="user-name">Expert account</NavLink>
+                    : <span className="user-name">{user.name}</span>}
                   <button className="link-btn" onClick={() => { const t = getToken(); if (t) logout(t); signOut(); nav('/login') }}>Sign out</button>
                 </div>
               ) : (
-                <NavLink to={MOCK ? '/new' : '/login'} className="btn btn-primary btn-sm">
-                  {MOCK ? 'Try demo' : 'Log in'}
-                </NavLink>
+                <NavLink to="/login" className="btn btn-primary btn-sm">Sign in</NavLink>
               )}
             </div>
           </div>
@@ -114,7 +116,7 @@ export default function App() {
         {booting ? <div className="loading"><span className="spinner" /> Signing you in…</div> : (
         <Routes>
           <Route path="/login" element={<AuthPage />} />
-          <Route path="/" element={<RequireAuth><Landing /></RequireAuth>} />
+          <Route path="/" element={<Landing />} />
           <Route path="/new" element={<RequireAuth><RequestPage /></RequireAuth>} />
           <Route path="/requests" element={<RequireAuth><MyRequests /></RequireAuth>} />
           <Route path="/requests/:id" element={<RequestDetail />} />

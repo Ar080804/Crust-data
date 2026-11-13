@@ -76,7 +76,7 @@ flowchart LR
 
 | Screen | What's there |
 |---|---|
-| **Sign in** | Two paths. *"I need an expert"* → **Continue with Google** (real OpenID Connect, ID token verified on the backend). *"I'm an expert"* → **Continue with LinkedIn** (real onboarding below). No typed or guest logins. |
+| **Sign in** | Users sign in with Google. Experts sign in with Telegram. Optional LinkedIn onboarding verifies their professional profile before they join the live pool. |
 | **Home** | What the agent does, and the live eval numbers |
 | **New request** | Step-by-step: who, how long, **any date + custom time slot**, budget, notes, review. Plus one-click templates tested against the backend. |
 | **Live request** ⭐ | Status stepper · constraints · shortlist with **Claimed vs Crustdata** per claim · agent log · booking ticket · **₹ saved** badge · receipt · **chat** (agent's Telegram messages, expert replies, and you can message the booked expert) |

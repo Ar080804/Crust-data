@@ -34,10 +34,12 @@ CREATE TABLE IF NOT EXISTS calendar_events (
   event_id TEXT PRIMARY KEY, expert_id TEXT, start TEXT, "end" TEXT, data TEXT
 );
 CREATE TABLE IF NOT EXISTS auth_sessions (
-  token_hash TEXT PRIMARY KEY, email TEXT, name TEXT, picture TEXT, created_at TEXT, expires_at DOUBLE PRECISION
+  token_hash TEXT PRIMARY KEY, email TEXT, name TEXT, picture TEXT, created_at TEXT, expires_at DOUBLE PRECISION,
+  provider TEXT NOT NULL DEFAULT 'google', subject TEXT
 );
 CREATE TABLE IF NOT EXISTS auth_states (
-  state TEXT PRIMARY KEY, verifier TEXT, redirect TEXT, expires_at DOUBLE PRECISION
+  state TEXT PRIMARY KEY, verifier TEXT, redirect TEXT, expires_at DOUBLE PRECISION,
+  provider TEXT NOT NULL DEFAULT 'google', browser_hash TEXT
 );
 CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT);
 """
@@ -84,10 +86,20 @@ def initialize():
                 for statement in SCHEMA.format(timeline_key=key, update_type=update_type).split(";"):
                     if statement.strip():
                         con.execute(statement)
-                if DATABASE_URL:
-                    con.execute("ALTER TABLE requests ADD COLUMN IF NOT EXISTS owner_email TEXT")
-                elif not any(col[1] == "owner_email" for col in con.execute("PRAGMA table_info(requests)")):
-                    con.execute("ALTER TABLE requests ADD COLUMN owner_email TEXT")
+                additions = {
+                    "requests": {"owner_email": "TEXT"},
+                    "auth_sessions": {"provider": "TEXT NOT NULL DEFAULT 'google'", "subject": "TEXT"},
+                    "auth_states": {"provider": "TEXT NOT NULL DEFAULT 'google'", "browser_hash": "TEXT"},
+                }
+                for table, columns in additions.items():
+                    if DATABASE_URL:
+                        for name, definition in columns.items():
+                            con.execute(f"ALTER TABLE {table} ADD COLUMN IF NOT EXISTS {name} {definition}")
+                    else:
+                        existing = {c[1] for c in con.execute(f"PRAGMA table_info({table})")}
+                        for name, definition in columns.items():
+                            if name not in existing:
+                                con.execute(f"ALTER TABLE {table} ADD COLUMN {name} {definition}")
                 con.commit()
             except Exception:
                 con.rollback()

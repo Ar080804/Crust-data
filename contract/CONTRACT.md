@@ -121,23 +121,19 @@ Lives in `backend/integrations/`. Aditya imports these and calls them. Sunil nev
 - `POST /dev/reply {"expert_id", "text"}`: pretend an expert replied on Telegram
 - `GET /dev/status`: shows which parts are real or simulated (pool, verify, telegram, calendar, llm), plus the outbox
 
-## Auth: Sign in with Google (backend ready, frontend not wired yet)
-Real Google OpenID Connect. The ID token is verified on the backend (signature, audience, issuer, expiry, `email_verified`).
+## User and expert sign-in
 
-| Method | Path | Notes |
+Google signs in clients and Telegram signs in experts. Production exposes these paths under `/api`. Sign-in uses the authorization code flow with PKCE, a one-time state bound to the initiating browser, an origin-checked return URL and a seven-day server session.
+
+| Method | Path | Behavior |
 |---|---|---|
-| GET | `/auth/google/login?redirect=<url>` | Browser navigation (not fetch). 302 to Google. `redirect` must be on `http://localhost:5173`, anything else falls back to `http://localhost:5173/`. |
-| GET | `/auth/google/callback` | Google calls this. On success: 302 to `<redirect>#session=<token>`. Errors: `{"error"}` with 400/401. |
-| GET | `/auth/me` | Header `Authorization: Bearer <token>` → `AuthUser`. 401 `{"error": "not signed in"}` if missing, invalid or expired (7 days). |
-| POST | `/auth/logout` | Header `Authorization: Bearer <token>` → `{"ok": true}` |
+| GET | `/auth/providers` | Public `google` and `telegram` configuration flags. |
+| GET | `/auth/{provider}/login?redirect=<url>` | Starts consent for `google` or `telegram`. Returns 503 while setup is pending. |
+| GET | `/auth/{provider}/callback` | Verifies the provider ID token and returns the browser to the frontend with the session in the fragment. |
+| GET | `/auth/me` | A valid bearer session returns the provider, subject, display name, picture and optional verified email. Older Google sessions may have a null subject. |
+| POST | `/auth/logout` | Revokes the supplied bearer session. |
 
-```
-AuthUser { email: str, name: str, picture: str, provider: "google" }
-```
-To wire it later: the login button does `window.location.href = "http://localhost:8000/auth/google/login?redirect=" + encodeURIComponent(location.origin + "/")`;
-on load, read `#session=` from `location.hash`, store it, clear the hash, and call `/auth/me`.
-Only Google accounts listed as **Test users** on the OAuth consent screen can sign in.
-Existing endpoints do not require login.
+Live booking routes require a Google user session. An expert's Telegram session identifies their account. Optional LinkedIn onboarding establishes professional identity and consent to bookings.
 
 ## Chat with the booked expert (backend ready; frontend has `CHAT_ENABLED = MOCK`, flip it to use)
 | Method | Path | Body | Returns |
