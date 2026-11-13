@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-export interface User { name: string; email: string | null; provider: 'email' | 'google' | 'linkedin' | 'guest' | 'telegram'; subject?: string | null; picture?: string }
+export interface User { name: string; email: string | null; provider: 'email' | 'google' | 'linkedin' | 'guest'; subject?: string | null; picture?: string }
 const KEY = 'sutradhar_user'
-const TOKEN_KEY = 'sutradhar_session' // real Google session token from the backend (contract: Auth section)
+const TOKEN_KEY = 'sutradhar_session' // Provider session issued by the backend
 
 export function getToken(): string | null {
   try { return localStorage.getItem(TOKEN_KEY) } catch { return null }

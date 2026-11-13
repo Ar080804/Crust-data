@@ -123,17 +123,17 @@ Lives in `backend/integrations/`. Aditya imports these and calls them. Sunil nev
 
 ## User and expert sign-in
 
-Google signs in clients and Telegram signs in experts. Production exposes these paths under `/api`. Sign-in uses the authorization code flow with PKCE, a one-time state bound to the initiating browser, an origin-checked return URL and a seven-day server session.
+Google signs in users and LinkedIn signs in experts. Production exposes these paths under `/api`. Both flows use an authorization code, single-use state bound to the initiating browser, a checked return origin and a seven-day server session. Google also uses PKCE.
 
 | Method | Path | Behavior |
 |---|---|---|
-| GET | `/auth/providers` | Public `google` and `telegram` configuration flags. |
-| GET | `/auth/{provider}/login?redirect=<url>` | Starts consent for `google` or `telegram`. Returns 503 while setup is pending. |
+| GET | `/auth/providers` | Public `google` and `linkedin` configuration flags. |
+| GET | `/auth/{provider}/login?redirect=<url>` | Starts consent for `google` or `linkedin`. Returns 503 while setup is pending. |
 | GET | `/auth/{provider}/callback` | Verifies the provider ID token and returns the browser to the frontend with the session in the fragment. |
 | GET | `/auth/me` | A valid bearer session returns the provider, subject, display name, picture and optional verified email. Older Google sessions may have a null subject. |
 | POST | `/auth/logout` | Revokes the supplied bearer session. |
 
-Live booking routes require a Google user session. An expert's Telegram session identifies their account. Optional LinkedIn onboarding establishes professional identity and consent to bookings.
+Live booking routes require a Google user session. A LinkedIn session identifies the expert's member account. Expert onboarding checks work history with Crustdata and collects consent to bookings.
 
 ## Chat with the booked expert (backend ready; frontend has `CHAT_ENABLED = MOCK`, flip it to use)
 | Method | Path | Body | Returns |

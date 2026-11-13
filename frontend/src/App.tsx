@@ -32,7 +32,7 @@ function RequireAuth({ children }: { children: React.ReactElement }) {
   return children
 }
 
-// After real Google sign-in the backend redirects to "<page>#session=<token>" (contract: Auth section).
+// After provider sign-in the backend redirects to "<page>#session=<token>" (contract: Auth section).
 const sessionInHash = () => new URLSearchParams(window.location.hash.slice(1)).get('session')
 
 export default function App() {
@@ -45,11 +45,11 @@ export default function App() {
   const [booting, setBooting] = useState(!!callbackToken)
   const [authErr, setAuthErr] = useState<string | null>(null)
 
-  // Real mode: drop any old email/guest/demo "logins" saved by earlier builds. Only a Google session counts.
+  // Drop retired login types while preserving current Google and LinkedIn sessions.
   useEffect(() => {
-    if (MOCK || sessionInHash()) return
+    if (sessionInHash()) return
     const u = getUser()
-    if (u && (!['google', 'telegram'].includes(u.provider) || !getToken())) signOut()
+    if (u && (!['google', 'linkedin'].includes(u.provider) || !getToken())) signOut()
   }, [])
 
   useEffect(() => {
@@ -98,13 +98,13 @@ export default function App() {
               {user ? (
                 <div className="user-chip">
                   <Avatar name={user.name} size={28} />
-                  {user.provider === 'telegram'
+                  {user.provider === 'linkedin'
                     ? <NavLink to="/login?role=expert" className="user-name">Expert account</NavLink>
                     : <span className="user-name">{user.name}</span>}
                   <button className="link-btn" onClick={() => { const t = getToken(); if (t) logout(t); signOut(); nav('/login') }}>Sign out</button>
                 </div>
               ) : (
-                <NavLink to="/login" className="btn btn-primary btn-sm">Sign in</NavLink>
+                <NavLink to="/login" className="btn btn-primary btn-sm">Login</NavLink>
               )}
             </div>
           </div>

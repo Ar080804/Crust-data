@@ -76,7 +76,7 @@ flowchart LR
 
 | Screen | What's there |
 |---|---|
-| **Sign in** | Users sign in with Google. Experts sign in with Telegram. Optional LinkedIn onboarding verifies their professional profile before they join the live pool. |
+| **Sign in** | Select **Login** in the header. Users sign in with Google and experts sign in with LinkedIn. Expert onboarding checks work history with Crustdata before enrollment. |
 | **Home** | What the agent does, and the live eval numbers |
 | **New request** | Step-by-step: who, how long, **any date + custom time slot**, budget, notes, review. Plus one-click templates tested against the backend. |
 | **Live request** ⭐ | Status stepper · constraints · shortlist with **Claimed vs Crustdata** per claim · agent log · booking ticket · **₹ saved** badge · receipt · **chat** (agent's Telegram messages, expert replies, and you can message the booked expert) |

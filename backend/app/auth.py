@@ -1,4 +1,4 @@
-"""Client Google and expert Telegram sign-in. Provider credentials stay on the server."""
+"""Client Google and expert LinkedIn sign-in. Provider credentials stay on the server."""
 import base64
 import hashlib
 import json
@@ -20,7 +20,8 @@ from google.oauth2 import id_token as google_id_token
 from . import db
 from .config import APP_URL, CLOUD, DATABASE_URL, ROOT, now_iso
 
-Provider = Literal["google", "telegram"]
+Provider = Literal["google", "linkedin"]
+PROVIDER_LABELS = {"google": "Google", "linkedin": "LinkedIn"}
 router = APIRouter(prefix="/auth", tags=["auth"])
 CREDS = ROOT / "credentials.json"
 SESSION_TTL_S = 7 * 24 * 3600
@@ -28,8 +29,8 @@ STATE_TTL_S = 10 * 60
 DEFAULT_ORIGIN = APP_URL or "http://localhost:5173"
 ALLOWED_ORIGINS = {APP_URL} if CLOUD else {DEFAULT_ORIGIN, "http://127.0.0.1:5173"}
 API_BASE = f"{APP_URL}/api" if APP_URL else "http://localhost:8000"
-AUTHORIZE = {"google": "https://accounts.google.com/o/oauth2/v2/auth", "telegram": "https://oauth.telegram.org/auth"}
-TOKEN = {"google": "https://oauth2.googleapis.com/token", "telegram": "https://oauth.telegram.org/token"}
+AUTHORIZE = {"google": "https://accounts.google.com/o/oauth2/v2/auth", "linkedin": "https://www.linkedin.com/oauth/v2/authorization"}
+TOKEN = {"google": "https://oauth2.googleapis.com/token", "linkedin": "https://www.linkedin.com/oauth/v2/accessToken"}
 
 
 def _client(provider: Provider) -> tuple[str, str] | None:
@@ -54,7 +55,7 @@ def _hash(value: str) -> str:
 
 
 def _safe_redirect(url: str | None, provider: Provider) -> str:
-    fallback = DEFAULT_ORIGIN + ("/login?role=expert" if provider == "telegram" else "/")
+    fallback = DEFAULT_ORIGIN + ("/login?role=expert" if provider == "linkedin" else "/")
     if not url or "\\" in url or any(ord(c) < 32 for c in url):
         return fallback
     try:
@@ -72,7 +73,7 @@ def _storage_configured() -> bool:
 
 @router.get("/providers")
 def providers():
-    return JSONResponse({p: bool(_client(p)) and _storage_configured() for p in ("google", "telegram")},
+    return JSONResponse({p: bool(_client(p)) and _storage_configured() for p in ("google", "linkedin")},
                         headers={"Cache-Control": "no-store"})
 
 
@@ -88,19 +89,18 @@ def _cookie_path(provider: Provider) -> str:
 def login(provider: Provider, redirect: str | None = None):
     client = _client(provider)
     if not client or not _storage_configured():
-        raise HTTPException(503, detail=f"{provider.title()} sign-in is awaiting configuration")
+        raise HTTPException(503, detail=f"{PROVIDER_LABELS[provider]} sign-in is awaiting configuration")
     state = secrets.token_urlsafe(28)
     verifier = secrets.token_urlsafe(48)
     browser_secret = secrets.token_urlsafe(32)
-    challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b"=").decode()
     db.ex("DELETE FROM auth_states WHERE expires_at < ?", (time.time(),))
     db.ex("INSERT INTO auth_states (state,verifier,redirect,expires_at,provider,browser_hash) VALUES (?,?,?,?,?,?)",
           (state, verifier, _safe_redirect(redirect, provider), time.time() + STATE_TTL_S, provider, _hash(browser_secret)))
     params = {"client_id": client[0], "redirect_uri": f"{API_BASE}/auth/{provider}/callback", "response_type": "code",
-              "scope": "openid email profile" if provider == "google" else "openid profile", "state": state,
-              "code_challenge": challenge, "code_challenge_method": "S256"}
+              "scope": "openid email profile" if provider == "google" else "openid profile", "state": state}
     if provider == "google":
-        params["prompt"] = "select_account"
+        challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b"=").decode()
+        params.update(prompt="select_account", code_challenge=challenge, code_challenge_method="S256")
     response = RedirectResponse(AUTHORIZE[provider] + "?" + urlencode(params), status_code=302,
                                 headers={"Cache-Control": "no-store", "Referrer-Policy": "no-referrer"})
     response.set_cookie(_cookie_name(provider, state), browser_secret, path=_cookie_path(provider),
@@ -109,8 +109,8 @@ def login(provider: Provider, redirect: str | None = None):
 
 
 @lru_cache(maxsize=1)
-def _telegram_keys():
-    return jwt.PyJWKClient("https://oauth.telegram.org/.well-known/jwks.json", timeout=8)
+def _linkedin_keys():
+    return jwt.PyJWKClient("https://www.linkedin.com/oauth/openid/jwks", timeout=8)
 
 
 def _identity(provider: Provider, raw: str, client_id: str) -> dict:
@@ -120,14 +120,14 @@ def _identity(provider: Provider, raw: str, client_id: str) -> dict:
             raise ValueError("A verified email is required")
         email = claims["email"].lower()
     else:
-        key = _telegram_keys().get_signing_key_from_jwt(raw).key
-        claims = jwt.decode(raw, key, algorithms=["RS256"], issuer="https://oauth.telegram.org", audience=client_id,
+        key = _linkedin_keys().get_signing_key_from_jwt(raw).key
+        claims = jwt.decode(raw, key, algorithms=["RS256"], issuer="https://www.linkedin.com/oauth", audience=client_id,
                             options={"require": ["exp", "iat", "iss", "aud", "sub"]})
         email = None
     if not isinstance(claims.get("sub"), str) or not claims["sub"]:
         raise ValueError("Missing provider identity")
     return {"provider": provider, "subject": claims["sub"], "email": email,
-            "name": claims.get("name") or claims.get("preferred_username") or email or "Expert",
+            "name": claims.get("name") or email or "Expert",
             "picture": claims.get("picture") or ""}
 
 
@@ -149,17 +149,16 @@ def callback(provider: Provider, request: Request, state: str = "", code: str = 
         client = _client(provider)
         if not client or not code:
             raise HTTPException(400, detail="Incomplete sign-in. Start again.")
-        form = {"code": code, "client_id": client[0], "redirect_uri": f"{API_BASE}/auth/{provider}/callback",
-                "grant_type": "authorization_code", "code_verifier": row["verifier"]}
-        basic = client if provider == "telegram" else None
+        form = {"code": code, "client_id": client[0], "client_secret": client[1],
+                "redirect_uri": f"{API_BASE}/auth/{provider}/callback", "grant_type": "authorization_code"}
         if provider == "google":
-            form["client_secret"] = client[1]
+            form["code_verifier"] = row["verifier"]
         try:
-            tokens = httpx.post(TOKEN[provider], data=form, auth=basic, timeout=16)
+            tokens = httpx.post(TOKEN[provider], data=form, timeout=16)
             tokens.raise_for_status()
             user = _identity(provider, tokens.json()["id_token"], client[0])
         except (ValueError, KeyError, httpx.HTTPError, jwt.PyJWTError, GoogleAuthError) as exc:
-            raise HTTPException(401, detail=f"Could not verify {provider.title()} sign-in") from exc
+            raise HTTPException(401, detail=f"Could not verify {PROVIDER_LABELS[provider]} sign-in") from exc
         session = secrets.token_urlsafe(32)
         db.ex("INSERT INTO auth_sessions (token_hash,provider,subject,email,name,picture,created_at,expires_at) "
               "VALUES (?,?,?,?,?,?,?,?)", (_hash(session), provider, user["subject"], user["email"], user["name"],
@@ -174,8 +173,9 @@ def callback(provider: Provider, request: Request, state: str = "", code: str = 
 def current_user(authorization: str | None) -> dict | None:
     if not authorization or not authorization.lower().startswith("bearer "):
         return None
-    return db.q1("SELECT email,name,picture,provider,subject FROM auth_sessions WHERE token_hash=? AND expires_at>?",
-                 (_hash(authorization.split(" ", 1)[1].strip()), time.time()))
+    return db.q1("SELECT email,name,picture,provider,subject FROM auth_sessions "
+                 "WHERE token_hash=? AND expires_at>? AND provider IN (?,?)",
+                 (_hash(authorization.split(" ", 1)[1].strip()), time.time(), "google", "linkedin"))
 
 
 @router.get("/me")

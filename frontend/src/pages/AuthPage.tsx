@@ -5,29 +5,40 @@ import { getToken, useUser } from '../auth.ts'
 import { DotField, RotatingText } from '../cursor.tsx'
 import { GoogleIcon, Icon, LinkedInIcon, Logo } from '../ui.tsx'
 
+const choices = [
+  { provider: 'google', label: 'Google', role: 'For users', caption: 'Book and manage your expert calls.', Icon: GoogleIcon },
+  { provider: 'linkedin', label: 'LinkedIn', role: 'For experts', caption: 'Connect your professional profile to start verification.', Icon: LinkedInIcon },
+] as const
+
+type Availability = Record<SignInProvider, boolean> | 'error' | null
+
 export default function AuthPage() {
-  const location = useLocation()
+  const { state } = useLocation()
   const [query] = useSearchParams()
-  const role = query.get('role')
-  const provider = role === 'user' ? 'google' : role === 'expert' ? 'telegram' : null
-  const expert = provider === 'telegram'
-  const label = expert ? 'Telegram' : 'Google'
   const user = useUser()
-  const signedIn = !!provider && user?.provider === provider && !!getToken()
-  const [availability, setAvailability] = useState<Record<SignInProvider, boolean> | 'error' | null>(null)
+  const signedIn = !!getToken() && (user?.provider === 'linkedin' || user?.provider === 'google')
+  const expertAccount = signedIn && user?.provider === 'linkedin'
+  const wantsUser = query.get('role') === 'user'
+  const wantsExpert = query.get('role') === 'expert'
+  const showAccount = signedIn && !(expertAccount ? wantsUser : wantsExpert)
+  const [availability, setAvailability] = useState<Availability>(null)
   const [attempt, setAttempt] = useState(0)
   useEffect(() => {
-    if (!provider || signedIn) return
+    if (showAccount) return
     const controller = new AbortController()
     getSignInProviders(controller.signal)
       .then((providers) => { if (!controller.signal.aborted) setAvailability(providers) })
       .catch(() => { if (!controller.signal.aborted) setAvailability('error') })
     return () => controller.abort()
-  }, [provider, signedIn, attempt])
+  }, [showAccount, attempt])
 
-  const from = (location.state as { from?: string } | null)?.from
-  const next = !expert && from?.startsWith('/') && !from.startsWith('//') ? from : expert ? '/login?role=expert' : '/new'
-  const ready = provider && availability && availability !== 'error' && availability[provider]
+  const from = (state as { from?: string } | null)?.from
+  const bookingPage = from?.startsWith('/') && !from.startsWith('//') && !from.includes('\\') ? from : '/new'
+  const waiting = availability && availability !== 'error' ? choices.filter((choice) => !availability[choice.provider]) : []
+  let status = ''
+  if (!availability) status = 'Checking sign-in availability…'
+  else if (availability === 'error') status = 'Sign-in availability could not be checked.'
+  else if (waiting.length) status = `${waiting.map((choice) => choice.label).join(' and ')} sign-in is awaiting setup on this site.`
 
   return (
     <div className="auth">
@@ -44,48 +55,43 @@ export default function AuthPage() {
       <section className="auth-panel">
         <div className="auth-card">
           <Link className="back role-back" to="/"><Icon name="back" size={14} /> Home</Link>
-          {!provider ? (
+          {showAccount ? (
             <>
-              <h2 className="auth-title">Sign in to Sutradhar</h2>
-              <div className="role-grid">
-                <Link className="role-card" to="/login?role=user" state={location.state}>
-                  <GoogleIcon /><span className="role-title">I need an expert</span><span>Sign in with Google</span>
-                </Link>
-                <Link className="role-card" to="/login?role=expert">
-                  <Icon name="send" /><span className="role-title">I'm an expert</span><span>Sign in with Telegram</span>
-                </Link>
-              </div>
-            </>
-          ) : signedIn ? (
-            <>
-              <h2 className="auth-title">{expert ? 'Expert account' : 'User account'}</h2>
-              <p className="muted">Signed in with {label} as {user.name}.</p>
-              {expert && <p className="auth-status">Professional verification and booking availability are managed through expert onboarding.</p>}
-              {expert && ONBOARDING_URL && <a className="btn btn-ghost role-btn" href={`${ONBOARDING_URL}/auth/linkedin/login`}><LinkedInIcon /> Verify professional profile</a>}
-              <Link to={expert ? '/' : next} className="btn btn-primary role-btn">{expert ? 'Back to home' : 'Continue to booking'}</Link>
+              <h2 className="auth-title">{expertAccount ? 'Expert account' : 'User account'}</h2>
+              <p className="muted">Signed in with {expertAccount ? 'LinkedIn' : 'Google'} as {user.name}.</p>
+              {expertAccount && (
+                <>
+                  <p className="auth-status">Your LinkedIn account is connected. Expert onboarding checks your work history with Crustdata.</p>
+                  {ONBOARDING_URL && <a className="btn btn-ghost role-btn" href={`${ONBOARDING_URL}/auth/linkedin/login`}><LinkedInIcon /> Continue professional verification</a>}
+                </>
+              )}
+              <Link to={expertAccount ? '/' : bookingPage} className="btn btn-primary role-btn">{expertAccount ? 'Back to home' : 'Continue to booking'}</Link>
             </>
           ) : (
             <>
-              <h2 className="auth-title">{expert ? 'Expert sign-in' : 'User sign-in'}</h2>
-              <p className="muted">{expert ? 'Use Telegram to identify yourself as an expert.' : 'Use Google to sign in and manage your booking requests.'}</p>
+              <h2 className="auth-title">Log in to Sutradhar</h2>
               {query.get('result') === 'cancelled' && <p role="status" className="auth-status">Sign-in was cancelled. You can try again.</p>}
-              {ready ? (
-                <a className="btn-oauth role-btn" href={providerLoginUrl(provider, window.location.origin + next)}>
-                  {expert ? <Icon name="send" /> : <GoogleIcon />} Continue with {label}
-                </a>
-              ) : (
-                <>
-                  <button type="button" className="btn-oauth role-btn" disabled aria-describedby="provider-status">
-                    {expert ? <Icon name="send" /> : <GoogleIcon />} Continue with {label}
-                  </button>
-                  <p id="provider-status" className="auth-status" role="status">{availability === null ? 'Checking sign-in availability…'
-                    : availability === 'error' ? 'Could not check sign-in availability.' : `${label} sign-in is awaiting setup on this site.`}</p>
-                  {availability === 'error' && <button type="button" className="link-btn" onClick={() => { setAvailability(null); setAttempt((count) => count + 1) }}>Check again</button>}
-                </>
-              )}
-              {expert && ONBOARDING_URL && <a className="expert-join inline" href={`${ONBOARDING_URL}/auth/linkedin/login`}><LinkedInIcon size={16} /> Join with LinkedIn and link Telegram</a>}
-              {MOCK && <Link to="/new" className="btn btn-ghost role-btn">Try the booking demo <Icon name="arrow" size={14} /></Link>}
-              <Link to="/login" state={location.state} className="auth-switch">Choose another sign-in option</Link>
+              <div className="role-grid">
+                {choices.map(({ provider, label, role, caption, Icon: ProviderIcon }) => {
+                  const ready = availability && availability !== 'error' && availability[provider]
+                  const content = <><ProviderIcon /> Sign in with {label}</>
+                  const next = provider === 'linkedin' ? '/login?role=expert' : bookingPage
+                  return (
+                    <section key={provider} aria-labelledby={`role-${provider}`} className="login-choice">
+                      <h3 id={`role-${provider}`} className="role-title">{role}</h3>
+                      <p className="muted small">{caption}</p>
+                      {ready ? (
+                        <a className="btn-oauth" href={providerLoginUrl(provider, window.location.origin + next)}>{content}</a>
+                      ) : (
+                        <button className="btn-oauth" type="button" disabled aria-describedby="signin-status">{content}</button>
+                      )}
+                    </section>
+                  )
+                })}
+              </div>
+              <p className="auth-status" id="signin-status" role="status">{status}</p>
+              {availability === 'error' && <button type="button" className="link-btn" onClick={() => { setAvailability(null); setAttempt((n) => n + 1) }}>Check again</button>}
+              {MOCK && <Link to="/new" className="auth-demo-link">Try the booking demo <Icon name="arrow" size={14} /></Link>}
             </>
           )}
         </div>
