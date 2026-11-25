@@ -86,9 +86,17 @@ def _cookie_path(provider: Provider) -> str:
 
 
 @router.get("/{provider}/login")
-def login(provider: Provider, redirect: str | None = None):
+def login(provider: Provider, request: Request, redirect: str | None = None):
     client = _client(provider)
     if not client or not _storage_configured():
+        if 'text/html' in request.headers.get('accept', '').lower():
+            role = 'user' if provider == 'google' else 'expert'
+            query = {"role": role, "result": "unavailable"}
+            if redirect:
+                target = urlsplit(_safe_redirect(redirect, provider))
+                query["next"] = urlunsplit(("", "", target.path or "/", target.query, ""))
+            return RedirectResponse(f"{DEFAULT_ORIGIN}/login?{urlencode(query)}", status_code=303,
+                                    headers={"Cache-Control": "no-store"})
         raise HTTPException(503, detail=f"{PROVIDER_LABELS[provider]} sign-in is awaiting configuration")
     state = secrets.token_urlsafe(28)
     verifier = secrets.token_urlsafe(48)

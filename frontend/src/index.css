@@ -758,9 +758,7 @@ input[type=range]:focus { box-shadow: none; }
 .login-choice { display: grid; gap: 6px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
 .login-choice .btn-oauth { margin-top: 6px; }
 .auth-demo-link { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); font-size: 14px; }
-.auth-status:empty { margin: 0; }
 .auth-status { margin: 10px 0; color: var(--muted); font-size: 14px; }
-.btn-oauth:disabled { cursor: default; opacity: .72; }
 @media (max-width: 540px) {
   .auth { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
   .auth-panel { padding: 24px 20px 36px; }

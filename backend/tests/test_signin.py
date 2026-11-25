@@ -48,6 +48,16 @@ class SignInTests(unittest.TestCase):
             for provider in ("google", "linkedin"):
                 self.assertEqual(self.client.get(f'/auth/{provider}/login').status_code, 503)
 
+    def test_click_without_setup_returns_to_login_with_feedback(self):
+        with patch.object(auth, 'CLOUD', True), patch.object(auth, 'DATABASE_URL', ''):
+            for provider, role in [('google', 'user'), ('linkedin', 'expert')]:
+                response = self.client.get(f'/auth/{provider}/login', headers={'Accept': 'text/html'},
+                                           params={'redirect': 'http://testserver/new'})
+                self.assertEqual(response.status_code, 303)
+                target = urlsplit(response.headers['location'])
+                self.assertEqual((target.netloc, target.path), ('testserver', '/login'))
+                self.assertEqual(parse_qs(target.query), {'role': [role], 'result': ['unavailable'], 'next': ['/new']})
+
     def test_linkedin_round_trip_and_client_permissions(self):
         self.assertEqual(self.client.get('/auth/providers').json(), {"google": True, "linkedin": True})
         state = self.begin('linkedin')
