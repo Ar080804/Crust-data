@@ -128,7 +128,7 @@ Google signs in users and LinkedIn signs in experts. Production exposes these pa
 | Method | Path | Behavior |
 |---|---|---|
 | GET | `/auth/providers` | Public `google` and `linkedin` configuration flags. |
-| GET | `/auth/{provider}/login?redirect=<url>` | Starts consent for `google` or `linkedin`. Returns 503 while setup is pending. |
+| GET | `/auth/{provider}/login?redirect=<url>` | Starts consent for `google` or `linkedin`. With pending setup, a browser returns to `/login` with role-specific feedback. API clients receive 503. |
 | GET | `/auth/{provider}/callback` | Verifies the provider ID token and returns the browser to the frontend with the session in the fragment. |
 | GET | `/auth/me` | A valid bearer session returns the provider, subject, display name, picture and optional verified email. Older Google sessions may have a null subject. |
 | POST | `/auth/logout` | Revokes the supplied bearer session. |
