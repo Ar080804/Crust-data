@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Eval } from '../../../contract/types.ts'
-import { getEval, MOCK } from '../api.ts'
+import { getEval, useDemo } from '../api.ts'
 import { useUser } from '../auth.ts'
 import { DotField, Magnetic, Reveal, RotatingText } from '../cursor.tsx'
 import { Icon, type IconName } from '../ui.tsx'
@@ -22,6 +22,7 @@ const STEPS: { icon: IconName; t: string; d: string }[] = [
 ]
 
 export default function Landing() {
+  const MOCK = useDemo()
   const user = useUser()
   const first = user && user.provider !== 'guest' ? user.name.split(' ')[0] : null
   const [ev, setEv] = useState<Eval | null>(null)

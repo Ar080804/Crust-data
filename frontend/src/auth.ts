@@ -37,7 +37,11 @@ export function useUser() {
   useEffect(() => {
     const f = () => setU(getUser())
     window.addEventListener('sutradhar-auth', f)
-    return () => window.removeEventListener('sutradhar-auth', f)
+    window.addEventListener('storage', f)
+    return () => {
+      window.removeEventListener('sutradhar-auth', f)
+      window.removeEventListener('storage', f)
+    }
   }, [])
   return u
 }

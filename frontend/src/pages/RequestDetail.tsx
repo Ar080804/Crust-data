@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import type { Request, Status, ShortlistItem, Claim } from '../../../contract/types.ts'
-import { MOCK, getRequest, sendClarification, approveOption, sendChat, listChat, canChat, CHAT_ENABLED } from '../api.ts'
+import { useDemo, ApiError, getRequest, sendClarification, approveOption, sendChat, listChat, canChat, CHAT_ENABLED } from '../api.ts'
 import { chatBubbles, type Bubble } from '../chat.ts'
 import { openReceipt } from '../receipt.ts'
 import { inr, time, clock, day } from '../format.ts'
@@ -9,7 +9,7 @@ import { Avatar, Confetti, Icon, Segmented, STATUS_ICON, STATUS_LABEL, SOURCE_IC
 import Ticket from '../Ticket.tsx'
 import { DecryptedText } from '../effects.tsx'
 
-const POLL_MS = 1000
+const POLL_MS = 3000
 const STOP_ON: Status[] = ['BOOKED', 'FAILED']
 const STEPS: Status[] = ['INTAKE', 'FINDING', 'VERIFYING', 'OUTREACH', 'NEGOTIATING', 'BOOKING', 'BOOKED']
 const STEP_SHORT: Record<string, string> = {
@@ -26,18 +26,24 @@ export default function RequestDetail() {
   useEffect(() => {
     let alive = true
     let timer: ReturnType<typeof setTimeout>
+    let failures = 0
     const loop = async () => {
+      if (document.hidden) { timer = setTimeout(loop, 15000); return }
       try {
         const r = await getRequest(id)
         if (!alive) return
         setReq(r); setErr(null)
+        failures = 0
         if (r.status === 'FAILED') return
         // After booking keep polling (slower) so chat replies from the expert show up.
-        if (r.status === 'BOOKED') { timer = setTimeout(loop, 3000); return }
+        if (r.status === 'BOOKED') { timer = setTimeout(loop, 10000); return }
+        if (r.status === 'ESCALATED' || r.status === 'NEEDS_CLARIFICATION') return
       } catch (e) {
         if (alive) setErr((e as Error).message)
+        if (e instanceof ApiError && [401, 403, 404].includes(e.status)) return
+        failures++
       }
-      if (alive) timer = setTimeout(loop, POLL_MS)
+      if (alive) timer = setTimeout(loop, Math.min(30000, POLL_MS * 2 ** failures))
     }
     loop()
     return () => { alive = false; clearTimeout(timer) }
@@ -137,6 +143,7 @@ function agentSavings(r: Request): { listed: number; booked: number; saved: numb
 }
 
 function Booked({ req }: { req: Request }) {
+  const MOCK = useDemo()
   const b = req.booking!
   const who = req.shortlist.find((s) => s.expert_id === b.expert_id)
   const [hm, ...rest] = b.confirmation.split(',')

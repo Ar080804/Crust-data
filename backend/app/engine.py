@@ -1,6 +1,7 @@
 """Owner: Aditya. The state machine. Code decides; the LLM only parses.
 Every step reads state from SQLite and writes the next state before side effects, so killing the process
 at any point and restarting resumes from the last saved step."""
+import hashlib
 import re
 import threading
 import time
@@ -35,11 +36,26 @@ def fmt_time(iso: str) -> str:
 
 # ---- intake ----------------------------------------------------------------
 
-def create_request(text: str, owner_email: str | None = None) -> str:
+def create_request(text: str, owner_email: str | None = None, idempotency_key: str | None = None) -> str:
     rid = "r_" + uuid.uuid4().hex
-    db.ex("INSERT INTO requests (id, status, raw_text, created_at, owner_email) VALUES (?,?,?,?,?)",
-          (rid, "INTAKE", text, now().isoformat(timespec="seconds"), owner_email))
-    db.log(rid, "INTAKE", f'Request received: "{text}"', "human")
+    stamp = now().isoformat(timespec="seconds")
+    with db.tx() as con:
+        if idempotency_key:
+            digest = hashlib.sha256(text.encode()).hexdigest()
+            inserted = con.execute(
+                "INSERT INTO request_dedup(owner_key,key,request_id,text_hash) VALUES(?,?,?,?) "
+                "ON CONFLICT(owner_key,key) DO NOTHING",
+                (owner_email or 'local', idempotency_key, rid, digest)).rowcount
+            if not inserted:
+                previous = con.execute("SELECT request_id,text_hash FROM request_dedup WHERE owner_key=? AND key=?",
+                                       (owner_email or 'local', idempotency_key)).fetchone()
+                if previous['text_hash'] != digest:
+                    raise ValueError("This retry key belongs to a different request.")
+                return previous['request_id']
+        con.execute("INSERT INTO requests (id, status, raw_text, created_at, owner_email) VALUES (?,?,?,?,?)",
+                    (rid, "INTAKE", text, stamp, owner_email))
+        con.execute("INSERT INTO timeline(request_id,t,step,msg,source) VALUES(?,?,?,?,?)",
+                    (rid, stamp, "INTAKE", f'Request received: "{text}"', "human"))
     return rid
 
 
@@ -106,9 +122,14 @@ def clarify(rid: str, answer: str):
     r = db.get_request_row(rid)
     if not r or r["status"] != "NEEDS_CLARIFICATION":
         return None
-    db.update_request(rid, raw_text=r["raw_text"] + "\nClarification: " + answer, clarified=1,
-                      status="INTAKE", clarification_question=None)
-    db.log(rid, "INTAKE", f'Clarification: "{answer}"', "human")
+    with db.tx() as con:
+        updated = con.execute("UPDATE requests SET raw_text=?,clarified=1,status='INTAKE',clarification_question=NULL,"
+                              "next_attempt=0,retry_count=0 WHERE id=? AND status='NEEDS_CLARIFICATION'",
+                              (r['raw_text'] + '\nClarification: ' + answer, rid)).rowcount
+        if not updated:
+            return None
+        con.execute('INSERT INTO timeline(request_id,t,step,msg,source) VALUES(?,?,?,?,?)',
+                    (rid, now().isoformat(timespec='seconds'), 'INTAKE', f'Clarification: "{answer}"', 'human'))
     return "INTAKE"
 
 
@@ -462,9 +483,15 @@ def approve(rid: str, option_id: str):
     opt = next((o for o in r["escalation"]["options"] if o["option_id"] == option_id), None)
     if not opt:
         return None
-    db.update_request(rid, status="BOOKING", current_expert=opt["expert_id"],
-                      offer={"slot": opt["slot"], "price": opt["price_inr"]})
-    db.log(rid, "BOOKING", f"Human approved: {opt['summary'].removesuffix(', approve?')}", "human")
+    with db.tx() as con:
+        updated = con.execute("UPDATE requests SET status='BOOKING',current_expert=?,offer=?,next_attempt=0,retry_count=0 "
+                              "WHERE id=? AND status='ESCALATED'",
+                              (opt['expert_id'], db.j({'slot': opt['slot'], 'price': opt['price_inr']}), rid)).rowcount
+        if not updated:
+            return None
+        con.execute('INSERT INTO timeline(request_id,t,step,msg,source) VALUES(?,?,?,?,?)',
+                    (rid, now().isoformat(timespec='seconds'), 'BOOKING',
+                     f"Human approved: {opt['summary'].removesuffix(', approve?')}", 'human'))
     return "BOOKING"
 
 
@@ -519,6 +546,7 @@ def ingest_replies(replies: list[dict]):
         if not inserted:
             continue
         if rid:
+            db.ex('UPDATE requests SET next_attempt=0 WHERE id=?', (rid,))
             continue
         booked = db.q1("SELECT r.id FROM requests r JOIN shortlist s ON s.request_id=r.id "
                        "WHERE r.status='BOOKED' AND s.expert_id=? AND s.outreach_state='booked' "
@@ -555,13 +583,27 @@ def tick():
     ingest_replies(replies)
     if replies:
         db.kv_set("tg_last_update_id", max(r["update_id"] for r in replies))
-    for r in db.q("SELECT id FROM requests WHERE status IN (%s)" % ",".join("?" * len(STEPS)), tuple(STEPS)):
+    due = "SELECT id FROM requests WHERE status IN (%s) AND next_attempt<=? ORDER BY next_attempt,created_at LIMIT 100"
+    for r in db.q(due % ",".join("?" * len(STEPS)), (*STEPS, time.time())):
         row = db.get_request_row(r["id"])
         try:
+            if row['status'] not in STEPS:
+                continue
             STEPS[row["status"]](row)
+            current = db.get_request_row(row['id'])
+            next_attempt = time.time() + max(WORKER_TICK_S, 1) if current['status'] == row['status'] else 0
+            db.update_request(row['id'], retry_count=0, next_attempt=next_attempt)
         except Exception as ex:  # noqa: BLE001
             traceback.print_exc()
-            db.log(row["id"], row["status"], f"Step error: {type(ex).__name__}; will retry", "code")
+            attempts = row['retry_count'] + 1
+            if attempts >= 8:
+                db.update_request(row['id'], status='FAILED', retry_count=attempts,
+                                  escalation={'reason': 'A booking service is unavailable. Please create a new request later.', 'options': []})
+                db.log(row['id'], 'FAILED', 'Booking stopped after repeated service errors. No booking has been confirmed.', 'code')
+            else:
+                delay = min(300, 5 * 2 ** (attempts - 1))
+                db.update_request(row['id'], retry_count=attempts, next_attempt=time.time() + delay)
+                db.log(row['id'], row['status'], f"Service error ({type(ex).__name__}); retrying in {delay}s", 'code')
 
 
 def run_until_settled(rid: str, max_ticks: int = 50):

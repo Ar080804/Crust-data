@@ -1,5 +1,5 @@
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
-import { MOCK, ONBOARDING_URL, providerLoginUrl } from '../api.ts'
+import { useDemo, ONBOARDING_URL, providerLoginUrl } from '../api.ts'
 import { getToken, useUser } from '../auth.ts'
 import { DotField, RotatingText } from '../cursor.tsx'
 import { GoogleIcon, Icon, LinkedInIcon, Logo } from '../ui.tsx'
@@ -10,6 +10,7 @@ const choices = [
 ] as const
 
 export default function AuthPage() {
+  const MOCK = useDemo()
   const { state } = useLocation()
   const [query] = useSearchParams()
   const user = useUser()

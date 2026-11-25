@@ -13,7 +13,7 @@ The public demo replays newly authored fictional profiles in the browser. The pu
 
 ## Activate user and expert login
 
-Select **Login** in the site header to open `/login`. The page offers Google for users and LinkedIn for experts. The `VITE_MOCK` setting controls the booking demo independently. Either provider needs a reachable production `DATABASE_URL` and `APP_URL=https://sutradhar-kappa.vercel.app` to issue sessions. Set client secrets in the server environment.
+Select **Login** in the site header to open `/login`. The page offers Google for users and LinkedIn for experts. `VITE_MOCK=true` enables the public guest demo. Signed-in accounts always use the real API and their own database-backed request history. Either provider needs a reachable production `DATABASE_URL` and `APP_URL=https://sutradhar-kappa.vercel.app` to issue sessions. Set client secrets in the server environment.
 
 | Account | Vercel production settings | Authorized redirect URL |
 |---|---|---|
@@ -23,6 +23,18 @@ Select **Login** in the site header to open `/login`. The page offers Google for
 In the LinkedIn developer app, enable **Sign In with LinkedIn using OpenID Connect** under Products and register the redirect URL under Auth. Redeploy after editing environment variables. `/api/auth/providers` returns a boolean for each provider. LinkedIn sign-in connects the member account. The separate onboarding service checks professional claims through Crustdata and links Telegram for booking messages. Set `VITE_ONBOARDING_URL` to that service when available.
 
 [Google OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect) · [LinkedIn OpenID Connect](https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin-v2)
+
+## Operational behavior
+
+- API instances share a pooled PostgreSQL connection string. Each instance opens at most four connections. Account history uses an indexed cursor and up to 50 requests per page, with three batched queries instead of one API call per request.
+- Request creation accepts `Idempotency-Key`. Reusing the same key and body for the same account returns the original request. A different body returns 409. The request and first timeline event commit in the same transaction.
+- Database-backed rate limits apply across API instances. New requests allow 10/minute per account; messages allow 20/minute per request. HTTP 429 includes `Retry-After`. Input length limits are checked on the server.
+- Run one active Telegram poller. The database advisory lock prevents duplicate pollers when a worker is restarted or briefly overlaps another instance. Each tick processes at most 100 due requests. Failed steps back off and stop after eight failures. This is a bounded single-worker design; larger workloads need partitioned workers and explicit Telegram reply routing before increasing parallelism.
+- `GET /booking/availability` keeps live submissions closed until Telegram, Calendar, an expert pool and a recent worker heartbeat exist. A missing cloud integration never produces a simulated delivery or calendar confirmation.
+- The dashboard checks the current session on reload, pauses polling in hidden tabs, and backs off after errors. Hiding a request removes it from the account's list without cancelling or deleting it.
+- Expert onboarding is still the separate service described above. Provider credentials, Calendar authorization, a bot token, verification access and consenting available experts must be supplied before live bookings can be enabled. A successful build alone does not verify those external flows.
+
+Run `python -m unittest discover -s backend/tests -v` and build the frontend with both `VITE_MOCK=true` and `VITE_MOCK=false`. Before enabling live traffic, complete an actual OAuth round trip and a booking with consenting test accounts.
 
 ## Test a real booking
 

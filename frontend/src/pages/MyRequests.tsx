@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import type { Request, Status } from '../../../contract/types.ts'
-import { listMyRequests, removeMyRequest, listChat, MOCK, type MyRequest } from '../api.ts'
+import { listMyRequests, removeMyRequest, listChat, useDemo, type MyRequest } from '../api.ts'
 import { useUser } from '../auth.ts'
 import { ago, day, inr, time, until } from '../format.ts'
 import { Avatar, Icon, Segmented, STATUS_ICON, STATUS_LABEL } from '../ui.tsx'
@@ -35,6 +35,7 @@ function gcalLink(r: Request, who: string) {
 }
 
 export default function MyRequests() {
+  const MOCK = useDemo()
   const user = useUser()
   const nav = useNavigate()
   const [items, setItems] = useState<MyRequest[] | null>(null)
@@ -42,19 +43,33 @@ export default function MyRequests() {
   const [q, setQ] = useState('')
   const [now, setNow] = useState(Date.now())
   const [copied, setCopied] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  const [cursor, setCursor] = useState<string | undefined>()
+  const [previous, setPrevious] = useState<(string | undefined)[]>([])
+  const [nextCursor, setNextCursor] = useState<string | null>(null)
+  const [refresh, setRefresh] = useState(0)
 
   useEffect(() => {
     let alive = true
     let t: ReturnType<typeof setTimeout>
+    let failures = 0
     const load = async () => {
-      const list = await listMyRequests()
-      if (!alive) return
-      setItems(list); setNow(Date.now())
-      t = setTimeout(load, 5000)
+      if (document.hidden) { t = setTimeout(load, 15000); return }
+      try {
+        const page = await listMyRequests(cursor)
+        if (!alive) return
+        setItems(page.items); setNextCursor(page.next_cursor); setNow(Date.now()); setError(null)
+        failures = 0
+      } catch (e) {
+        if (!alive) return
+        setError((e as Error).message)
+        failures++
+      }
+      if (alive) t = setTimeout(load, Math.min(60000, 10000 * 2 ** failures))
     }
     load()
     return () => { alive = false; clearTimeout(t) }
-  }, [])
+  }, [cursor, refresh, MOCK])
 
   const groups = useMemo(() => {
     const g: Record<Kind, MyRequest[]> = { action: [], pending: [], scheduled: [], history: [] }
@@ -71,9 +86,14 @@ export default function MyRequests() {
     return g
   }, [items, q, now])
 
-  if (!items) return <div className="loading"><span className="spinner" /> Loading your requests…</div>
+  if (!items) return error
+    ? <div className="banner bad" role="alert">{error} <button className="link-btn" onClick={() => setRefresh(x => x + 1)}>Try again</button></div>
+    : <div className="loading"><span className="spinner" /> Loading your requests…</div>
 
-  const remove = (id: string) => { removeMyRequest(id); setItems((xs) => xs?.filter((x) => x.saved.id !== id) ?? null) }
+  const remove = async (id: string) => {
+    try { await removeMyRequest(id); setItems((xs) => xs?.filter((x) => x.saved.id !== id) ?? null) }
+    catch (e) { setError((e as Error).message) }
+  }
   const again = (text: string) => nav('/new', { state: { prefill: text } })
   const spent = [...groups.scheduled, ...groups.history].reduce((s, m) => s + (m.req?.status === 'BOOKED' ? m.req.booking?.price_inr ?? 0 : 0), 0)
   const next = groups.scheduled[0]?.req?.booking
@@ -82,11 +102,12 @@ export default function MyRequests() {
 
   return (
     <div className="page dash">
+      {error && <div className="banner warn" role="alert">{error}</div>}
       <header className="page-head">
         <div>
           <p className="kicker">Dashboard</p>
           <h1 className="display-sm">{user && user.provider !== 'guest' ? `${user.name.split(' ')[0]}'s requests` : 'My requests'}</h1>
-          <p className="muted">Everything you asked for: live, upcoming and done. Updates every few seconds.</p>
+          <p className="muted">Your live, upcoming and past calls.{!MOCK && ' Saved to your account across devices.'}</p>
         </div>
         <Link to="/new" className="btn btn-primary" data-cursor="New"><Icon name="plus" /> New request</Link>
       </header>
@@ -250,7 +271,16 @@ export default function MyRequests() {
         </Section>
       )}
 
-      {MOCK && <p className="muted small center dash-note">Mock mode: some entries are samples built from contract fixtures.</p>}
+      {!MOCK && (previous.length > 0 || nextCursor) && <div className="row between" aria-label="Request pages">
+        <button className="btn btn-ghost" disabled={!previous.length} onClick={() => {
+          setCursor(previous[previous.length - 1]); setPrevious(previous.slice(0, -1)); setItems(null)
+        }}>Previous page</button>
+        <span className="muted small">Page {previous.length + 1} · counts apply to this page</span>
+        <button className="btn btn-ghost" disabled={!nextCursor} onClick={() => {
+          if (nextCursor) { setPrevious([...previous, cursor]); setCursor(nextCursor); setItems(null) }
+        }}>Next page</button>
+      </div>}
+      {MOCK && <p className="muted small center dash-note">Demo bookings use fictional profiles and sample data.</p>}
     </div>
   )
 }

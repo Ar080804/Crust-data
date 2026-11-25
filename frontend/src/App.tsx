@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navigate, NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import { MOCK } from './api.ts'
+import { useDemo } from './api.ts'
 import { Avatar, Icon, Logo } from './ui.tsx'
 import { Aurora, ClickSpark, useSpotlight } from './effects.tsx'
 import { CursorFX } from './cursor.tsx'
@@ -25,10 +25,12 @@ function initialTheme(): Theme {
 
 // The sample wizard is public. Live booking requires a Google client session.
 function RequireAuth({ children }: { children: React.ReactElement }) {
+  const MOCK = useDemo()
   const user = useUser()
   const loc = useLocation()
   const verified = !!user && user.provider === 'google' && !!getToken()
-  if (!MOCK && !verified) return <Navigate to="/login?role=user" replace state={{ from: loc.pathname + loc.search }} />
+  const publicDemo = MOCK && (!loc.pathname.startsWith('/requests/') || /^\/requests\/r_(sample|mock)_/.test(loc.pathname))
+  if (!publicDemo && !verified) return <Navigate to="/login?role=user" replace state={{ from: loc.pathname + loc.search }} />
   return children
 }
 
@@ -36,12 +38,13 @@ function RequireAuth({ children }: { children: React.ReactElement }) {
 const sessionInHash = () => new URLSearchParams(window.location.hash.slice(1)).get('session')
 
 export default function App() {
+  const MOCK = useDemo()
   const [theme, setTheme] = useState<Theme>(initialTheme)
   const user = useUser()
   const loc = useLocation()
   const nav = useNavigate()
   const authScreen = loc.pathname === '/login'
-  const [callbackToken] = useState(sessionInHash)
+  const [callbackToken] = useState(() => sessionInHash() || getToken())
   const [booting, setBooting] = useState(!!callbackToken)
   const [authErr, setAuthErr] = useState<string | null>(null)
 
@@ -119,7 +122,7 @@ export default function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/new" element={<RequireAuth><RequestPage /></RequireAuth>} />
           <Route path="/requests" element={<RequireAuth><MyRequests /></RequireAuth>} />
-          <Route path="/requests/:id" element={<RequestDetail />} />
+          <Route path="/requests/:id" element={<RequireAuth><RequestDetail /></RequireAuth>} />
           <Route path="/experts" element={<ExpertsPage />} />
           <Route path="/eval" element={<EvalPage />} />
           <Route path="*" element={<p className="muted">Page not found.</p>} />

@@ -1,8 +1,8 @@
 // Step-by-step request builder. At the end it composes ONE sentence and sends it as
 // POST /requests {"text"}: exactly the contract, no new fields.
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { createRequest, MOCK } from '../api.ts'
+import { createRequest, useDemo, getBookingAvailability, type BookingAvailability } from '../api.ts'
 import { useUser } from '../auth.ts'
 import { Icon, type IconName } from '../ui.tsx'
 import { inr } from '../format.ts'
@@ -58,6 +58,7 @@ const STEPS: { key: string; title: string; sub: string }[] = [
 ]
 
 export default function RequestPage() {
+  const MOCK = useDemo()
   const nav = useNavigate()
   const user = useUser()
   // "Book again" from My requests jumps straight to the review step with the old sentence.
@@ -74,6 +75,14 @@ export default function RequestPage() {
   const [text, setText] = useState(prefill ?? '')
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
+  const [availability, setAvailability] = useState<BookingAvailability | null>(null)
+  const retry = useRef<{ text: string; key: string } | null>(null)
+  useEffect(() => {
+    let active = true
+    getBookingAvailability().then(value => { if (active) setAvailability(value) })
+      .catch(() => { if (active) setAvailability({ available: false, message: 'Could not check booking availability. Please refresh and try again.' }) })
+    return () => { active = false }
+  }, [MOCK])
 
   const composed = useMemo(() => sentence({ duration, date, from, to, topic, budget, notes }), [duration, date, from, to, topic, budget, notes])
 
@@ -98,10 +107,11 @@ export default function RequestPage() {
   }
 
   async function submit() {
-    if (!text.trim()) return
+    if (!text.trim() || busy || !availability?.available) return
     setBusy(true); setErr(null)
     try {
-      const { request_id } = await createRequest(text.trim())
+      if (retry.current?.text !== text.trim()) retry.current = { text: text.trim(), key: crypto.randomUUID() }
+      const { request_id } = await createRequest(text.trim(), retry.current.key)
       nav(`/requests/${request_id}`)
     } catch (e) { setErr((e as Error).message); setBusy(false) }
   }
@@ -111,6 +121,7 @@ export default function RequestPage() {
 
   return (
     <div className="wizard">
+      {availability && !availability.available && <p className="banner warn" role="status">{availability.message}</p>}
       <div className="wiz-top">
         <span className="kicker">{user && user.provider !== 'guest' ? `New request · ${user.name.split(' ')[0]}` : 'New request'}</span>
         <span className="mono muted small">Step {step + 1} of {STEPS.length}</span>
@@ -132,7 +143,7 @@ export default function RequestPage() {
           {s.key === 'topic' && (
             <>
               <input className="wiz-input" value={topic} onChange={(e) => setTopic(e.target.value)} autoFocus
-                placeholder="e.g. someone who has managed a warehouse" />
+              placeholder="e.g. someone who has managed a warehouse" maxLength={200} />
               <div className="chips">
                 {TOPICS.map((t) => <button type="button" key={t} className={`chip ${topic === t ? 'on' : ''}`} onClick={() => setTopic(t)}>{t}</button>)}
               </div>
@@ -224,7 +235,7 @@ export default function RequestPage() {
           )}
 
           {s.key === 'notes' && (
-            <textarea className="wiz-input" rows={3} value={notes} onChange={(e) => setNotes(e.target.value)} autoFocus
+            <textarea className="wiz-input" rows={3} maxLength={2000} value={notes} onChange={(e) => setNotes(e.target.value)} autoFocus
               placeholder="e.g. Prefer someone from a quick-commerce startup. Hindi or English is fine." />
           )}
 
@@ -236,7 +247,7 @@ export default function RequestPage() {
                 <span className="fact"><Icon name="calendar" size={14} />{fmtDate(date)}, {fmtTime(from)} – {fmtTime(to)}</span>
                 <span className="fact"><Icon name="chart" size={14} />up to {inr(budget)}</span>
               </div>
-              <textarea className="wiz-input review-text" rows={3} value={text} onChange={(e) => setText(e.target.value)} />
+              <textarea className="wiz-input review-text" rows={3} maxLength={4000} value={text} onChange={(e) => setText(e.target.value)} />
             </>
           )}
         </div>
@@ -247,7 +258,7 @@ export default function RequestPage() {
           {step > 0 ? <button type="button" className="btn btn-ghost" onClick={() => go(step - 1)}><Icon name="back" /> Back</button> : <span />}
           <div className="row">
             {s.key === 'notes' && <button type="button" className="btn btn-ghost" onClick={() => go(step + 1)}>Skip</button>}
-            <button className="btn btn-primary btn-lg" disabled={!canNext || busy} data-cursor={last ? 'Book' : 'Next'}>
+            <button className="btn btn-primary btn-lg" disabled={!canNext || busy || (last && !availability?.available)} data-cursor={last ? 'Book' : 'Next'}>
               {last ? (busy ? <><span className="spinner" /> Starting agent…</> : <>Find &amp; book expert <Icon name="arrow" /></>) : <>Continue <Icon name="arrow" /></>}
             </button>
           </div>

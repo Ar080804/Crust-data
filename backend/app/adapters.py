@@ -59,6 +59,9 @@ def verify(expert: dict) -> tuple[list[dict], str]:
             return claims, (claims[0]["source"] if claims else "crustdata")
         except NotImplementedError:
             pass
+    if CLOUD:
+        return [{"text": c, "status": "unverifiable", "evidence": "Verification service is unavailable",
+                 "source": "unavailable", "fetched_at": now_iso()} for c in expert.get('claims', [])], "unavailable"
     MODE["verify"] = "sim"
     status = expert.get("_sim_verify", "unverifiable")
     ev = {"verified": "Simulated: matching role and dates found",
@@ -92,6 +95,10 @@ def send_once(key: str, chat_id: str, text: str) -> bool:
         else:
             db.ex("UPDATE outbox SET status='failed' WHERE key=?", (key,))
             return False
+    if CLOUD:
+        MODE['telegram'] = 'unavailable'
+        db.ex("UPDATE outbox SET status='failed' WHERE key=?", (key,))
+        return False
     MODE["telegram"] = "sim"
     db.ex("UPDATE outbox SET status='simulated' WHERE key=?", (key,))
     print(f"[SIM TELEGRAM → {chat_id}] {text}")
