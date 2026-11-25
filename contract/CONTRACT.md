@@ -9,13 +9,18 @@ Base URL: `http://localhost:8000`. JSON only. Times are ISO 8601 with `+05:30`. 
 | Method | Path | Body | Returns |
 |---|---|---|---|
 | POST | `/requests` | `{"text": str}` | `{"request_id": str, "status": Status}` |
-| GET | `/requests/{id}` | none | `Request` (see below). The frontend polls this every 1s. |
+| GET | `/requests?limit=20&cursor=<id>` | none | Account-owned `{items: [{saved: {id,text,created_at}, req: Request}], next_cursor: str|null}`. Dashboard summaries contain the latest timeline event only. Limit 1–50. |
+| GET | `/requests/{id}` | none | `Request` with its full timeline. Active polling every 3s, booked chat every 10s, paused in hidden tabs. |
+| POST | `/requests/{id}/archive` | none | `{ok: true}`. Hides the request from its owner's list; does not cancel or delete it. |
+| GET | `/booking/availability` | none | `{available: bool, message: str|null}`. Checks configuration, worker heartbeat and expert availability for accepting new requests. |
 | POST | `/requests/{id}/clarify` | `{"answer": str}` | `{"status": Status}` |
 | POST | `/requests/{id}/approve` | `{"option_id": str}` | `{"status": Status}` |
 | GET | `/experts` | none | `{"experts": [Expert]}` |
 | GET | `/eval/latest` | none | `Eval` |
 
-Errors: `{"error": str}` with HTTP 400, 404 or 500.
+Errors: `{"error": str}` with HTTP 400, 401, 403, 404, 409, 429, 500 or 503. Rate-limit responses include `Retry-After`.
+
+Request creation supports an `Idempotency-Key` header (8–100 letters, digits, `_` or `-`). Same account, key and body return the original request; changing the body returns 409. Text is limited to 4000 characters, clarification to 2000 and chat to 1000. Signed-in accounts use the API even when the public guest demo is enabled.
 
 ## Status (fixed enum)
 `INTAKE` → `NEEDS_CLARIFICATION` → `FINDING` → `VERIFYING` → `OUTREACH` → `NEGOTIATING` → `BOOKING` → `BOOKED`

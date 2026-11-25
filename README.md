@@ -64,7 +64,7 @@ flowchart LR
 - The LLM can never override a hard constraint. That is why the eval shows **0 budget violations**.
 
 ### 💪 Built to not break
-- **Crash-safe:** all state lives in SQLite and is saved *before* every side effect. Kill the server mid-run and it resumes where it stopped.
+- **Persistent state:** PostgreSQL in production and SQLite locally retain requests, sessions and worker progress across restarts.
 - **No double messages:** every Telegram send has an idempotency key (outbox table).
 - **No double invites:** the calendar event ID is a hash of request + expert + slot.
 - **No double bookings:** overlapping slots for the same expert are refused.
@@ -80,7 +80,7 @@ flowchart LR
 | **Home** | What the agent does, and the live eval numbers |
 | **New request** | Step-by-step: who, how long, **any date + custom time slot**, budget, notes, review. Plus one-click templates tested against the backend. |
 | **Live request** ⭐ | Status stepper · constraints · shortlist with **Claimed vs Crustdata** per claim · agent log · booking ticket · **₹ saved** badge · receipt · **chat** (agent's Telegram messages, expert replies, and you can message the booked expert) |
-| **My requests** | Needs your action · Pending · Scheduled (*Add to Google Calendar*, receipt) · History (last 10, *Book again*) |
+| **My requests** | Account-owned, paginated history across browsers · Needs your action · Pending · Scheduled (*Add to Google Calendar*, receipt) · History (*Book again*) |
 | **Experts** | Opt-in pool with search and filters. Simulated profiles are labelled **Simulated**. |
 | **Eval** | The report card above, read from `GET /eval/latest` |
 
@@ -127,7 +127,7 @@ npm ci
 cp .env.example .env               # VITE_MOCK=false to use the real backend
 npm run dev                        # → http://localhost:5173
 ```
-With `VITE_MOCK=true` the UI replays fictional booking scenarios from `frontend/src/demoFixtures.ts` in the browser.
+With `VITE_MOCK=true`, guests can replay fictional booking scenarios from `frontend/src/demoFixtures.ts`. Signed-in accounts use the real API. Live booking remains closed until its integrations, expert pool and worker are ready.
 
 **3. Expert onboarding** (optional, port 8001)
 ```bash

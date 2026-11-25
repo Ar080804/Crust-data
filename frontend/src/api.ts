@@ -1,13 +1,19 @@
 // The ONLY file that knows whether data is mock or real.
 // Components just call these functions.
-import { getToken } from './auth.ts'
+import { getToken, signOut, useUser } from './auth.ts'
 import type { Request, Status, Expert, Eval, AuthUser } from '../../contract/types.ts'
 
 import { booked, clarify, escalated, expertsFx, negotiating } from './demoFixtures.ts'
 import evalFx from '../../backend/eval/latest.json'
 import { addChat, listChat, listSaved, removeSaved, saveRequest, type ChatMsg, type Saved } from './history.ts'
 
-export const MOCK = import.meta.env.VITE_MOCK === 'true'
+export const DEMO_ENABLED = import.meta.env.VITE_MOCK === 'true'
+// A real account always uses the server, even when the public demo is enabled.
+export const isDemo = () => DEMO_ENABLED && !getToken()
+export function useDemo() {
+  useUser()
+  return isDemo()
+}
 // Sunil's expert onboarding server (real LinkedIn OIDC). Experts join there; clients never log in with LinkedIn.
 export const ONBOARDING_URL: string = import.meta.env.VITE_ONBOARDING_URL || (import.meta.env.DEV ? 'http://localhost:8001' : '')
 const BASE = (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : '/api')).replace(/\/$/, '')
@@ -17,10 +23,18 @@ async function http<T>(path: string, init?: RequestInit): Promise<T> {
   headers.set('Content-Type', 'application/json')
   const token = getToken()
   if (token && !headers.has('Authorization')) headers.set('Authorization', `Bearer ${token}`)
-  const res = await fetch(BASE + path, { ...init, headers })
+  const res = await fetch(BASE + path, { ...init, headers, signal: init?.signal ?? AbortSignal.timeout(20000) })
   const body = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error((body as { error?: string }).error || `HTTP ${res.status}`)
+  if (!res.ok) {
+    if (res.status === 401 && token && headers.get('Authorization') === `Bearer ${token}`) signOut()
+    throw new ApiError((body as { error?: string }).error || `HTTP ${res.status}`, res.status)
+  }
   return body as T
+}
+
+export class ApiError extends Error {
+  status: number
+  constructor(message: string, status: number) { super(message); this.status = status }
 }
 
 // ---------------- mock layer ----------------
@@ -62,7 +76,7 @@ function addSample(r: Request, createdDaysAgo: number) {
   SAMPLES.set(r.id, r)
   SAMPLE_SAVED.push({ id: r.id, text: r.raw_text, created_at: new Date(Date.now() - createdDaysAgo * DAY).toISOString() })
 }
-if (MOCK) {
+if (DEMO_ENABLED) {
   const b = booked as unknown as Request
   addSample(fx<Request>({ ...b, id: 'r_sample_tonight' }), 0.1)
   addSample(shifted(b, 'r_sample_qc', 1, 'Need a 30 min call yesterday evening with a quick commerce dark-store ops lead, budget 2500', 30, 2500), 1.2)
@@ -104,9 +118,9 @@ function mockGet(id: string): Request {
 }
 
 // ---------------- public API ----------------
-export async function createRequest(text: string): Promise<{ request_id: string; status: Status }> {
+export async function createRequest(text: string, retryKey: string = crypto.randomUUID()): Promise<{ request_id: string; status: Status }> {
   let res: { request_id: string; status: Status }
-  if (MOCK) {
+  if (isDemo()) {
     await sleep(300)
     const w = mockWindow(text)
     const flow: Flow = /escalat/i.test(text) ? 'escalated'
@@ -116,35 +130,38 @@ export async function createRequest(text: string): Promise<{ request_id: string;
     mockState.set(id, { flow, since: Date.now(), resolved: false })
     res = { request_id: id, status: 'INTAKE' }
   } else {
-    res = await http('/requests', { method: 'POST', body: JSON.stringify({ text }) })
+    res = await http('/requests', { method: 'POST', headers: { 'Idempotency-Key': retryKey }, body: JSON.stringify({ text }) })
   }
-  saveRequest({ id: res.request_id, text, created_at: new Date().toISOString() })
+  if (isDemo()) saveRequest({ id: res.request_id, text, created_at: new Date().toISOString() })
   return res
 }
 
-// "My requests" dashboard. No list endpoint in the contract yet, so we keep the IDs this
-// browser created and fetch each with GET /requests/{id}. (Backend ask: GET /requests.)
+// Live accounts read their paginated history from the server on any browser.
 export interface MyRequest { saved: Saved; req: Request | null; error?: string }
-export async function listMyRequests(): Promise<MyRequest[]> {
+export interface RequestPage { items: MyRequest[]; next_cursor: string | null }
+export async function listMyRequests(cursor?: string): Promise<RequestPage> {
+  if (!isDemo()) return http(`/requests?limit=20${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ''}`)
   const mine = listSaved()
-  const all = MOCK ? [...mine, ...SAMPLE_SAVED.filter((s) => !hiddenSamples.has(s.id))] : mine
-  return Promise.all(all.map(async (saved) => {
+  const all = [...mine, ...SAMPLE_SAVED.filter((s) => !hiddenSamples.has(s.id))]
+  const items = await Promise.all(all.map(async (saved) => {
     try { return { saved, req: await getRequest(saved.id) } }
     catch (e) { return { saved, req: null, error: (e as Error).message } }
   }))
+  return { items, next_cursor: null }
 }
-export function removeMyRequest(id: string) {
+export async function removeMyRequest(id: string) {
+  if (!isDemo()) await http(`/requests/${encodeURIComponent(id)}/archive`, { method: 'POST' })
   removeSaved(id)
   hiddenSamples.add(id)
 }
 
 export async function getRequest(id: string): Promise<Request> {
-  if (MOCK) return mockGet(id)
+  if (isDemo() && /^r_(sample|mock)_/.test(id)) return mockGet(id)
   return http(`/requests/${encodeURIComponent(id)}`)
 }
 
 export async function sendClarification(id: string, answer: string): Promise<{ status: Status }> {
-  if (MOCK) {
+  if (isDemo()) {
     const s = mockState.get(id)
     if (s) Object.assign(s, { resolved: true, flow: 'demo', since: Date.now() })
     return { status: 'NEGOTIATING' }
@@ -153,7 +170,7 @@ export async function sendClarification(id: string, answer: string): Promise<{ s
 }
 
 export async function approveOption(id: string, option_id: string): Promise<{ status: Status }> {
-  if (MOCK) {
+  if (isDemo()) {
     const s = mockState.get(id)
     if (s) s.resolved = true
     return { status: 'BOOKED' }
@@ -162,12 +179,12 @@ export async function approveOption(id: string, option_id: string): Promise<{ st
 }
 
 export async function getExperts(): Promise<{ experts: Expert[] }> {
-  if (MOCK) return fx(expertsFx)
+  if (isDemo()) return fx(expertsFx)
   return http('/experts')
 }
 
 export async function getEval(): Promise<Eval> {
-  if (MOCK) return fx(evalFx)
+  if (isDemo()) return fx(evalFx)
   return http('/eval/latest')
 }
 
@@ -195,7 +212,7 @@ const MOCK_REPLIES = [
   'Works for me. I will join from Google Meet.',
 ]
 export async function sendChat(rid: string, expertId: string, text: string): Promise<ChatMsg> {
-  if (!MOCK) {
+  if (!isDemo()) {
     // The backend logs it to the timeline ("Client message relayed…"), which the chat panel renders.
     return http(`/requests/${encodeURIComponent(rid)}/messages`, { method: 'POST', body: JSON.stringify({ expert_id: expertId, text }) })
   }
@@ -207,3 +224,9 @@ export async function sendChat(rid: string, expertId: string, text: string): Pro
 }
 export { listChat }
 export type { ChatMsg }
+
+export interface BookingAvailability { available: boolean; message: string | null }
+export async function getBookingAvailability(): Promise<BookingAvailability> {
+  if (isDemo()) return { available: true, message: null }
+  return http('/booking/availability')
+}

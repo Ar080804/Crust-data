@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS requests (
   id TEXT PRIMARY KEY, status TEXT, raw_text TEXT, clarification_question TEXT,
   clarified INTEGER DEFAULT 0, constraints TEXT, booking TEXT, escalation TEXT,
   current_expert TEXT, contacted_at DOUBLE PRECISION, offer TEXT, counter_sent INTEGER DEFAULT 0,
-  asked_once INTEGER DEFAULT 0, created_at TEXT, owner_email TEXT
+  asked_once INTEGER DEFAULT 0, created_at TEXT, owner_email TEXT, hidden INTEGER NOT NULL DEFAULT 0,
+  next_attempt DOUBLE PRECISION NOT NULL DEFAULT 0, retry_count INTEGER NOT NULL DEFAULT 0
 );
 CREATE TABLE IF NOT EXISTS shortlist (
   request_id TEXT, expert_id TEXT, ord INTEGER, data TEXT, outreach_state TEXT, last_ask TEXT,
@@ -42,6 +43,26 @@ CREATE TABLE IF NOT EXISTS auth_states (
   provider TEXT NOT NULL DEFAULT 'google', browser_hash TEXT
 );
 CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT);
+CREATE TABLE IF NOT EXISTS request_dedup (
+  owner_key TEXT, key TEXT, request_id TEXT NOT NULL, text_hash TEXT NOT NULL,
+  PRIMARY KEY (owner_key, key)
+);
+CREATE TABLE IF NOT EXISTS rate_limits (
+  key TEXT PRIMARY KEY, window_start BIGINT NOT NULL, count INTEGER NOT NULL
+);
+"""
+
+INDEXES = """
+CREATE INDEX IF NOT EXISTS requests_owner_page ON requests(owner_email, hidden, created_at DESC, id DESC);
+CREATE INDEX IF NOT EXISTS requests_active ON requests(status, created_at);
+CREATE INDEX IF NOT EXISTS requests_due ON requests(status, next_attempt, created_at);
+CREATE INDEX IF NOT EXISTS requests_expert ON requests(current_expert, status);
+CREATE INDEX IF NOT EXISTS timeline_request ON timeline(request_id, id DESC);
+CREATE INDEX IF NOT EXISTS replies_pending ON replies(request_id, expert_id, processed, update_id);
+CREATE INDEX IF NOT EXISTS calendar_expert_slot ON calendar_events(expert_id, start, "end");
+CREATE INDEX IF NOT EXISTS auth_states_expiry ON auth_states(expires_at);
+CREATE INDEX IF NOT EXISTS auth_sessions_expiry ON auth_sessions(expires_at);
+CREATE INDEX IF NOT EXISTS rate_limits_window ON rate_limits(window_start);
 """
 
 
@@ -87,7 +108,8 @@ def initialize():
                     if statement.strip():
                         con.execute(statement)
                 additions = {
-                    "requests": {"owner_email": "TEXT"},
+                    "requests": {"owner_email": "TEXT", "hidden": "INTEGER NOT NULL DEFAULT 0",
+                                 "next_attempt": "DOUBLE PRECISION NOT NULL DEFAULT 0", "retry_count": "INTEGER NOT NULL DEFAULT 0"},
                     "auth_sessions": {"provider": "TEXT NOT NULL DEFAULT 'google'", "subject": "TEXT"},
                     "auth_states": {"provider": "TEXT NOT NULL DEFAULT 'google'", "browser_hash": "TEXT"},
                 }
@@ -100,6 +122,9 @@ def initialize():
                         for name, definition in columns.items():
                             if name not in existing:
                                 con.execute(f"ALTER TABLE {table} ADD COLUMN {name} {definition}")
+                for statement in INDEXES.split(";"):
+                    if statement.strip():
+                        con.execute(statement)
                 con.commit()
             except Exception:
                 con.rollback()

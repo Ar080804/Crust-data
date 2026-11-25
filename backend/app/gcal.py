@@ -40,6 +40,8 @@ def _service():
 
     creds = _credentials()
     if creds is None:
+        if CLOUD:
+            raise RuntimeError('Live calendar is not configured')
         return None
     if not creds.valid and creds.refresh_token:
         creds.refresh(Request())

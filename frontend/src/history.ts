@@ -1,6 +1,4 @@
-// Remembers which requests this browser created (per signed-in user).
-// Needed because the contract has no "list my requests" endpoint yet. Once the backend adds
-// GET /requests, api.listMyRequests() can switch to it and this file becomes a cache.
+// Browser-local storage for the public demo. Live history comes from GET /requests.
 import { getUser } from './auth.ts'
 
 export interface Saved { id: string; text: string; created_at: string }
